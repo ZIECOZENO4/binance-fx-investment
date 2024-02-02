@@ -43,9 +43,11 @@ function Hero1() {
           <input
             type="email"
             className="h-14 w-[300px] rounded-2xl bg-slate-700 border-white"
-            placeholder="     Enter Your Email"
+            placeholder="     Enter Your Wallet Address"
           />
-          <button className=" w-[200px] h-14 bg-orange-500 text-black rounded-3xl cursor-pointer font-bold">
+          <button 
+              onClick={handleInvestNowClick}
+          className=" w-[200px] h-14 bg-orange-500 text-black rounded-3xl cursor-pointer font-bold">
             INVEST NOW
           </button>
         </div>
@@ -64,7 +66,7 @@ function Hero1() {
             <input
               type="text"
               className="h-14 w-full rounded-2xl bg-slate-700 border-white"
-              placeholder="     Enter Your Wallet Address or Your Email Address"
+              placeholder="    Enter Your Wallet Address"
             />
             <button
               onClick={handleInvestNowClick}

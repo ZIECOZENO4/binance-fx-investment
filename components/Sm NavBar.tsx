@@ -1,6 +1,7 @@
 'use client'
 import React from "react";
 import {Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenuItem, NavbarMenu, NavbarContent, NavbarItem, Link, Button} from "@nextui-org/react";
+import ConnectButton from "./connectbutton";
 
 
 export default function SmNavbar() {
@@ -52,7 +53,7 @@ export default function SmNavbar() {
         </NavbarItem>
         <NavbarItem>
           <Button as={Link} color="success" href="#" variant="flat">
-            Register
+           <ConnectButton />
           </Button>
         </NavbarItem>
       </NavbarContent>
