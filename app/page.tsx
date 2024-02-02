@@ -16,11 +16,13 @@ import FAQ from "@/components/FAQ";
 import Footer from "../components/Footer/Footer"
 import WhatIsBinance from "@/components/whatisbinancefx";
 import Certification from "@/components/certification";
+import Register from "@/components/register";
 export default function Home() {
   return (
 <div className="">
 <Hero1 /> 
 <Properties />
+<Register />
 <Trending />
 <Plan  />
 <HowToTrade />
