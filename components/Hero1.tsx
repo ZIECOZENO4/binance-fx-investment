@@ -2,8 +2,8 @@
 import React from "react";
 import TypingComponent from "./typing";
 import { useAddress } from "@thirdweb-dev/react";
-import { useRouter } from "next/router";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
+
 
 function Hero1() {
   const address = useAddress();
