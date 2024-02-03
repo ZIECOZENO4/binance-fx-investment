@@ -2,6 +2,7 @@
 import { Line } from 'react-chartjs-2'
 import Chart from 'chart.js/auto'
 import BalanceShow from './balanceshow'
+import Options from './options'
 const data = {
   labels: [
     'Apr',
@@ -49,7 +50,7 @@ const options = {
 
 const BalanceChart = () => {
   return (
-    <div className=' justify-center align-middle flex px-[10vw]  flex-col'>
+    <div className=' flex px-[5vw]  flex-col'>
       <div className=" w-full justify-between p-6 py-6 flex flex-row">
       <img src='/images/bf.png' alt='user imag' className=' h-10 w-10 rounded-full object-cover align-middle justify-start'/>
       <p className=' text-2xl font-bold font-sans gap-3 text-white'> user name </p>
@@ -67,7 +68,8 @@ const BalanceChart = () => {
       </div>
       </div>
       <BalanceShow />
-      <p className='font-bold text-2xl align-middle justify-center text-white p-5'>Your Assets Progress</p>
+      <Options />
+      <p className='font-bold text-4xl align-middle justify-center text-white p-5 pt-8'>Your Assets Progress</p>
       <Line data={data} options={options} width={400} height={150} />
     </div>
   )
