@@ -4,7 +4,7 @@ const Options = () => {
   return (
     <div className='flex flex-wrap  align-middle justify-between p-8'>
      <div className="div">
-        <div className="div">
+        <div className="">
 
         </div>
         INVEST
