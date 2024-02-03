@@ -36,9 +36,9 @@ import  BalanceChart from  "../../components/dashboard/BalanceChart"
   
    ): (
       <div>
-  <div className=' flex flex-row w-full'>
+  <div className=' flex flex-row w-[100vw]'>
   <BalanceChart  />
-  <div className=' w-[18vw] flex justify-end '>
+  <div className='  flex justify-end '>
   <Promos /> 
   </div>
   

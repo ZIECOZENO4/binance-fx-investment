@@ -97,7 +97,7 @@ const experiences = [
 
   export const sidebarLinks = [
     {
-      imgURL: "/assets/home.svg",
+      imgURL: "/assets/asset.svg",
       route: "/dashboard",
       label: "ASSETS",
     },

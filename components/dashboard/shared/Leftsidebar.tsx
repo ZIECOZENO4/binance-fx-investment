@@ -21,7 +21,7 @@ const pathname = usePathname();
         return(
          <Link href={link.route} key={link.label} className={`relative flex justify-start gap-4 rounded-lg p-4 ${isActive && ' bg-[#FFD700]'}`}>
           <Image src={link.imgURL} alt={link.label} width={28} height={28}/>
-          <p className=' text-light-1 max-lg:first-letter:hidden'>{link.label}</p>
+          <p className=' text-light-1 font-bold  max-lg:first-letter:hidden'>{link.label}</p>
          </Link> 
         )
         } )
