@@ -4,6 +4,7 @@ import Chart from 'chart.js/auto'
 import BalanceShow from './balanceshow'
 import Options from './options'
 import Table from "./table"
+import NewMembers from "./newmembers"
 const data = {
   labels: [
     'Apr',
@@ -70,6 +71,7 @@ const BalanceChart = () => {
       </div>
       <BalanceShow />
       <Options />
+      <NewMembers />
       <p className='font-bold text-4xl align-middle justify-center text-white p-5 pt-8'>Your Assets Progress</p>
       <Line data={data} options={options} width={400} height={150} />
       <Table />

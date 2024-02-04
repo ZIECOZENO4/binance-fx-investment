@@ -2,7 +2,7 @@ import React from 'react'
 
 const Watchlist = () => {
   return (
-    <div>Watchlist</div>
+    <div  className=' text-bold text-white text-2xl flex justify-center align-middle '>No Watchlist</div>
   )
 }
 
