@@ -102,7 +102,7 @@ const experiences = [
       label: "ASSETS",
     },
     {
-      imgURL: "/assets/search.svg",
+      imgURL: "/assets/invest.svg",
       route: "/dashboard/invest",
       label: "INVEST",
     },
