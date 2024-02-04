@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 const Promos = () => {
   return (
-    <div className='sticky right-0 top-0 z-20 flex h-screen  flex-col justify-between gap-8 overflow-auto border-l border-l-dark-4 bg-dark-2 px-10 pb-4 pt-8 max-xl:hidden '>
+    <div className='sticky right-0 top-0 z-20 flex h-screen text-white  flex-col justify-between gap-8 overflow-auto border-l border-l-dark-4 bg-dark-2 px-3 pb-4 pt-8 max-xl:hidden '>
  <Wrapper>
       <OfferCard>
         <Title>Yield earned</Title>
@@ -28,14 +28,14 @@ const Promos = () => {
 export default Promos
 
 const Wrapper = styled.div`
-  margin-top: 2rem;
-  padding-right: 1rem;
-  width: 30vw
+  margin-top: 1rem;
+
+
 `
 
 const OfferCard = styled.div`
-  width: 21rem;
-  height: 11rem;
+  width: 20rem;
+  height: 10rem;
   border: 1px solid #282b2f;
   margin-bottom: 1rem;
   padding: 1.5rem;

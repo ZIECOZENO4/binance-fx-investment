@@ -10,7 +10,7 @@ function Table() {
 
  return (
  <div>
-   <div className='flex flex-row mx-2 justify-between'>
+   <div className='flex flex-row mx-2 justify-between pt-14'>
      <motion.header
        onClick={() => setActiveTab('Assets')}
        className={`text-slate-200 font-heading  text-2xl border-b-2 mx-5 pt-4  cursor-pointer ${activeTab === 'Assets' ? 'border-green-700  rounded-md  bg-gradient-to-r from-red-500 to-sky-500 bg-clip-text text-transparent animate-gradient' : 'border-amber-100'}`}

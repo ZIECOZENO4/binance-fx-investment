@@ -51,7 +51,7 @@ const options = {
 
 const BalanceChart = () => {
   return (
-    <div className=' flex px-[5vw]  flex-col'>
+    <div className=' flex px-[3vw]  flex-col'>
       <div className=" w-full justify-between p-6 py-6 flex flex-row">
       <img src='/images/bf.png' alt='user imag' className=' h-10 w-10 rounded-full object-cover align-middle justify-start'/>
       <p className=' text-2xl font-bold font-sans gap-3 text-white'> user name </p>
