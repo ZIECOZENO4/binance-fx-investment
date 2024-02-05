@@ -2,7 +2,7 @@ import React from 'react'
 
 const Options = () => {
   return (
-    <div className='flex flex-col   align-middle justify-center md:p-8 py-4 px-2 text-white'>
+    <div className='flex flex-col   align-middle justify-center md:p-8 py-10 px-2 text-white'>
 <div className=' flex flex-wrap md:flex-row justify-between md:gap-8 gap-2 md:p-4 p-1 items-center '>
 <div className=" font-bold text-xl text-white flex-col gap-1 flex justify-center align-middle"> 
 <div className=' rounded-3xl w-full bg-[#FFD700] gap-1 flex justify-center align-middle"'>

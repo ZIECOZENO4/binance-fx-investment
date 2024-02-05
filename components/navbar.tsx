@@ -4,7 +4,7 @@ import ConnectButton from "./connectbutton";
 import Search from "../public/assets/svg/search";
 import { useState } from "react";
 import AccoutDropdown from "./Investdropdown";
-
+import Link from "next/link";
 const styles = {
   navLink: `text-white flex mx-[10px]`,
   badge: `rounded-full bg-blue-600 h-1 w-1 absolute bottom-5 right-0 top-1 ring-4`,
@@ -29,10 +29,10 @@ const NavBar = () => {
 
   return (
     <div className='md:bg-[#17171A] hidden md:text-white md:h-20 md:flex md:gap-[100px] w-full md:p-[20px] md:sticky md:top-0 md:z-10 md:fixed'>
-      <div className="flex flex-row justify-between align-middle items-center">
+      <Link href="/" className="flex flex-row justify-between align-middle items-center">
         <Image alt="" src="/images/bf.png" width={70} height={70} />
         <p className="text-blue-500 font-sono">BINANCE FX</p>
-      </div>
+      </Link>
 
       <div className={styles.headerWrapper}>
         <nav className={styles.nav}>

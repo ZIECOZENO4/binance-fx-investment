@@ -36,7 +36,7 @@ export default function SmNavbar() {
       <NavbarContent className="sm:hidden pr-3" justify="center">
         <NavbarBrand>
        <img src="/images/bf.png" alt="" className=' h-10  w-10 object-cover'/>
-          <p className="font-bold text-inherit text-white"> BINANCE FX</p>
+          <Link href='/' className="font-bold text-inherit text-white"> BINANCE FX</Link>
         </NavbarBrand>
       </NavbarContent>
 
