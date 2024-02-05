@@ -12,7 +12,10 @@ import {
   trustWallet,
  } from "@thirdweb-dev/react";
 
+ import { ClerkProvider } from "@clerk/nextjs";
+ import { dark } from "@clerk/themes";
 
+ 
 export function Providers({children}: { children: React.ReactNode }) {
   return (
     <ThirdwebProvider
@@ -30,10 +33,16 @@ export function Providers({children}: { children: React.ReactNode }) {
     ]}
 
     >
+          <ClerkProvider
+      appearance={{
+        baseTheme: dark,
+      }}
+    >
     <NextUIProvider>
       
       {children}
     </NextUIProvider>
+    </ClerkProvider>
     </ThirdwebProvider>
   )
 }
