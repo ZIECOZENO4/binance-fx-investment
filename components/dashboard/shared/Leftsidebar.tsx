@@ -18,9 +18,9 @@ function LeftSidebar() {
             const isActive = pathname === link.route;
 
             return (
-              <Link href={link.route} key={link.label} className={`relative flex justify-start gap-4 rounded-lg p-4 ${isActive ? 'bg-[#FFD700]' : ''}`}>
+              <Link href={link.route} key={link.label} className={`relative flex justify-start gap-4 rounded-lg p-4 ${isActive ? 'bg-[#FFD700] text-black' : ''}`}>
                 <Image src={link.imgURL} alt={link.label} width={28} height={28} />
-                <p className='text-light-1 font-bold max-lg:first-letter:hidden'>{link.label}</p>
+                <p className='text-white font-bold max-lg:first-letter:hidden'>{link.label}</p>
               </Link>
             );
           })
