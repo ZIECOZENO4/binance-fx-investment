@@ -52,7 +52,7 @@ export default function RootLayout({
   </section>
    
 </main>
-
+<div className="h-[100px] w-full bg-black md:hidden"/>
 <Bottombar />
         </div>
             </ThirdwebProvider>

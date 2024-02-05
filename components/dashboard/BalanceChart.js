@@ -72,7 +72,7 @@ const BalanceChart = () => {
       <BalanceShow />
       <Options />
       <NewMembers />
-      <p className='font-bold text-4xl align-middle justify-center text-white p-5 pt-8'>Your Assets Progress</p>
+      <p className='font-bold md:text-4xl text-2xl align-middle justify-center text-white p-5 pt-8'>Your Assets Progress</p>
       <Line data={data} options={options} width={400} height={150} />
       <Table />
     </div>

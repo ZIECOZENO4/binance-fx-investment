@@ -27,7 +27,7 @@ export default function SmNavbar() {
       isBordered
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
-      className=" md:hidden bg-slate-700 bg-opacity-5"
+      className=" md:hidden bg-slate-700 bg-opacity-5 overflow-x-hidden"
     >
       <NavbarContent className="sm:hidden" justify="start">
         <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} className='text-slate-200' />
