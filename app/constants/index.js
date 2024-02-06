@@ -107,28 +107,28 @@ const experiences = [
       label: "INVEST",
     },
     {
-      imgURL: "/assets/create.svg",
-      route: "/trade",
+      imgURL: "/assets/trade.svg",
+      route: "/dashboard/trade",
       label: "TRADE",
     },
     {
-      imgURL: "/assets/community.svg",
+      imgURL: "/dashboard/assets/community.svg",
       route: "/earn",
       label: "EARNS",
     },
     {
       imgURL: "/assets/user.svg",
-      route: "/foryou",
+      route: "/dashboard/foryou",
       label: "FOR YOU",
     },
     {
       imgURL: "/assets/notification.svg",
-      route: "/notifications",
+      route: "/dashboard/notifications",
       label: "Notifications",
     },
     {
       imgURL: "/assets/setting.svg",
-      route: "/invite",
+      route: "/dashboard/invite",
       label: "invite",
     },
   ];

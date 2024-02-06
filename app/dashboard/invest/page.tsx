@@ -1,8 +1,11 @@
+import Invest from '@/components/invest/invest'
 import React from 'react'
 
 const InvdestPage = () => {
   return (
-    <div>InvdestPage yello</div>
+    <div>
+      <Invest />
+    </div>
   )
 }
 
