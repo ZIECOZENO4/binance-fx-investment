@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link';
 const Register = () => {
   return (
-    <div className=' w-[100vw] mx-[10vw] md:py-20 py-5  text-white flex flex-row'>
+    <div className=' w-[100vw] md:mx-[10vw] mx-4  ` md:py-20 py-5  text-white flex md:flex-row flex-col'>
       <div className=" w-[50vw] flex flex-col">
       <p className="text-[35px] md:text-[70px] font-bold gap-3 text-[#FFD700] ">OVER</p>
       <p className="text-[35px] md:text-[70px] font-bold gap-3 text-[#FFD700] ">4,500</p>

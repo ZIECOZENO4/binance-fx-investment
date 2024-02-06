@@ -20,7 +20,7 @@ function LeftSidebar() {
             return (
               <Link href={link.route} key={link.label} className={`relative flex justify-start gap-4 rounded-lg p-4 ${isActive ? 'bg-[#FFD700] text-black' : ''}`}>
                 <Image src={link.imgURL} alt={link.label} width={28} height={28} />
-                <p className={`text-white font-bold max-lg:first-letter:hidden ${isActive ? ' text-black' : ''}`}>{link.label}</p>
+                <p className={`font-bold max-lg:first-letter:hidden ${isActive ? 'text-black' : 'text-white'}`}>{link.label}</p>
               </Link>
             );
           })
