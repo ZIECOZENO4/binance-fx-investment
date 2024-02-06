@@ -18,6 +18,11 @@ import {
  
 export function Providers({children}: { children: React.ReactNode }) {
   return (
+    <ClerkProvider   publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
+    appearance={{
+      baseTheme: dark,
+    }}
+  >
     <ThirdwebProvider
     activeChain="ethereum"
     clientId={process.env.NEXT_PUBLIC_THIRDWEB_CLIENT_ID}
@@ -33,16 +38,13 @@ export function Providers({children}: { children: React.ReactNode }) {
     ]}
 
     >
-          <ClerkProvider
-      appearance={{
-        baseTheme: dark,
-      }}
-    >
+ 
     <NextUIProvider>
       
       {children}
     </NextUIProvider>
-    </ClerkProvider>
+
     </ThirdwebProvider>
+    </ClerkProvider>
   )
 }
