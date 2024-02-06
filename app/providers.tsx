@@ -12,7 +12,7 @@ import {
   trustWallet,
  } from "@thirdweb-dev/react";
 
- import { ClerkProvider } from "@clerk/nextjs";
+ import { ClerkProvider, RedirectToSignIn, SignedIn, SignedOut } from "@clerk/nextjs";
  import { dark } from "@clerk/themes";
 
  
@@ -40,8 +40,13 @@ export function Providers({children}: { children: React.ReactNode }) {
     >
  
     <NextUIProvider>
-      
-      {children}
+    <SignedIn>
+    {children}
+      </SignedIn>
+      <SignedOut>
+        <RedirectToSignIn />
+      </SignedOut>
+   
     </NextUIProvider>
 
     </ThirdwebProvider>
