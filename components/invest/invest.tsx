@@ -1,44 +1,37 @@
-"use client"
-import { useQuery } from 'react-query';
-import axios from 'axios';
-import { FC } from 'react';
+'use client'
+import { useEffect, useState } from 'react';
 
-interface TrendingCoin {
-  id: string;
-  name: string;
-}
+export default function Invest() {
+  const [data1, setData1] = useState(null);
 
-interface TrendingCoinsResponse {
-  coins: TrendingCoin[];
-}
 
-async function fetchTrendingCoins(): Promise<TrendingCoinsResponse> {
-  const response = await axios.get<TrendingCoinsResponse>('https://api.coingecko.com/api/v3/search/trending');
-  return response.data;
-}
+  useEffect(() => {
+    const fetchData = async () => {
+      const url1 = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en';
+      const options1 = {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json'
+        }
+      };
 
-const Invest: FC = () => {
-  const { isLoading, isError, data, error } = useQuery<TrendingCoinsResponse, Error>('trendingCoins', fetchTrendingCoins);
+      try {
+        const response1 = await fetch(url1, options1);
+        const result1 = await response1.json();
+        setData1(result1);
+      } catch (error) {
+        console.error(error);
+      }
+    };
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (isError) {
-    const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
-    return <div>Error: {errorMessage}</div>;
-  }
+    fetchData();
+  }, []);
 
   return (
-    <div>
-      <h1>Trending Coins</h1>
-      <ul>
-        {data?.coins.map((coin) => (
-          <li key={coin.id}>{coin.name}</li>
-        ))}
-      </ul>
+    <div className='text-white'>
+      {/* Render your data here */}
+      {data1 && <pre>{JSON.stringify(data1, null,  2)}</pre>}
+  
     </div>
   );
-};
-
-export default Invest;
+}
