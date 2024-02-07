@@ -59,7 +59,7 @@ const BalanceChart = () => {
   }
   return (
     <div className=' flex px-[1vw]  flex-col w-[100vw] overflow-x-hidden'>
-      <div className=" w-full justify-between md:p-6 mx-2 py-6 flex flex-row">
+      <div className=" md:w-[40vw] justify-between md:p-6 mx-2 py-6 flex flex-row">
       <SignedIn>
         <UserButton/>
         { isSignedIn && <div className=" flex text-header   text-2xl font-bold font-sans gap-3 text-white uppercase"> INVESTOR  {user.firstName}</div> }
