@@ -21,16 +21,6 @@ import {
           coinbaseWallet({ recommended: true }),
           walletConnect(),
           localWallet(),
-          embeddedWallet({
-            auth: {
-              options: [
-                "email",
-                "google",
-                "apple",
-                "facebook",
-              ],
-            },
-          }),
           trustWallet(),
         ]}
   
