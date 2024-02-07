@@ -14,7 +14,7 @@ const NewMembers = () => {
          </div>
          <div className=" md:w-[50%] w-[90%] flex flex-col align-middle items-end justify-end md:mr-3">
 <p  className="flex  justify-start   items-start text-white font-bold font-sono text-2xl leading-8 gap-4">New to Binance FX ?</p>
-<p className=" text-md text-white flex items-start  justify-start font-thin  leading-8 gap-6 py-1 ">Here is how to start investinging.</p>
+<p className=" text-md text-white flex items-start  justify-start font-thin  leading-8 gap-6 py-1 ">Here is how to start investing.</p>
 <div className="flex align-middle justify-between items-center flex-row bg-green-600 rounded-2xl p-2 w-full ">
 <img src='/images/bf.png' alt='' className=" w-32 h-32 object-cover align-middle items-center"/>
 <div className="flex align-middle justify-start items-start flex-col">
