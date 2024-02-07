@@ -118,8 +118,8 @@ const experiences = [
     },
     {
       imgURL: "/assets/user.svg",
-      route: "/dashboard/foryou",
-      label: "FOR YOU",
+      route: "/dashboard/wallet",
+      label: "WALLET",
     },
     {
       imgURL: "/assets/notification.svg",
@@ -133,4 +133,27 @@ const experiences = [
     },
   ];
   
+  
+  export const bottomLinks = [
+    {
+      imgURL: "/assets/asset.svg",
+      route: "/dashboard",
+      label: "ASSETS",
+    },
+    {
+      imgURL: "/assets/invest.svg",
+      route: "/dashboard/invest",
+      label: "INVEST",
+    },
+    {
+      imgURL: "/assets/trade.svg",
+      route: "/dashboard/trade",
+      label: "TRADE",
+    },
+    {
+      imgURL: "/dashboard/assets/community.svg",
+      route: "/wallet",
+      label: "WALLET",
+    },
+  ];
   

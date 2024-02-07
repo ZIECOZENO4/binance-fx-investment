@@ -3,7 +3,7 @@
 const NewMembers = () => {
     return (
        <div 
-         className='w-full gap-8 flex md:flex-row flex-col justify-between py-8 items-center'
+         className='md:w-full w-[100vw] px-6 md:px-2 gap-8 flex md:flex-row flex-col justify-between py-8 items-center'
        >
          <div className=" md:w-[50%] w-[90%] flex bg-no-repeat h-auto bg-cover md:mt-5  px-2 md:px-8 bg-track align-middle items-start justify-start md:ml-3">
            <div className="flex flex-col justify-start py-6  items-start text-[#FFD700]  font-bold font-sono text-xl leading-8 gap-4">

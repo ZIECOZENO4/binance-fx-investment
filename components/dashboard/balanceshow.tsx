@@ -2,7 +2,7 @@ import React from 'react'
 
 const BalanceShow = () => {
   return (
-    <div className=" bg-[#FFD700] rounded-2xl flex flex-col justify-start align-middle items-start gap-5 p-4 px-3">
+    <div className=" bg-[#FFD700] rounded-2xl flex flex-col justify-start align-middle items-start gap-5 p-4 md:px-3 px-20">
       <div className="div">
       <div className=" flex flex-row justify-between gap-10">
         <p className=" font-bold text-2xl font-sono gap-3">ACCOUNT BALANCE</p>

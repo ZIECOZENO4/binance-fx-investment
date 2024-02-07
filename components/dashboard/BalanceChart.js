@@ -53,6 +53,10 @@ const options = {
 }
 
 const BalanceChart = () => {
+  const { isLoaded, isSignedIn, user } = useUser();
+  if (!isLoaded) {
+    return null;
+  }
   return (
     <div className=' flex px-[1vw]  flex-col w-[100vw] overflow-x-hidden'>
       <div className=" w-full justify-between md:p-6 mx-2 py-6 flex flex-row">
