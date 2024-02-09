@@ -27,7 +27,7 @@ const Plan = () => {
    <div className='flex flex-row md:mx-[10vw] justify-between pt-8 w-[100vw]'>
      <motion.header
        onClick={() => setActiveTab('BASIC')}
-       className={`text-green-800 font-serif  text-2xl  font-bold mx-5 pt-4  cursor-pointer ${activeTab === 'Assets' ? 'border-green-700  rounded-md  bg-gradient-to-r from-red-500 to-sky-500 bg-clip-text text-transparent animate-gradient' : 'border-amber-100'}`}
+       className={`text-green-800 font-serif  text-2xl  font-bold mx-5 pt-4  cursor-pointer ${activeTab === 'BASIC' ? 'border-green-500  rounded-md  bg-gradient-to-r from-red-500 to-sky-500 bg-clip-text text-transparent animate-gradient' : 'border-amber-100'}`}
        animate={{ scale: activeTab === 'BASIC' ? 1.2 : 1 }}
      >
    BASIC
@@ -40,7 +40,7 @@ const Plan = () => {
      </motion.header>
      <motion.header
        onClick={() => setActiveTab('VIP')}
-       className={`text-sky-700  font-heading  text-2xl border-b-2 mx-5 pt-4  cursor-pointer ${activeTab === 'VIP' ? 'border-sky-300   rounded-md  bg-gradient-to-r from-red-500 to-sky-500 bg-clip-text text-transparent animate-gradient' : 'border-amber-100'}`}
+       className={`text-sky-700  font-heading  font-serif   font-bold text-2xl border-b-2 mx-5 pt-4  cursor-pointer ${activeTab === 'VIP' ? 'border-sky-300   rounded-md  bg-gradient-to-r from-red-500 to-sky-500 bg-clip-text text-transparent animate-gradient' : 'border-amber-100'}`}
      >
    VIP
      </motion.header>
