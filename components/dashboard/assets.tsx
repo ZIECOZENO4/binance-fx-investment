@@ -1,9 +1,9 @@
-import React from 'react'
-import CMCtable from '../invest/cmc-table/cmcTable'
+
 
 
 'use client'
 import { useEffect, useState } from 'react';
+import React from 'react'
 
 // Define the shape of the data item
 interface CoinDataItem {

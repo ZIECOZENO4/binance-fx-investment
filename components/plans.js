@@ -24,23 +24,23 @@ const Plan = () => {
 <div> 
     <div>
     <div>
-   <div className='flex flex-row mx-12 justify-between pt-8 w-[100vw]'>
+   <div className='flex flex-row md:mx-[10vw] justify-between pt-8 w-[100vw]'>
      <motion.header
        onClick={() => setActiveTab('BASIC')}
-       className={`text-slate-200 font-serif  text-2xl  mx-5 pt-4  cursor-pointer ${activeTab === 'Assets' ? 'border-green-700  rounded-md  bg-gradient-to-r from-red-500 to-sky-500 bg-clip-text text-transparent animate-gradient' : 'border-amber-100'}`}
+       className={`text-green-800 font-serif  text-2xl  font-bold mx-5 pt-4  cursor-pointer ${activeTab === 'Assets' ? 'border-green-700  rounded-md  bg-gradient-to-r from-red-500 to-sky-500 bg-clip-text text-transparent animate-gradient' : 'border-amber-100'}`}
        animate={{ scale: activeTab === 'BASIC' ? 1.2 : 1 }}
      >
    BASIC
      </motion.header>
      <motion.header
        onClick={() => setActiveTab('PREMIUM')}
-       className={`text-slate-200 font-heading  text-2xl border-b-2 mx-5 pt-4  cursor-pointer ${activeTab === 'PREMIUM' ? 'border-green-700  rounded-md  bg-gradient-to-r from-red-500 to-sky-500 bg-clip-text text-transparent animate-gradient' : 'border-amber-100'}`}
+       className={`text-[#FFD700]  font-heading font-serif   font-bold text-3xl border-b-2 mx-5 pt-4  cursor-pointer ${activeTab === 'PREMIUM' ? 'border-[#e9db8b]  rounded-md  bg-gradient-to-r from-[#FFD700] to-[#6d5e07] bg-clip-text text-transparent animate-gradient' : 'border-[#96893e]'}`}
      >
    PREMIUM
      </motion.header>
      <motion.header
        onClick={() => setActiveTab('VIP')}
-       className={`text-slate-200 font-heading  text-2xl border-b-2 mx-5 pt-4  cursor-pointer ${activeTab === 'VIP' ? 'border-green-700  rounded-md  bg-gradient-to-r from-red-500 to-sky-500 bg-clip-text text-transparent animate-gradient' : 'border-amber-100'}`}
+       className={`text-sky-700  font-heading  text-2xl border-b-2 mx-5 pt-4  cursor-pointer ${activeTab === 'VIP' ? 'border-sky-300   rounded-md  bg-gradient-to-r from-red-500 to-sky-500 bg-clip-text text-transparent animate-gradient' : 'border-amber-100'}`}
      >
    VIP
      </motion.header>
