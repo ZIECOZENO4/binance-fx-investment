@@ -1,38 +1,14 @@
 'use client'
 import React from "react";
-import { Tilt } from 'react-tilt'
+import Vip from "./Vip"
 import { motion } from "framer-motion";
 import { fadeIn, textVariant } from "../utils/motion";
-
-import { useSwipeable } from 'react-swipeable';
+import Basic from "./Basic"
+import Premium from  "./Premium";
 import { useState } from 'react';
 
 const Plan = () => {
-  const [currentDiv, setCurrentDiv] = useState(0);
-
-  const handlers = useSwipeable({
-     onSwipedLeft: () => setCurrentDiv((prev) => prev <= 0 ? 3 : prev - 1),
-     onSwipedRight: () => setCurrentDiv((prev) => prev >= 3 ? 0 : prev + 1),
-  });
- const PlanSelection = () => {
-  const [selectedPlan, setSelectedPlan] = useState(null);
-
-  const handlePlanClick = (plan) => {
-    setSelectedPlan(plan);
-  };
-
-  const renderContent = () => {
-    switch (selectedPlan) {
-      case 'referral':
-        return <div>Referral Plan Content</div>;
-      case 'board':
-        return <div>Board Plan Content</div>;
-      case 'vip':
-        return <div>VIP Plan Content</div>;
-      default:
-        return null;
-    }
-  };
+  const [activeTab, setActiveTab] = useState('PREMIUM');
  return (
     <div className="justify-center flex flex-col  align-middle items-center py-[40px]">
       <motion.div variants={textVariant()}>
@@ -47,14 +23,33 @@ const Plan = () => {
       </motion.p>
 <div> 
     <div>
-      <div className="top-section">
-        <button onClick={() => handlePlanClick('referral')}>Referral Plan</button>
-        <button onClick={() => handlePlanClick('board')}>Board Plan</button>
-        <button onClick={() => handlePlanClick('vip')}>VIP Plan</button>
-      </div>
-      <div className="center-section">
-        {renderContent()}
-      </div>
+    <div>
+   <div className='flex flex-row mx-12 justify-between pt-8 w-[100vw]'>
+     <motion.header
+       onClick={() => setActiveTab('BASIC')}
+       className={`text-slate-200 font-serif  text-2xl  mx-5 pt-4  cursor-pointer ${activeTab === 'Assets' ? 'border-green-700  rounded-md  bg-gradient-to-r from-red-500 to-sky-500 bg-clip-text text-transparent animate-gradient' : 'border-amber-100'}`}
+       animate={{ scale: activeTab === 'BASIC' ? 1.2 : 1 }}
+     >
+   BASIC
+     </motion.header>
+     <motion.header
+       onClick={() => setActiveTab('PREMIUM')}
+       className={`text-slate-200 font-heading  text-2xl border-b-2 mx-5 pt-4  cursor-pointer ${activeTab === 'PREMIUM' ? 'border-green-700  rounded-md  bg-gradient-to-r from-red-500 to-sky-500 bg-clip-text text-transparent animate-gradient' : 'border-amber-100'}`}
+     >
+   PREMIUM
+     </motion.header>
+     <motion.header
+       onClick={() => setActiveTab('VIP')}
+       className={`text-slate-200 font-heading  text-2xl border-b-2 mx-5 pt-4  cursor-pointer ${activeTab === 'VIP' ? 'border-green-700  rounded-md  bg-gradient-to-r from-red-500 to-sky-500 bg-clip-text text-transparent animate-gradient' : 'border-amber-100'}`}
+     >
+   VIP
+     </motion.header>
+   </div>
+  
+   {activeTab === 'BASIC' && <div><Basic /></div>}
+   {activeTab === 'PREMIUM' && <div><Premium /></div>}
+   {activeTab === 'VIP' && <div><Vip /></div>}
+ </div>
     </div>
     </div>  
      </div>

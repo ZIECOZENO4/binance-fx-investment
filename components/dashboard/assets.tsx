@@ -56,11 +56,11 @@ const Assets = () => {
           <img src={item.image} alt="coin name " className=" h-32 w-32 rounded-ful"/>
           <div className=" items-start align-middle justify-start flex flex-col gap-4">
           <h3>{item.name}</h3>
-          <div>
-        
-          </div>
-                 <p>{item.current_price}</p>
+          <div className=" flex flex-row">
+                <p>{item.current_price}</p>
                  <p>{item.high_24h}</p>
+          </div>
+         
           </div>
           </div>
 
