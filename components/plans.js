@@ -14,7 +14,25 @@ const Plan = () => {
      onSwipedLeft: () => setCurrentDiv((prev) => prev <= 0 ? 3 : prev - 1),
      onSwipedRight: () => setCurrentDiv((prev) => prev >= 3 ? 0 : prev + 1),
   });
- 
+ const PlanSelection = () => {
+  const [selectedPlan, setSelectedPlan] = useState(null);
+
+  const handlePlanClick = (plan) => {
+    setSelectedPlan(plan);
+  };
+
+  const renderContent = () => {
+    switch (selectedPlan) {
+      case 'referral':
+        return <div>Referral Plan Content</div>;
+      case 'board':
+        return <div>Board Plan Content</div>;
+      case 'vip':
+        return <div>VIP Plan Content</div>;
+      default:
+        return null;
+    }
+  };
  return (
     <div className="justify-center flex flex-col  align-middle items-center py-[40px]">
       <motion.div variants={textVariant()}>
@@ -27,178 +45,20 @@ const Plan = () => {
         className='mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]'
       >
       </motion.p>
-<div>
-<div className='hidden md:mt-20 md:flex md:flex-row md:gap-3 gap-8'>
-        <Tilt className='xs:w-[250px] w-full'>   
-          <motion.div
-            variants={fadeIn("right", "spring",  0.5, 0.75)}
-            className='w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card bg-slate-600'
-          >
-            
-         
-            <div
-            options={{
-              max: 45,
-              scale: 1,
-              speed: 450,
-            }}
-              className='bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col'
-            >
-              <h3 className='text-white text-[20px] font-bold text-center'>
-                hello 1
-              </h3>
-            </div>
-              </motion.div>
-       </Tilt>
-        <Tilt className='xs:w-[250px] w-full'>
-          <motion.div
-            variants={fadeIn("right", "spring",1.0, 1.5)}
-            className='w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card bg-green-500'
-          >
-            <div
-              options={{
-                max: 45,
-                scale: 1,
-                speed: 450,
-              }}
-              className='bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col'
-            >
-              <h3 className='text-white text-[20px] font-bold text-center'>
-                hello 2
-              </h3>
-            </div>
-          </motion.div>
-        </Tilt>
-        <Tilt className='xs:w-[250px] w-full'>
-          <motion.div
-            variants={fadeIn("left", "spring",  1.5, 2.25)}
-            className='w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card bg-blue-700'
-          >
-            <div
-              options={{
-                max: 45,
-                scale: 1,
-                speed: 450,
-              }}
-              className='bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col'
-            >
-              <h3 className='text-white text-[20px] font-bold text-center'>
-                hello3
-              </h3>
-            </div>
-          </motion.div>
-        </Tilt>
-        <Tilt className='xs:w-[250px] w-full'>
-          <motion.div
-            variants={fadeIn("left", "spring", 2.0, 3.0)}
-            className='w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card bg-[#FFD700] '
-          >
-            <div
-              options={{
-                max: 45,
-                scale: 1,
-                speed: 450,
-              }}
-              className='bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col'
-            >
-              <h3 className='text-white text-[20px] font-bold text-center'>
-                hello 4
-              </h3>
-            </div>
-          </motion.div>
-        </Tilt>
+<div> 
+    <div>
+      <div className="top-section">
+        <button onClick={() => handlePlanClick('referral')}>Referral Plan</button>
+        <button onClick={() => handlePlanClick('board')}>Board Plan</button>
+        <button onClick={() => handlePlanClick('vip')}>VIP Plan</button>
       </div>
-</div>
-<div className='w-full align-middle justify-center py-5 flex flex-col  md:hidden'>
-      <div className="w-[70vw] ml-[30px] justify-center flex items-center " {...handlers}>
-        {currentDiv === 0 && (
-          <Tilt className='xs:w-[250px] w-full'>
-            <motion.div
-              variants={fadeIn("right", "spring",  0.5, 0.75)}
-              className='w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card bg-slate-600'
-            >
-              <div
-                options={{
-                 max: 45,
-                 scale: 1,
-                 speed: 450,
-                }}
-                className='bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col'
-              >
-                <h3 className='text-white text-[20px] font-bold text-center'>
-                 hello 1
-                </h3>
-              </div>
-            </motion.div>
-          </Tilt>
-        )}
-        {currentDiv === 1 && (
-          <Tilt className='xs:w-[250px] w-full'>
-            <motion.div
-              variants={fadeIn("right", "spring",1.0, 1.5)}
-              className='w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card bg-green-500'
-            >
-              <div
-                options={{
-                 max: 45,
-                 scale: 1,
-                 speed: 450,
-                }}
-                className='bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col'
-              >
-                <h3 className='text-white text-[20px] font-bold text-center'>
-                 hello 2
-                </h3>
-              </div>
-            </motion.div>
-          </Tilt>
-        )}
-        {currentDiv === 2 && (
-          <Tilt className='xs:w-[250px] w-full'>
-            <motion.div
-              variants={fadeIn("left", "spring",  1.5, 2.25)}
-              className='w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card bg-blue-700'
-            >
-              <div
-                options={{
-                 max: 45,
-                 scale: 1,
-                 speed: 450,
-                }}
-                className='bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col'
-              >
-                <h3 className='text-white text-[20px] font-bold text-center'>
-                 hello3
-                </h3>
-              </div>
-            </motion.div>
-          </Tilt>
-        )}
-        {currentDiv === 3 && (
-          <Tilt className='xs:w-[250px] w-full'>
-            <motion.div
-              variants={fadeIn("left", "spring", 2.0, 3.0)}
-              className='w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card bg-[#FFD700] '
-            >
-              <div
-                options={{
-                 max: 45,
-                 scale: 1,
-                 speed: 450,
-                }}
-                className='bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col'
-              >
-                <h3 className='text-white text-[20px] font-bold text-center'>
-                 hello 4
-                </h3>
-              </div>
-            </motion.div>
-          </Tilt>
-        )}
+      <div className="center-section">
+        {renderContent()}
       </div>
-      <h1 className=" m-3 py-2 text-white text-md align-middle flex justify-center md:hidden">SWIPE LEFT OR RIGHT</h1>
     </div>
-    </div>
+    </div>  
+     </div>
+
  );
 };
 

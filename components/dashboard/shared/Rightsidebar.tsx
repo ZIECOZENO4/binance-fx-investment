@@ -29,7 +29,7 @@ export default Promos
 
 const Wrapper = styled.div`
   margin-top: 1rem;
-
+  width: 30vw;
 
 `
 
