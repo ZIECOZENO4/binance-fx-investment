@@ -59,8 +59,8 @@ const Assets = () => {
           <div>
         
           </div>
-                 <p>Current Price: {item.current_price}</p>
-                 <p>High  24h: {item.high_24h}</p>
+                 <p>{item.current_price}</p>
+                 <p>{item.high_24h}</p>
           </div>
           </div>
 
