@@ -3,7 +3,7 @@ import React from 'react'
 const Basic = () => {
   return (
     <div>
-basic
+basic hgf
     </div>
   )
 }
