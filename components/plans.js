@@ -27,20 +27,20 @@ const Plan = () => {
    <div className='flex flex-row mx-2 md:mx-[20vw] justify-between pt-8 w-[100vw]'>
      <motion.header
        onClick={() => setActiveTab('REFERRAL')}
-       className={`text-green-800 font-serif  md:text-2xl text-[30px]  font-bold md:mx-5 mx-2 pt-4  cursor-pointer ${activeTab === 'BASIC' ? 'border-green-500  rounded-md  bg-gradient-to-r from-red-500 to-sky-500 bg-clip-text text-transparent animate-gradient' : 'border-amber-100'}`}
+       className={`text-green-800 font-serif  md:text-2xl text-[10px]  font-bold md:mx-5 mx-2 pt-4  cursor-pointer ${activeTab === 'BASIC' ? 'border-green-500  rounded-md  bg-gradient-to-r from-red-500 to-sky-500 bg-clip-text text-transparent animate-gradient' : 'border-amber-100'}`}
        animate={{ scale: activeTab === 'REFERRAL' ? 1.2 : 1 }}
      >
   REFERRAL
      </motion.header>
      <motion.header
        onClick={() => setActiveTab('BOARD')}
-       className={`text-[#FFD700]  font-heading font-serif text-[40px]  font-bold md:text-3xl border-b-2 md:mx-5 mx-2 pt-4  cursor-pointer ${activeTab === 'BOARD' ? 'border-[#e9db8b]  rounded-md  bg-gradient-to-r from-[#FFD700] to-[#6d5e07] bg-clip-text text-transparent animate-gradient' : 'border-[#96893e]'}`}
+       className={`text-[#FFD700]  font-heading font-serif text-[15px]  font-bold md:text-3xl border-b-2 md:mx-5 mx-2 pt-4  cursor-pointer ${activeTab === 'BOARD' ? 'border-[#e9db8b]  rounded-md  bg-gradient-to-r from-[#FFD700] to-[#6d5e07] bg-clip-text text-transparent animate-gradient' : 'border-[#96893e]'}`}
      >
   BOARD
      </motion.header>
      <motion.header
        onClick={() => setActiveTab('SHARES')}
-       className={`text-sky-700  font-heading  font-serif   font-bold md:text-2xl text-[30px] border-b-2 mx-2 md:mx-5 pt-4  cursor-pointer ${activeTab === 'SHARES' ? 'border-sky-300   rounded-md  bg-gradient-to-r from-red-500 to-sky-500 bg-clip-text text-transparent animate-gradient' : 'border-amber-100'}`}
+       className={`text-sky-700  font-heading  font-serif   font-bold md:text-2xl text-[10px] border-b-2 mx-2 md:mx-5 pt-4  cursor-pointer ${activeTab === 'SHARES' ? 'border-sky-300   rounded-md  bg-gradient-to-r from-red-500 to-sky-500 bg-clip-text text-transparent animate-gradient' : 'border-amber-100'}`}
      >
  SHARES
      </motion.header>
