@@ -117,7 +117,7 @@ const experiences = [
       label: "EARNS",
     },
     {
-      imgURL: "/assets/user.svg",
+      imgURL: "/assets/wallet.svg",
       route: "/dashboard/wallet",
       label: "WALLET",
     },
@@ -151,7 +151,7 @@ const experiences = [
       label: "TRADE",
     },
     {
-      imgURL: "/dashboard/assets/community.svg",
+      imgURL: "/dashboard/assets/wallet.svg",
       route: "/wallet",
       label: "WALLET",
     },
