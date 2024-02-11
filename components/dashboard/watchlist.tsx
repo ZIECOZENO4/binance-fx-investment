@@ -45,14 +45,14 @@ const Watchlist = () => {
 
 
   return (
-    <div className='text-bold text-white text-2xl flex justify-center align-middle'>
+    <div className='text-bold text-white text-2xl flex-col flex justify-center align-middle'>
       <div className="flex flex-row justify-between mx-8">
         <p className="text-bold">My Watchlist</p>
         <p className="md:flex hidden">Edit</p>
       </div>
       <div className='text-white flex flex-col  '>
       {data1 && data1.map((item, index) => (
-        <div key={index} className=' flex flex-row justify-between align-miggle items-center w-full py-4'>
+        <div key={index} className=' flex flex-col justify-between align-miggle items-center w-full py-4'>
           <div className="  flex flex-col justify-start items-start align-middle p-2 w-[60%]">
           <img src={item.image} alt="coin name " className=" h-10 w-10 rounded-ful pl-3"/>
           <h3 className=' p-1 font-bold text-xl md:text-2xl'>{item.name}</h3>
