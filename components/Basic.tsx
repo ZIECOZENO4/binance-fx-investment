@@ -3,13 +3,13 @@ import React, { useState } from 'react';
 
 const Basic = () => {
   const [basicPlan, setBasicPlan] = useState({ monthlyPrice: "5% Daily", items: ['Total Roll: 20%', 'Duration: 9 Days', 'Minium Deposit:  $ 5.000', 'Maxium Deposit:  $ 20.000', '5% Referral Bonus']});
-  const [proPlan, setProPlan] = useState({ monthlyPrice: "7% Daily", items: ['Total Roll: 45%', 'Duration: 9 Days', 'Minium Deposit:  $ 2500', 'Maxium Deposit:  $ 7000', '10% Referral Bonus' ]});
+  const [proPlan, setProPlan] = useState({ monthlyPrice: "10% Daily", items: ['Total Roll: 45%', 'Duration: 9 Days', 'Minium Deposit:  $ 2500', 'Maxium Deposit:  $ 7000', '10% Referral Bonus' ]});
   const [regularPlan, setRegularPlan] = useState({ monthlyPrice:  "15% Daily", items: ['Total Roll: 70%', 'Duration: 9 Days', 'Minium Deposit:  $ 3000', 'Maxium Deposit:  $ 15000', '15% Referral Bonus' ]});
 
 
 
   return (
-    <div className="text-gray-900 sm:h-[240vh] font-sans h-[235vh] md:h-[150vh] lg:h-[140vh] mt-[20px]  bg-no-repeat bg-bottom sm:bg-bottom md:mx-[10vw] mx-[30px] mb-auto">
+    <div className="text-gray-900 sm:h-[200vh] font-sans h-[200vh] md:h-[120vh] lg:h-[100vh] mt-[20px]  bg-no-repeat bg-bottom sm:bg-bottom md:mx-[10vw] mx-[30px] mb-auto">
  
       <div className="flex flex-col md:flex-row md:transform md:scale-75 lg:scale-100 justify-center ">
         {['Advance Plan', 'Premium Plan', 'Vip Plan'].map((plan, index) => {
@@ -35,7 +35,8 @@ const Basic = () => {
                 </React.Fragment>
               ))}
               <a href="#" target="_blank">
-                <div className="bg-blue-500 hover:bg-[#FFD700]  text-white hover:text-sky-600 border border-blue-600 hover:border-transparent font-bold uppercase text-xs mt-5 py-2 px-4 rounded cursor-pointer md:text-[30px] text-[15px]">Invest Now</div>
+                <div className="bg-blue-500 hover:bg-[#FFD700]  text-white hover:text-sky-600 border border-blue-600 hover:border-transparent font-bold uppercase space-5 mt-5 py-2 px-4 rounded cursor-pointer md:text-[40px] text-[15px]"> <span className="m-2 p-2">Invest Now
+                </span> </div>
               </a>
             </div>
           )

@@ -58,7 +58,7 @@ const BalanceChart = () => {
     return null;
   }
   return (
-    <div className=' flex px-[1vw] md:w-[60vw] w-[100vw] flex-col  overflow-x-hidden'>
+    <div className=' flex px-[1vw] md:w-[53vw] w-[100vw] flex-col  overflow-x-hidden'>
       <div className="  justify-between md:p-6 mx-2 py-6 flex flex-row">
       <SignedIn>
         <UserButton/>

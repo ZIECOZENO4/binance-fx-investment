@@ -52,18 +52,18 @@ const Assets = () => {
     <div className='text-white'>
       {data1 && data1.map((item, index) => (
         <div key={index} className=' flex flex-row justify-between align-miggle items-center py-4'>
-          <div className="  flex flex-row justify-center items-center align-middle p-2">
+          <div className="  flex flex-row justify-start items-start align-middle p-2 w-[70%]">
           <img src={item.image} alt="coin name " className=" h-20 w-20 rounded-ful pl-3"/>
-          <div className=" items-start align-middle justify-start flex flex-col gap-4">
+          <div className=" items-start align-middle justify-start flex flex-col gap-2">
           <h3 className=' p-2 font-bold text-xl md:text-2xl'>{item.name}</h3>
-          <div className=" flex flex-row p-1 align-middle justify-center">
+          <div className=" flex flex-row  align-middle justify-center">
                 <p className='  text-md md:text-xl'>{item.current_price}</p>
                  <p className='  text-sm md:text-md text-green-500 md:ml-2 ml-1'>{item.high_24h}</p>
           </div>
          
           </div>
           </div>
-          <div className='flex flex-col justify-end align-middle items-end px-2'>
+          <div className='flex flex-col justify-end align-middle items-end px-1 w-[20%]'>
           <p className=" text-sm text-slate-300 gap-2 uppercase">0 {item.symbol} </p> 
 <p className=" text-sm text-slate-300 gap-2">0 USDT </p> 
           </div>
