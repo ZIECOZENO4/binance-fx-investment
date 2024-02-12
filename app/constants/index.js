@@ -151,7 +151,7 @@ const experiences = [
       label: "TRADE",
     },
     {
-      imgURL: "/dashboard/assets/wallet.svg",
+      imgURL: "/assets/wallet.svg",
       route: "/wallet",
       label: "WALLET",
     },
