@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react';
-import Note fromn "./note"
+import Note from "./note"
 import { motion } from "framer-motion";
 import Basic2 from './Basic2';
 import Premium2 from './Premium2';
@@ -55,23 +55,23 @@ const Invest = () => {
     </div>
     <Note />
     <div>
-    <div className='flex flex-row px-2 md:px-[20vw] justify-between pt-8 w-[100vw]'>
+    <div className='flex flex-row px-2 md:px-[20vw] justify-between pt-8 w-[100vw] bg-slate-700'>
       <motion.header
         onClick={() => setActiveTab('REFERRAL')}
-        className={`text-green-800 font-serif  md:text-2xl text-[20px]  font-bold md:mx-5 mx-2 pt-4  cursor-pointer ${activeTab === 'BASIC' ? 'border-green-500  rounded-md  bg-gradient-to-r from-red-500 to-sky-500 bg-clip-text text-transparent animate-gradient' : 'border-amber-100'}`}
+        className={`text-black font-serif  md:text-2xl text-[20px]  font-bold md:mx-5 mx-2 pt-4  cursor-pointer ${activeTab === 'REFERRAL' ? 'bg-white     bg-clip-text text-transparent animate-gradient' : 'bg-slate-700'}`}
         animate={{ scale: activeTab === 'REFERRAL' ? 1.2 : 1 }}
       >
    REFERRAL
       </motion.header>
       <motion.header
         onClick={() => setActiveTab('BOARD')}
-        className={`text-[#FFD700]  font-heading font-serif text-[25px]  font-bold md:text-3xl border-b-2 md:mx-5 mx-2 pt-4  cursor-pointer ${activeTab === 'BOARD' ? 'border-[#e9db8b]  rounded-md  bg-gradient-to-r from-[#FFD700] to-[#6d5e07] bg-clip-text text-transparent animate-gradient' : 'border-[#96893e]'}`}
+        className={`text-black font-serif  md:text-2xl text-[20px]  font-bold md:mx-5 mx-2 pt-4  cursor-pointer ${activeTab === 'BOARD' ? 'bg-white     bg-clip-text text-transparent animate-gradient' : 'bg-slate-700'}`}
       >
    BOARD
       </motion.header>
       <motion.header
         onClick={() => setActiveTab('SHARES')}
-        className={`text-sky-700  font-heading  font-serif   font-bold md:text-2xl text-[20px] border-b-2 mx-2 md:mx-5 pt-4  cursor-pointer ${activeTab === 'SHARES' ? 'border-sky-300   rounded-md  bg-gradient-to-r from-red-500 to-sky-500 bg-clip-text text-transparent animate-gradient' : 'border-amber-100'}`}
+        className={`text-black font-serif  md:text-2xl text-[20px]  font-bold md:mx-5 mx-2 pt-4  cursor-pointer ${activeTab === 'SHARES' ? 'bg-white     bg-clip-text text-transparent animate-gradient' : 'bg-slate-700'}`}
       >
   SHARES
       </motion.header>
