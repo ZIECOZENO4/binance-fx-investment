@@ -368,7 +368,7 @@ const Row: React.FC<RowProps> = ({ row }) => {
   return (
     <TableRow>
  <TableCell component="th" scope="row" className=" uppercase">
-          <img src={row.image} alt="name of coin" className=' h-60 w-60' />
+          <img src={row.image} alt="name of coin" className=' h-6 w-6' />
         </TableCell>
         <TableCell align="center">{row.name}</TableCell>
         <TableCell align="center">{row.current_price}</TableCell>

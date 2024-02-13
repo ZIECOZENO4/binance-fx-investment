@@ -16,6 +16,9 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
           'track' : "url('/images/track.jpg')",
       },
+      clipPath: {
+        'custom-circle': 'circle(180vh at  50% -80vh)',
+      },
     },
   },
   darkMode: "class",

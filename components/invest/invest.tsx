@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react';
-
+import Note fromn "./note"
 // Define the shape of the data item
 interface CoinDataItem {
   name: string;
@@ -45,26 +45,10 @@ const Invest = () => {
   }, []);
 
   return (
-    <div className='text-white'>
-      {data1 && data1.map((item, index) => (
-        <div key={index}>
-          <h3>{item.name}</h3>
-          <p>Current Price: {item.current_price}</p>
-          <p>Market Cap: {item.market_cap}</p>
-          <p>Symbol: {item.symbol}</p>
-          <p>Image : {item.image}</p>
-          <p>Market Cap Rank: {item.market_cap_rank}</p>
-          <p>High  24h: {item.high_24h}</p>
-          <p>Low  24h: {item.low_24h}</p>
-          <p>Price Change  24h: {item.price_change_24h}</p>
-          <p>Market Cap Change  24h: {item.market_cap_change_24h}</p>
-          <p>Circulating Supply: {item.circulating_supply}</p>
-          <p>Total Supply: {item.total_supply}</p>
-          <p>ATH: {item.ath}</p>
-          <p>Last Updated: {item.last_updated}</p>
-          <hr />
-        </div>
-      ))}
+    <div className='text-white h-[200vh]'>
+    <div className=' relative w-[0vw] h-[50vh] bg-no-repeat object-cover bg-track flex justify-center items-center align-middle  bg-fixed  '>
+    </div>
+    <Note />
     </div>
   );
 };
