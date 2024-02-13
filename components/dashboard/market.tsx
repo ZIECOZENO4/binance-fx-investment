@@ -169,29 +169,29 @@
       //   <TableCell component="th" scope="row">
       //     {row.image}
       //   </TableCell>
-      //   <TableCell align="right">{row.name}</TableCell>
-      //   <TableCell align="right">{row.current_price}</TableCell>
-      //   <TableCell align="right">{row.market_cap}</TableCell>
-      //   <TableCell align="right">{row.symbol}</TableCell>
-      //   <TableCell align="right">
+      //   <TableCell align="center">{row.name}</TableCell>
+      //   <TableCell align="center">{row.current_price}</TableCell>
+      //   <TableCell align="center">{row.market_cap}</TableCell>
+      //   <TableCell align="center">{row.symbol}</TableCell>
+      //   <TableCell align="center">
       //     {row. market_cap_rank}
       //   </TableCell>
-      //   <TableCell align="right">
+      //   <TableCell align="center">
       //     {row.high_24h}
       //   </TableCell>
-      //   <TableCell align="right">
+      //   <TableCell align="center">
       //     {row.low_24h}
       //   </TableCell>
-      //   <TableCell align="right">
+      //   <TableCell align="center">
       //     {row.market_cap_change_24h}
       //   </TableCell>
-      //   <TableCell align="right">
+      //   <TableCell align="center">
       //     {row.circulating_supply}
       //   </TableCell>
-      //   <TableCell align="right">
+      //   <TableCell align="center">
       //     {row.total_supply}
       //   </TableCell>
-      //   <TableCell align="right">
+      //   <TableCell align="center">
       //     {row.ath}
       //   </TableCell>
       // </TableRow>
@@ -207,8 +207,8 @@
 //                   <TableRow>
 //                     <TableCell>Date</TableCell>
 //                     <TableCell>Customer</TableCell>
-//                     <TableCell align="right">Amount</TableCell>
-//                     <TableCell align="right">Total price ($)</TableCell>
+//                     <TableCell align="center">Amount</TableCell>
+//                     <TableCell align="center">Total price ($)</TableCell>
 //                   </TableRow>
 //                 </TableHead>
 //                 <TableBody>
@@ -218,8 +218,8 @@
 //                         {historyRow.date}
 //                       </TableCell>
 //                       <TableCell>{historyRow.customerId}</TableCell>
-//                       <TableCell align="right">{historyRow.amount}</TableCell>
-//                       <TableCell align="right">
+//                       <TableCell align="center">{historyRow.amount}</TableCell>
+//                       <TableCell align="center">
 //                         {historyRow.amount}
 //                       </TableCell>
 //                     </TableRow>
@@ -256,18 +256,18 @@
 //           <TableRow>
 //             <TableCell />
 //             <TableCell>COIN</TableCell>
-//             <TableCell align="right">NAME</TableCell>
-//             <TableCell align="right">CURRENT PRICE</TableCell>
-//             <TableCell align="right">MARKET CAP</TableCell>
-//             <TableCell align="right">SYMBOL</TableCell>
-//             <TableCell align="right">MARKET RANK</TableCell>
-//             <TableCell align="right">HIGH</TableCell>
-//               <TableCell align="right">LOW</TableCell>
-//                 <TableCell align="right">PRICE CHANGE</TableCell>
-//                 <TableCell align="right">MARKET CHANGE</TableCell>
-//                 <TableCell align="right">CIRCULATING SUPPLY</TableCell>
-//                 <TableCell align="right">TOTAL SUPPLY</TableCell>
-//                 <TableCell align="right">AUTH</TableCell>
+//             <TableCell align="center">NAME</TableCell>
+//             <TableCell align="center">CURRENT PRICE</TableCell>
+//             <TableCell align="center">MARKET CAP</TableCell>
+//             <TableCell align="center">SYMBOL</TableCell>
+//             <TableCell align="center">MARKET RANK</TableCell>
+//             <TableCell align="center">HIGH</TableCell>
+//               <TableCell align="center">LOW</TableCell>
+//                 <TableCell align="center">PRICE CHANGE</TableCell>
+//                 <TableCell align="center">MARKET CHANGE</TableCell>
+//                 <TableCell align="center">CIRCULATING SUPPLY</TableCell>
+//                 <TableCell align="center">TOTAL SUPPLY</TableCell>
+//                 <TableCell align="center">AUTH</TableCell>
 //           </TableRow>
 //         </TableHead>
 //         <TableBody>
@@ -368,31 +368,31 @@ const Row: React.FC<RowProps> = ({ row }) => {
   return (
     <TableRow>
  <TableCell component="th" scope="row">
-          {row.image}
+          <img src={row.image} alt="name of coin" className=' h-6 w-6' />
         </TableCell>
-        <TableCell align="right">{row.name}</TableCell>
-        <TableCell align="right">{row.current_price}</TableCell>
-        <TableCell align="right">{row.market_cap}</TableCell>
-        <TableCell align="right">{row.symbol}</TableCell>
-        <TableCell align="right">
-          {row. market_cap_rank}
+        <TableCell align="center">{row.name}</TableCell>
+        <TableCell align="center">{row.current_price}</TableCell>
+        <TableCell align="center">{row.market_cap}</TableCell>
+        <TableCell align="center">{row.symbol}</TableCell>
+        <TableCell align="center">
+          {row.market_cap_rank}
         </TableCell>
-        <TableCell align="right">
+        <TableCell align="center">
           {row.high_24h}
         </TableCell>
-        <TableCell align="right">
+        <TableCell align="center">
           {row.low_24h}
         </TableCell>
-        <TableCell align="right">
+        <TableCell align="center">
           {row.market_cap_change_24h}
         </TableCell>
-        <TableCell align="right">
+        <TableCell align="center">
           {row.circulating_supply}
         </TableCell>
-        <TableCell align="right">
+        <TableCell align="center">
           {row.total_supply}
         </TableCell>
-        <TableCell align="right">
+        <TableCell align="center">
           {row.ath}
         </TableCell>
       </TableRow>
@@ -427,25 +427,24 @@ export default function Market() {
 
   return (
     <div>
-      <h1 className='md:ml-[5rem] p-5 justify-start flex font-heading text-xl md:text-3xl'>SELECT LEAGUE</h1>
       <TableContainer component={Paper}>
         <Table aria-label="collapsible table">
           <TableHead>
          <TableRow>
    <TableCell />
       <TableCell>COIN</TableCell>
-      <TableCell align="right">NAME</TableCell>
-      <TableCell align="right">CURRENT PRICE</TableCell>
-      <TableCell align="right">MARKET CAP</TableCell>
-      <TableCell align="right">SYMBOL</TableCell>
-            <TableCell align="right">MARKET RANK</TableCell>
-    <TableCell align="right">HIGH</TableCell>
-      <TableCell align="right">LOW</TableCell>
-              <TableCell align="right">PRICE CHANGE</TableCell>
-            <TableCell align="right">MARKET CHANGE</TableCell>
-       <TableCell align="right">CIRCULATING SUPPLY</TableCell>
-             <TableCell align="right">TOTAL SUPPLY</TableCell>      
-       <TableCell align="right">AUTH</TableCell>       </TableRow>
+      <TableCell align="center">CURRENT PRICE</TableCell>
+      <TableCell align="center">MARKET CAP</TableCell>
+      <TableCell align="center">SYMBOL</TableCell>
+      <TableCell align="center">MARKET RANK</TableCell>
+            <TableCell align="center">HIGH</TableCell>
+    <TableCell align="center">LOW</TableCell>
+      <TableCell align="center">PRICE CHANGE</TableCell>
+              <TableCell align="center">MARKET CHANGE</TableCell>
+            <TableCell align="center">CIRCULATING SUPPLY</TableCell>
+       <TableCell align="center">TOTAL SUPPLY</TableCell>
+             <TableCell align="center">AUTH</TableCell>      
+       <TableCell align="center"></TableCell>       </TableRow>
           </TableHead>
           <TableBody>
             {data1?.map((item) => (
