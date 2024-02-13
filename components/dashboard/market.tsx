@@ -367,8 +367,8 @@ const Row: React.FC<RowProps> = ({ row }) => {
   // Make sure to return a valid JSX element, such as a TableRow
   return (
     <TableRow>
- <TableCell component="th" scope="row">
-          <img src={row.image} alt="name of coin" className=' h-6 w-6' />
+ <TableCell component="th" scope="row" className=" uppercase">
+          <img src={row.image} alt="name of coin" className=' h-60 w-60' />
         </TableCell>
         <TableCell align="center">{row.name}</TableCell>
         <TableCell align="center">{row.current_price}</TableCell>
@@ -391,9 +391,6 @@ const Row: React.FC<RowProps> = ({ row }) => {
         </TableCell>
         <TableCell align="center">
           {row.total_supply}
-        </TableCell>
-        <TableCell align="center">
-          {row.ath}
         </TableCell>
       </TableRow>
   );
@@ -442,8 +439,7 @@ export default function Market() {
       <TableCell align="center">PRICE CHANGE</TableCell>
               <TableCell align="center">MARKET CHANGE</TableCell>
             <TableCell align="center">CIRCULATING SUPPLY</TableCell>
-       <TableCell align="center">TOTAL SUPPLY</TableCell>
-             <TableCell align="center">AUTH</TableCell>      
+       <TableCell align="center">TOTAL SUPPLY</TableCell>  
        <TableCell align="center"></TableCell>       </TableRow>
           </TableHead>
           <TableBody>
