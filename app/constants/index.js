@@ -152,7 +152,7 @@ const experiences = [
     },
     {
       imgURL: "/assets/wallet.svg",
-      route: "/wallet",
+      route: "/dashboard/wallet",
       label: "WALLET",
     },
   ];
