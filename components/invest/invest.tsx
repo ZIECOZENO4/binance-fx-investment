@@ -58,7 +58,7 @@ const Invest = () => {
     return null;
   }
   return (
-    <div className='text-white h-[200vh] '>
+    <div className='text-white h-[230vh] '>
     <div className=' relative md:w-[100vw] w-[100vw] md:h-[50vh] h-[20vh] bg-no-repeat object-cover bg-track flex justify-center items-center align-middle  bg-fixed  '>
     </div>
     <Note />
@@ -115,7 +115,7 @@ const Invest = () => {
     <div className="flex flex-col gap-4">
       <div className="flex w-full flex-wrap md:flex-nowrap mb-6 md:mb-0 gap-4">
        <Input
-          label="Price"
+          
           placeholder="0.00"
           labelPlacement="outside"
           startContent={
