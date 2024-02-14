@@ -21,6 +21,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/gettingstarted.js", "components/invest/note.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/gettingstarted.js", "components/invest/note.js", "components/invest/MailIcon.jsx"],
   "exclude": ["node_modules"]
 }
