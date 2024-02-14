@@ -59,7 +59,7 @@ const Trade = () => {
             <div></div>
             <div></div>
           </div>
-
+ NO TRADING YET
         </div>
       
 
