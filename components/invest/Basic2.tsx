@@ -36,8 +36,16 @@ const Basic2 = () => {
    </div>
    <div  className=' h-1 w-full bg-slate-300 mt-2 mb-5'/>
    {activeTab === 'Basic' && 
-   <div>
-    <h1></h1>
+   <div className=" flex flex-col justify-center align-middle p-2 font-bold font-sono text-xl text-white leading-6 gap-2 md:gap-4">
+    <h1 className=" text-2xl text-sky-600">5% Daily </h1>
+<p>Total roll: 40%</p>
+<p>DURATION: 8 days</p>
+<p>Min deposit $200</p>
+<p>Max deposit $2,000</p>
+<p>5% referral bonus</p>
+<div>
+  
+</div>
   </div>}
    {activeTab === 'Advance' && <div>yea</div>}
    {activeTab === 'Pro Plan' && <div>nope</div>}
