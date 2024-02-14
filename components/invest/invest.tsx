@@ -58,7 +58,7 @@ const Invest = () => {
     return null;
   }
   return (
-    <div className='text-white h-[230vh] '>
+    <div className='text-white h-[250vh] '>
     <div className=' relative md:w-[100vw] w-[100vw] md:h-[50vh] h-[20vh] bg-no-repeat object-cover bg-track flex justify-center items-center align-middle  bg-fixed  '>
     </div>
     <Note />
@@ -104,11 +104,11 @@ const Invest = () => {
     {activeTab === 'BOARD' && <div><Premium2 /></div>}
     {activeTab === 'SHARES' && <div><Vip2 /></div>}
   </div>
-  <div className="flex flex-col justify-center align-middle items-center  p-4">
+  <div className="flex flex-col justify-center align-middle items-center  mt-4 p-2 border border-white rounded-xl box-border ">
     <h1 className="flex justify-center align-middle items-center p-4 text-2xl font-serif font-bold text-sky-600">
       PAYMENT
     </h1>
-    <p className="flex justify-center align-middle items-center p-4 text-xl font-serif font-bold text-sky-600">Sellect Coin</p>
+    <p className="flex justify-center align-middle items-center p-2 text-xl font-serif font-bold text-sky-600">Sellect Coin</p>
 
 
 
