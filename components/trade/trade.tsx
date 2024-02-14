@@ -52,8 +52,15 @@ const Trade = () => {
       </div>
       <div className='text-white flex flex-col  '>
       {data1 && data1.map((item, index) => (
-        <div key={index} className=' flex flex-row justify-between align-middle items-center w-full py-4'>
-        
+        <div key={index} className=' flex flex-col justify-center align-middle items-center w-full py-4'>
+        <div className=" ">
+          <div></div>
+          <div>
+            <div></div>
+            <div></div>
+          </div>
+
+        </div>
       
 
          <div>
