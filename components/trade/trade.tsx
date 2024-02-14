@@ -53,20 +53,8 @@ const Trade = () => {
       <div className='text-white flex flex-col  '>
       {data1 && data1.map((item, index) => (
         <div key={index} className=' flex flex-row justify-between align-middle items-center w-full py-4'>
-          <div className="  flex flex-col justify-start border border-white rounded-xl box-border items-start align-middle p-2 w-[50%]">
-          <img src={item.image} alt="coin name " className=" h-10 w-10 rounded-ful pl-3"/>
-          <h3 className=' p-1 font-bold text-xl md:text-2xl'>{item.name}</h3>
-                 <p className='  text-md md:text-xl text-green-500 uppercase'>{item.symbol}</p>
-          </div>
-       
-          <div className='flex flex-col justify-end align-middle items-end  w-[50%]'>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-6 h-6">
-  <path fill-rule="evenodd" d="M6.22 4.22a.75.75 0 0 1 1.06 0l3.25 3.25a.75.75 0 0 1 0 1.06l-3.25 3.25a.75.75 0 0 1-1.06-1.06L8.94 8 6.22 5.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
-</svg>
-<p className='  text-md md:text-xl'> $ {item.current_price}</p>
-          <p className=" text-sm md:text-md text-slate-300 gap-2 uppercase">{item.price_change_24h} </p> 
-
-          </div>
+        
+      
 
          <div>
            
