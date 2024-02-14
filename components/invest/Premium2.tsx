@@ -22,7 +22,7 @@ const Premium2 = () => {
     VIP -2
      </motion.header>
      <motion.header
-       onClick={() => setActiveTab('Pro Plan')}
+       onClick={() => setActiveTab('VIP -3')}
        className={`text-slate-200 font-heading  text-xl md:text-2xl border-b-2 md:mx-5 mx-1 pt-4  cursor-pointer ${activeTab === 'VIP -3' ? 'border-green-700  rounded-md  bg-gradient-to-r from-red-500 to-sky-500 bg-clip-text text-transparent animate-gradient' : 'border-amber-100'}`}
      >
      VIP -3

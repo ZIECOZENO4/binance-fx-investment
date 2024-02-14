@@ -7,8 +7,10 @@ import { motion } from "framer-motion";
 import Basic2 from './Basic2';
 import Premium2 from './Premium2';
 import Vip2 from './Vip2';
-
-// Define the shape of the data item
+import React from "react";
+import {Input} from "@nextui-org/react";
+import {MailIcon} from './MailIcon';
+import {Button} from "@nextui-org/react";
 interface CoinDataItem {
   name: string;
   current_price: number;
@@ -101,6 +103,48 @@ const Invest = () => {
     {activeTab === 'REFERRAL' && <div><Basic2 /></div>}
     {activeTab === 'BOARD' && <div><Premium2 /></div>}
     {activeTab === 'SHARES' && <div><Vip2 /></div>}
+  </div>
+  <div className="flex flex-col justify-center align-middle items-center  p-4">
+    <h1 className="flex justify-center align-middle items-center p-4 text-2xl font-serif font-bold text-sky-600">
+      PAYMENT
+    </h1>
+    <p className="flex justify-center align-middle items-center p-4 text-xl font-serif font-bold text-sky-600">Sellect Coin</p>
+
+
+
+    <div className="flex flex-col gap-4">
+      <div className="flex w-full flex-wrap md:flex-nowrap mb-6 md:mb-0 gap-4">
+       <Input
+          label="Price"
+          placeholder="0.00"
+          labelPlacement="outside"
+          startContent={
+            <div className="flex items-center">
+              <label className="sr-only" htmlFor="currency">
+                COIN
+              </label>
+              <select
+                className="outline-none border-0 bg-transparent text-default-400 text-small"
+                id="currency"
+                name="currency"
+              >
+                <option>BTC</option>
+                <option>ETH</option>
+                <option>BNB</option>
+                <option>TRON</option>
+                <option>DOGE</option>
+                <option>XRP</option>
+
+              </select>
+            </div>
+          }
+          type="number"
+        />
+      </div>
+    </div>  
+    <Button color="primary" variant="ghost">
+      INVEST NOW
+      </Button> 
   </div>
     </div>
   );
