@@ -1,8 +1,11 @@
+import Wallet from '@/components/wallet/wallet'
 import React from 'react'
 
 const WalletPage = () => {
   return (
-    <div>WalletPage</div>
+    <div>
+       <Wallet />
+    </div>
   )
 }
 
