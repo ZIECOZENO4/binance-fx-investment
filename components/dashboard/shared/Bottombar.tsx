@@ -18,7 +18,7 @@ function Bottombar() {
  
              return (
                <Link href={link.route} key={link.label} className={`relative flex flex-col items-center gap-2 rounded-lg p-2 sm:flex-1 sm:px-2 sm:py-2.5 ${isActive ? 'bg-[#FFD700] text-black' : ''}`}>
-                 <Image src={link.imgURL} alt={link.label} width={50} height={50}/>
+                 <Image src={link.imgURL} alt={link.label} width={40} height={40}/>
                  <p className={`text-white text-light-1 max-sm:hidden ${isActive ? ' text-black' : ''}`}>{link.label.split(/\s+/)[0]}</p>
                </Link>
              );
