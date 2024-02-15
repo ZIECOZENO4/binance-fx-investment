@@ -8,7 +8,7 @@ const Wallet = () => {
       <div  className=' flex flex-row justify-between align-middle gap-8 items-center'>
 <div className=' flex flex-row justify-start align-middle items-start'>
 <User 
-className=" text-2xl font-bold px-2"  
+className=" text-2xl font-bold px-2 text-white"  
       name="ZIECO ZENO"
       description={(
         <Link href="https://twitter.com/jrgarciadev" size="lg" isExternal>
