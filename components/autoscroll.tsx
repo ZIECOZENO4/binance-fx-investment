@@ -24,7 +24,7 @@ const AutoScrollingComponent = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=1&sparkline=false&locale=en';
+      const url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en';
       const options = {
         method: 'GET',
         headers: {
@@ -48,10 +48,10 @@ const AutoScrollingComponent = () => {
     const scrollContainer = scrollContainerRef.current;
     if (!scrollContainer) return;
 
-    const scrollAmount =  1; // Adjust this value to control the scroll speed
+    const scrollAmount =   10; // Increase this value to increase the scroll speed
     const interval = setInterval(() => {
-      scrollContainer.scrollTop += scrollAmount;
-    },  100); // Adjust this value to control the interval between scrolls
+      scrollContainer.scrollLeft += scrollAmount; // Use scrollLeft for horizontal scrolling
+    },   50); // Decrease this value to increase the frequency of scrolling
 
     return () => clearInterval(interval); // Clean up on component unmount
   }, []);
@@ -59,20 +59,17 @@ const AutoScrollingComponent = () => {
   return (
     <div
       ref={scrollContainerRef}
-      className="w-[100vw] fixed top-0 left-0 overflow-auto h-16 bg-gradient-to-r from-blue-600 to-sky-200 rounded-2xl flex flex-col justify-start align-middle items-start gap-5 p-4 md:px-3 px-10"
+      className="w-[100vw] fixed left-0 overflow-auto h-16 bg-gradient-to-r from-blue-600 to-sky-200 rounded-2xl flex flex-col justify-start align-middle items-start gap-5 p-4 md:px-3 px-10 z-80"
+      style={{ whiteSpace: 'nowrap' }} // Prevent wrapping of content
     >
       {data && data.map((item, index) => (
-        <div key={index} className='flex flex-row justify-between align-middle items-center w-full py-4'>
-          <div className="flex flex-col justify-start borderitems-start align-middle p-2 ">
-            <img src={item.image} alt={item.name} className="h-10 w-10 rounded-full pl-3" />
-            <h3 className='p-1 font-bold text-xl md:text-2xl'>{item.name}</h3>
-            <p className='text-md md:text-xl text-green-500 uppercase'>{item.symbol}</p>
-          </div>
+        <div key={index} className='flex flex-row justify-between align-middle items-end  py-4'>
        
-            <p className='text-md md:text-xl'> $ {item.current_price}</p>
-            <p className="text-sm md:text-md text-slate-300 gap-2 uppercase">{item.price_change_24h}</p>
+            <img src={item.image} alt={item.name} className="h-20 w-10 rounded-full mr-3" />
+            <h3 className='p-1 font-bold text-xl md:text-2xl px-2'>{item.name}</h3>    
+          <p className='text-md md:text-xl px-1'> $ {item.current_price}</p>
+          <p className="text-sm md:text-md text-slate-300 gap-2 uppercase px-1">{item.price_change_24h}</p>
           </div>
-     
       ))}
     </div>
   );
