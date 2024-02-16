@@ -13,6 +13,7 @@ function TradingViewWidget() {
       script.innerHTML = `
         {
           "autosize": true,
+           "height": "1500",
           "symbol": "BINANCE:BTCUSDT",
           "interval": "D",
           "timezone": "Etc/UTC",
@@ -46,7 +47,7 @@ function TradingViewWidget() {
   return (
     <div className="tradingview-widget-container h-[220vh] w-[90vw]" ref={container} style={{ height: "300%", width: "90%" }}>
       <div className="tradingview-widget-container__widget  h-[220vh] w-[90vw]" style={{ height: "calc(300% - 32px)", width: "90%" }}></div>
-      <div className="tradingview-widget-copyright  h-[220vh] w-[90vw]" ><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span className="blue-text">Track all markets on TradingView</span></a></div>
+      <div className="tradingview-widget-copyright  h-[220vh] w-[90vw]" ><a href="/" rel="noopener nofollow" target="_blank"><span className="blue-text text-bold text-xl md:text-2xl">Binance FX Trading</span></a></div>
     </div>
   );
 }
