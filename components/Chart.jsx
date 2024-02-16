@@ -12,8 +12,7 @@ function TradingViewWidget() {
       script.async = true;
       script.innerHTML = `
         {
-          "width": "980",
-          "height": "1500",
+          "autosize": true,
           "symbol": "BINANCE:BTCUSDT",
           "interval": "D",
           "timezone": "Etc/UTC",
@@ -21,23 +20,22 @@ function TradingViewWidget() {
           "style": "1",
           "locale": "en",
           "enable_publishing": true,
-          "backgroundColor": "rgba(0,  0,  0,  1)",
-          "gridColor": "rgba(255,  255,  0,  0.06)",
+          "backgroundColor": "rgba(0, 0, 0, 1)",
+          "gridColor": "rgba(66, 66, 66, 0.06)",
           "withdateranges": true,
           "hide_side_toolbar": false,
           "allow_symbol_change": true,
+          "watchlist": [
+            "FX:EURUSD"
+          ],
           "details": true,
           "hotlist": true,
           "calendar": false,
           "studies": [
-            "STD;24h%Volume",
             "STD;Accumulation_Distribution",
-            "STD;Advance%1Decline%1Ratio",
-            "STD;Average_True_Range"
+            "STD;Advance_Decline_Ratio_Bars",
+            "STD;Balance%1of%1Power"
           ],
-          "show_popup_button": true,
-          "popup_width": "1000",
-          "popup_height": "1500",
           "support_host": "https://www.tradingview.com"
         }`;
       container.current.appendChild(script);
@@ -46,9 +44,9 @@ function TradingViewWidget() {
   );
 
   return (
-    <div className="tradingview-widget-container w-[100vw] h-[70vh]" ref={container}>
-      <div className="tradingview-widget-container__widget h-[65vh] w-[100vw]" ></div>
-      <div className="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span className="blue-text font-bold md:text-2xl text-xl">Track all markets on Binance FX</span></a></div>
+    <div className="tradingview-widget-container h-[220vh] w-[90vw]" ref={container} style={{ height: "300%", width: "90%" }}>
+      <div className="tradingview-widget-container__widget  h-[220vh] w-[90vw]" style={{ height: "calc(300% - 32px)", width: "90%" }}></div>
+      <div className="tradingview-widget-copyright  h-[220vh] w-[90vw]" ><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span className="blue-text">Track all markets on TradingView</span></a></div>
     </div>
   );
 }
