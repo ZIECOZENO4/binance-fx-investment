@@ -17,9 +17,11 @@ import Footer from "../components/Footer/Footer"
 import WhatIsBinance from "@/components/whatisbinancefx";
 import Certification from "@/components/certification";
 import Register from "@/components/register";
+
 export default function Home() {
   return (
 <div className=" m-0 p-0 overflow-x-hidden">
+
 <Hero1 /> 
 <Properties />
 <Register />

@@ -3,6 +3,7 @@ import React from "react";
 import TypingComponent from "./typing";
 import { useAddress } from "@thirdweb-dev/react";
 import { useRouter } from "next/navigation";
+import AutoScrollingComponent from "./autoscroll";
 
 
 function Hero1() {
@@ -19,6 +20,7 @@ function Hero1() {
   return (
    
     <div className="">
+        <AutoScrollingComponent />
       <div className=" w-[100vw] flex justify-center p-[5vw] flex-col">
         <div className="hidden md:flex md:flex-row gap-8">
           <div className=" flex-col gap-3  p-[20px]">
