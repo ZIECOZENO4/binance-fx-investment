@@ -2,20 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 interface CoinDataItem {
-  name: string;
-  current_price: number;
-  market_cap: number;
-  symbol: string;
-  image: string;
-  market_cap_rank: number;
-  high_24h: number;
-  low_24h: number;
-  price_change_24h: number;
-  market_cap_change_24h: number;
-  circulating_supply: number;
-  total_supply: number;
-  ath: number;
-  last_updated: string;
+  // ... (interface properties)
 }
 
 const AutoScrollingComponent = () => {
@@ -24,23 +11,22 @@ const AutoScrollingComponent = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en';
-      const options = {
-        method: 'GET',
-        headers: {
-          'Accept': 'application/json'
+        const url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en';
+        const options = {
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json'
+          }
+        };
+  
+        try {
+          const response = await fetch(url, options);
+          const result: CoinDataItem[] = await response.json();
+          setData(result);
+        } catch (error) {
+          console.error(error);
         }
       };
-
-      try {
-        const response = await fetch(url, options);
-        const result: CoinDataItem[] = await response.json();
-        setData(result);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
     fetchData();
   }, []);
 
@@ -48,31 +34,39 @@ const AutoScrollingComponent = () => {
     const scrollContainer = scrollContainerRef.current;
     if (!scrollContainer) return;
 
-    const scrollAmount =   10; // Increase this value to increase the scroll speed
+    const scrollAmount =  10; // Adjust this value to control the scroll speed
+    const itemWidth =  100; // Adjust this value based on the width of your items
+    const containerWidth = scrollContainer.offsetWidth;
+    const totalWidth = data ? data.length * itemWidth :  0;
+
     const interval = setInterval(() => {
-      scrollContainer.scrollLeft += scrollAmount; // Use scrollLeft for horizontal scrolling
-    },   50); // Decrease this value to increase the frequency of scrolling
+      const currentScrollLeft = scrollContainer.scrollLeft;
+      if (currentScrollLeft < totalWidth - containerWidth) {
+        scrollContainer.scrollLeft += scrollAmount;
+      } else {
+        scrollContainer.scrollLeft =  0; // Reset to the start when the end is reached
+      }
+    },  50); // Adjust this value to control the frequency of scrolling
 
     return () => clearInterval(interval); // Clean up on component unmount
-  }, []);
+  }, [data]);
 
   return (
     <div
       ref={scrollContainerRef}
-      className="w-[100vw] fixed left-0 overflow-auto h-16 bg-gradient-to-r from-blue-600 to-sky-200 rounded-2xl flex flex-col justify-start align-middle items-start gap-5 p-4 md:px-3 px-10 z-80"
-      style={{ whiteSpace: 'nowrap' }} // Prevent wrapping of content
+      className="w-full fixed left-0 overflow-x-auto h-16 bg-gradient-to-r from-blue-600 to-sky-200 flex flex-row whitespace-nowrap p-4 md:px-3 px-10 z-50"
     >
       {data && data.map((item, index) => (
-        <div key={index} className='flex flex-row justify-between align-middle items-end  py-4'>
-       
-            <img src={item.image} alt={item.name} className="h-20 w-10 rounded-full mr-3" />
-            <h3 className='p-1 font-bold text-xl md:text-2xl px-2'>{item.name}</h3>    
-          <p className='text-md md:text-xl px-1'> $ {item.current_price}</p>
-          <p className="text-sm md:text-md text-slate-300 gap-2 uppercase px-1">{item.price_change_24h}</p>
-          </div>
+        <div key={index} className="flex flex-row items-center gap-4">
+          <img src={item.image} alt={item.name} className="h-20 w-10 rounded-full md:flex hidden mr-3" />
+          <h3 className="p-1 font-bold text-xl md:text-2xl px-2">{item.name}</h3>
+          <p className="text-md md:text-xl px-1"> $ {item.current_price}</p>
+          <p className="text-sm md:text-md text-slate-300 gap-2 uppercase px-1">{`(${item.price_change_24h})`}</p>
+        </div>
       ))}
     </div>
   );
 };
+
 
 export default AutoScrollingComponent;

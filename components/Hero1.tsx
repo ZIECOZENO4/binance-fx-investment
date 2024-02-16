@@ -20,10 +20,11 @@ function Hero1() {
   return (
    
     <div className="">
-        <AutoScrollingComponent />
+   <AutoScrollingComponent />
       <div className=" w-[100vw] flex justify-center p-[5vw] flex-col">
+   
         <div className="hidden md:flex md:flex-row gap-8">
-          <div className=" flex-col gap-3  p-[20px]">
+          <div className=" flex-col gap-3  p-[20px] mt-6">
             <span className="text-blue-500 text-[4rem] font-extrabold font-serif">
               BINANCE FX
             </span>
