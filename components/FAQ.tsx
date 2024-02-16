@@ -14,10 +14,10 @@ export default function FAQ() {
       <AccordionItem key="1" aria-label="IS BINANCE FX A REGISTERED COMPANY" title="IS BINANCE FX A REGISTERED COMPANY" className=" text-black text-xl">
         {defaultContent}
       </AccordionItem>
-      <AccordionItem key="2" aria-label="HOW DOES BINANCE FX EARN PROFITS FOR THEIR MEMBERS" title="HOW DOES BINANCE FX EARN PROFITS FOR THEIR MEMBERS">
+      <AccordionItem key="2" aria-label="HOW DOES BINANCE FX EARN PROFITS FOR THEIR MEMBERS" title="HOW DOES BINANCE FX EARN PROFITS FOR THEIR MEMBERS"  className=" text-black text-xl">
         {defaultContent1}
       </AccordionItem>
-      <AccordionItem key="3" aria-label="Accordion 3" title="Accordion 3">
+      <AccordionItem key="3" aria-label="Accordion 3" title="Accordion 3"  className=" text-black text-xl">
         {defaultContent}
       </AccordionItem>
     </Accordion>      
