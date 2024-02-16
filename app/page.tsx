@@ -17,7 +17,7 @@ import Footer from "../components/Footer/Footer"
 import WhatIsBinance from "@/components/whatisbinancefx";
 import Certification from "@/components/certification";
 import Register from "@/components/register";
-import TradingViewWidget from "@/components/chart";
+import TradingViewWidget from "../components/Chart";
 export default function Home() {
   return (
 <div className=" m-0 p-0 overflow-x-hidden">

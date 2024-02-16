@@ -71,11 +71,11 @@ const AutoScrollingComponent = () => {
       className="w-full fixed left-0 overflow-x-auto h-16 bg-gradient-to-r from-blue-600 to-sky-200 flex flex-row whitespace-nowrap p-4 md:px-3 px-10 z-50"
     >
       {data && data.map((item, index) => (
-        <div key={index} className="flex flex-row items-center gap-4">
-          <img src={item.image} alt={item.name} className="h-20 w-10 rounded-full md:flex hidden mr-3" />
+        <div key={index} className="flex flex-row items-center gap-4 px-4 md:px-8">
+          <img src={item.image} alt={item.name} className="h-8 w-8 rounded-full md:flex hidden mr-3" />
           <h3 className="p-1 font-bold text-xl md:text-2xl px-2">{item.name}</h3>
           <p className="text-md md:text-xl px-1"> $ {item.current_price}</p>
-          <p className="text-sm md:text-md text-slate-300 gap-2 uppercase px-1">{`(${item.price_change_24h})`}</p>
+          <p className="text-sm md:text-md text-slate-600 gap-2 uppercase px-1">{`(${item.price_change_24h})`}</p>
         </div>
       ))}
     </div>
