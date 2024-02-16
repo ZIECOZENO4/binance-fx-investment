@@ -2,8 +2,22 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 interface CoinDataItem {
-  // ... (interface properties)
-}
+    name: string;
+    current_price: number;
+    market_cap: number;
+    symbol: string;
+    image: string;
+    market_cap_rank: number;
+    high_24h: number;
+    low_24h: number;
+    price_change_24h: number;
+    market_cap_change_24h: number;
+    circulating_supply: number;
+    total_supply: number;
+    ath: number;
+    last_updated: string;
+  }
+  
 
 const AutoScrollingComponent = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
