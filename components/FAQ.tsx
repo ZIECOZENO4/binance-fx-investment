@@ -8,7 +8,7 @@ export default function FAQ() {
 
   return (
     <div className=" flex flex-col justify-center align-middle items-center md:p-[40px] p-[10px] py-[10]">
-      <div className=" text-black justify-center align-middle text-3xl  md:text-[4rem] font-extrabold font-serif p-2">Frequent questions ?</div>
+      <div className=" text-white justify-center align-middle text-3xl  md:text-[4rem] font-extrabold font-serif p-2">Frequent questions ?</div>
     <Accordion variant="splitted" className=" text-black p-8">
       <AccordionItem key="1" aria-label="Accordion 1" title="Accordion 1" className=" text-black text-xl">
         {defaultContent}
