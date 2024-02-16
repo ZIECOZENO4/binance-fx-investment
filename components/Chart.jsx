@@ -20,8 +20,8 @@ function TradingViewWidget() {
           "style": "1",
           "locale": "en",
           "enable_publishing": true,
-          "backgroundColor": "rgba(0, 0, 0, 1)",
-          "gridColor": "rgba(255, 255, 0, 0.06)",
+          "backgroundColor": "rgba(0,  0,  0,  1)",
+          "gridColor": "rgba(255,  255,  0,  0.06)",
           "withdateranges": true,
           "hide_side_toolbar": false,
           "allow_symbol_change": true,
@@ -45,8 +45,8 @@ function TradingViewWidget() {
   );
 
   return (
-    <div className="tradingview-widget-container w-[100vw] h-[50vh]" ref={container}>
-      <div className="tradingview-widget-container__widget h-[45vh] w-[100vw]" ></div>
+    <div className="tradingview-widget-container w-[100vw] h-[70vh]" ref={container}>
+      <div className="tradingview-widget-container__widget h-[65vh] w-[100vw]" ></div>
       <div className="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span className="blue-text">Track all markets on Binance FX</span></a></div>
     </div>
   );

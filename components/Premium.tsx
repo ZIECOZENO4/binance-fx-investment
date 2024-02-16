@@ -9,7 +9,7 @@ const Premium = () => {
 
 
   return (
-    <div className="text-gray-900 sm:h-[180vh] font-sans h-[170vh] md:h-[120vh] lg:h-[140vh] mt-[20px]  bg-no-repeat bg-bottom sm:bg-bottom md:mx-[10vw] mx-[30px] mb-auto">
+    <div className="text-gray-900 sm:h-[180vh] font-sans h-[200vh] md:h-[150vh] lg:h-[140vh] mt-[20px]  bg-no-repeat bg-bottom sm:bg-bottom md:mx-[10vw] mx-[30px] mb-auto">
  
       <div className="flex flex-col md:flex-row md:transform md:scale-75 lg:scale-100 justify-center ">
         {['Vip1 Plan', 'Vip2 Plan', 'Vip3 Plan'].map((plan, index) => {

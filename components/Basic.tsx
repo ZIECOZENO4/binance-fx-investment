@@ -8,7 +8,7 @@ const Basic = () => {
   const [premiumPlan, setPremiumPlan] = useState({ monthlyPrice:  "10% Daily", items: ['Total Roll:   100%', 'Duration:   5 Days', 'Minium Deposit:  $   21,100', 'Maxium Deposit:  $   50,000', '5% Referral Bonus' ]});
 
   return (
-    <div className="text-gray-900 sm:h-[200vh] font-sans h-[170vh] md:h-[120vh] lg:h-[100vh] mt-[20px]  bg-no-repeat bg-bottom sm:bg-bottom md:mx-[10vw] mx-[30px] mb-auto">
+    <div className="text-gray-900 sm:h-[200vh] font-sans h-[200vh] md:h-[150vh] lg:h-[100vh] mt-[20px]  bg-no-repeat bg-bottom sm:bg-bottom md:mx-[10vw] mx-[30px] mb-auto">
       <div className="flex flex-col md:flex-row md:transform md:scale-75 lg:scale-100 justify-center ">
         {['Basic Plan', 'Advance Plan', 'Pro Plan', 'Premium Plan'].map((plan, index) => {
           let currentPlan;
