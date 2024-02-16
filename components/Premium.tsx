@@ -2,28 +2,28 @@
 import React, { useState } from 'react';
 
 const Premium = () => {
-  const [basicPlan, setBasicPlan] = useState({ monthlyPrice: "5% Daily", items: ['Total Roll: 20%', 'Duration: 9 Days', 'Minium Deposit:  $ 5.000', 'Maxium Deposit:  $ 20.000', '5% Referral Bonus']});
-  const [proPlan, setProPlan] = useState({ monthlyPrice: "10% Daily", items: ['Total Roll: 45%', 'Duration: 9 Days', 'Minium Deposit:  $ 2500', 'Maxium Deposit:  $ 7000', '10% Referral Bonus' ]});
-  const [regularPlan, setRegularPlan] = useState({ monthlyPrice:  "15% Daily", items: ['Total Roll: 70%', 'Duration: 9 Days', 'Minium Deposit:  $ 3000', 'Maxium Deposit:  $ 15000', '15% Referral Bonus' ]});
+  const [vip1Plan, setVip1Plan] = useState({ monthlyPrice: "75% Daily", items: ['Total Roll: 150%', 'Duration: 48 Days', 'Minium Deposit:  $ 50,000', 'Maxium Deposit:  $ 100,000', '5% Referral Bonus']});
+  const [vip2Plan, setVip2Plan] = useState({ monthlyPrice: "100% Daily", items: ['Total Roll: 200%', 'Duration: 48 Days', 'Minium Deposit:  $ 100,000', 'Maxium Deposit:  $ 200,000', '5% Referral Bonus' ]});
+  const [vip3Plan, setVip3Plan] = useState({ monthlyPrice:  "100% Daily", items: ['Total Roll: 250%', 'Duration: 48 Days', 'Minium Deposit:  $ 200,000', 'Maxium Deposit:  $ 500,000', '15% Referral Bonus' ]});
 
 
 
   return (
-    <div className="text-gray-900 sm:h-[240vh] font-sans h-[235vh] md:h-[150vh] lg:h-[140vh] mt-[20px]  bg-no-repeat bg-bottom sm:bg-bottom md:mx-[10vw] mx-[30px] mb-auto">
+    <div className="text-gray-900 sm:h-[150vh] font-sans h-[150vh] md:h-[100vh] lg:h-[140vh] mt-[20px]  bg-no-repeat bg-bottom sm:bg-bottom md:mx-[10vw] mx-[30px] mb-auto">
  
       <div className="flex flex-col md:flex-row md:transform md:scale-75 lg:scale-100 justify-center ">
-        {['Advance Plan', 'Premium Plan', 'Vip Plan'].map((plan, index) => {
+        {['Vip1 Plan', 'Vip2 Plan', 'Vip3 Plan'].map((plan, index) => {
           let currentPlan;
-          if (plan === 'Advance Plan') {
-            currentPlan = basicPlan;
-          } else if (plan === 'Premium Plan') {
-            currentPlan = proPlan;
+          if (plan === 'Vip1 Plan') {
+            currentPlan = vip1Plan;
+          } else if (plan === 'Vip2 Plan') {
+            currentPlan = vip2Plan;
           } else {
-            currentPlan = regularPlan;
+            currentPlan = vip3Plan;
           }
 
           return (
-            <div key={index} className={`border rounded-lg text-center p-5 mx-auto md:mx-0 my-2 md:my-6 ${plan === 'Premium Plan' ? 'bg-sky-700 text-[#FFD700] font-bold  tracking-widest transition-transform-colors ' : 'bg-slate-600 text-green-400'} text-[25px] md:text-[40px] z-10 shadow-lg`}>
+            <div key={index} className={`border rounded-lg text-center p-5 mx-auto md:mx-0 my-2 md:my-6 ${plan === 'Vip2 Plan' ? 'bg-sky-700 text-[#FFD700] font-bold  tracking-widest transition-transform-colors ' : 'bg-slate-600 text-green-400'} text-[25px] md:text-[40px] z-10 shadow-lg`}>
               <div className="">{plan}</div>
               <div  className={`font-bold md:text-[45px] text-[20px]  `}> {currentPlan.monthlyPrice}</div>
          

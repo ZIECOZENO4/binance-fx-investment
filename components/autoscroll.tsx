@@ -68,15 +68,15 @@ const AutoScrollingComponent = () => {
   return (
     <div
       ref={scrollContainerRef}
-      className="w-full left-0 overflow-x-auto h-16 bg-gradient-to-r from-blue-600 to-sky-200 flex flex-row whitespace-nowrap p-4 md:px-3 px-10 z-50 scrollbar-hide mb-7 md:mb-2"
+      className="w-full left-0 overflow-x-auto h-16 bg-gradient-to-r from-blue-600 to-sky-200 flex flex-row whitespace-nowrap p-4 md:px-3 px-10 z-50 scrollbar-hide mb-4 md:mb-2"
     >
       {data && data.map((item, index) => (
         <div key={index} className="flex flex-row items-center gap-4 px-4 md:px-8 scrollbar-hide">
           <img src={item.image} alt={item.name} className="md:h-8 md:w-8 h-6 w-6 rounded-full flex  mr-3" />
-          <h3 className="p-1 font-bold text-xl md:text-2xl px-2">{item.name}</h3>
+          <h3 className="p-1 font-bold text-xl md:text-2xl ml-1">{item.name}</h3>
           <p className="text-md md:text-xl px-1"> $ {item.current_price}</p>
-          <p className="text-sm md:text-md text-slate-600 gap-2 uppercase px-1">{`(${item.price_change_24h})`}</p>
-          <div className=" w-[1px] h-full bg-slate-300 px-2" />
+          <p className="text-sm md:text-md text-slate-600 gap-2 uppercase ">{`(${item.price_change_24h})`}</p>
+          <div className=" w-[1px] h-full bg-slate-300 px-1" />
         </div>
       ))}
     </div>
