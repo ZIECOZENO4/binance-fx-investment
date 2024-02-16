@@ -36,7 +36,7 @@ function TradingViewWidget() {
           ],
           "show_popup_button": true,
           "popup_width": "1000",
-          "popup_height": "650",
+          "popup_height": "1500",
           "support_host": "https://www.tradingview.com"
         }`;
       container.current.appendChild(script);
@@ -47,7 +47,7 @@ function TradingViewWidget() {
   return (
     <div className="tradingview-widget-container w-[100vw] h-[70vh]" ref={container}>
       <div className="tradingview-widget-container__widget h-[65vh] w-[100vw]" ></div>
-      <div className="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span className="blue-text">Track all markets on Binance FX</span></a></div>
+      <div className="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span className="blue-text font-bold md:text-2xl text-xl">Track all markets on Binance FX</span></a></div>
     </div>
   );
 }
