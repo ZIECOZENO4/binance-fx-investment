@@ -8,7 +8,7 @@ const Basic = () => {
   const [premiumPlan, setPremiumPlan] = useState({ monthlyPrice:  "10% Daily", items: ['Total Roll:  100%', 'Duration:  5 Days', 'Minium Deposit:  $  21,100', 'Maxium Deposit:  $  50,000', '5% Referral Bonus' ]});
 
   return (
-    <div className="text-gray-900 sm:h-[200vh] font-sans h-[150vh] md:h-[100vh] lg:h-[100vh] mt-[20px]  bg-no-repeat bg-bottom sm:bg-bottom md:mx-[10vw] mx-[30px] mb-auto">
+    <div className="text-gray-900 sm:h-[200vh] font-sans h-[170vh] md:h-[120vh] lg:h-[100vh] mt-[20px]  bg-no-repeat bg-bottom sm:bg-bottom md:mx-[10vw] mx-[30px] mb-auto">
       <div className="flex flex-col md:flex-row md:transform md:scale-75 lg:scale-100 justify-center ">
         {['Basic Plan, Advance Plan', 'Pro Plan', 'Premium Plan'].map((plan, index) => {
           let currentPlan;
@@ -34,7 +34,7 @@ const Basic = () => {
                 </React.Fragment>
               ))}
               <a href="#" target="_blank">
-                <div className="bg-blue-500 hover:bg-[#FFD700]  text-white hover:text-sky-600 border border-blue-600 hover:border-transparent font-bold uppercase space-5 mt-5 py-2 px-4 rounded cursor-pointer md:text-[30px] text-[15px]"> <span className="m-2 p-2">Invest Now
+                <div className="bg-blue-500 hover:bg-[#FFD700]  text-white hover:text-sky-600 border border-blue-600 hover:border-transparent font-bold uppercase space-5 mt-5 py-2 px-4 rounded cursor-pointer md:text-[25px] text-[15px]"> <span className="m-2 p-2">Invest Now
                 </span> </div>
               </a>
             </div>

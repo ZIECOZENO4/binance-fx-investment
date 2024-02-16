@@ -9,7 +9,7 @@ const Premium = () => {
 
 
   return (
-    <div className="text-gray-900 sm:h-[150vh] font-sans h-[150vh] md:h-[100vh] lg:h-[140vh] mt-[20px]  bg-no-repeat bg-bottom sm:bg-bottom md:mx-[10vw] mx-[30px] mb-auto">
+    <div className="text-gray-900 sm:h-[180vh] font-sans h-[170vh] md:h-[120vh] lg:h-[140vh] mt-[20px]  bg-no-repeat bg-bottom sm:bg-bottom md:mx-[10vw] mx-[30px] mb-auto">
  
       <div className="flex flex-col md:flex-row md:transform md:scale-75 lg:scale-100 justify-center ">
         {['Vip1 Plan', 'Vip2 Plan', 'Vip3 Plan'].map((plan, index) => {
@@ -35,7 +35,7 @@ const Premium = () => {
                 </React.Fragment>
               ))}
               <a href="#" target="_blank">
-                <div className="bg-blue-500 hover:bg-[#FFD700]  text-white hover:text-sky-600 border border-blue-600 hover:border-transparent font-bold uppercase text-xs mt-5 py-2 px-4 rounded cursor-pointer md:text-[40px] text-[15px]"><span className=" p-2">Invest Now
+                <div className="bg-blue-500 hover:bg-[#FFD700]  text-white hover:text-sky-600 border border-blue-600 hover:border-transparent font-bold uppercase text-xs mt-5 py-2 px-4 rounded cursor-pointer md:text-[25px] text-[15px]"><span className=" p-2">Invest Now
                 </span></div>
               </a>
             </div>

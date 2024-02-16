@@ -45,8 +45,8 @@ function TradingViewWidget() {
   );
 
   return (
-    <div className="tradingview-widget-container" ref={container} style={{ height: "500%", width: "100%" }}>
-      <div className="tradingview-widget-container__widget" style={{ height: "calc(500% - 32px)", width: "100%" }}></div>
+    <div className="tradingview-widget-container w-[100vw] h-[50vh]" ref={container}>
+      <div className="tradingview-widget-container__widget h-[45vh] w-[100vw]" ></div>
       <div className="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span className="blue-text">Track all markets on Binance FX</span></a></div>
     </div>
   );

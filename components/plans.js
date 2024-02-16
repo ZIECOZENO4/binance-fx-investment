@@ -27,7 +27,7 @@ const Plan = () => {
    <div className='flex flex-row px-2 md:px-[20vw] justify-between pt-8 w-[100vw]'>
      <motion.header
        onClick={() => setActiveTab('REFERRAL')}
-       className={`text-green-800 font-serif  md:text-2xl text-[20px]  font-bold md:mx-5 mx-2 pt-4  cursor-pointer ${activeTab === 'BASIC' ? 'border-green-500  rounded-md  bg-gradient-to-r from-red-500 to-sky-500 bg-clip-text text-transparent animate-gradient' : 'border-amber-100'}`}
+       className={`text-green-800 font-serif  md:text-2xl text-[20px]  font-bold md:mx-5 mx-2 pt-4  cursor-pointer ${activeTab === 'REFERRAL' ? 'border-green-500  rounded-md  bg-gradient-to-r from-red-500 to-sky-500 bg-clip-text text-transparent animate-gradient' : 'border-amber-100'}`}
        animate={{ scale: activeTab === 'REFERRAL' ? 1.2 : 1 }}
      >
   REFERRAL
