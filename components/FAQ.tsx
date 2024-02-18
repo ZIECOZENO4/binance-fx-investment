@@ -1,7 +1,7 @@
-
+"use client"
 import { Accordion, AccordionContent, AccordionPanel, AccordionTitle } from 'flowbite-react';
 
-function Component() {
+export default function FAQ() {
   return (
     <Accordion collapseAll>
             <div className=" text-white justify-center align-middle text-3xl  md:text-[4rem] font-extrabold font-serif p-2">Frequent questions ?</div>

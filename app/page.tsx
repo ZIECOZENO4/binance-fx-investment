@@ -12,7 +12,7 @@ import Properties from "@/components/properties";
 import Plan from "@/components/plans";
 import Payment from "../components/payment";
 import Trending from "@/components/trending table";
-import FAQ from "@/components/FAQ";
+import  FAQ  from "@/components/FAQ";
 import Footer from "../components/Footer/Footer"
 import WhatIsBinance from "@/components/whatisbinancefx";
 import Certification from "@/components/certification";
