@@ -1,5 +1,7 @@
 "use client"
 import React, { useState, useEffect } from 'react';
+import Eye from './eye';
+import Noeye from './noeye';
 
 type ViewType = 'account' | 'investment';
 
@@ -43,7 +45,7 @@ const BalanceShow = () => {
               </p>
             </div>
             <div onClick={toggleBalanceVisibility}>
-              {isBalanceHidden ? 'eye' : 'no-eye'}
+              {isBalanceHidden ? <Eye /> : <Noeye />}
             </div>
           </div>
           <button
@@ -64,7 +66,7 @@ const BalanceShow = () => {
               </p>
             </div>
             <div onClick={toggleBalanceVisibility}>
-              {isBalanceHidden ? 'eye' : 'no-eye'}
+              {isBalanceHidden ? <Eye /> : <Noeye />}
             </div>
           </div>
           <button
