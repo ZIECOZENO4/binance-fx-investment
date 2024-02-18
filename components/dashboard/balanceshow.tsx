@@ -40,7 +40,7 @@ const BalanceShow = () => {
           <div className="flex flex-row justify-between ">
             <div className="flex flex-col justify-start gap-5 md:gap-10">
               <p className="font-bold md:text-2xl text-xl sm:text-md font-sono gap-3">ACCOUNT BALANCE</p>
-              <p className="font-bold md:text-3xl text-2xl font-serif gap-3">
+              <p className="font-bold md:text-4xl text-3xl font-serif gap-3">
                 {isBalanceHidden ? '*****' : '$   0.000'}
               </p>
             </div>
@@ -61,7 +61,7 @@ const BalanceShow = () => {
           <div className="flex flex-row justify-between ">
             <div className="flex flex-col justify-start gap-8">
               <p className="font-bold md:text-2xl sm:text-md text-xl font-sono gap-3">INVESTMENT BALANCE</p>
-              <p className="font-bold md:text-3xl text-2xl font-serif gap-3">
+              <p className="font-bold md:text-4xl text-3xl font-serif gap-3">
                 {isBalanceHidden ? '*****' : `${investments[investmentIndex].balance} ${investments[investmentIndex].symbol}`}
               </p>
             </div>

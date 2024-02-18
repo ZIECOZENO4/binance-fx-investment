@@ -41,15 +41,15 @@ const Basic2 = () => {
    </div>
    <div  className=' h-1 w-full bg-slate-300 mt-2 mb-5'/>
    {activeTab === 'Basic' && 
-   <div className="text-gray-900 sm:h-[200vh] font-sans h-[230vh] md:h-[150vh] lg:h-[100vh] mt-[20px]  bg-no-repeat bg-bottom sm:bg-bottom md:mx-[3vw] mx-[30px] mb-auto">
+   <div className="text-gray-900  mt-[20px]  bg-no-repeat bg-bottom sm:bg-bottom   mb-auto">
    <div className="flex flex-col md:flex-row md:transform md:scale-75 lg:scale-100 justify-center ">
-     <div className="border rounded-lg text-center p-5 mx-auto md:mx-0 my-2 md:my-6 bg-slate-600 text-green-400 text-[25px] md:text-[40px] z-10 shadow-lg">
+     <div className="border rounded-lg text-center p-5 mx-auto md:mx-10 my-2 md:my-6 bg-slate-600 text-green-400 text-[30px] md:text-[40px] z-10 shadow-lg">
       
-       <div className="font-bold md:text-[45px] text-[20px]">{basicPlan.monthlyPrice}</div>
+       <div className="font-bold md:text-[45px] text-[35px]">{basicPlan.monthlyPrice}</div>
        <hr />
        {basicPlan.items.map((item, index) => (
          <React.Fragment key={index}>
-           <div className="md:text-[25px] text-[17px] my-3">{item}</div>
+           <div className="md:text-[40px] text-[30px] my-3">{item}</div>
            <hr />
          </React.Fragment>
        ))}
@@ -58,13 +58,13 @@ const Basic2 = () => {
      </div>
      }
    {activeTab === 'Advance' && 
-   <div className="border rounded-lg text-center p-5 mx-auto md:mx-0 my-2 md:my-6 bg-sky-700 text-[#FFD700] font-bold  tracking-widest transition-transform-colors text-[25px] md:text-[40px] z-10 shadow-lg">
+   <div className="border rounded-lg text-center p-5 mx-auto md:mx-0 my-2 md:my-6 bg-sky-700 text-[#FFD700] font-bold  tracking-widest transition-transform-colors text-[30px] md:text-[40px] z-10 shadow-lg">
          
-          <div className="font-bold md:text-[45px] text-[20px]">{advancePlan.monthlyPrice}</div>
+          <div className="font-bold md:text-[45px] text-[35px]">{advancePlan.monthlyPrice}</div>
           <hr />
           {advancePlan.items.map((item, index) => (
             <React.Fragment key={index}>
-              <div className="md:text-[25px] text-[17px] my-3">{item}</div>
+              <div className="md:text-[40px] text-[30px] my-3">{item}</div>
               <hr />
             </React.Fragment>
           ))}
@@ -72,15 +72,15 @@ const Basic2 = () => {
         </div>
    }
    {activeTab === 'Pro Plan' && 
- <div className="text-gray-900 sm:h-[200vh] font-sans h-[230vh] md:h-[150vh] lg:h-[100vh] mt-[20px]  bg-no-repeat bg-bottom sm:bg-bottom md:mx-[3vw] mx-[30px] mb-auto">
+ <div className="text-gray-900 border rounded-lg text-center p-5 mx-auto my-2 md:my-6 bg-slate-600  text-[25px] md:text-[40px] z-10 shadow-lg mt-[20px]  bg-no-repeat bg-bottom sm:bg-bottom md:mx-[3vw] mb-auto">
  <div className="flex flex-col md:flex-row md:transform md:scale-75 lg:scale-100 justify-center ">
-   <div className="border rounded-lg text-center p-5 mx-auto md:mx-0 my-2 md:my-6 bg-slate-600 text-green-400 text-[25px] md:text-[40px] z-10 shadow-lg">
+   <div className="border rounded-lg text-center p-5 mx-auto md:mx-0 my-2 md:my-6 bg-slate-600 text-green-400 text-[30px] md:text-[40px] z-10 shadow-lg">
     
-     <div className="font-bold md:text-[45px] text-[20px]">{proPlan.monthlyPrice}</div>
+     <div className="font-bold md:text-[45px] text-[35px]">{proPlan.monthlyPrice}</div>
      <hr />
      {proPlan.items.map((item, index) => (
        <React.Fragment key={index}>
-         <div className="md:text-[25px] text-[17px] my-3">{item}</div>
+         <div className="md:text-[40px] text-[30px] my-3">{item}</div>
          <hr />
        </React.Fragment>
      ))}
@@ -90,13 +90,13 @@ const Basic2 = () => {
    </div>
    }
    {activeTab === 'Premium' && 
-   <div className="border rounded-lg text-center p-5 mx-auto md:mx-0 my-2 md:my-6 bg-sky-700 text-[#FFD700] font-bold  tracking-widest transition-transform-colors text-[25px] md:text-[40px] z-10 shadow-lg">
+   <div className="border rounded-lg text-center p-5 mx-auto md:mx-0 my-2 md:my-6 bg-sky-700 text-[#FFD700] font-bold  tracking-widest transition-transform-colors text-[30px] md:text-[40px] z-10 shadow-lg">
        
-          <div className="font-bold md:text-[45px] text-[20px]">{premiumPlan.monthlyPrice}</div>
+          <div className="font-bold md:text-[45px] text-[35px]">{premiumPlan.monthlyPrice}</div>
           <hr />
           {premiumPlan.items.map((item, index) => (
             <React.Fragment key={index}>
-              <div className="md:text-[25px] text-[17px] my-3">{item}</div>
+              <div className="md:text-[40px] text-[30px] my-3">{item}</div>
               <hr />
             </React.Fragment>
           ))}
