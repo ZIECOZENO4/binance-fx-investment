@@ -4,10 +4,10 @@ import { motion } from 'framer-motion';
 import {Card, CardHeader, CardBody, CardFooter, Divider, Link, Image} from "@nextui-org/react";
 
 const Basic2 = () => {
-  const basicPlan = { monthlyPrice: "5% Daily", items: ['Total Roll:   40%', 'Duration:   8 Days', 'Minium Deposit:  $   200', 'Maxium Deposit:  $   2000', '5% Referral Bonus']};
-  const advancePlan = { monthlyPrice: "5% Daily", items: ['Total Roll:   60%', 'Duration:   12 Days', 'Minium Deposit:  $   2,100', 'Maxium Deposit:  $   10,000', '5% Referral Bonus']};
-  const proPlan = { monthlyPrice: "5% Daily", items: ['Total Roll:   80%', 'Duration:   14 Days', 'Minium Deposit:  $   10,100', 'Maxium Deposit:  $   20,000', '5% Referral Bonus' ]};
-  const premiumPlan = { monthlyPrice:  "10% Daily", items: ['Total Roll:   100%', 'Duration:   5 Days', 'Minium Deposit:  $   21,100', 'Maxium Deposit:  $   50,000', '5% Referral Bonus' ]};
+  const basicPlan = { monthlyPrice: "5% Daily", items: ['Total Roll:   40%', 'Duration:   8 Days', 'Minium Deposit:        $ 200', 'Maxium Deposit:  $   2000', '5% Referral Bonus']};
+  const advancePlan = { monthlyPrice: "5% Daily", items: ['Total Roll:   60%', 'Duration:   12 Days', 'Minium Deposit:     $ 2,100', 'Maxium Deposit:  $   10,000', '5% Referral Bonus']};
+  const proPlan = { monthlyPrice: "5% Daily", items: ['Total Roll:   80%', 'Duration:   14 Days', 'Minium Deposit:  $ 10,100', 'Maxium Deposit:  $   20,000', '5% Referral Bonus' ]};
+  const premiumPlan = { monthlyPrice:  "10% Daily", items: ['Total Roll:   100%', 'Duration:   5 Days', 'Minium Deposit:  $ 21,100', 'Maxium Deposit:  $   50,000', '5% Referral Bonus' ]};
 
   const [activeTab, setActiveTab] = useState('Basic');
   return (
@@ -49,7 +49,7 @@ const Basic2 = () => {
        <hr />
        {basicPlan.items.map((item, index) => (
          <React.Fragment key={index}>
-           <div className="md:text-[40px] text-[30px] my-3">{item}</div>
+           <div className="md:text-[40px] text-[32px] my-3">{item}</div>
            <hr />
          </React.Fragment>
        ))}
@@ -64,7 +64,7 @@ const Basic2 = () => {
           <hr />
           {advancePlan.items.map((item, index) => (
             <React.Fragment key={index}>
-              <div className="md:text-[40px] text-[30px] my-3">{item}</div>
+              <div className="md:text-[40px] text-[32px] my-3">{item}</div>
               <hr />
             </React.Fragment>
           ))}
@@ -80,7 +80,7 @@ const Basic2 = () => {
      <hr />
      {proPlan.items.map((item, index) => (
        <React.Fragment key={index}>
-         <div className="md:text-[40px] text-[30px] my-3">{item}</div>
+         <div className="md:text-[40px] text-[32px] my-3">{item}</div>
          <hr />
        </React.Fragment>
      ))}
@@ -96,7 +96,7 @@ const Basic2 = () => {
           <hr />
           {premiumPlan.items.map((item, index) => (
             <React.Fragment key={index}>
-              <div className="md:text-[40px] text-[30px] my-3">{item}</div>
+              <div className="md:text-[40px] text-[32px] my-3">{item}</div>
               <hr />
             </React.Fragment>
           ))}

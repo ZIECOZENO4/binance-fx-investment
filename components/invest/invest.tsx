@@ -11,6 +11,7 @@ import React from "react";
 import {Input} from "@nextui-org/react";
 import {MailIcon} from './MailIcon';
 import {Button} from "@nextui-org/react";
+import { useRouter } from 'next/navigate';
 interface CoinDataItem {
   name: string;
   current_price: number;
@@ -29,6 +30,12 @@ interface CoinDataItem {
 }
 
 const Invest = () => {
+  const router = useRouter();
+
+  const handleInvestNowClick = () => {
+    // Navigate to the confirmation page
+    router.push('/dashboard/invest/confirmpayment');
+  };
 
   const [data1, setData1] = useState<CoinDataItem[] | null>(null);
   const [activeTab, setActiveTab] = useState('BOARD');
@@ -58,7 +65,7 @@ const Invest = () => {
     return null;
   }
   return (
-    <div className='text-white h-[250vh] '>
+    <div className='text-white h-[280vh] '>
     <div className=' relative md:w-[100vw] w-[100vw] md:h-[50vh] h-[20vh] bg-no-repeat object-cover bg-track flex justify-center items-center align-middle  bg-fixed  '>
     </div>
     <Note />
@@ -143,9 +150,9 @@ const Invest = () => {
         />
       </div>
     </div>  
-    <Button color="primary" variant="ghost">
+   <Button color="primary" variant="ghost" onClick={handleInvestNowClick}>
       INVEST NOW
-      </Button> 
+    </Button>
   </div>
     </div>
   );
