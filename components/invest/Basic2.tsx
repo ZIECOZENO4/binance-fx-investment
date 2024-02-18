@@ -90,8 +90,6 @@ useEffect(() => {
     </div>
 
 
-export default Countdown;
-
    <div className='flex flex-row md:mx-2 justify-between pt-14'>
      <motion.header
        onClick={() => setActiveTab('Basic')}
@@ -129,7 +127,7 @@ export default Countdown;
        <hr />
        {basicPlan.items.map((item, index) => (
          <React.Fragment key={index}>
-           <div className="md:text-[40px] text-[32px] my-3">{item}</div>
+           <div className="md:text-[40px] text-[22px] my-3">{item}</div>
            <div>
 
    
