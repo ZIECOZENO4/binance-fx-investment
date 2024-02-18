@@ -23,7 +23,7 @@ const Basic = () => {
           }
 
           return (
-            <div key={index} className={`border rounded-lg text-center p-5 mx-auto md:mx-0 my-2 md:my-6 ${plan === 'Premium Plan' ? 'bg-sky-700 text-[#FFD700] font-bold  tracking-widest transition-transform-colors ' : 'bg-slate-600 text-green-400'} text-[25px] md:text-[40px] z-10 shadow-lg`}>
+            <div key={index} className={`border rounded-lg text-center p-5 mx-auto md:mx-0 my-2 md:my-6 ${plan === 'Premium Plan' || plan === 'Advance Plan' ? 'bg-sky-700 text-[#FFD700] font-bold  tracking-widest transition-transform-colors ' : 'bg-slate-600 text-green-400'} text-[25px] md:text-[40px] z-10 shadow-lg`}>
               <div className="">{plan}</div>
               <div  className={`font-bold md:text-[45px] text-[20px]  `}> {currentPlan.monthlyPrice}</div>
               <hr />
