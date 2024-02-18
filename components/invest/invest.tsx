@@ -11,7 +11,7 @@ import React from "react";
 import {Input} from "@nextui-org/react";
 import {MailIcon} from './MailIcon';
 import {Button} from "@nextui-org/react";
-import { useRouter } from 'next/navigate';
+import { useRouter } from 'next/router';
 interface CoinDataItem {
   name: string;
   current_price: number;
