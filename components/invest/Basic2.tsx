@@ -142,7 +142,7 @@ export default Countdown;
     <Button onPress={() => {
   setModalPlacement("bottom");
   onOpen();
-}} className="max-w-fit">Open Calculator</Button>
+}} className="max-w-fit bg-sky-600 text-white text-bold m-2 p-2">Open Calculator</Button>
 
 <Modal  
   isOpen={isOpen}  
@@ -182,10 +182,10 @@ export default Countdown;
     </div>
               </ModalBody>
               <ModalFooter>
-                <Button color="danger" variant="light" onPress={onClose}>
+                <Button color="danger" variant="solid" onPress={onClose}>
                   Close
                 </Button>
-                <Button color="primary" onPress={onClose}>
+                <Button color="success" onPress={onClose}>
                   Action
                 </Button>
               </ModalFooter>

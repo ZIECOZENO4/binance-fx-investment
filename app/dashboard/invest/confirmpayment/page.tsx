@@ -18,10 +18,10 @@ const Page = () => {
   
 <div className="container">
       <div className="mt-5">
-        <div className="w-1/2 mx-auto bg-slate-600 bg-opacity-50 rounded-md">
+        <div className="w-full mx-auto bg-slate-600 bg-opacity-50 rounded-md">
       
           <div className="flex flex-col justify-center items-center">
-            <h6 className="text-black font-medium my-4">Please Confirm Your Payment</h6>
+            <h6 className="text-black font-extrabold text-xl my-4 uppercase">Please Confirm Your Payment</h6>
             <div
               className="
                 flex
@@ -106,16 +106,16 @@ const Page = () => {
     </div>
               </div>
               <button
-                className="w-full bg-indigo-600 text-white px-2 py-2 rounded-md"
+                className="w-full bg-green-600 text-white px-2 py-2 rounded-md"
               >
-                Apply code
+                Accept
               </button>
             </div>
-            <div className="px-3 py-5 border-b-2 border-gray-200">
+            <div className="px-3 py-5 border-b-2  border-gray-200">
               <button
                 className="
                   min-w-full
-                  bg-gray-400
+                  bg-red-700
                   font-semibold
                   text-white
                   px-2
@@ -123,12 +123,15 @@ const Page = () => {
                   rounded-md
                 "
               >
-                Checkout
+                Reject
               </button>
             </div>
           </div>
         
         </div>
+      </div>
+      <div className=' bg-white py-5 flex justify-start items-start align-middle leading-8 font-bold text-xl gap-2'>
+        <p><span className="text-red mr-1">NOTE:</span> DEPOSIT SHOULD BE MADE TO COMPANY&apos;S WALLET ADDRESS [OX........UIBV], WHEN DONE CLICK ACCEPT FOR THE TRANSACTION TO TAKE PLACE. THANKS FOR INVESTI NG ON BINANCE FX</p>
       </div>
     </div>
   )

@@ -63,7 +63,7 @@ const Invest = () => {
     return null;
   }
   return (
-    <div className='text-white h-[280vh] '>
+    <div className='text-white h-[330vh] '>
     <div className=' relative md:w-[100vw] w-[100vw] md:h-[50vh] h-[20vh] bg-no-repeat object-cover bg-track flex justify-center items-center align-middle  bg-fixed  '>
     </div>
     <Note />
@@ -79,8 +79,8 @@ const Invest = () => {
       </SignedOut>
 </div>
 <div className=" flex  flex-col align-middle items-center justify-center">
-<svg width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M22 12C22 16.714 22 19.0711 20.5355 20.5355C19.0711 22 16.714 22 12 22C7.28595 22 4.92893 22 3.46447 20.5355C2 19.0711 2 16.714 2 12C2 7.28595 2 4.92893 3.46447 3.46447C4.92893 2 7.28595 2 12 2C16.714 2 19.0711 2 20.5355 3.46447C21.5093 4.43821 21.8356 5.80655 21.9449 8" stroke="#1C274D" stroke-width="1.5" stroke-linecap="round"></path> <path d="M18 8.49998H14M18 14.5H14M18 17.5H14M10 8.49999H8M8 8.49999L6 8.49999M8 8.49999L8 6.49998M8 8.49999L8 10.5M9.5 14.5L8.00001 16M8.00001 16L6.50001 17.5M8.00001 16L6.5 14.5M8.00001 16L9.49999 17.5" stroke="#1C274D" stroke-width="1.5" stroke-linecap="round"></path> </g></svg>
-<p className=' md:text-2xl text-sm font-bold font-sans gap-3 text-white'> CALCULATE PROFIT</p>
+<svg fill="#000000" width="64px" height="64px" viewBox="0 0 24 24" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><title></title><path d="M22,11V7.83L12,2.06,2,7.83V11H4v8H2v2H22V19H20V11ZM4,9l8-4.62L20,9H4ZM6,19V11H8v8Zm4,0V11h4v8Zm8,0H16V11h2Z"></path></g></svg>
+<p className=' md:text-2xl text-sm font-bold font-sans gap-3 text-white'>BALANCE : $ 0.000</p>
 </div>
 <div>
 
