@@ -2,14 +2,14 @@
 import { useEffect, useState } from 'react';
 import Note from "./note"
 import { useUser } from "@clerk/clerk-react";
-import { SignedIn, SignedOut, UserButton,  } from "@clerk/nextjs";
+import { SignedIn, SignedOut, } from "@clerk/nextjs";
 import { motion } from "framer-motion";
 import Basic2 from './Basic2';
 import Premium2 from './Premium2';
 import Vip2 from './Vip2';
 import React from "react";
 import {Input} from "@nextui-org/react";
-import {MailIcon} from './MailIcon';
+
 import {Button} from "@nextui-org/react";
 import Link from 'next/link';
 
