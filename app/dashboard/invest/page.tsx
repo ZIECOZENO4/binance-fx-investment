@@ -6,7 +6,7 @@ const InvdestPage = () => {
   return (
     <div>
       <Invest />
-      <div className=" fixed sticky flex items-end justify-end align-top absolute top-4 ">
+      <div className="  flex items-end justify-end align-top absolute top-4 ">
         <Fast />
       </div>
     </div>
