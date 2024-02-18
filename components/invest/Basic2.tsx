@@ -68,7 +68,7 @@ useEffect(() => {
   const [activeTab, setActiveTab] = useState('Basic');
   return (
     <div>
-    <div className="flex space-x-4">
+    <div className="flex  flex-wrap space-x-4">
       <div className={`text-white p-4 rounded-full text-center ${getColor(timeLeft)}`}>
         {Math.floor(timeLeft / (24 *  60 *  60))} days
       </div>
@@ -132,7 +132,13 @@ export default Countdown;
            <div className="md:text-[40px] text-[32px] my-3">{item}</div>
            <div>
 
-    <div className="flex flex-col gap-2">
+   
+
+           </div>
+           <hr />
+         </React.Fragment>
+       ))}
+        <div className="flex flex-col gap-2">
     <Button onPress={() => {
   setModalPlacement("bottom");
   onOpen();
@@ -189,11 +195,6 @@ export default Countdown;
       </Modal>
     </div>
 
-
-           </div>
-           <hr />
-         </React.Fragment>
-       ))}
      </div>
      </div>
      </div>
