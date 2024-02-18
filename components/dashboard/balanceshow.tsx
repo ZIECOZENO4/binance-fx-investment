@@ -1,10 +1,12 @@
 "use client"
 import React, { useState, useEffect } from 'react';
+
 type ViewType = 'account' | 'investment';
 
 const BalanceShow = () => {
   const [currentView, setCurrentView] = useState('account');
   const [investmentIndex, setInvestmentIndex] = useState(0);
+  const [isBalanceHidden, setIsBalanceHidden] = useState(false); // New state for balance visibility
   const investments = [
     { balance: '0.000', symbol: 'ETH' },
     { balance: '100.000', symbol: 'BTC' },
@@ -25,23 +27,31 @@ const BalanceShow = () => {
     };
   }, [currentView, investments.length]);
 
+  const toggleBalanceVisibility = () => {
+    setIsBalanceHidden(!isBalanceHidden);
+  };
+
   return (
     <div className="relative overflow-hidden bg-gradient-to-r from-blue-600 to-sky-200 rounded-2xl flex flex-col justify-start align-middle items-start gap-5 p-4 h-40 md:px-3 px-10">
       {currentView === 'account' && (
         <div className="w-full transition-transform duration-500 ease-in-out transform">
-          <div  className="flex flex-row justify-between ">
+          <div className="flex flex-row justify-between ">
             <div className="flex flex-col justify-start gap-5 md:gap-10">
               <p className="font-bold md:text-2xl text-xl sm:text-md font-sono gap-3">ACCOUNT BALANCE</p>
-              <p className="font-bold md:text-3xl text-2xl font-serif gap-3">$   0.000</p>
+              <p className="font-bold md:text-3xl text-2xl font-serif gap-3">
+                {isBalanceHidden ? '*****' : '$   0.000'}
+              </p>
             </div>
-            <div>eye</div>
+            <div onClick={toggleBalanceVisibility}>
+              {isBalanceHidden ? 'eye' : 'no-eye'}
+            </div>
           </div>
           <button
-          className=" text-white font-bold py-2 px-4 underline text=bold"
-          onClick={() => setCurrentView('investment')}
-        >
-          Show Investment
-        </button>
+            className="text-white font-bold py-2 px-4 underline text=bold"
+            onClick={() => setCurrentView('investment')}
+          >
+            Show Investment
+          </button>
         </div>
       )}
       {currentView === 'investment' && (
@@ -50,22 +60,23 @@ const BalanceShow = () => {
             <div className="flex flex-col justify-start gap-8">
               <p className="font-bold md:text-2xl sm:text-md text-xl font-sono gap-3">INVESTMENT BALANCE</p>
               <p className="font-bold md:text-3xl text-2xl font-serif gap-3">
-                {investments[investmentIndex].balance} {investments[investmentIndex].symbol}
+                {isBalanceHidden ? '*****' : `${investments[investmentIndex].balance} ${investments[investmentIndex].symbol}`}
               </p>
             </div>
-            <div>eye</div>
+            <div onClick={toggleBalanceVisibility}>
+              {isBalanceHidden ? 'eye' : 'no-eye'}
+            </div>
           </div>
           <button
-          className="text-white font-bold py-2 px-4 underline text=bold"
-          onClick={() => setCurrentView('account')}
-        >
-          Show Account
-        </button>
+            className="text-white font-bold py-2 px-4 underline text=bold"
+            onClick={() => setCurrentView('account')}
+          >
+            Show Account
+          </button>
         </div>
       )}
       <div className="flex justify-center mt-4">
-
-
+        {/* ... */}
       </div>
     </div>
   );
