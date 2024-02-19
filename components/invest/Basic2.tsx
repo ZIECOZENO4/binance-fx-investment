@@ -14,7 +14,7 @@ useEffect(() => {
   if (isActive && timeLeft >   0) {
     interval = setInterval(() => {
       setTimeLeft(timeLeft -   1);
-    },   1000) as unknown as number; // Type assertion to number
+    },   1000) as unknown as number; 
   } else if (!isActive && timeLeft ===   0) {
     clearInterval(interval as unknown as number); // Type assertion to number
   }
@@ -50,6 +50,42 @@ useEffect(() => {
       setProfit(profitValue);
       setError('');
     };
+    const calculateProfit2 = (input: string) => {
+      const value = parseInt(input,  10);
+      if (value <  2100 || value >  10000) {
+        setError('The amount must be between  2,100 and  10,000.');
+        setProfit(null);
+        return;
+      }
+  
+      const profitValue = value *  0.6;
+      setProfit(profitValue);
+      setError('');
+    };
+    const calculateProfit3 = (input: string) => {
+      const value = parseInt(input,  10);
+      if (value <  21100 || value >  50000) {
+        setError('The amount must be between  21,100 and  50,000.');
+        setProfit(null);
+        return;
+      }
+  
+      const profitValue = value *  1;
+      setProfit(profitValue);
+      setError('');
+    };
+    const calculateProfit4 = (input: string) => {
+      const value = parseInt(input,  10);
+      if (value <  10100 || value >  20000) {
+        setError('The amount must be between  10,100 and  20,000.');
+        setProfit(null);
+        return;
+      }
+  
+      const profitValue = value *  0.6;
+      setProfit(profitValue);
+      setError('');
+    };
   
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       setAmount(event.target.value);
@@ -57,12 +93,31 @@ useEffect(() => {
   
     const handleButtonClick = () => {
       calculateProfit(amount);
+
+    
+    
+    };
+    const handleButtonClick2 = () => {
+      calculateProfit2(amount);
+    };
+    const handleButtonClick3 = () => {
+      calculateProfit3(amount);
+    };
+    const handleButtonClick4 = () => {
+
+      calculateProfit4(amount);
+  
     };
 
     const currentDate = new Date();
     const dateFourDaysFromNow = new Date();
-    dateFourDaysFromNow.setDate(currentDate.getDate() +  4);
-  
+    const dateTwelveDaysFromNow = new Date();
+    const dateFiveDaysFromNow = new Date();
+    const dateFourteenDaysFromNow = new Date();
+    dateFourDaysFromNow.setDate(currentDate.getDate() +  8);
+    dateTwelveDaysFromNow.setDate(currentDate.getDate() +  12);
+    dateFiveDaysFromNow .setDate(currentDate.getDate() +  5);
+    dateFourteenDaysFromNow.setDate(currentDate.getDate() +  14);
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
   const [modalPlacement, setModalPlacement] = React.useState("auto");
   const [activeTab, setActiveTab] = useState('Basic');
@@ -104,17 +159,18 @@ useEffect(() => {
      >
     Advance
      </motion.header>
-     <motion.header
-       onClick={() => setActiveTab('Premium')}
-       className={`text-slate-200 font-heading  text-xl md:text-2xl border-b-2 md:mx-5 mx-1 pt-4  cursor-pointer ${activeTab === 'Premium' ? 'border-green-700  rounded-md  bg-gradient-to-r from-red-500 to-sky-500 bg-clip-text text-transparent animate-gradient' : 'border-amber-100'}`}
-     >
-     Premium
-     </motion.header>
+  
      <motion.header
        onClick={() => setActiveTab('Pro Plan')}
        className={`text-slate-200 font-heading  text-xl md:text-2xl border-b-2 md:mx-5 mx-1 pt-4  cursor-pointer ${activeTab === 'Pro Plan' ? 'border-green-700  rounded-md  bg-gradient-to-r from-red-500 to-sky-500 bg-clip-text text-transparent animate-gradient' : 'border-amber-100'}`}
      >
      Pro Plan
+     </motion.header>
+     <motion.header
+       onClick={() => setActiveTab('Premium')}
+       className={`text-slate-200 font-heading  text-xl md:text-2xl border-b-2 md:mx-5 mx-1 pt-4  cursor-pointer ${activeTab === 'Premium' ? 'border-green-700  rounded-md  bg-gradient-to-r from-red-500 to-sky-500 bg-clip-text text-transparent animate-gradient' : 'border-amber-100'}`}
+     >
+     Premium
      </motion.header>
    </div>
    <div  className=' h-1 w-full bg-slate-300 mt-2 mb-5'/>
@@ -204,11 +260,66 @@ useEffect(() => {
           <hr />
           {advancePlan.items.map((item, index) => (
             <React.Fragment key={index}>
-              <div className="md:text-[40px] text-[32px] my-3">{item}</div>
+              <div className="md:text-[40px] text-[22px] my-3">{item}</div>
               <hr />
             </React.Fragment>
           ))}
-   
+        <div className="flex flex-col gap-2">
+    <Button onPress={() => {
+  setModalPlacement("bottom");
+  onOpen();
+}} className="max-w-fit bg-sky-600 text-white text-bold m-2 p-2">Open Calculator</Button>
+
+<Modal  
+  isOpen={isOpen}  
+  placement={modalPlacement as "auto" | "center" | "bottom" | "top" | "top-center" | "bottom-center" | undefined}
+  onOpenChange={onOpenChange}  
+>
+        <ModalContent>
+          {(onClose) => (
+            <>
+              <ModalHeader className="flex flex-col gap-1">Calculate Profit</ModalHeader>
+              <ModalBody>
+              <div className="p-4">
+              <label htmlFor="amount">Amount:</label>
+      <input
+      id="amount"
+        type="number"
+        className="border-2 border-gray-300 p-2 rounded"
+        value={amount}
+        onChange={handleInputChange}
+        min="2,100"
+        max="10,000"
+      />
+      {error && <p className="text-red-500 mt-2">{error}</p>}
+      <button
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2"
+        onClick={handleButtonClick2}
+      >
+        Calculate Profit
+      </button>
+      {profit && (
+        <div className="mt-4">
+          <p>Profit: {profit.toFixed(2)}</p>
+          <p>From: {currentDate.toLocaleDateString()}</p>
+          <p>Till: {dateTwelveDaysFromNow.toLocaleDateString()}</p>
+        </div>
+      )}
+    </div>
+              </ModalBody>
+              <ModalFooter>
+                <Button color="danger" variant="solid" onPress={onClose}>
+                  Close
+                </Button>
+                <Button color="success" onPress={onClose}>
+                  Action
+                </Button>
+              </ModalFooter>
+            </>
+          )}
+        </ModalContent>
+      </Modal>
+    </div>
         </div>
    }
    {activeTab === 'Pro Plan' && 
@@ -220,11 +331,66 @@ useEffect(() => {
      <hr />
      {proPlan.items.map((item, index) => (
        <React.Fragment key={index}>
-         <div className="md:text-[40px] text-[32px] my-3">{item}</div>
+         <div className="md:text-[40px] text-[22px] my-3">{item}</div>
          <hr />
        </React.Fragment>
      ))}
+    <div className="flex flex-col gap-2">
+    <Button onPress={() => {
+  setModalPlacement("bottom");
+  onOpen();
+}} className="max-w-fit bg-sky-600 text-white text-bold m-2 p-2">Open Calculator</Button>
 
+<Modal  
+  isOpen={isOpen}  
+  placement={modalPlacement as "auto" | "center" | "bottom" | "top" | "top-center" | "bottom-center" | undefined}
+  onOpenChange={onOpenChange}  
+>
+        <ModalContent>
+          {(onClose) => (
+            <>
+              <ModalHeader className="flex flex-col gap-1">Calculate Profit</ModalHeader>
+              <ModalBody>
+              <div className="p-4">
+              <label htmlFor="amount">Amount:</label>
+      <input
+      id="amount"
+        type="number"
+        className="border-2 border-gray-300 p-2 rounded"
+        value={amount}
+        onChange={handleInputChange}
+        min="10,100"
+        max="20,000"
+      />
+      {error && <p className="text-red-500 mt-2">{error}</p>}
+      <button
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2"
+        onClick={handleButtonClick4}
+      >
+        Calculate Profit
+      </button>
+      {profit && (
+        <div className="mt-4">
+          <p>Profit: {profit.toFixed(2)}</p>
+          <p>From: {currentDate.toLocaleDateString()}</p>
+          <p>Till: {dateFourteenDaysFromNow.toLocaleDateString()}</p>
+        </div>
+      )}
+    </div>
+              </ModalBody>
+              <ModalFooter>
+                <Button color="danger" variant="solid" onPress={onClose}>
+                  Close
+                </Button>
+                <Button color="success" onPress={onClose}>
+                  Action
+                </Button>
+              </ModalFooter>
+            </>
+          )}
+        </ModalContent>
+      </Modal>
+    </div>
    </div>
    </div>
    </div>
@@ -240,7 +406,62 @@ useEffect(() => {
               <hr />
             </React.Fragment>
           ))}
-  
+      <div className="flex flex-col gap-2">
+    <Button onPress={() => {
+  setModalPlacement("bottom");
+  onOpen();
+}} className="max-w-fit bg-sky-600 text-white text-bold m-2 p-2">Open Calculator</Button>
+
+<Modal  
+  isOpen={isOpen}  
+  placement={modalPlacement as "auto" | "center" | "bottom" | "top" | "top-center" | "bottom-center" | undefined}
+  onOpenChange={onOpenChange}  
+>
+        <ModalContent>
+          {(onClose) => (
+            <>
+              <ModalHeader className="flex flex-col gap-1">Calculate Profit</ModalHeader>
+              <ModalBody>
+              <div className="p-4">
+              <label htmlFor="amount">Amount:</label>
+      <input
+      id="amount"
+        type="number"
+        className="border-2 border-gray-300 p-2 rounded"
+        value={amount}
+        onChange={handleInputChange}
+        min="2,100"
+        max="10,000"
+      />
+      {error && <p className="text-red-500 mt-2">{error}</p>}
+      <button
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2"
+        onClick={handleButtonClick3}
+      >
+        Calculate Profit
+      </button>
+      {profit && (
+        <div className="mt-4">
+          <p>Profit: {profit.toFixed(2)}</p>
+          <p>From: {currentDate.toLocaleDateString()}</p>
+          <p>Till: {dateFiveDaysFromNow.toLocaleDateString()}</p>
+        </div>
+      )}
+    </div>
+              </ModalBody>
+              <ModalFooter>
+                <Button color="danger" variant="solid" onPress={onClose}>
+                  Close
+                </Button>
+                <Button color="success" onPress={onClose}>
+                  Action
+                </Button>
+              </ModalFooter>
+            </>
+          )}
+        </ModalContent>
+      </Modal>
+    </div>
         </div>
    }
     </div>

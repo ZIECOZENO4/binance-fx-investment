@@ -6,22 +6,12 @@ export default function FAQ() {
     <Accordion collapseAll>
             <div className=" text-white justify-center align-middle text-3xl  md:text-[4rem] font-extrabold font-serif p-2">Frequent questions ?</div>
       <AccordionPanel>
-        <AccordionTitle>What is Flowbite?</AccordionTitle>
+        <AccordionTitle>What is Binance Fx?</AccordionTitle>
         <AccordionContent>
           <p className="mb-2 text-gray-500 dark:text-gray-400">
-            Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons,
-            dropdowns, modals, navbars, and more.
+           Binance FX is a crypto investment and trading platform.
           </p>
-          <p className="text-gray-500 dark:text-gray-400">
-            Check out this guide to learn how to&nbsp;
-            <a
-              href="https://flowbite.com/docs/getting-started/introduction/"
-              className="text-cyan-600 hover:underline dark:text-cyan-500"
-            >
-              get started&nbsp;
-            </a>
-            and start developing websites even faster with components on top of Tailwind CSS.
-          </p>
+       
         </AccordionContent>
       </AccordionPanel>
       <AccordionPanel>
