@@ -402,7 +402,7 @@ useEffect(() => {
           <hr />
           {premiumPlan.items.map((item, index) => (
             <React.Fragment key={index}>
-              <div className="md:text-[40px] text-[32px] my-3">{item}</div>
+              <div className="md:text-[40px] text-[22px] my-3">{item}</div>
               <hr />
             </React.Fragment>
           ))}

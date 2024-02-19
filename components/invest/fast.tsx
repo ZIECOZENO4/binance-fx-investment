@@ -27,7 +27,7 @@ export default function Fast() {
             <>
               <ModalHeader className="flex flex-col gap-1">Quick Investing</ModalHeader>
               <ModalBody>
-              <div className="bg-orange-lightest border-l-4 border-orange text-orange-dark p-4" role="alert">
+              <div className="bg-orange-lightest border-l-4 border-orange text-orange-dark p-4 text-white" role="alert">
   <p className="font-bold">Connect Wallet</p>
   <p>To use this feature click on [Connect Wallet]</p>
 </div>
