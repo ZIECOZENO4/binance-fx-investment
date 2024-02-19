@@ -31,10 +31,6 @@ interface CoinDataItem {
 }
 
 const Invest = () => {
-
-
-
-
   const [data1, setData1] = useState<CoinDataItem[] | null>(null);
   const [activeTab, setActiveTab] = useState('BOARD');
   useEffect(() => {
