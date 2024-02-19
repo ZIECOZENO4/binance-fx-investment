@@ -131,7 +131,7 @@ const Page = () => {
         </div>
       </div>
       <div className=' bg-white py-5 flex justify-start items-start align-middle leading-8 font-bold text-md gap-2'>
-        <p><span className="text-red-800 text-xl mr-1">NOTE:</span>ALL DEPOSIT SHOULD BE MADE TO COMPANY&apos;S WALLET ADDRESS [OX........UIBV], WHEN DONE CLICK ACCEPT FOR THE TRANSACTION TO TAKE PLACE. THANKS FOR INVESTI NG ON BINANCE FX</p>
+        <p><span className="text-red-800 text-xl mr-1">NOTE:  </span>ALL DEPOSIT SHOULD BE MADE TO COMPANY&apos;S WALLET ADDRESS [OX........UIBV], WHEN DONE CLICK ACCEPT FOR THE TRANSACTION TO TAKE PLACE. THANKS FOR INVESTI NG ON BINANCE FX</p>
       </div>
     </div>
   )
