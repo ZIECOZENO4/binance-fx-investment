@@ -90,20 +90,22 @@ const Invest = () => {
  mt-5 md:mt-10'>
       <motion.header
         onClick={() => setActiveTab('REFERRAL')}
-        className={`text-white font-serif  md:text-2xl text-[20px]  font-bold md:mx-5 mx-2 pt-4  cursor-pointer ${activeTab === 'REFERRAL' ? 'flex select-none items-center gap-3 rounded-lg bg-sky-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-sky-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"     bg-clip-text text-transparent animate-gradient' : ''}`}
+            className={`text-white font-serif  md:text-2xl text-[20px]  font-bold md:mx-5 mx-2 pt-4  cursor-pointer ${activeTab === 'REFERRAL' ? 'flex select-none items-center gap-3 rounded-lg bg-sky-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-sky-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"     bg-clip-text text-transparent animate-gradient' : ''}`}
         animate={{ scale: activeTab === 'REFERRAL' ? 1.2 : 1 }}
       >
    REFERRAL
       </motion.header>
       <motion.header
         onClick={() => setActiveTab('BOARD')}
-        className={`text-white font-serif  md:text-2xl text-[20px]  font-bold md:mx-5 mx-2 pt-4  cursor-pointer ${activeTab === 'BOARD' ? 'flex select-none items-center gap-3 rounded-lg bg-sky-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-sky-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"     bg-clip-text text-transparent animate-gradient' : ''}`}
+        className={`text-white font-serif  md:text-2xl text-[20px]  font-bold md:mx-5 mx-2 pt-4  cursor-pointer ${activeTab === 'c' ? 'flex select-none items-center gap-3 rounded-lg bg-sky-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-sky-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"     bg-clip-text text-transparent animate-gradient' : ''}`}
+        animate={{ scale: activeTab === 'BOARD' ? 1.2 : 1 }}
       >
    BOARD
       </motion.header>
       <motion.header
         onClick={() => setActiveTab('SHARES')}
         className={`text-white font-serif  md:text-2xl text-[20px]  font-bold md:mx-5 mx-2 pt-4  cursor-pointer ${activeTab === 'SHARES' ? 'flex select-none items-center gap-3 rounded-lg bg-sky-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-sky-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"     bg-clip-text text-transparent animate-gradient' : ''}`}
+        animate={{ scale: activeTab === 'SHARES' ? 1.2 : 1 }}
       >
   SHARES
       </motion.header>
