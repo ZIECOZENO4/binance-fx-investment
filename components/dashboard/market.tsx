@@ -463,8 +463,8 @@ const TradingViewScreenerWidget = () => {
     script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-screener.js';
     script.async = true;
     script.innerHTML = JSON.stringify({
-      "width": "100%",
-      "height": "500%",
+      "autosize": true,
+           "height": "800",
       "defaultColumn": "overview",
       "screener_type": "crypto_mkt",
       "displayCurrency": "USD",
