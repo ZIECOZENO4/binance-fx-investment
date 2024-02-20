@@ -21,6 +21,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/gettingstarted.js", "components/invest/note.js", "components/invest/MailIcon.jsx", "components/trade/trade.jsx", "components/Wideget1.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/gettingstarted.js", "components/invest/note.js", "components/invest/MailIcon.jsx", "components/trade/trade.jsx", "components/Wideget1.jsx", "components/trending table.js"],
   "exclude": ["node_modules"]
 }
