@@ -9,7 +9,7 @@ const Trade = () => {
     script.async = true;
     script.innerHTML = JSON.stringify({
       "width": "100%",
-      "height": "100%",
+      "height": "500%",
       "defaultColumn": "overview",
       "defaultScreen": "general",
       "market": "forex",
