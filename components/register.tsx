@@ -1,5 +1,6 @@
 "use client"
-
+import { SignInButton } from "@clerk/nextjs";
+import { SignUpButton } from "@clerk/nextjs";
 import Link from 'next/link';
 import React, { useEffect } from 'react';
 
@@ -42,12 +43,18 @@ const Register = () => {
       <div className=" flex flex-row justify-between md:justify-start gap-8  ">
       <Link href="/sign-up">
  <button className='rounded-3xl font-bold justify-center align-middle text-2xl border-spacing-8 space-x-8 border-b-large border-blue-200 bg-green-600 ml-8'>
+   
+    <SignUpButton mode="modal" afterSignInUrl="/dashboard" afterSignUpUrl="/dashboard">
     <p className='p-3'>SIGN UP</p>
+    </SignUpButton>
  </button>
 </Link>
 <Link href="/sign-in">
  <button className='rounded-3xl font-bold justify-center px-8 align-middle text-2xl border-spacing-8 space-x-8 border-b-large border-blue-200 bg-[#FFD700]'>
+  
+    <SignInButton mode="modal" afterSignInUrl="/dashboard" afterSignUpUrl="/dashboard">
     <p className='p-3 text-black'>SIGN IN</p>
+    </SignInButton>
  </button>
 </Link>
       </div>
@@ -56,7 +63,7 @@ const Register = () => {
    
 
 
-    <div className="tradingview-widget-container py-8">
+    <div className="tradingview-widget-container py-8 w-full h-auto">
       <div className="tradingview-widget-container__widget"></div>
       <div className="tradingview-widget-copyright">
   
