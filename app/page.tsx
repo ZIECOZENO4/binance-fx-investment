@@ -22,9 +22,7 @@ import Statistic from "@/components/statistics";
 export default function Home() {
   return (
 <div className=" m-0 p-0 overflow-x-hidden">
-
 <Hero1 /> 
-<Statistic />
 <Properties />
 <Register />
 <Trending />
@@ -33,6 +31,7 @@ export default function Home() {
 <HowToInvest />
 <NewToCrypto />
 <TradingViewWidget />
+<Statistic />
 <GettingStarted />
 <WhatIsBinance />
 <Certification />

@@ -8,8 +8,8 @@ const Statistic = () => {
     script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-forex-cross-rates.js';
     script.async = true;
     script.innerHTML = JSON.stringify({
-      "width": "100%",
-      "height": "100%",
+        "autosize": true,
+        "height": "1000",
       "currencies": [
         "EUR",
         "USD",
@@ -38,7 +38,8 @@ const Statistic = () => {
   }, []);
 
   return (
-    <div className="tradingview-widget-container">
+    <div className="tradingview-widget-container py-8">
+        <p className='text-[35px] md:text-[70px] font-bold gap-3 text-[#FFD700] '>Statistics</p>
       <div className="tradingview-widget-container__widget"></div>
       <div className="tradingview-widget-copyright">
       </div>
