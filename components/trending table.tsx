@@ -7,14 +7,17 @@ import gainers from "../public/assets/svg/gainers.png"
 import recent from "../public/assets/svg/recent.png"
 import TrendingCard from "./trendingCard"
 
-
+interface RateProps {
+    isIncrement: boolean;
+    rate: string;
+  }
 const styles = {
     trendingWrapper: `mx-auto w-full`,
     h1: `text-3xl text-white font-bold `,
  
 }
 
-const Trending = () => {
+const Trending: React.FC<RateProps> = ({ isIncrement, rate }) => {
  
 
     const trendingData = [
