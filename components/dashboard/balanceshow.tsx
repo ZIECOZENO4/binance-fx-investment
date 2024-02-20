@@ -13,7 +13,7 @@ const BalanceShow = () => {
     { balance: '0.000', symbol: 'ETH' },
     { balance: '100.000', symbol: 'BTC' },
     { balance: '200.000', symbol: 'LTC' },
-    // Add more investments as needed
+
   ];
 
   useEffect(() => {
