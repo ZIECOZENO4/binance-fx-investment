@@ -19,10 +19,12 @@ import Certification from "@/components/certification";
 import Register from "@/components/register";
 import TradingViewWidget from "../components/Chart";
 import Statistic from "@/components/statistics";
+import Rate3 from "@/components/rate3";
 export default function Home() {
   return (
 <div className=" m-0 p-0 overflow-x-hidden">
 <Hero1 /> 
+<Rate3 />
 <Properties />
 <Register />
 <Trending />

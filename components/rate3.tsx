@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect } from 'react';
 
-const Rate = () => {
+const Rate3 = () => {
   useEffect(() => {
     const script = document.createElement('script');
     script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js';
@@ -82,4 +82,4 @@ const Rate = () => {
   );
 };
 
-export default Rate;
+export default Rate3;
