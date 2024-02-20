@@ -38,7 +38,7 @@ const Statistic = () => {
   }, []);
 
   return (
-    <div className="tradingview-widget-container py-8">
+    <div className="tradingview-widget-container my-8 w-full h-aut">
         <p className='text-[35px] md:text-[70px] font-bold gap-3 text-[#FFD700] '>Statistics</p>
       <div className="tradingview-widget-container__widget"></div>
       <div className="tradingview-widget-copyright">
