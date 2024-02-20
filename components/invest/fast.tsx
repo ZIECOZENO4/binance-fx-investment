@@ -7,7 +7,7 @@ export default function Fast() {
 
   return (
     <>
-      <Button onPress={onOpen} color="secondary">Open Modal</Button>
+      <Button onPress={onOpen} color="secondary">Deposit</Button>
       <Modal 
         backdrop="opaque" 
         isOpen={isOpen} 
@@ -31,21 +31,21 @@ export default function Fast() {
   <p className="font-bold">Connect Wallet</p>
   <p>To use this feature click on [Connect Wallet]</p>
 </div>
-<div className="bg-sky-600 border-l-4 border-orange text-orange-dark p-4" role="alert">
+<div className="bg-sky-600 border-l-4 border-orange text-orange-dark p-4 text-black" role="alert">
   <p className="font-bold">Copy FX Wallet Address</p>
   <p>Copy this address <span className="text-sky-700">[ox....ciiuvb098]</span></p>
 </div>
-<div className="bg-slate-400 border-l-4 border-orange text-orange-dark p-4" role="alert">
+<div className="bg-slate-400 border-l-4 border-orange text-orange-dark p-4 text-black" role="alert">
   <p className="font-bold">Send</p>
-  <p>Pasete the address and click on send, to invest on Binance FX</p>
+  <p>Paste the address and click on send, to deposit on Binance FX</p>
 </div>
-<div className="bg-green-600 border-l-4 border-orange text-orange-dark p-4" role="alert">
-  <p className="font-bold">Await Profit</p>
-  <p>You will receive your profit within the sepculated time on your plan.</p>
+<div className="bg-green-600 border-l-4 border-orange text-orange-dark p-4 text-black" role="alert">
+  <p className="font-bold">Await Confirmation</p>
+  <p>We will confirm the transaction and notify you as it reflects on your balace and wallet.</p>
 </div>
-<div className="bg-[#FFD700]  border-l-4 border-orange text-orange-dark p-4" role="alert">
+<div className="bg-[#FFD700]  border-l-4 border-orange text-orange-dark p-4 text-white" role="alert">
   <p className="font-bold">Congratulation</p>
-  <p>thanks for investing on Binance FX.</p>
+  <p>Thanks for investing on Binance FX.</p>
 </div>
               </ModalBody>
               <ModalFooter>
