@@ -5,7 +5,7 @@ import {Card, CardHeader, CardBody, CardFooter, Divider,  Image} from "@nextui-o
 const Wallet = () => {
   return (
     <div className=' flex flex-col justify-center align-middle items-center'>
-      <div  className=' flex flex-row justify-between align-middle gap-20 items-center'>
+      <div  className=' flex flex-row justify-between gap-20 '>
 <div className=' flex flex-row justify-start align-middle items-start'>
 <User 
 className=" text-2xl font-bold px-2 text-white"  

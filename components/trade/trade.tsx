@@ -1,51 +1,43 @@
 "use client"
-import React from 'react';
-import { useEffect, useState, useRef } from 'react';
-
+import React, { useEffect } from 'react';
 
 const Trade = () => {
-  const [data1, setData1] = useState(null);
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-screener.js';
+    script.async = true;
+    script.innerHTML = JSON.stringify({
+      "width": "100%",
+      "height": "100%",
+      "defaultColumn": "overview",
+      "defaultScreen": "general",
+      "market": "forex",
+      "showToolbar": true,
+      "colorTheme": "dark",
+      "locale": "en"
+    });
 
-  useEffect(
-    () => {
-      const script = document.createElement("script");
-      script.src = "https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js";
-      script.type = "text/javascript";
-      script.async = true;
-      script.innerHTML = `
-        {
-          "symbol": "FX:EURUSD"
-          "width": "100%",
-          "height": "40%",
-          "locale": "en",
-          "dateRange": "3M",
-          "colorTheme": "dark",
-          "isTransparent": false,
-          "autosize": true,
-          "largeChartUrl": "",
-        }`;
-  
-    },
-    []
-  );
+    const widgetContainer = document.querySelector('.tradingview-widget-container__widget');
+    if (widgetContainer) {
+      widgetContainer.appendChild(script);
+    }
 
+    return () => {
+      if (widgetContainer) {
+        widgetContainer.removeChild(script);
+      }
+    };
+  }, []);
 
   return (
-    <div className='text-bold text-white text-2xl flex-col flex justify-center align-middle'  >
- 
-<div className="tradingview-widget-container">
-  <div className="tradingview-widget-container__widget"></div>
-  <div className="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span className="blue-text">Track all markets on TradingView</span></a></div>
-</div>
-
-      <div className="flex flex-row justify-between mx-8">
-        <p className="text-bold">My Trade</p>
-        <p className="flex ">Enter</p>
+    <div className="tradingview-widget-container">
+      <div className="tradingview-widget-container__widget"></div>
+      <div className="tradingview-widget-copyright">
+        <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">
+          <span className="blue-text">Track all markets on TradingView</span>
+        </a>
       </div>
-      <div className='text-white flex flex-col  '>
-    
-      Coming Soon
-    </div>
     </div>
   );
 };

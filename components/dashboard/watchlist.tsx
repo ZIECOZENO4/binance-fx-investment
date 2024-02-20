@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-
+import TradingWatchlist from "../Wideget1"
 interface CoinDataItem {
   name: string;
   current_price: number;
@@ -73,6 +73,10 @@ const Watchlist = () => {
          </div>
         </div>
       ))}
+    </div>
+    <div>
+      <p className="flex  justify-start   items-start text-white font-bold font-sono text-2xl leading-8 gap-4">Binance FX Watchlist</p>
+      <TradingWatchlist />
     </div>
     </div>
   );
