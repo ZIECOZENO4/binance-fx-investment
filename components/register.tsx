@@ -14,7 +14,7 @@ const Register = () => {
       "isTransparent": false,
       "displayMode": "regular",
       "width": "100%",
-      "height": "100%",
+      "height": "300%",
       "colorTheme": "dark",
       "locale": "en"
     });
