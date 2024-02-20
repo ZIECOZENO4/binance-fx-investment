@@ -3,7 +3,6 @@ import React from 'react'
 
 const Options = () => {
   return (
-    <div>
     <div className='flex flex-col   align-middle justify-center md:p-8 py-10 md:px-2 px-6  text-white'>
 <div className=' md:flex  md:flex-wrap hidden md:flex-row md:justify-between md:gap-8 gap-2 md:p-4 p-1 md:items-center '>
 <div className=" font-bold md:text-xl text-md text-white flex-col gap-1 flex justify-center align-middle"> 
@@ -90,8 +89,8 @@ const Options = () => {
 <svg width="50px" height="50px" className='flex justify-center align-middle p-2' viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M12 9C11.4477 9 11 9.44771 11 10V15.5856L9.70711 14.2928C9.3166 13.9024 8.68343 13.9024 8.29292 14.2928C7.90236 14.6834 7.90236 15.3165 8.29292 15.7071L11.292 18.7063C11.6823 19.0965 12.3149 19.0968 12.7055 18.707L15.705 15.7137C16.0955 15.3233 16.0955 14.69 15.705 14.2996C15.3145 13.909 14.6814 13.909 14.2908 14.2996L13 15.5903V10C13 9.44771 12.5523 9 12 9Z" fill="#0F0F0F"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M21 1C22.6569 1 24 2.34315 24 4V8C24 9.65685 22.6569 11 21 11H19V20C19 21.6569 17.6569 23 16 23H8C6.34315 23 5 21.6569 5 20V11H3C1.34315 11 0 9.65685 0 8V4C0 2.34315 1.34315 1 3 1H21ZM22 8C22 8.55228 21.5523 9 21 9H19V7H20C20.5523 7 21 6.55229 21 6C21 5.44772 20.5523 5 20 5H4C3.44772 5 3 5.44772 3 6C3 6.55229 3.44772 7 4 7H5V9H3C2.44772 9 2 8.55228 2 8V4C2 3.44772 2.44772 3 3 3H21C21.5523 3 22 3.44772 22 4V8ZM7 7V20C7 20.5523 7.44772 21 8 21H16C16.5523 21 17 20.5523 17 20V7H7Z" fill="#0F0F0F"></path> </g></svg>
 </div>
 <p>WITHDRAW </p>
-</div>
 </Link>
+</div>
 <Link href="/dashboard/wallet" className='cursor-pointer flex  flex-row justify-between gap-2 md:p-4 p-1 items-center '>
 <div className=" font-bold  md:text-xl text-md text-white flex-col gap-1 flex justify-center align-middle"> 
 < className=' rounded-3xl w-full bg-gradient-to-r from-blue-600 to-sky-200 gap-1 flex justify-center align-middle"'>
