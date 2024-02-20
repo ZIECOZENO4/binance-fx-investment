@@ -3,6 +3,7 @@ import React from 'react'
 
 const Options = () => {
   return (
+    <div>
     <div className='flex flex-col   align-middle justify-center md:p-8 py-10 md:px-2 px-6  text-white'>
 <div className=' md:flex  md:flex-wrap hidden md:flex-row md:justify-between md:gap-8 gap-2 md:p-4 p-1 md:items-center '>
 <div className=" font-bold md:text-xl text-md text-white flex-col gap-1 flex justify-center align-middle"> 
@@ -141,11 +142,6 @@ const Options = () => {
 </Link>
 </div >
 </div>
- </div>  
- 
-
-  
-
 
   )
 }
