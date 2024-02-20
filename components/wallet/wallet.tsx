@@ -100,7 +100,7 @@ const Wallet = () => {
 
   <div className="container  m-4">
     <div className="max-w-3xl w-full mx-auto grid gap-4 grid-cols-1">
-      {/* <!-- alert --> */}
+ 
       <div className="flex flex-col justify-center p-4 bg-gray-800 border-gray-800 shadow-md hover:shodow-lg rounded-2xl">
         <div className=" text-gray-400 flex items-center ">
           <img className="w-6 mr-2" src="https://v1.tailwindcss.com/_next/static/media/tailwindcss-mark.6ea76c3b72656960a6ae5ad8b85928d0.svg" alt="taiwind css" />
