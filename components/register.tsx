@@ -41,22 +41,21 @@ const Register = () => {
       <p className="text-[35px] md:text-[70px] font-bold gap-3 text-[#FFD700] ">INVESTORS</p>
       <p className="text-[35px] md:text-[70px] font-bold gap-3 text-[#FFD700] ">TRUST US</p>
       <div className=" flex flex-row justify-between md:justify-start gap-8  ">
-      <Link href="/sign-up">
+    
  <button className='rounded-3xl font-bold justify-center align-middle text-2xl border-spacing-8 space-x-8 border-b-large border-blue-200 bg-green-600 md:ml-8'>
    
     <SignUpButton mode="modal" afterSignInUrl="/dashboard" afterSignUpUrl="/dashboard">
     <p className='p-3'>SIGN UP</p>
     </SignUpButton>
  </button>
-</Link>
-<Link href="/sign-in">
+
  <button className='rounded-3xl font-bold justify-center px-8 align-middle text-2xl border-spacing-8 space-x-8 border-b-large border-blue-200 bg-[#FFD700]'>
   
     <SignInButton mode="modal" afterSignInUrl="/dashboard" afterSignUpUrl="/dashboard">
     <p className='p-3 text-black'>SIGN IN</p>
     </SignInButton>
  </button>
-</Link>
+
       </div>
    
       </div>
