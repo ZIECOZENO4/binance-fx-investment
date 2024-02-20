@@ -13,8 +13,8 @@ const Register = () => {
       "feedMode": "all_symbols",
       "isTransparent": false,
       "displayMode": "regular",
-      "width": "100%",
-      "height": "300%",
+      "autosize": true,
+           "height": "500",
       "colorTheme": "dark",
       "locale": "en"
     });
@@ -56,7 +56,7 @@ const Register = () => {
    
 
 
-    <div className="tradingview-widget-container">
+    <div className="tradingview-widget-container py-8">
       <div className="tradingview-widget-container__widget"></div>
       <div className="tradingview-widget-copyright">
         <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">
