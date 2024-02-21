@@ -69,7 +69,7 @@ const Options = () => {
 <p>CLAIMS </p>
 </div>
       </div>
-
+      </div>
 <div className=" md:hidden">
 <div className='flex  flex-row justify-between  gap-2 md:p-4 p-1 items-center '>
 <Link href="/dashboard/invest" className="cursor-poniter font-bold md:text-xl  text-md text-white flex-col gap-1 flex justify-center align-middle"> 
@@ -142,7 +142,7 @@ const Options = () => {
 </div >
 </div>
 </div>
-</div>
+
   )
 }
 

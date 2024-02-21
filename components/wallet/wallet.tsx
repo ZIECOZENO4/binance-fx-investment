@@ -1,8 +1,15 @@
+'use client'
+import { useUser } from "@clerk/clerk-react";
+import { SignedIn, SignedOut, UserButton,  } from "@clerk/nextjs";
 import React from 'react'
 import {User, Link} from "@nextui-org/react";
 import {Card, CardHeader, CardBody, CardFooter, Divider,  Image} from "@nextui-org/react";
 
 const Wallet = () => {
+  const { isLoaded, isSignedIn, user } = useUser();
+  if (!isLoaded) {
+    return null;
+  }
   return (
     <div   className=' flex flex-col justify-center align-middle items-center'>
       <div    className=' flex flex-row justify-between gap-20 '>
