@@ -70,7 +70,7 @@ const Options = () => {
 </div>
       </div>
       </div>
-<div className=" md:hidden">
+<div className="flex flex-col md:hidden">
 <div className='flex  flex-row justify-between  gap-2 md:p-4 p-1 items-center '>
 <Link href="/dashboard/invest" className="cursor-poniter font-bold md:text-xl  text-md text-white flex-col gap-1 flex justify-center align-middle"> 
 <div className=' rounded-3xl w-full bg-gradient-to-r from-blue-600 to-sky-200 gap-1 flex justify-center align-middle"'>
