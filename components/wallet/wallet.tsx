@@ -3,7 +3,7 @@ import { useUser } from "@clerk/clerk-react";
 import { SignedIn, SignedOut, UserButton,  } from "@clerk/nextjs";
 import React from 'react'
 import {User, Link} from "@nextui-org/react";
-import {Card, CardHeader, CardBody, CardFooter, Divider,  Image} from "@nextui-org/react";
+import {Button} from "@nextui-org/react";
 
 const Wallet = () => {
   const { isLoaded, isSignedIn, user } = useUser();
@@ -206,7 +206,29 @@ Edit
       </div>
        <div   className='break-inside relative overflow-hidden flex flex-col justify-between space-y-2 text-sm rounded-xl w-[80%] p-4 mb-4 bg-[#5E17F4] text-white'>
      
- 
+     <Button
+      disableRipple
+      className="relative overflow-visible rounded-full hover:-translate-y-1 px-12 shadow-xl bg-background/30 after:content-[''] after:absolute after:rounded-full after:inset-0 after:bg-background/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0"
+      size="lg"
+    >
+      Deposit
+    </Button>
+
+        <Button
+      disableRipple
+      className="relative overflow-visible rounded-full hover:-translate-y-1 px-12 shadow-xl bg-background/30 after:content-[''] after:absolute after:rounded-full after:inset-0 after:bg-background/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0"
+      size="lg"
+    >
+      Withdraw
+    </Button>
+
+        <Button
+      disableRipple
+      className="relative overflow-visible rounded-full hover:-translate-y-1 px-12 shadow-xl bg-background/30 after:content-[''] after:absolute after:rounded-full after:inset-0 after:bg-background/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0"
+      size="lg"
+    >
+      Invesr
+    </Button>
         <div   className='flex justify-between items-center'>
             <span>Report Issues</span>
             <button   className='flex items-center justify-center text-xs font-medium rounded-full px-4 py-2 space-x-1 bg-white text-black'>
