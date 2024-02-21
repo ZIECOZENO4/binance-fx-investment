@@ -12,86 +12,29 @@ const Wallet = () => {
   }
   return (
     <div   className=' flex flex-col justify-center align-middle items-center'>
-      <div    className=' flex flex-row justify-between gap-20 '>
-<div   className=' flex flex-row justify-start align-middle items-start'>
-
-</div>
-<div   className=' flex flex-row justify-end align-middle items-end ml-4'>
+ 
 {/* <svg width="24px" height="24px" viewBox="-3 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"  fill="#2b2fa6" stroke="#2b2fa6"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="icomoon-ignore"> </g> <path d="M13.11 29.113c7.243 0 13.113-5.871 13.113-13.113s-5.87-13.113-13.113-13.113c-7.242 0-13.113 5.871-13.113 13.113s5.871 13.113 13.113 13.113zM13.11 3.936c6.652 0 12.064 5.412 12.064 12.064s-5.412 12.064-12.064 12.064c-6.653 0-12.064-5.412-12.064-12.064s5.411-12.064 12.064-12.064z" fill="#000000"> </path> <path d="M13.906 21.637l0.742 0.742 6.378-6.379-6.378-6.379-0.742 0.742 5.112 5.112h-12.727v1.049h12.727z" fill="#000000"> </path> </g></svg> */}
-</div>
-      </div>
-   <div>
-
-<div   className='flex items-center justify-center flex-col w-full bg-slate-200'>
-   
-    <div   className='break-inside relative overflow-hidden flex flex-col justify-between space-y-3 text-sm rounded-xl max-w-[23rem] p-4 mb-4 bg-white text-black dark:bg-slate-800 dark:text-white'>
-        <div   className='flex items-center justify-between font-medium'>
-            <span   className='uppercase text-xs text-green-500'>upgrade team</span>
-            <span   className='text-xs text-slate-500'>#teamsdesigners</span>
-        </div>
-        <div   className='flex flex-row items-center space-x-3'>
-            <div   className='flex flex-none items-center justify-center w-10 h-10 rounded-full bg-green-500 text-white'>
-            <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'>
-                <polygon points='14 2 18 6 7 17 3 17 3 13 14 2' />
-                <line x1='3' y1='22' x2='21' y2='22' />
-            </svg>
-            </div>
-            <span   className='text-base font-medium'>Upgrade your team for better performance</span>
-        </div>
-        <div> Lorem ipsum dolor sit amet, consectetur adipiscing elitsed do eiusmod.</div>
-        <div   className='flex justify-between items-center'>
-            <div>
-            <dt   className='sr-only'>Users</dt>
-            <dd   className='flex justify-start -space-x-1.5'>
-                <a href='#'   className='inline-block -m-1'>
-                <img   className='w-7 h-7 rounded-full ring-2 ring-white dark:ring-slate-800' src='https://randomuser.me/api/portraits/women/46.jpg' alt='avatar' />
-                </a>
-                <a href='#'   className='inline-block -m-1'>
-                <img   className='w-7 h-7 rounded-full ring-2 ring-white dark:ring-slate-800' src='https://randomuser.me/api/portraits/men/45.jpg' alt='avatar' />
-                </a>
-                <a href='#'   className='inline-block -m-1'>
-                <img   className='w-7 h-7 rounded-full ring-2 ring-white dark:ring-slate-800' src='https://randomuser.me/api/portraits/women/47.jpg' alt='avatar' />
-                </a>
-                <span   className='inline-block -m-1 rounded-full ring-2 ring-white dark:ring-slate-800'>
-                <svg width='28' height='28' viewBox='0 0 31 31' fill='none' xmlns='http://www.w3.org/2000/svg'   className='text-slate-200 dark:text-slate-600'>
-                    <path d='M31 15.5C31 24.0604 24.0604 31 15.5 31C6.93959 31 0 24.0604 0 15.5C0 6.93959 6.93959 0 15.5 0C24.0604 0 31 6.93959 31 15.5ZM8.20879 15.5C8.20879 19.5268 11.4732 22.7912 15.5 22.7912C19.5268 22.7912 22.7912 19.5268 22.7912 15.5C22.7912 11.4732 19.5268 8.20879 15.5 8.20879C11.4732 8.20879 8.20879 11.4732 8.20879 15.5Z' fill='currentColor' />
-                    <path d='M31 15.5C31 18.049 30.3714 20.5586 29.1698 22.8066C27.9682 25.0547 26.2307 26.9716 24.1113 28.3878C21.9919 29.8039 19.556 30.6755 17.0193 30.9254C14.4826 31.1752 11.9234 30.7956 9.56841 29.8201C7.21345 28.8447 5.1354 27.3035 3.51834 25.3331C1.90128 23.3627 0.795112 21.0239 0.297828 18.5239C-0.199455 16.0239 -0.0725081 13.4398 0.667425 11.0006C1.40736 8.56136 2.73744 6.34225 4.53984 4.53985L10.2876 10.2876C9.43046 11.1448 8.79791 12.2002 8.44602 13.3602C8.09413 14.5202 8.03376 15.7491 8.27025 16.9381C8.50675 18.127 9.03281 19.2393 9.80184 20.1764C10.5709 21.1134 11.5591 21.8464 12.6791 22.3103C13.799 22.7742 15.0161 22.9547 16.2225 22.8359C17.4289 22.7171 18.5874 22.3026 19.5953 21.6291C20.6033 20.9556 21.4295 20.0439 22.001 18.9748C22.5724 17.9058 22.8714 16.7122 22.8714 15.5H31Z' fill='#2BC86A' />
-                </svg>
-                </span>
-            </dd>
-            </div>
-            <button   className='flex items-center justify-center text-xs font-medium rounded-full px-4 py-1 space-x-1 border-2 border-black bg-white hover:bg-black hover:text-white text-black dark:bg-slate-800 dark:text-white dark:border-white dark:hover:bg-white dark:hover:text-black'>
-            <span>Submit</span>
-            <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'>
-                <path d='M5 12h13M12 5l7 7-7 7' />
-            </svg>
-            </button>
-        </div>
-        </div>
-</div>
-   </div>
-
 <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900">
 
   <div className="container  m-4">
     <div className="max-w-3xl w-full mx-auto grid gap-4 grid-cols-1">
 
       <div className="flex flex-col sticky top-0 z-10">
-        <div className="bg-gray-800 border border-gray-800 shadow-lg  p-4">
+        <div className="bg-gray-800 border border-gray-800 shadow-lg  py-4">
           <div className="flex-none sm:flex">
-            <div className=" relative h-32 w-32 fl  sm:mb-0 mb-3">
+            <div className=" relative h-auto w-full   sm:mb-0 mb-3">
             <SignedIn>
         { isSignedIn &&       
         <div className="flex justify-between align-middle items-center ">
             <div className="flex items-center">
-                <img className="h-24 w-24 rounded-full" src={ user ? user.imageUrl : "/images/ph.PNG"} alt=""/>
+                <img className="h-16 w-16 rounded-full" src={ user ? user.imageUrl : "/images/ph.PNG"} alt=""/>
                 <div className="ml-2">
                     <h3 className="text-2xl text-white font-bold font-serif">{ user ? user.firstName : "Binance FX User"}</h3>
-                    <span className="text-blue-600 text-xl">ID: 1FDRCTYVUIB4567</span>
+                    <span className="text-blue-600 text-xl">ID: 1FDRCTYVUI</span>
                 </div>
             </div>
             <div className="mt-2 sm:mt-0">
-                <button className="flex text-2xl items-center text-white bg-red-600 rounded px-2 py-1 hover:bg-red-500 focus:outline-none focus:shadow-outline">
+                <button className="flex text-xl items-center text-white bg-red-600 rounded px-2 py-1 hover:bg-red-500 focus:outline-none focus:shadow-outline">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-5 h-5">
   <path d="M13.488 2.513a1.75 1.75 0 0 0-2.475 0L6.75 6.774a2.75 2.75 0 0 0-.596.892l-.848 2.047a.75.75 0 0 0 .98.98l2.047-.848a2.75 2.75 0 0 0 .892-.596l4.261-4.262a1.75 1.75 0 0 0 0-2.474Z" />
   <path d="M4.75 3.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h6.5c.69 0 1.25-.56 1.25-1.25V9A.75.75 0 0 1 14 9v2.25A2.75 2.75 0 0 1 11.25 14h-6.5A2.75 2.75 0 0 1 2 11.25v-6.5A2.75 2.75 0 0 1 4.75 2H7a.75.75 0 0 1 0 1.5H4.75Z" />
@@ -127,26 +70,6 @@ Edit
             <div className="flex-auto sm:ml-5 justify-evenly">
         
               <div className="flex flex-row items-center">
-                <div className="flex">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5 text-yellow-400">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                    </path>
-                  </svg>
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5 text-yellow-400">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                    </path>
-                  </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5 text-yellow-400">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                    </path>
-                  </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5 text-yellow-400">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                    </path>
-                  </svg>
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-5 w-5 text-yellow-400">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z">
-                    </path>
-                  </svg>
-                </div>
                 <div className="flex-1 inline-flex   items-center ml-2 space-x-2">
                   <Link href="https://www.behance.net/ajeeshmon" target="_blank"><svg className=" cursor-pointer w-5 h-5 p-1  rounded-2xl hover:bg-blue-500 hover:text-white transition ease-in duration-300" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="48" height="48" viewBox="0 0 172 172">
                       <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" className="mix-blend-mode: normal fill:#4a90e2;">
@@ -181,30 +104,22 @@ Edit
                     <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z">
                     </path>
                   </svg>
-                  <p className="">1.2k Followers</p>
+                  <p className="">Tier 1</p>
                 </div>
                 <div className="flex-1 inline-flex items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z" clip-rule="evenodd"></path>
                   </svg>
-                  <p className="">14 Components</p>
+                  <p className="">Junior</p>
                 </div>
-                <Link href="https://www.behance.net/ajeeshmon" target="_blank" className="flex-no-shrink bg-green-400 hover:bg-green-500 px-5 ml-4 py-2 text-xs shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-green-300 hover:border-green-500 text-white rounded-full transition ease-in duration-300">FOLLOW</Link>
+                <Link href="https://www.behance.net/ajeeshmon" target="_blank" className="flex-no-shrink bg-green-400 hover:bg-green-500 px-5 ml-4 py-2 text-xs shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-green-300 hover:border-green-500 text-white rounded-full transition ease-in duration-300">Upgrade</Link>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="flex flex-col justify-center p-4 bg-gray-800 border-gray-800 shadow-md hover:shodow-lg rounded-2xl">
-        <div className=" text-gray-400 flex items-center ">
-        <svg fill="#30bb35" width="30px" height="30px" viewBox="0 0 32 32" id="icon" xmlns="http://www.w3.org/2000/svg" stroke="#30bb35"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <defs> <style> .cls-1  </style> </defs> <title>upgrade</title> <path d="M21,24H11a2,2,0,0,0-2,2v2a2,2,0,0,0,2,2H21a2,2,0,0,0,2-2V26A2,2,0,0,0,21,24Zm0,4H11V26H21Z"></path> <path d="M28.707,14.293l-12-12a.9994.9994,0,0,0-1.414,0l-12,12A1,1,0,0,0,4,16H9v4a2.0023,2.0023,0,0,0,2,2H21a2.0027,2.0027,0,0,0,2-2V16h5a1,1,0,0,0,.707-1.707ZM21,14v6H11V14H6.4141L16,4.4141,25.5859,14Z"></path> <rect id="_Transparent_Rectangle_" data-name="<Transparent Rectangle>" className="cls-1" width="32" height="32"></rect> </g></svg>
-          <p> Upgrade your account to get access to all features
-            components at <Link href="/" className="underline hover:underline-none ml-1 text-green-300" target="_blank">Help Team</Link></p><button type="button" className="ml-auto text-xs  font-medium tracking-wider  text-gray-400 text-gray-400 hover:text-green-400 transition ease-in duration-300"><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-            </svg> click</button>
-        </div>
-      </div>
-       <div   className='break-inside relative overflow-hidden flex flex-col justify-between space-y-2 text-sm rounded-xl w-[80%] p-4 mb-4 bg-[#5E17F4] text-white'>
+
+       <div   className='break-inside relative overflow-hidden flex flex-row justify-between space-y-2 text-md rounded-xl w-[80%] p-4 mb-4 bg-[#5E17F4] text-white'>
      
      <Button
       disableRipple
@@ -239,6 +154,53 @@ Edit
             </button>
         </div>
     </div>
+    <div   className='flex items-center justify-center flex-col w-full bg-slate-200'>
+   
+    <div   className='break-inside relative overflow-hidden flex flex-col justify-between space-y-3 text-sm rounded-xl max-w-[23rem] p-4 mb-4 bg-white text-black dark:bg-slate-800 dark:text-white'>
+        <div   className='flex items-center justify-between font-medium'>
+            <span   className='uppercase text-xs text-green-500'>upgrade Now</span>
+            <span   className='text-xs text-slate-500'>Help Team</span>
+        </div>
+        <div   className='flex flex-row items-center space-x-3'>
+            <div   className='flex flex-none items-center justify-center w-10 h-10 rounded-full bg-green-500 text-white'>
+            <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'>
+                <polygon points='14 2 18 6 7 17 3 17 3 13 14 2' />
+                <line x1='3' y1='22' x2='21' y2='22' />
+            </svg>
+            </div>
+            <span   className='text-base font-medium'>Upgrade now to enjoy all Binace fx Features and benefits</span>
+        </div>
+        <div> Inorder to be given licence and to be able to get the latest news and partake in the vip investment plan u need to upgrade to Premium Account, so upgrade now.</div>
+        <div   className='flex justify-between items-center'>
+            <div>
+            <dt   className='sr-only'>Investors</dt>
+            <dd   className='flex justify-start -space-x-1.5'>
+                <a href='#'   className='inline-block -m-1'>
+                <img   className='w-7 h-7 rounded-full ring-2 ring-white dark:ring-slate-800' src='https://randomuser.me/api/portraits/women/46.jpg' alt='avatar' />
+                </a>
+                <a href='#'   className='inline-block -m-1'>
+                <img   className='w-7 h-7 rounded-full ring-2 ring-white dark:ring-slate-800' src='https://randomuser.me/api/portraits/men/45.jpg' alt='avatar' />
+                </a>
+                <a href='#'   className='inline-block -m-1'>
+                <img   className='w-7 h-7 rounded-full ring-2 ring-white dark:ring-slate-800' src='https://randomuser.me/api/portraits/women/47.jpg' alt='avatar' />
+                </a>
+                <span   className='inline-block -m-1 rounded-full ring-2 ring-white dark:ring-slate-800'>
+                <svg width='28' height='28' viewBox='0 0 31 31' fill='none' xmlns='http://www.w3.org/2000/svg'   className='text-slate-200 dark:text-slate-600'>
+                    <path d='M31 15.5C31 24.0604 24.0604 31 15.5 31C6.93959 31 0 24.0604 0 15.5C0 6.93959 6.93959 0 15.5 0C24.0604 0 31 6.93959 31 15.5ZM8.20879 15.5C8.20879 19.5268 11.4732 22.7912 15.5 22.7912C19.5268 22.7912 22.7912 19.5268 22.7912 15.5C22.7912 11.4732 19.5268 8.20879 15.5 8.20879C11.4732 8.20879 8.20879 11.4732 8.20879 15.5Z' fill='currentColor' />
+                    <path d='M31 15.5C31 18.049 30.3714 20.5586 29.1698 22.8066C27.9682 25.0547 26.2307 26.9716 24.1113 28.3878C21.9919 29.8039 19.556 30.6755 17.0193 30.9254C14.4826 31.1752 11.9234 30.7956 9.56841 29.8201C7.21345 28.8447 5.1354 27.3035 3.51834 25.3331C1.90128 23.3627 0.795112 21.0239 0.297828 18.5239C-0.199455 16.0239 -0.0725081 13.4398 0.667425 11.0006C1.40736 8.56136 2.73744 6.34225 4.53984 4.53985L10.2876 10.2876C9.43046 11.1448 8.79791 12.2002 8.44602 13.3602C8.09413 14.5202 8.03376 15.7491 8.27025 16.9381C8.50675 18.127 9.03281 19.2393 9.80184 20.1764C10.5709 21.1134 11.5591 21.8464 12.6791 22.3103C13.799 22.7742 15.0161 22.9547 16.2225 22.8359C17.4289 22.7171 18.5874 22.3026 19.5953 21.6291C20.6033 20.9556 21.4295 20.0439 22.001 18.9748C22.5724 17.9058 22.8714 16.7122 22.8714 15.5H31Z' fill='#2BC86A' />
+                </svg>
+                </span>
+            </dd>
+            </div>
+            <button   className='flex items-center justify-center text-xs font-medium rounded-full px-4 py-1 space-x-1 border-2 border-black bg-white hover:bg-black hover:text-white text-black dark:bg-slate-800 dark:text-white dark:border-white dark:hover:bg-white dark:hover:text-black'>
+            <span>Upgrade</span>
+            <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'>
+                <path d='M5 12h13M12 5l7 7-7 7' />
+            </svg>
+            </button>
+        </div>
+        </div>
+</div>
       <div className="grid grid-cols-12 gap-4 ">
         <div className="col-span-12 sm:col-span-4">
           <div className="p-4 relative  bg-gray-800 border border-gray-800 shadow-lg  rounded-2xl">
