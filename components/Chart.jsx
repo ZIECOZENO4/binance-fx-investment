@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect, useRef, memo } from 'react';
-
+import Statistic from "./statistics"
 function TradingViewWidget() {
   const container = useRef();
 
@@ -45,10 +45,14 @@ function TradingViewWidget() {
   );
 
   return (
+    <div className="flex flex-col">
     <div className="tradingview-widget-container h-[220vh] w-[90vw]" ref={container} style={{ height: "300%", width: "90%" }}>
       <div className="tradingview-widget-container__widget  h-[220vh] w-[90vw]" style={{ height: "calc(300% - 32px)", width: "90%" }}></div>
       <div className="tradingview-widget-copyright" ></div>
     </div>
+    <Statistic />
+    </div>
+
   );
 }
 

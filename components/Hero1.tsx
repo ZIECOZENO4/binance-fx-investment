@@ -4,6 +4,7 @@ import TypingComponent from "./typing";
 import { useAddress } from "@thirdweb-dev/react";
 import { useRouter } from "next/navigation";
 import AutoScrollingComponent from "./autoscroll";
+import Rate3 from "./rate3";
 
 
 function Hero1() {
@@ -87,6 +88,7 @@ function Hero1() {
           </div>
         </div>
       </div>
+      <Rate3 />
     </div>
   );
 }
