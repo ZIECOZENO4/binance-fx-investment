@@ -42,6 +42,9 @@ const Statistic = () => {
         <p className='text-[35px] md:text-[70px] font-bold gap-3 text-[#FFD700] '>Statistics</p>
       <div className="tradingview-widget-container__widget"></div>
       <div className="tradingview-widget-copyright">
+      <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">
+          <span className="blue-text font-bold text-2xl">Track all Statistics on Binance FX</span>
+        </a>
       </div>
     </div>
   );
