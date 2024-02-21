@@ -62,7 +62,7 @@ const Register = () => {
    
 
 
-    <div className="tradingview-widget-container py-8 w-full h-auto">
+    <div className="tradingview-widget-container py-8 w-[100vw]  md:w-[50vw] h-[100vh]">
       <div className="tradingview-widget-container__widget"></div>
       <div className="tradingview-widget-copyright">
   

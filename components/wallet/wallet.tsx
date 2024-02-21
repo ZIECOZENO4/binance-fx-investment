@@ -100,28 +100,21 @@ const Wallet = () => {
 
   <div className="container  m-4">
     <div className="max-w-3xl w-full mx-auto grid gap-4 grid-cols-1">
- 
-      <div className="flex flex-col justify-center p-4 bg-gray-800 border-gray-800 shadow-md hover:shodow-lg rounded-2xl">
-        <div className=" text-gray-400 flex items-center ">
-          <img className="w-6 mr-2" src="https://v1.tailwindcss.com/_next/static/media/tailwindcss-mark.6ea76c3b72656960a6ae5ad8b85928d0.svg" alt="taiwind css" />
-          <p> A free repository for community
-            components at <Link href="https://tailwindcomponents.com/u/aji" className="underline hover:underline-none ml-1 text-green-300" target="_blank">tailwindcomponets</Link></p><button type="button" className="ml-auto text-xs  font-medium tracking-wider  text-gray-400 text-gray-400 hover:text-green-400 transition ease-in duration-300"><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-            </svg> click</button>
-        </div>
-      </div>
-      {/* <!-- profile card --> */}
+
       <div className="flex flex-col sticky top-0 z-10">
         <div className="bg-gray-800 border border-gray-800 shadow-lg  rounded-2xl p-4">
           <div className="flex-none sm:flex">
             <div className=" relative h-32 w-32   sm:mb-0 mb-3">
-              <img src="https://tailwindcomponents.com/storage/avatars/njkIbPhyZCftc4g9XbMWwVsa7aGVPajYLRXhEeoo.jpg" alt="aji" className=" w-32 h-32 object-cover rounded-2xl" />
-              <a href="#" className="absolute -right-2 bottom-2   -ml-3  text-white p-1 text-xs bg-green-400 hover:bg-green-500 font-medium tracking-wider rounded-full transition ease-in duration-300">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4">
-                  <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z">
-                  </path>
-                </svg>
-              </a>
+            <SignedIn>
+        <UserButton/>
+        { isSignedIn && <div className="font-serif flex text-header text-xl flex flex-col gap-8  md:text-2xl font-bold font-sans gap-3 text-white uppercase text-2xl text-white"> <p>INVESTOR  {user.firstName}</p>
+        <p className="text-sky-800">ID: 13243vdv243aa</p>
+        </div> }
+              </SignedIn>
+      <SignedOut>
+      <img src='/images/bf.png' alt='user imag' className=' h-10 w-10 rounded-full object-cover align-middle justify-start'/>
+      <p className=' text-2xl font-bold font-serif gap-3 text-white'> FX INVESTOR</p>
+      </SignedOut>
             </div>
             <div className="flex-auto sm:ml-5 justify-evenly">
               <div className="flex items-center justify-between sm:mt-2">
@@ -203,7 +196,15 @@ const Wallet = () => {
           </div>
         </div>
       </div>
-
+      <div className="flex flex-col justify-center p-4 bg-gray-800 border-gray-800 shadow-md hover:shodow-lg rounded-2xl">
+        <div className=" text-gray-400 flex items-center ">
+          <img className="w-6 mr-2" src="https://v1.tailwindcss.com/_next/static/media/tailwindcss-mark.6ea76c3b72656960a6ae5ad8b85928d0.svg" alt="taiwind css" />
+          <p> A free repository for community
+            components at <Link href="https://tailwindcomponents.com/u/aji" className="underline hover:underline-none ml-1 text-green-300" target="_blank">tailwindcomponets</Link></p><button type="button" className="ml-auto text-xs  font-medium tracking-wider  text-gray-400 text-gray-400 hover:text-green-400 transition ease-in duration-300"><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+            </svg> click</button>
+        </div>
+      </div>
       <div className="grid grid-cols-12 gap-4 ">
         <div className="col-span-12 sm:col-span-4">
           <div className="p-4 relative  bg-gray-800 border border-gray-800 shadow-lg  rounded-2xl">
