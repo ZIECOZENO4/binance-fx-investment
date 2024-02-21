@@ -60,7 +60,7 @@ const Rate3 = () => {
       "locale": "en"
     });
 
-    const widgetContainer = document.querySelector('.tradingview-widget-container__widget');
+    const widgetContainer = document.querySelector('.tradingview-widget-container__widget5');
     if (widgetContainer) {
       widgetContainer.appendChild(script);
     }
@@ -73,9 +73,9 @@ const Rate3 = () => {
   }, []);
 
   return (
-    <div className="tradingview-widget-container mt-4">
-      <div className="tradingview-widget-container__widget"></div>
-      <div className="tradingview-widget-copyright">
+    <div className="tradingview-widget-container5 mt-4">
+      <div className="tradingview-widget-container__widget5"></div>
+      <div className="tradingview-widget-copyright5">
     
       </div>
     </div>
