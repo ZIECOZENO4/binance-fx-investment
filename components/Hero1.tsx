@@ -80,7 +80,7 @@ function Hero1() {
           </div>
           <div className="">
             <img
-              src="/images/hero1.jpg"
+              src="/images/ph.PNG"
               className="w-[60vw] h-[50vh] object-cover rounded-3xl"
               alt="hero 1"
             />
