@@ -51,7 +51,7 @@ export default function SmNavbar() {
           <Link href="/login">Login</Link>
         </NavbarItem>
         <NavbarItem>
-          <Button as={Link} color="success" href="/connect-wallet" variant="flat">
+          <Button  color="success"  variant="flat">
             <ConnectButton />
           </Button>
         </NavbarItem>
