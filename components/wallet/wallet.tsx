@@ -111,29 +111,54 @@ const Wallet = () => {
       <div className="flex flex-col sticky top-0 z-10">
         <div className="bg-gray-800 border border-gray-800 shadow-lg  rounded-2xl p-4">
           <div className="flex-none sm:flex">
-            <div className=" relative h-32 w-32   sm:mb-0 mb-3">
+            <div className=" relative h-32 w-32 fl  sm:mb-0 mb-3">
             <SignedIn>
         <UserButton/>
-        { isSignedIn && <div className="font-serif flex text-header text-xl flex flex-col gap-8  md:text-2xl font-bold font-sans gap-3 text-white uppercase text-2xl text-white"> <p>INVESTOR  {user.firstName}</p>
-        <p className="text-sky-800">ID: 13243vdv243aa</p>
+        { isSignedIn &&       <div className="sm:flex sm:justify-between">
+            <div className="flex items-center">
+              
+                <img className="h-12 w-12 rounded-full" src={ user ? user.imageUrl : "/images/ph.PNG"} alt=""/>
+                <div className="ml-2">
+                    <h3 className="text-lg text-gray-800 font-medium">{ user ? user.username : "Binance FX User"}</h3>
+                    <span className="text-gray-600">ID: 1</span>
+                </div>
+            </div>
+            <div className="mt-2 sm:mt-0">
+                <button className="flex text-sm items-center text-white bg-blue-600 rounded px-2 py-1 hover:bg-blue-500 focus:outline-none focus:shadow-outline">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-5 h-5">
+  <path d="M13.488 2.513a1.75 1.75 0 0 0-2.475 0L6.75 6.774a2.75 2.75 0 0 0-.596.892l-.848 2.047a.75.75 0 0 0 .98.98l2.047-.848a2.75 2.75 0 0 0 .892-.596l4.261-4.262a1.75 1.75 0 0 0 0-2.474Z" />
+  <path d="M4.75 3.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h6.5c.69 0 1.25-.56 1.25-1.25V9A.75.75 0 0 1 14 9v2.25A2.75 2.75 0 0 1 11.25 14h-6.5A2.75 2.75 0 0 1 2 11.25v-6.5A2.75 2.75 0 0 1 4.75 2H7a.75.75 0 0 1 0 1.5H4.75Z" />
+</svg>
+Edit
+                </button>
+            </div>
         </div> }
               </SignedIn>
       <SignedOut>
-      <img src='/images/bf.png' alt='user imag' className=' h-10 w-10 rounded-full object-cover align-middle justify-start'/>
-      <p className=' text-2xl font-bold font-serif gap-3 text-white'> FX INVESTOR</p>
+      <div className="sm:flex sm:justify-between">
+            <div className="flex items-center">
+              
+                <img className="h-12 w-12 rounded-full" src="https://lh3.googleusercontent.com/a-/AOh14Gi0DgItGDTATTFV6lPiVrqtja6RZ_qrY91zg42o-g" alt=""/>
+                <div className="ml-2">
+                    <h3 className="text-lg text-gray-800 font-medium">Binance FX User</h3>
+                    <span className="text-gray-600">ID:0</span>
+                </div>
+            </div>
+            <div className="mt-2 sm:mt-0">
+            <button className="flex text-sm items-center text-white bg-blue-600 rounded px-2 py-1 hover:bg-blue-500 focus:outline-none focus:shadow-outline">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-5 h-5">
+  <path d="M13.488 2.513a1.75 1.75 0 0 0-2.475 0L6.75 6.774a2.75 2.75 0 0 0-.596.892l-.848 2.047a.75.75 0 0 0 .98.98l2.047-.848a2.75 2.75 0 0 0 .892-.596l4.261-4.262a1.75 1.75 0 0 0 0-2.474Z" />
+  <path d="M4.75 3.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h6.5c.69 0 1.25-.56 1.25-1.25V9A.75.75 0 0 1 14 9v2.25A2.75 2.75 0 0 1 11.25 14h-6.5A2.75 2.75 0 0 1 2 11.25v-6.5A2.75 2.75 0 0 1 4.75 2H7a.75.75 0 0 1 0 1.5H4.75Z" />
+</svg>
+Edit
+                </button>
+            </div>
+        </div>
       </SignedOut>
+ 
             </div>
             <div className="flex-auto sm:ml-5 justify-evenly">
-              <div className="flex items-center justify-between sm:mt-2">
-                <div className="flex items-center">
-                  <div className="flex flex-col">
-                    <div className="w-full flex-none text-lg text-gray-200 font-bold leading-none">Aji</div>
-                    <div className="flex-auto text-gray-400 my-1">
-                      <span className="mr-3 ">UI/UX Designer</span><span className="mr-3 border-r border-gray-600  max-h-0"></span><span>Cochin, IND</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+        
               <div className="flex flex-row items-center">
                 <div className="flex">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5 text-yellow-400">
