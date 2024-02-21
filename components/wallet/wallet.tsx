@@ -67,6 +67,8 @@ Edit
       </SignedOut>
  
             </div>
+
+
             <div className="flex-auto sm:ml-5 justify-evenly"> 
               <div className="flex p-2  text-sm text-gray-400 ">
                 <div className="flex-1 inline-flex items-center">
@@ -90,19 +92,22 @@ Edit
       </div>
 
        <div   className='break-inside relative overflow-hidden flex flex-col justify-between space-y-2 text-md rounded-xl w-[100%] p-4 mb-4 bg-[#5E17F4] text-white'>
-       <div   className='break-inside relative overflow-hidden flex flex-row justify-between space-y-2 text-md rounded-xl w-[100%] p-4 mb-4 bg-[#5E17F4] text-white'>
+       <div   className='break-inside relative gap-6 overflow-hidden flex flex-row justify-between space-y-2 text-md rounded-xl w-[100%] p-4 mb-4 bg-[#5E17F4] text-white'>
      <Button
       disableRipple
-      className="relative flex flex-col  align-middle overflow-visible rounded-full hover:-translate-y-1 px-12 shadow-xl bg-background/30 after:content-[''] after:absolute after:rounded-full after:inset-0 after:bg-background/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0"
+      className="relative flex flex-col m-3 align-middle overflow-visible rounded-full hover:-translate-y-1 px-12 shadow-xl bg-background/30 after:content-[''] after:absolute after:rounded-full after:inset-0 after:bg-background/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0"
       size="lg"
     >
+      <div>
       <svg fill="#000000" width="50px" className='flex justify-center align-middle p-2' height="50px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g data-name="11. Phone" id="_11._Phone"> <path d="M14,6a1,1,0,0,0,0-2H8A1,1,0,0,0,8,6Z"></path> <path d="M21,8.84v-4A4.8,4.8,0,0,0,16.21,0H5.79A4.8,4.8,0,0,0,1,4.79V27.21A4.8,4.8,0,0,0,5.79,32H16.21A4.8,4.8,0,0,0,21,27.21v-.05A10,10,0,0,0,21,8.84ZM16.21,30H5.79A2.79,2.79,0,0,1,3,27.21V4.79A2.79,2.79,0,0,1,5.79,2H16.21A2.79,2.79,0,0,1,19,4.79V8.2A10.2,10.2,0,0,0,17,8a9.92,9.92,0,0,0-7,2.89V10a1,1,0,0,0-2,0V26a1,1,0,0,0,2,0v-.89A9.92,9.92,0,0,0,17,28a10.19,10.19,0,0,0,1.93-.19A2.79,2.79,0,0,1,16.21,30ZM17,26a8,8,0,0,1-7-4.14V14.14A8,8,0,1,1,17,26Z"></path> <path d="M17,15h2a1,1,0,0,0,0-2H18a1,1,0,0,0-2,0v.18A3,3,0,0,0,17,19a1,1,0,0,1,0,2H15a1,1,0,0,0,0,2h1a1,1,0,0,0,2,0v-.18A3,3,0,0,0,17,17a1,1,0,0,1,0-2Z"></path> <path d="M30,5H27.41l.3-.29a1,1,0,1,0-1.42-1.42l-2,2a1,1,0,0,0,0,1.42l2,2a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42L27.41,7H30a1,1,0,0,0,0-2Z"></path> </g> </g></svg>
+      </div>
+
       Deposit
     </Button>
 
         <Button
       disableRipple
-      className="relative flex flex-col  align-middle overflow-visible rounded-full hover:-translate-y-1 px-12 shadow-xl bg-background/30 after:content-[''] after:absolute after:rounded-full after:inset-0 after:bg-background/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0"
+      className="relative flex flex-col m-3 align-middle overflow-visible rounded-full hover:-translate-y-1 px-12 shadow-xl bg-background/30 after:content-[''] after:absolute after:rounded-full after:inset-0 after:bg-background/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0"
       size="lg"
     >
       <svg width="50px" height="50px" className='flex justify-center align-middle p-2' viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M12 9C11.4477 9 11 9.44771 11 10V15.5856L9.70711 14.2928C9.3166 13.9024 8.68343 13.9024 8.29292 14.2928C7.90236 14.6834 7.90236 15.3165 8.29292 15.7071L11.292 18.7063C11.6823 19.0965 12.3149 19.0968 12.7055 18.707L15.705 15.7137C16.0955 15.3233 16.0955 14.69 15.705 14.2996C15.3145 13.909 14.6814 13.909 14.2908 14.2996L13 15.5903V10C13 9.44771 12.5523 9 12 9Z" fill="#0F0F0F"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M21 1C22.6569 1 24 2.34315 24 4V8C24 9.65685 22.6569 11 21 11H19V20C19 21.6569 17.6569 23 16 23H8C6.34315 23 5 21.6569 5 20V11H3C1.34315 11 0 9.65685 0 8V4C0 2.34315 1.34315 1 3 1H21ZM22 8C22 8.55228 21.5523 9 21 9H19V7H20C20.5523 7 21 6.55229 21 6C21 5.44772 20.5523 5 20 5H4C3.44772 5 3 5.44772 3 6C3 6.55229 3.44772 7 4 7H5V9H3C2.44772 9 2 8.55228 2 8V4C2 3.44772 2.44772 3 3 3H21C21.5523 3 22 3.44772 22 4V8ZM7 7V20C7 20.5523 7.44772 21 8 21H16C16.5523 21 17 20.5523 17 20V7H7Z" fill="#0F0F0F"></path> </g></svg>
@@ -111,7 +116,7 @@ Edit
 
         <Button
       disableRipple
-      className="relative flex flex-col  align-middle overflow-visible rounded-full hover:-translate-y-1 px-12 shadow-xl bg-background/30 after:content-[''] after:absolute after:rounded-full after:inset-0 after:bg-background/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0"
+      className="relative flex flex-col m-3 align-middle overflow-visible rounded-full hover:-translate-y-1 px-12 shadow-xl bg-background/30 after:content-[''] after:absolute after:rounded-full after:inset-0 after:bg-background/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0"
       size="lg"
     >
         <svg fill="black" className='flex justify-center align-middle p-2' version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="50px" height="50px"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <rect x="312.016" y="295.693" width="15.706" height="95.28"></rect> </g> </g> <g> <g> <rect x="320.393" y="464.266" width="15.706" height="15.706"></rect> </g> </g> <g> <g> <polygon points="0,0.428 0,288.363 104.703,288.363 104.703,272.657 15.706,272.657 15.706,16.134 496.294,16.134 496.294,272.657 225.112,272.657 225.112,288.363 512,288.363 512,0.428 "></polygon> </g> </g> <g> <g> <path d="M192.654,255.905h287.935V31.839H31.411v224.065h73.292v-15.706H47.117V47.545h152.811 c-8.206,4.861-15.73,10.458-22.409,16.753H88.998v7.853c0,7.778-2.275,15.182-17.276,15.182h-7.853v112.033h7.853 c11.486,0,17.276,5.068,17.276,16.229v7.853h23.836v122.158l24.044,40.072v14.016h-24.044v111.88h256.141v-111.88H152.583v-18.365 l-24.044-40.072V216.117h23.281v-49.211h-15.706v33.505h-7.575v-64.883c22.883,3.76,40.396,23.678,40.396,47.61v96.012h15.867 c13.347,0,24.205,10.859,24.205,24.205v32.058h15.706v-32.058c0-22.008-17.904-39.911-39.911-39.911h-0.161v-33.73 c4.588,3.891,9.441,7.408,14.544,10.484h-6.53V255.905z M353.268,415.397v80.469H128.539v-80.469H353.268z M464.883,47.545 v192.654h-150.41c7.821-4.704,15.017-10.346,21.448-16.753h89.174v-7.853c0-10.698,5.379-16.229,15.182-16.229h7.853V87.332 h-7.853c-13.627,0-15.182-8.752-15.182-15.182v-7.853h-89.543c-6.507-6.421-13.784-12.063-21.693-16.753H464.883z M349.062,207.741c12.544-18.104,19.914-40.053,19.914-63.688c0-23.794-7.469-45.877-20.168-64.05h61.314 c2.388,11.835,10.37,19.742,22.305,22.097v82.047c-11.71,2.64-19.901,11.29-22.317,23.595H349.062z M145.996,124.418 c-7.767-3.361-16.323-5.233-25.311-5.233h-7.852v88.556h-9.052c-2.459-12.842-11.149-21.372-24.207-23.758v-81.741 c13.316-2.121,21.768-9.897,24.196-22.239h59.955C154.53,92.815,148.314,107.678,145.996,124.418z M184.641,207.787v-14.631 c15.905,22.886,42.371,37.909,72.292,37.909c48.522,0,87.997-39.475,87.997-87.998c0-48.523-39.475-87.998-87.997-87.998 c-47.924,0-86.996,38.515-87.953,86.215c-2.397-2.761-5.015-5.323-7.845-7.64c5.103-48.534,46.118-85.986,95.798-85.986 c28.52,0,54.181,12.497,71.835,32.288v0.058h0.05c15.198,17.065,24.449,39.538,24.449,64.11c0,24.372-9.115,46.644-24.093,63.628 h-0.406v0.455c-16.216,18.157-39.177,30.168-64.92,32.003h-13.798C224.743,238.424,201.444,226.89,184.641,207.787z M184.641,143.067c0-39.862,32.431-72.293,72.293-72.293c39.862,0,72.291,32.431,72.291,72.293 c0,39.862-32.43,72.292-72.291,72.292C217.072,215.359,184.641,182.928,184.641,143.067z"></path> </g> </g> <g> <g> <path d="M263.977,131.035c-10.683-4.024-15.09-6.66-15.09-10.817c0-3.514,2.646-7.036,10.817-7.036 c9.047,0,14.831,2.888,18.103,4.273l3.647-14.205c-4.148-2.011-9.807-3.772-18.236-4.148V88.035h-12.319v11.944 c-13.446,2.645-21.241,11.317-21.241,22.376c0,12.201,9.173,18.486,22.626,23.011c9.306,3.146,13.329,6.16,13.329,10.933 c0,5.033-4.907,7.796-12.068,7.796c-8.171,0-15.59-2.637-20.874-5.533l-3.772,14.714c4.782,2.763,12.953,5.025,21.374,5.401 v11.942h12.319v-12.82c14.455-2.512,22.376-12.068,22.376-23.261C284.968,143.228,278.934,136.31,263.977,131.035z"></path> </g> </g> <g> <g> <rect x="441.849" y="55.922" width="15.706" height="15.706"></rect> </g> </g> <g> <g> <rect x="441.849" y="216.118" width="15.706" height="15.706"></rect> </g> </g> <g> <g> <rect x="56.54" y="55.922" width="15.706" height="15.706"></rect> </g> </g> <g> <g> <rect x="56.54" y="216.118" width="15.706" height="15.706"></rect> </g> </g> </g></svg>
@@ -178,15 +183,12 @@ Edit
       <div className="grid grid-cols-12 gap-4 ">
         <div className="col-span-12 sm:col-span-4">
           <div className="p-4 relative  bg-gray-800 border border-gray-800 shadow-lg  rounded-2xl">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-14 w-14  absolute bottom-4 right-3 text-green-400" viewBox="0 0 20 20" fill="currentColor">
-              <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z" />
-              <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z" />
-            </svg>
+          <svg fill="#000000" width="50px" className='flex justify-center align-middle p-2' height="50px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g data-name="11. Phone" id="_11._Phone"> <path d="M14,6a1,1,0,0,0,0-2H8A1,1,0,0,0,8,6Z"></path> <path d="M21,8.84v-4A4.8,4.8,0,0,0,16.21,0H5.79A4.8,4.8,0,0,0,1,4.79V27.21A4.8,4.8,0,0,0,5.79,32H16.21A4.8,4.8,0,0,0,21,27.21v-.05A10,10,0,0,0,21,8.84ZM16.21,30H5.79A2.79,2.79,0,0,1,3,27.21V4.79A2.79,2.79,0,0,1,5.79,2H16.21A2.79,2.79,0,0,1,19,4.79V8.2A10.2,10.2,0,0,0,17,8a9.92,9.92,0,0,0-7,2.89V10a1,1,0,0,0-2,0V26a1,1,0,0,0,2,0v-.89A9.92,9.92,0,0,0,17,28a10.19,10.19,0,0,0,1.93-.19A2.79,2.79,0,0,1,16.21,30ZM17,26a8,8,0,0,1-7-4.14V14.14A8,8,0,1,1,17,26Z"></path> <path d="M17,15h2a1,1,0,0,0,0-2H18a1,1,0,0,0-2,0v.18A3,3,0,0,0,17,19a1,1,0,0,1,0,2H15a1,1,0,0,0,0,2h1a1,1,0,0,0,2,0v-.18A3,3,0,0,0,17,17a1,1,0,0,1,0-2Z"></path> <path d="M30,5H27.41l.3-.29a1,1,0,1,0-1.42-1.42l-2,2a1,1,0,0,0,0,1.42l2,2a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42L27.41,7H30a1,1,0,0,0,0-2Z"></path> </g> </g></svg>
             <div className="flex justify-between items-center ">
               <img className="w-7 filter grayscale" src="https://v1.tailwindcss.com/_next/static/media/tailwindcss-mark.6ea76c3b72656960a6ae5ad8b85928d0.svg" alt="taiwind css"/>
             </div>
-            <div className="text-2xl text-gray-100 font-medium leading-8 mt-5">20</div>
-            <div className="text-sm text-gray-500">Components</div>
+            <div className="text-2xl text-gray-100 font-medium leading-8 mt-5">0</div>
+            <div className="text-sm text-gray-500">Deposits</div>
           </div>
         </div>
         <div className="col-span-12 sm:col-span-4">
@@ -197,8 +199,8 @@ Edit
             <div className="flex justify-between items-center ">
               <i className="fab fa-behance text-xl text-gray-400"></i>
             </div>
-            <div className="text-2xl text-gray-100 font-medium leading-8 mt-5">99</div>
-            <div className="text-sm text-gray-500">Projects</div>
+            <div className="text-2xl text-gray-100 font-medium leading-8 mt-5">0</div>
+            <div className="text-sm text-gray-500">Investments</div>
           </div>
         </div>
         <div className="col-span-12 sm:col-span-4">
@@ -209,8 +211,8 @@ Edit
             <div className="flex justify-between items-center ">
               <i className="fab fa-codepen text-xl text-gray-400"></i>
             </div>
-            <div className="text-2xl text-gray-100 font-medium leading-8 mt-5">50</div>
-            <div className="text-sm text-gray-500">Pen Items</div>
+            <div className="text-2xl text-gray-100 font-medium leading-8 mt-5">0%</div>
+            <div className="text-sm text-gray-500">Progress Rate</div>
           </div>
         </div>
       </div>
