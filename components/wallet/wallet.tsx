@@ -277,7 +277,7 @@ Edit
 
                 <div className="flex flex-col ml-3 min-w-0">
                   <div className="font-medium leading-none text-gray-100">Groupname</div>
-                  <p className="text-sm text-gray-500 leading-none mt-1 truncate">Beautiful hand-crafted SVG icons</p>
+                  <p className="text-sm text-gray-500 leading-none mt-1 truncate">Beautiful </p>
                 </div>
               </div>
               <div className="flex flex-col ml-3 min-w-0">
