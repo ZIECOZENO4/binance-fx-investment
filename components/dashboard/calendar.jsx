@@ -20,7 +20,7 @@ const Calendar = () => {
     });
 
     const widgetContainer = document.querySelector(
-      ".tradingview-widget-container__widget"
+      ".tradingview-widget-container__widget4"
     );
     if (widgetContainer) {
       widgetContainer.appendChild(script);
@@ -34,9 +34,9 @@ const Calendar = () => {
   }, []);
 
   return (
-    <div className="tradingview-widget-container">
-      <div className="tradingview-widget-container__widget"></div>
-      <div className="tradingview-widget-copyright">
+    <div className="tradingview-widget-container4">
+      <div className="tradingview-widget-container__widget4"></div>
+      <div className="tradingview-widget-copyright4">
       <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">
           <span className="blue-text font-bold text-2xl">Track all Statistics on Binance FX</span>
         </a>

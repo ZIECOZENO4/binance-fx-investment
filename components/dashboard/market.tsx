@@ -472,7 +472,7 @@ const TradingViewScreenerWidget = () => {
       "locale": "en"
     });
 
-    const widgetContainer = document.querySelector('.tradingview-widget-container__widget');
+    const widgetContainer = document.querySelector('.tradingview-widget-container__widget2');
     if (widgetContainer) {
       widgetContainer.appendChild(script);
     }
@@ -485,9 +485,9 @@ const TradingViewScreenerWidget = () => {
   }, []);
 
   return (
-    <div className="tradingview-widget-container">
-      <div className="tradingview-widget-container__widget"></div>
-      <div className="tradingview-widget-copyright">
+    <div className="tradingview-widget-container2">
+      <div className="tradingview-widget-container__widget2"></div>
+      <div className="tradingview-widget-copyright2">
       <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">
           <span className="blue-text font-bold text-2xl">Track all Statistics on Binance FX</span>
         </a>

@@ -20,7 +20,7 @@ const Register = () => {
       "locale": "en"
     });
 
-    const widgetContainer = document.querySelector('.tradingview-widget-container__widget');
+    const widgetContainer = document.querySelector('.tradingview-widget-container__widget1');
     if (widgetContainer) {
       widgetContainer.appendChild(script);
     }
@@ -63,8 +63,8 @@ const Register = () => {
 
 
     <div className="tradingview-widget-container py-8 w-[100vw]  md:w-[50vw] h-[100vh]">
-      <div className="tradingview-widget-container__widget"></div>
-      <div className="tradingview-widget-copyright">
+      <div className="tradingview-widget-container__widget1"></div>
+      <div className="tradingview-widget-copyright1">
       <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">
           <span className="blue-text font-bold text-2xl">All News on Binance FX</span>
         </a>
