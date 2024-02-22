@@ -10,6 +10,15 @@ const Wallet = () => {
   if (!isLoaded) {
     return null;
   }
+   const copyIdToClipboard = () => {
+    if (user && user.id) {
+      navigator.clipboard.writeText(user.id);
+  alert("Your ID is copied")
+    }
+  };
+
+  const shortenedId = user && user.id ? user.id.substring(0,  3) + '...' + user.id.substring(user.id.length -  3) : "ID: ---";
+
   return (
     <div   className=' flex flex-col justify-center align-middle items-center'>
  
@@ -29,8 +38,9 @@ const Wallet = () => {
             <div className="flex items-center">
                 <img className="h-16 w-16 rounded-full" src={ user ? user.imageUrl : "/images/ph.PNG"} alt=""/>
                 <div className="ml-2">
-                    <h3 className="text-2xl text-white font-bold font-serif">{ user ? user.firstName : "Binance FX User"}</h3>
-                    <span className="text-blue-600 text-xl">ID: 1FDRCTYVUI</span>
+                    <h3 className="text-2xl text-white font-bold font-serif">{ user && user.username ? user.username : user ? user.firstName : " FX User"}
+</h3>
+                    <span className="text-blue-600 text-xl uppercase">ID: {shortenedId}</span>
                 </div>
             </div>
             <div className="mt-2 sm:mt-0">
