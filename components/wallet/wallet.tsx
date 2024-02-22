@@ -40,10 +40,28 @@ const Wallet = () => {
                 <div className="ml-2">
                     <h3 className="text-2xl text-white font-bold font-serif uppercase">{ user && user.username ? user.username : user ? user.firstName : " FX User"}
 </h3>
-                    <span className="text-blue-600 text-xl uppercase">ID: {shortenedId}</span>
+<span className="text-blue-600 text-xl uppercase">
+  ID: {shortenedId}
+  <svg
+    onClick={copyIdToClipboard}
+    width="20"
+    height="20"
+    viewBox="0  0  24  24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M16  4h2a2  2  0  0  1  2  2v12a2  2  0  0  1-2  2H6a2  2  0  0  1-2-2V6a2  2  0  0  1  2-2h2"></path>
+    <line x1="8" y1="2" x2="8" y2="22"></line>
+    <line x1="12" y1="2" x2="12" y2="22"></line>
+    <line x1="16" y1="2" x2="16" y2="22"></line>
+  </svg>
+</span>
                 </div>
             </div>
-            <div className="mt-2 sm:mt-0">
+            <div className="mt-2 sm:mt-0 mr-2">
                 <button className="flex text-xl items-center text-white bg-red-600 rounded px-2 py-1 hover:bg-red-500 focus:outline-none focus:shadow-outline">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-5 h-5">
   <path d="M13.488 2.513a1.75 1.75 0 0 0-2.475 0L6.75 6.774a2.75 2.75 0 0 0-.596.892l-.848 2.047a.75.75 0 0 0 .98.98l2.047-.848a2.75 2.75 0 0 0 .892-.596l4.261-4.262a1.75 1.75 0 0 0 0-2.474Z" />
@@ -78,7 +96,18 @@ Edit
  
             </div>
 
+<div className="flex flex-col ">
+  <div className="flex flex-row justify-between gap-4 items-center align-middle ">
+<div className="flex flex-row justify-between gap-4 items-center align-middle w-[60%]">
+  <p>WALLET BALANCE</p>
 
+</div>
+<button className='relative bg-blue-500 text-white p-6 rounded text-xl font-bold overflow-hidden w-[40%]'>
+      Upgrade account
+      <div className="ribbon bg-red-500 text-sm whitespace-no-wrap px-4">premium</div>
+  	</button>
+  </div>
+</div>
             <div className="flex-auto sm:ml-5 justify-evenly"> 
               <div className="flex p-2  text-sm text-gray-400 ">
                 <div className="flex-1 inline-flex items-center">
