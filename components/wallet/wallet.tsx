@@ -31,14 +31,14 @@ const Wallet = () => {
       <div className="flex flex-col sticky top-0 z-10">
         <div className="bg-gray-800 border border-gray-800 shadow-lg  py-4">
           <div className="flex-none sm:flex">
-            <div className=" relative h-auto w-full   sm:mb-0 mb-3">
+            <div className=" relative h-auto w-full  mx-2 sm:mb-0 mb-3">
             <SignedIn>
         { isSignedIn &&       
         <div className="flex justify-between align-middle items-center ">
             <div className="flex items-center">
                 <img className="h-16 w-16 rounded-full" src={ user ? user.imageUrl : "/images/ph.PNG"} alt=""/>
                 <div className="ml-2">
-                    <h3 className="text-2xl text-white font-bold font-serif">{ user && user.username ? user.username : user ? user.firstName : " FX User"}
+                    <h3 className="text-2xl text-white font-bold font-serif uppercase">{ user && user.username ? user.username : user ? user.firstName : " FX User"}
 </h3>
                     <span className="text-blue-600 text-xl uppercase">ID: {shortenedId}</span>
                 </div>
