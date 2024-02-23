@@ -42,9 +42,7 @@ const Wallet = () => {
   const shortenedId = user && user.id ? user.id.substring(0,  3) + '...' + user.id.substring(user.id.length -  3) : "ID: ---";
 
   return (
-    <div   className=' flex flex-col justify-center align-middle items-center'>
- 
-{/* <svg width="24px" height="24px" viewBox="-3 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"  fill="#2b2fa6" stroke="#2b2fa6"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="icomoon-ignore"> </g> <path d="M13.11 29.113c7.243 0 13.113-5.871 13.113-13.113s-5.87-13.113-13.113-13.113c-7.242 0-13.113 5.871-13.113 13.113s5.871 13.113 13.113 13.113zM13.11 3.936c6.652 0 12.064 5.412 12.064 12.064s-5.412 12.064-12.064 12.064c-6.653 0-12.064-5.412-12.064-12.064s5.411-12.064 12.064-12.064z" fill="#000000"> </path> <path d="M13.906 21.637l0.742 0.742 6.378-6.379-6.378-6.379-0.742 0.742 5.112 5.112h-12.727v1.049h12.727z" fill="#000000"> </path> </g></svg> */}
+    <div   className=' flex flex-col justify-center align-middle items-center overflow-x-hidden'>
 <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900">
 
   <div className="container  m-4">
@@ -52,7 +50,7 @@ const Wallet = () => {
 
       <div className="flex flex-col ">
         <div className="bg-gray-800 border border-gray-800 shadow-lg  py-4">
-          <div className="flex-none sm:flex sticky top-0 z-10 ">
+          <div className="flex-none sm:flex fixed ">
             <div className=" relative h-auto w-full  mx-2 sm:mb-0 mb-3">
             <SignedIn>
         { isSignedIn &&       
@@ -408,31 +406,28 @@ Edit
               </div>
             </div>
           </div>
-          <div className="flex flex-col p-4 bg-gray-800 border border-gray-800 shadow-md hover:text-green-500 text-gray-400 hover:shodow-lg rounded-2xl transition ease-in duration-500  transform hover:scale-105 cursor-pointer">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center mr-auto">
-                <div className="-space-x-5 flex ">
-                  <img src="https://tailwindcomponents.com/storage/avatars/njkIbPhyZCftc4g9XbMWwVsa7aGVPajYLRXhEeoo.jpg" alt="aji" className=" relative p-1 w-12 h-12 object-cover rounded-2xl border-2 border-gray-600 bg-gray-800" />
-                                      <img src="https://tailwindcomponents.com/storage/avatars/njkIbPhyZCftc4g9XbMWwVsa7aGVPajYLRXhEeoo.jpg" alt="aji" className=" relative p-1 w-12 h-12 object-cover rounded-2xl border-2 border-gray-600 bg-gray-800 shadow" />
-               
+          <div className="flex flex-col p-4 bg-gray-800 border-gray-800 shadow-md hover:shodow-lg rounded-2xl cursor-pointer transition ease-in duration-500  transform hover:scale-105">
 
-                <div className="flex flex-col ml-6 min-w-0">
-                  <div className="font-medium leading-none text-gray-100">Pending Transactions </div>
-                  <p className="text-sm text-gray-500 leading-none mt-1 truncate">No pendings</p>
-                </div>
-              </div>
-              <div className="flex flex-col ml-3 min-w-0">
-<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-</svg>
-              </div>
-            </div>
-          </div>
-        </div>
+<div className="flex items-center justify-between">
+  <div className="flex items-center mr-auto">
+
+    <div className="inline-flex w-12 h-12"><img src="https://tailwindcomponents.com/storage/avatars/njkIbPhyZCftc4g9XbMWwVsa7aGVPajYLRXhEeoo.jpg" alt="aji" className=" relative p-1 w-12 h-12 object-cover rounded-2xl"/><span className="absolute w-12 h-12 inline-flex border-2 rounded-2xl border-slate-400 opacity-75"></span>
+      <span></span>
+    </div>
+
+    <div className="flex flex-col ml-3 min-w-0">
+      <div className="font-medium leading-none text-gray-100">Pending Transactions</div>
+      <p className="text-sm text-gray-500 leading-none mt-1 truncate">No Pendings</p>
+    </div>
+  </div>
+ 
+</div>
+</div>
+
         <div className="flex flex-col p-4 bg-gray-800 border border-gray-800 shadow-md hover:text-green-500 text-gray-400 hover:shodow-lg rounded-2xl transition ease-in duration-500  transform hover:scale-105 cursor-pointer">
             <div className="flex items-center justify-between">
               <div className="flex items-center mr-auto">
-                <div className="-space-x-5 flex ">
+                <div className="gap-2">
                   <img src="https://tailwindcomponents.com/storage/avatars/njkIbPhyZCftc4g9XbMWwVsa7aGVPajYLRXhEeoo.jpg" alt="aji" className=" relative p-1 w-12 h-12 object-cover rounded-2xl border-2 border-gray-600 bg-gray-800" />
                                   
                
@@ -455,9 +450,6 @@ Edit
               <div className="flex items-center mr-auto">
                 <div className="-space-x-5 flex ">
                   <img src="https://tailwindcomponents.com/storage/avatars/njkIbPhyZCftc4g9XbMWwVsa7aGVPajYLRXhEeoo.jpg" alt="aji" className=" relative p-1 w-12 h-12 object-cover rounded-2xl border-2 border-gray-600 bg-gray-800" />
-                                
-               
-
                 <div className="flex flex-col ml-6 min-w-0">
                   <div className="font-medium leading-none text-gray-100">Security </div>
                   <p className="text-sm text-gray-500 leading-none mt-1 truncate">Improve your security</p>
