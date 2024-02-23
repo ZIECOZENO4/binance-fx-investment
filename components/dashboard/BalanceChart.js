@@ -83,11 +83,12 @@ const BalanceChart = () => {
       </div>
       <BalanceShow />
       <Options />
+      <Assets />
       <NewMembers />
       <Calendar />
       <p className='font-bold md:text-4xl text-2xl align-middle justify-center text-white p-5 pt-8'>Your Assets Progress</p>
       <Line data={data} options={options} width={400} height={150} />
-      <Assets />
+  
       <Table />
     </div>
   )
