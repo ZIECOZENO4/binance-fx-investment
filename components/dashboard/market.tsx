@@ -478,7 +478,8 @@ const TradingViewScreenerWidget = () => {
     }
 
     return () => {
-      if (widgetContainer) {
+      // Check if the script is still a child of the widgetContainer before removing it
+      if (widgetContainer && script.parentNode === widgetContainer) {
         widgetContainer.removeChild(script);
       }
     };
@@ -488,9 +489,7 @@ const TradingViewScreenerWidget = () => {
     <div className="tradingview-widget-container2">
       <div className="tradingview-widget-container__widget2"></div>
       <div className="tradingview-widget-copyright2">
-      <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">
-          <span className="blue-text font-bold text-2xl">Track all Statistics on Binance FX</span>
-        </a>
+    
       </div>
     </div>
   );

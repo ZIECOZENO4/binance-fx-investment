@@ -66,7 +66,8 @@ const Rate3 = () => {
     }
 
     return () => {
-      if (widgetContainer) {
+      // Check if the script is still a child of the widgetContainer before removing it
+      if (widgetContainer && script.parentNode === widgetContainer) {
         widgetContainer.removeChild(script);
       }
     };
