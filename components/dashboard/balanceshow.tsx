@@ -11,8 +11,8 @@ const BalanceShow = () => {
   const [isBalanceHidden, setIsBalanceHidden] = useState(false); // New state for balance visibility
   const investments = [
     { balance: '0.000', symbol: 'ETH' },
-    { balance: '100.000', symbol: 'BTC' },
-    { balance: '200.000', symbol: 'LTC' },
+    { balance: '0.000', symbol: 'BTC' },
+    { balance: '0.000', symbol: 'LTC' },
 
   ];
 

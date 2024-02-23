@@ -1,11 +1,27 @@
 'use client'
 import { useUser } from "@clerk/clerk-react";
 import { SignedIn, SignedOut, UserButton,  } from "@clerk/nextjs";
-import React from 'react'
 import {User, Link} from "@nextui-org/react";
 import {Button} from "@nextui-org/react";
+import React, { useState, useEffect } from 'react';
+import Eye from '../../components/dashboard/eye';
+import Noeye from '../../components/dashboard/noeye';
+
 
 const Wallet = () => {
+  const [investmentIndex, setInvestmentIndex] = useState(0);
+  const [isBalanceHidden, setIsBalanceHidden] = useState(false); // New state for balance visibility
+  const investments = [
+    { balance: '0.000', symbol: 'ETH' },
+    { balance: '0.000', symbol: 'BTC' },
+    { balance: '0.000', symbol: 'LTC' },
+
+  ];
+
+
+  const toggleBalanceVisibility = () => {
+    setIsBalanceHidden(!isBalanceHidden);
+  };
   const { isLoaded, isSignedIn, user } = useUser();
   if (!isLoaded) {
     return null;
@@ -16,6 +32,11 @@ const Wallet = () => {
   alert("Your ID is copied")
     }
   };
+ 
+  
+
+
+ 
 
   const shortenedId = user && user.id ? user.id.substring(0,  3) + '...' + user.id.substring(user.id.length -  3) : "ID: ---";
 
@@ -97,17 +118,37 @@ Edit
             </div>
 
 <div className="flex flex-col ">
-  <div className="flex flex-row justify-between gap-4 items-center align-middle ">
+  <div className="flex flex-row justify-between gap-4 items-center align-middle py-4">
 <div className="flex flex-row justify-between gap-4 items-center align-middle w-[60%]">
-  <p className="text-2xl font-bold ">WALLET BALANCE</p>
-
+  <p className="text-xl text-white font-bold ">WALLET BALANCE</p>
+  <div onClick={toggleBalanceVisibility}>
+              {isBalanceHidden ? <Eye /> : <Noeye />}
+            </div>
 </div>
-<button className='relative bg-blue-500 text-white p-6 rounded text-xl font-bold overflow-hidden w-[40%]'>
-      Upgrade account
-      <div className="ribbon bg-red-500 text-sm whitespace-no-wrap px-4">premium</div>
+<button className='relative bg-blue-500 text-white p-6 rounded-md text-xl font-bold overflow-hidden w-[40%]'>
+    View 
+      <div className="ribbon bg-green-500 text-sm whitespace-no-wrap px-4">Transaction</div>
   	</button>
   </div>
-  
+  <div  className="text-2xl text-white font-bold ">
+  {isBalanceHidden ? '*****' : '$   0.00 USDT'}
+  </div>
+  <div className="flex flex-row justify-between gap-4 items-center align-middle py-4 ">
+<div className="flex flex-row justify-between gap-4 items-center align-middle w-[60%]">
+  <p className="text-xl text-white font-bold ">INVESTMENT</p>
+  <div onClick={toggleBalanceVisibility}>
+              {isBalanceHidden ? <Eye /> : <Noeye />}
+            </div>
+</div>
+<button className='relative bg-blue-500 text-white p-6 rounded-md text-xl font-bold overflow-hidden w-[40%]'>
+    View 
+      <div className="ribbon bg-green-500 text-sm whitespace-no-wrap px-4">Transaction</div>
+  	</button>
+  </div>
+  <div  className="text-2xl text-white font-bold ">
+  {isBalanceHidden ? '*****' : `${investments[investmentIndex].balance} ${investments[investmentIndex].symbol}`}
+  </div>
+ 
 </div>
             <div className="flex-auto sm:ml-5 justify-evenly"> 
               <div className="flex p-2  text-sm text-gray-400 ">
