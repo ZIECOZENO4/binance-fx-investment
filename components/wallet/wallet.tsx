@@ -48,7 +48,7 @@ const Wallet = () => {
   <div className="container  m-4">
     <div className="max-w-3xl w-full mx-auto grid gap-4 grid-cols-1">
 
-      <div className="flex flex-col ">
+      <div className="flex flex-col sticky top-0 z-10">
         <div className="bg-gray-800 border border-gray-800 shadow-lg  py-4">
           <div className="flex-none sm:flex fixed ">
             <div className=" relative h-auto w-full  mx-2 sm:mb-0 mb-3">
@@ -143,7 +143,7 @@ Edit
   </div>
  
 </div>
-            <div className="flex-auto sm:ml-5 justify-evenly"> 
+            <div className="flex-auto sm:ml-5 justify-evenly "> 
               <div className="flex p-2  text-sm text-gray-400 ">
                 <div className="flex-1 inline-flex items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
