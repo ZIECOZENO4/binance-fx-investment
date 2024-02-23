@@ -617,10 +617,11 @@ Edit
               <div className="flex flex-col">
               <SignOutButton >
                 <div className="font-medium leading-none text-red-600">Log Out?</div>
+                </SignOutButton>
                 <p className="text-sm text-gray-500 leading-none mt-1">Do you really want to log out.
                
                 </p>
-                </SignOutButton>
+                
               </div>
             </div>
             <a className="flex-no-shrink text-xs  font-medium tracking-wider  text-gray-400 hover:text-green-400 transition ease-in duration-300"><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
