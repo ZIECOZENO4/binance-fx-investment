@@ -99,7 +99,7 @@ Edit
 <div className="flex flex-col ">
   <div className="flex flex-row justify-between gap-4 items-center align-middle ">
 <div className="flex flex-row justify-between gap-4 items-center align-middle w-[60%]">
-  <p>WALLET BALANCE</p>
+  <p className="text-2xl font-bold ">WALLET BALANCE</p>
 
 </div>
 <button className='relative bg-blue-500 text-white p-6 rounded text-xl font-bold overflow-hidden w-[40%]'>
@@ -107,6 +107,7 @@ Edit
       <div className="ribbon bg-red-500 text-sm whitespace-no-wrap px-4">premium</div>
   	</button>
   </div>
+  
 </div>
             <div className="flex-auto sm:ml-5 justify-evenly"> 
               <div className="flex p-2  text-sm text-gray-400 ">

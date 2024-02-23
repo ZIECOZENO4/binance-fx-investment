@@ -6,7 +6,7 @@ export default function FAQ() {
     <Accordion collapseAll>
             <div className=" text-white justify-center align-middle text-3xl  md:text-[4rem] font-extrabold font-serif p-2">Frequent questions ?</div>
       <AccordionPanel>
-        <AccordionTitle>What is Binance Fx?</AccordionTitle>
+        <AccordionTitle className="bg-slate-200">What is Binance Fx?</AccordionTitle >
         <AccordionContent>
           <p className="mb-2 text-gray-500 dark:text-gray-400">
            Binance FX is a crypto investment and trading platform.
@@ -15,7 +15,7 @@ export default function FAQ() {
         </AccordionContent>
       </AccordionPanel>
       <AccordionPanel>
-        <AccordionTitle>HOW CAN I REGISTER A NEW ACCOUNT?</AccordionTitle>
+        <AccordionTitle className="bg-slate-200">HOW CAN I REGISTER A NEW ACCOUNT?</AccordionTitle >
         <AccordionContent>
           <p className="mb-2 text-gray-500 dark:text-gray-400">
           To register a new account, simply click the &quot;Register New Account&quot; button or &quot;Sign Up&quot; link and fill out the required information.
@@ -26,7 +26,7 @@ export default function FAQ() {
         </AccordionContent>
       </AccordionPanel>
       <AccordionPanel>
-        <AccordionTitle>What are the differences between Flowbite and Tailwind UI?</AccordionTitle>
+        <AccordionTitle className="bg-slate-200">What are the differences between Flowbite and Tailwind UI?</AccordionTitle>
         <AccordionContent>
           <p className="mb-2 text-gray-500 dark:text-gray-400">
             The main difference is that the core components from Flowbite are open source under the MIT license, whereas
@@ -57,7 +57,7 @@ export default function FAQ() {
         </AccordionContent>
       </AccordionPanel>
       <AccordionPanel>
-        <AccordionTitle>WHAT IS THE MINIMUM AND MAXIMUM AMOUNT FOR DEPOSIT?</AccordionTitle>
+        <AccordionTitle className="bg-slate-200">WHAT IS THE MINIMUM AND MAXIMUM AMOUNT FOR DEPOSIT?</AccordionTitle >
         <AccordionContent>
           <p className="mb-2 text-gray-500 dark:text-gray-400">
           The minimum deposit amount is $50, the maximum you can deposit at one time is $500,000 Per each deposit, Surely you can make deposit higher than $500,000 by several deposits.
@@ -65,7 +65,7 @@ export default function FAQ() {
         </AccordionContent>
       </AccordionPanel>
       <AccordionPanel>
-        <AccordionTitle> WHAT IS THE MINIMUM AND MAXIMUM AMOUNT FOR WITHDRAWAL?</AccordionTitle>
+        <AccordionTitle className="bg-slate-200"> WHAT IS THE MINIMUM AND MAXIMUM AMOUNT FOR WITHDRAWAL?</AccordionTitle >
         <AccordionContent>
           <p className="mb-2 text-gray-500 dark:text-gray-400">
           minimum is $10 and maximum withdraw is Unlimited.
@@ -73,8 +73,8 @@ export default function FAQ() {
         </AccordionContent>
       </AccordionPanel>
       <AccordionPanel>
-        <AccordionTitle>HOW DO I REQUEST A WITHDRAWAL?
-</AccordionTitle>
+        <AccordionTitle className="bg-slate-200">HOW DO I REQUEST A WITHDRAWAL?
+</AccordionTitle >
         <AccordionContent>
           <p className="mb-2 text-gray-500 dark:text-gray-400">
 You can request a withdrawal by clicking the &quot;Withdraw&quot; button in the member&#39;s area and entering the amount you want to withdraw.
@@ -83,7 +83,7 @@ You can request a withdrawal by clicking the &quot;Withdraw&quot; button in the 
         </AccordionContent>
       </AccordionPanel>
       <AccordionPanel>
-        <AccordionTitle>ARE THERE ANY WITHDRAWAL FEES?
+        <AccordionTitle className="bg-slate-200">ARE THERE ANY WITHDRAWAL FEES?
 </AccordionTitle>
         <AccordionContent>
           <p className="mb-2 text-gray-500 dark:text-gray-400">
@@ -92,9 +92,9 @@ You can request a withdrawal by clicking the &quot;Withdraw&quot; button in the 
         </AccordionContent>
       </AccordionPanel>
       <AccordionPanel>
-        <AccordionTitle>HOW LONG DOES IT TAKE FOR MY WITHDRAWAL TO BE SENT?
+        <AccordionTitle className="bg-slate-200">HOW LONG DOES IT TAKE FOR MY WITHDRAWAL TO BE SENT?
 
-</AccordionTitle>
+</AccordionTitle >
         <AccordionContent>
           <p className="mb-2 text-gray-500 dark:text-gray-400">
     Your withdrawal is sent Instant after it is requested.
@@ -103,8 +103,8 @@ You can request a withdrawal by clicking the &quot;Withdraw&quot; button in the 
         </AccordionContent>
       </AccordionPanel>
       <AccordionPanel>
-        <AccordionTitle> HOW CAN I CHANGE MY PAYMENT ADDRESS?
-</AccordionTitle>
+        <AccordionTitle className="bg-slate-200"> HOW CAN I CHANGE MY PAYMENT ADDRESS?
+</AccordionTitle >
         <AccordionContent>
           <p className="mb-2 text-gray-500 dark:text-gray-400">
  You can change your payment withdrawal address by clicking the
@@ -134,8 +134,8 @@ You can request a withdrawal by clicking the &quot;Withdraw&quot; button in the 
         </AccordionContent>
       </AccordionPanel>
       <AccordionPanel>
-        <AccordionTitle>HOW CAN I CHANGE MY ACCOUNT E-MAIL?
-</AccordionTitle>
+        <AccordionTitle className="bg-slate-200">HOW CAN I CHANGE MY ACCOUNT E-MAIL?
+</AccordionTitle >
         <AccordionContent>
           <p className="mb-2 text-gray-500 dark:text-gray-400">
            For security reasons, we do not allow users to change their e-mail after registration. If you would like to change your e-mail, please contact our support and we will change it for you.
@@ -143,7 +143,7 @@ You can request a withdrawal by clicking the &quot;Withdraw&quot; button in the 
         </AccordionContent>
       </AccordionPanel>
         <AccordionPanel>
-        <AccordionTitle>+ DO I NEED TO MAKE A DEPOSIT TO REFER NEW MEMBERS?
+        <AccordionTitle className="bg-slate-200">+ DO I NEED TO MAKE A DEPOSIT TO REFER NEW MEMBERS?
 
 
 </AccordionTitle>
@@ -154,10 +154,10 @@ You can request a withdrawal by clicking the &quot;Withdraw&quot; button in the 
         </AccordionContent>
       </AccordionPanel>
         <AccordionPanel>
-        <AccordionTitle>HOW CAN I SEE WHO MY UPLINE IS?
+        <AccordionTitle className="bg-slate-200">HOW CAN I SEE WHO MY UPLINE IS?
 
 
-</AccordionTitle>
+</AccordionTitle >
         <AccordionContent>
           <p className="mb-2 text-gray-500 dark:text-gray-400">
         You can see your upline by clicking on &quot;Referrals&quot;, and you will see the username of your upline. If there is no username there, it means you have no upline.
@@ -165,7 +165,7 @@ You can request a withdrawal by clicking the &quot;Withdraw&quot; button in the 
         </AccordionContent>
       </AccordionPanel>
         <AccordionPanel>
-        <AccordionTitle>HOW CAN I CONTACT YOUR SUPPORT?
+        <AccordionTitle className="bg-slate-200">HOW CAN I CONTACT YOUR SUPPORT?
 </AccordionTitle>
         <AccordionContent>
           <p className="mb-2 text-gray-500 dark:text-gray-400">

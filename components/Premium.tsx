@@ -2,9 +2,9 @@
 import React, { useState } from 'react';
 
 const Premium = () => {
-  const [vip1Plan, setVip1Plan] = useState({ monthlyPrice: "75% Daily", items: ['Total Roll: 150%', 'Duration: 48 Days', 'Minium Deposit:  $ 50,000', 'Maxium Deposit:  $ 100,000', '5% Referral Bonus']});
-  const [vip2Plan, setVip2Plan] = useState({ monthlyPrice: "100% Daily", items: ['Total Roll: 200%', 'Duration: 48 Days', 'Minium Deposit:  $ 100,000', 'Maxium Deposit:  $ 200,000', '5% Referral Bonus' ]});
-  const [vip3Plan, setVip3Plan] = useState({ monthlyPrice:  "100% Daily", items: ['Total Roll: 250%', 'Duration: 48 Days', 'Minium Deposit:  $ 200,000', 'Maxium Deposit:  $ 500,000', '15% Referral Bonus' ]});
+  const [vip1Plan, setVip1Plan] = useState({ monthlyPrice: "75% Daily", items: ['Total Roll: 150%', 'Duration: 48 Hours', 'Minium Deposit:  $ 50,000', 'Maxium Deposit:  $ 100,000', '5% Referral Bonus']});
+  const [vip2Plan, setVip2Plan] = useState({ monthlyPrice: "100% Daily", items: ['Total Roll: 200%', 'Duration: 48 Hours', 'Minium Deposit:  $ 100,000', 'Maxium Deposit:  $ 200,000', '5% Referral Bonus' ]});
+  const [vip3Plan, setVip3Plan] = useState({ monthlyPrice:  "100% Daily", items: ['Total Roll: 250%', 'Duration: 48 Hours', 'Minium Deposit:  $ 200,000', 'Maxium Deposit:  $ 500,000', '15% Referral Bonus' ]});
 
 
 

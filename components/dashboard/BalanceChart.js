@@ -4,6 +4,7 @@ import { SignedIn, SignedOut, UserButton,  } from "@clerk/nextjs";
 import { Line } from 'react-chartjs-2'
 import Chart from 'chart.js/auto'
 import BalanceShow from './balanceshow'
+import Assets from './assets'
 import Options from './options'
 import Table from "./table"
 import Calendar from "./calendar"
@@ -63,7 +64,7 @@ const BalanceChart = () => {
       <div className="  justify-between md:p-6 mx-2 py-6 flex flex-row">
       <SignedIn>
         <UserButton/>
-        { isSignedIn && <div className="font-serif flex text-header text-xl  md:text-2xl font-bold font-sans gap-3 text-white uppercase"> INVESTOR  { user && user.username ? user.username : user ? user.firstName : "FX User "}
+        { isSignedIn && <div className="font-serif flex text-header text-xl  md:text-2xl font-bold font-sans gap-3 text-white uppercase"> INVESTOR  { user && user.firstName ? user.firstName  : user ? user.username : "FX User "}
 </div> }
               </SignedIn>
       <SignedOut>
@@ -86,6 +87,7 @@ const BalanceChart = () => {
       <Calendar />
       <p className='font-bold md:text-4xl text-2xl align-middle justify-center text-white p-5 pt-8'>Your Assets Progress</p>
       <Line data={data} options={options} width={400} height={150} />
+      <Assets />
       <Table />
     </div>
   )
