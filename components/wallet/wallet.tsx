@@ -45,8 +45,8 @@ const Wallet = () => {
     <div   className=' flex flex-col justify-center align-middle items-center overflow-x-hidden'>
 <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900">
 
-  <div className="container  m-4">
-    <div className="max-w-3xl w-full mx-auto grid gap-4 grid-cols-1">
+  <div className="container md:flex md:flex-col m-4">
+    <div className="max-w-3xl w-full mx-auto grid gap-4 grid-cols-1 md:flex md:flex-col">
 
       <div className="flex flex-col  sticky top-0 z-10">
         <div className="bg-gray-800 border border-gray-800 shadow-lg  py-4">
@@ -215,7 +215,7 @@ Edit
     </div>
     <div   className='flex items-center justify-center flex-col w-full '>
    
-    <div   className='break-inside relative overflow-hidden flex flex-col justify-between space-y-3 text-sm rounded-xl max-w-[23rem] p-4 mb-4 bg-white text-black dark:bg-slate-800 dark:text-white'>
+    <div   className='break-inside relative overflow-hidden flex flex-col justify-between space-y-3 text-sm rounded-xl max-w-[23rem] md:w-full p-4 mb-4 bg-white text-black dark:bg-slate-800 dark:text-white'>
         <div   className='flex items-center justify-between font-medium'>
             <span   className='uppercase text-xs text-green-500'>upgrade Now</span>
             <span   className='text-xs text-slate-500'>Help Team</span>

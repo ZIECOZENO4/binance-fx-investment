@@ -12,6 +12,7 @@ import {Input} from "@nextui-org/react";
 
 import {Button} from "@nextui-org/react";
 import Link from 'next/link';
+import Promos from '../dashboard/shared/Rightsidebar';
 
 interface CoinDataItem {
   name: string;
@@ -59,9 +60,11 @@ const Invest = () => {
     return null;
   }
   return (
-    <div className='text-white h-[330vh] '>
+    <div className='text-white h-[330vh]  md:h-[400vh]'>
     <div className=' relative md:w-[100vw] w-[100vw] md:h-[50vh] h-[20vh] bg-no-repeat object-cover bg-track flex justify-center items-center align-middle  bg-fixed  '>
     </div>
+    <div className=' flex flex-col md:flex md:justify-between md:flex-row '>
+    <div> 
     <Note />
     <div>
       <div className=" mt-10 md:mt-20 bg-gradient-to-r from-blue-600 to-sky-200 flex-row flex justify-between align-middle items-center p-4">
@@ -156,6 +159,10 @@ const Invest = () => {
     </Link>
 
   </div>
+  </div>
+  <Promos />
+    </div>
+  
     </div>
   );
 };
