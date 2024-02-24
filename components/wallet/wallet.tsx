@@ -180,6 +180,7 @@ Edit
     <p className="font-bold text-white">Deposit</p>  
     </Button>
     </Link>
+    <Link href="/dashboard/wallet/withdraw">      
         <Button
       disableRipple
       className="relative flex flex-col m-1 w-auto h-auto align-middle overflow-visible rounded-full hover:-translate-y-1 px-2 shadow-xl bg-background/30 after:content-[''] after:absolute after:rounded-full after:inset-0 after:bg-background/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0"
@@ -191,7 +192,8 @@ Edit
       </div>
       <p className="font-bold text-white">Withdraw</p>  
     </Button>
-
+</Link>
+<Link href="/dashboard/invest">      
         <Button
       disableRipple
       className="relative flex flex-col m-1 w-auto h-auto align-middle overflow-visible rounded-full hover:-translate-y-1 px-2 shadow-xl bg-background/30 after:content-[''] after:absolute after:rounded-full after:inset-0 after:bg-background/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0"
@@ -202,6 +204,7 @@ Edit
         </div>
         <p className="font-bold text-white">Invest</p>  
           </Button>
+          </Link>
           </div>
         <div   className='flex justify-between items-center'>
             <span>Report Issues</span>

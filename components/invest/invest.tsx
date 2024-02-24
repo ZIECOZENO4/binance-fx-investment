@@ -63,7 +63,7 @@ const Invest = () => {
     <div className=' relative md:w-[100vw] w-[100vw] md:h-[50vh] h-[20vh] bg-no-repeat object-cover bg-track flex justify-center items-center align-middle  bg-fixed  '>
     </div>
     <div className=' flex flex-col md:flex md:justify-between md:flex-row '>
-    <div className='px-[1vw] flex  md:w-[55vw] w-[100vw] flex-col  overflow-x-hidden'> 
+    <div className='px-[1vw] flex  md:w-[75vw] w-[100vw] flex-col  overflow-x-hidden'> 
     <Note />
     <div>
       <div className=" mt-10 md:mt-20 bg-gradient-to-r from-blue-600 to-sky-200 flex-row flex justify-between align-middle items-center p-4">
@@ -159,7 +159,7 @@ const Invest = () => {
 
   </div>
   </div>
-  <div className='  flex justify-end '>
+  <div className='  flex justify-end w-[20vw] '>
   <TradeSide /> 
   </div>
     </div>
