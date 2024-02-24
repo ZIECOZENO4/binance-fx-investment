@@ -1,9 +1,18 @@
+"use client"
 import React from 'react'
-
+import { useState } from 'react';
 const DepositPage = () => {
+        const [showWalletInfo, setShowWalletInfo] = useState(false);
+        const [walletAddress, setWalletAddress] = useState('');
+        const [transactionId, setTransactionId] = useState('');
+      
+        const toggleWalletInfo = () => {
+          setShowWalletInfo(!showWalletInfo);
+        };
+
   return (
     <div className=" flex flex-col justify-center align-middle items-center py-4">
-<h1 className="text-3xl text-white font-bold font-serif uppercase">DEPOSIT</h1>
+<h1 className="text-3xl text-white font-bold font-serif uppercase py-3">DEPOSIT</h1>
 
 <div className="w-[100vw] bg-gray-900">
               <div className="flex  ">
@@ -125,7 +134,53 @@ const DepositPage = () => {
               </div>
             
               </div>
-        
+        <div>
+
+
+
+
+
+ 
+        <section className="grid h-auto place-content-center bg-slate-900 text-slate-300">
+      <div className="mb-10 text-center text-blue-400">
+        <h1 className="text-3xl font-bold tracking-widest">Confirm Deposit</h1>
+        <p><span className="font-bold">Please Provide YourWallet Address</span> and <span className="font-bold">Transaction ID</span>.</p>
+      </div>
+      <div className="flex flex-col items-center justify-center space-y-6">
+        {showWalletInfo && (
+          <>
+            <input
+              type="text"
+              id="walletAddress"
+              name="walletAddress"
+              placeholder="Wallet Address"
+              className="w-80 appearance-none rounded-full border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
+              value={walletAddress}
+              onChange={(e) => setWalletAddress(e.target.value)}
+            />
+            <input
+              type="text"
+              id="transactionId"
+              name="transactionId"
+              placeholder="Transaction ID"
+              className="w-80 appearance-none rounded-full border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
+              value={transactionId}
+              onChange={(e) => setTransactionId(e.target.value)}
+            />
+          </>
+        )}
+        <button
+          id="toggleWalletInfo"
+          className="rounded-full bg-indigo-500 p-2 px-4 text-white hover:bg-orange-500"
+          onClick={toggleWalletInfo}
+        >
+          <span>{showWalletInfo ? 'Hide' : 'Show'}</span> Wallet Information
+        </button>
+      </div>
+    </section>
+
+
+        </div>
             </div> 
 
   )
