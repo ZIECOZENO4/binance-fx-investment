@@ -63,7 +63,7 @@ const Invest = () => {
     <div className=' relative md:w-[100vw] w-[100vw] md:h-[50vh] h-[20vh] bg-no-repeat object-cover bg-track flex justify-center items-center align-middle  bg-fixed  '>
     </div>
     <div className=' flex flex-col md:flex md:justify-between md:flex-row '>
-    <div className='px-[1vw] flex flex-col md:w-[75vw] w-[100vw] flex-col  overflow-x-hidden'> 
+    <div className='px-[1vw] flex  md:w-[85vw] w-[100vw] flex-col  overflow-x-hidden'> 
     <Note />
     <div>
       <div className=" mt-10 md:mt-20 bg-gradient-to-r from-blue-600 to-sky-200 flex-row flex justify-between align-middle items-center p-4">
@@ -84,7 +84,7 @@ const Invest = () => {
 
 </div>
       </div>
-    <div className='flex flex-row px-2 md:px-[20vw] justify-between  w-[100vw]  select-none items-center gap-3 rounded-lg border border-sky-500 py-3  text-center align-middle font-sans text-xs font-bold uppercase text-sky-500 transition-all hover:opacity-75 focus:ring focus:ring-sky-200 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none
+    <div className='flex flex-row px-2 md:px-[20vw] justify-between  w-[100vw] md:w-auto select-none items-center gap-3 rounded-lg border border-sky-500 py-3  text-center align-middle font-sans text-xs font-bold uppercase text-sky-500 transition-all hover:opacity-75 focus:ring focus:ring-sky-200 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none
  mt-5 md:mt-10'>
       <motion.header
         onClick={() => setActiveTab('REFERRAL')}

@@ -29,7 +29,7 @@ export default TradeSide
 
 const Wrapper = styled.div`
   margin-top: 1rem;
-  width: 20vw;
+  width: 30vw;
 
 `
 
