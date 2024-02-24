@@ -167,9 +167,7 @@ Edit
 
        <div   className='break-inside relative overflow-hidden flex flex-col justify-between space-y-2 text-md rounded-xl w-[100%] p-4 mb-4 bg-[#5E17F4] text-white'>
        <div   className='break-inside relative gap-2 overflow-hidden flex flex-row justify-between space-y-2 text-md rounded-xl w-[100%] p-4 mb-4 bg-[#5E17F4] text-white'>
-        <Link href="/dashboard/wallet/deposit">
-        
-       
+        <Link href="/dashboard/wallet/deposit">      
      <Button
       disableRipple
       className="relative flex flex-col m-1 w-auto h-auto align-middle overflow-visible rounded-full hover:-translate-y-1 px-2 shadow-xl bg-background/30 after:content-[''] after:absolute after:rounded-full after:inset-0 after:bg-background/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0"
