@@ -45,8 +45,8 @@ const Wallet = () => {
     <div   className=' flex flex-col justify-center align-middle items-center overflow-x-hidden'>
 <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900">
 
-  <div className="container md:flex md:flex-col m-4">
-    <div className="max-w-3xl w-full mx-auto grid gap-4 grid-cols-1 md:flex md:flex-col">
+  <div className="container md:flex-col m-4">
+    <div className="max-w-3xl w-full mx-auto grid gap-4 grid-cols-1  md:flex-col">
 
       <div className="flex flex-col  sticky top-0 z-10">
         <div className="bg-gray-800 border border-gray-800 shadow-lg  py-4">

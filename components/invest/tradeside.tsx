@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 const TradeSide = () => {
   return (
-    <div className='sticky right-0 top-0 z-20 flex h-screen text-white  flex-col justify-between gap-8 overflow-auto border-l border-l-dark-4 bg-dark-2 px-3 pb-4 pt-8 max-xl:hidden '>
+    <div className='sticky right-0 top-0 z-20 flex h-[200vh] text-white  flex-col justify-between gap-8 overflow-auto border-l border-l-dark-4 bg-dark-2 px-3 pb-4 pt-8 max-xl:hidden '>
  <Wrapper>
       <OfferCard>
         <Title>Yield earned</Title>
@@ -29,7 +29,7 @@ export default TradeSide
 
 const Wrapper = styled.div`
   margin-top: 1rem;
-  width: 30vw;
+  width: 20vw;
 
 `
 
