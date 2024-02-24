@@ -165,8 +165,8 @@ Edit
         </div>
       </div>
 
-       <div   className='break-inside relative overflow-hidden flex flex-col justify-between space-y-2 text-md rounded-xl w-[100%] p-4 mb-4 bg-[#5E17F4] text-white'>
-       <div   className='break-inside relative gap-2 overflow-hidden flex flex-row justify-between space-y-2 text-md rounded-xl w-[100%] p-4 mb-4 bg-[#5E17F4] text-white'>
+       <div   className='break-inside relative overflow-hidden flex flex-col justify-between space-y-2 text-md rounded-xl w-[100%] p-2 mb-4 bg-[#5E17F4] text-white'>
+       <div   className='break-inside relative gap-2 overflow-hidden flex flex-row justify-between space-y-2 text-md rounded-xl w-[100%] p-2 mb-4 bg-[#5E17F4] text-white'>
         <Link href="/dashboard/wallet/deposit">      
      <Button
       disableRipple
@@ -300,9 +300,9 @@ Edit
         </div>
         <div className="col-span-12 sm:col-span-4">
           <div className="p-4 relative  bg-gray-800 border border-gray-800 shadow-lg  rounded-2xl">
-    
+          <svg fill="#cc1e1e" width="64px" height="64px" viewBox="0 0 24 24" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" stroke="#cc1e1e"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><title></title><path d="M22,11V7.83L12,2.06,2,7.83V11H4v8H2v2H22V19H20V11ZM4,9l8-4.62L20,9H4ZM6,19V11H8v8Zm4,0V11h4v8Zm8,0H16V11h2Z"></path></g></svg>
             <div className="flex justify-between items-center ">
-            <svg fill="#cc1e1e" width="64px" height="64px" viewBox="0 0 24 24" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" stroke="#cc1e1e"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><title></title><path d="M22,11V7.83L12,2.06,2,7.83V11H4v8H2v2H22V19H20V11ZM4,9l8-4.62L20,9H4ZM6,19V11H8v8Zm4,0V11h4v8Zm8,0H16V11h2Z"></path></g></svg>
+         
             </div>
             <div className="text-2xl text-gray-100 font-medium leading-8 mt-5">Level 1</div>
             <div className="text-sm text-gray-500">Account Tier</div>
