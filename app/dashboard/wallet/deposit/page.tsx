@@ -1,6 +1,7 @@
 "use client"
 import React from 'react'
 import { useState } from 'react';
+import {Button} from "@nextui-org/react";
 const DepositPage = () => {
         const [showWalletInfo, setShowWalletInfo] = useState(false);
         const [walletAddress, setWalletAddress] = useState('');
@@ -141,7 +142,7 @@ const DepositPage = () => {
 
 
  
-        <section className="grid h-auto place-content-center bg-slate-900 text-slate-300">
+        <section className="grid h-auto place-content-center py-5  bg-slate-900 text-slate-300">
       <div className="mb-10 text-center text-blue-400">
         <h1 className="text-3xl font-bold tracking-widest">Confirm Deposit</h1>
         <p><span className="font-bold">Please Provide YourWallet Address</span> and <span className="font-bold">Transaction ID</span>.</p>
@@ -176,6 +177,14 @@ const DepositPage = () => {
         >
           <span>{showWalletInfo ? 'Hide' : 'Show'}</span> Wallet Information
         </button>
+        <Button
+      disableRipple
+      className="relative flex flex-col m-2 py-4 w-auto h-auto align-middle overflow-visible rounded-full hover:-translate-y-1 px-6 shadow-xl bg-background/30 after:content-[''] after:absolute after:rounded-full after:inset-0 after:bg-background/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0"
+      size="lg"
+    >
+
+        <p className="font-bold text-xl text-white">Confirm</p>  
+          </Button>
       </div>
     </section>
 
