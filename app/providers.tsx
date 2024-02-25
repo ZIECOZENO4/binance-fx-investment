@@ -1,5 +1,6 @@
 
 'use client'
+import { SWRConfig } from 'swr';
 import {NextUIProvider} from '@nextui-org/react'
 import {
   ThirdwebProvider,
@@ -45,7 +46,9 @@ export function Providers({children}: { children: React.ReactNode }) {
  
     <NextUIProvider>
     <QueryClientProvider client={queryClient}>
-    {children}
+    <SWRConfig>
+      {children}
+      </SWRConfig>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
     
