@@ -25,7 +25,7 @@ function App() {
   
   return (
     <div className="app">
-      <button onClick={fetchData}>Fetch data</button>
+      <button onClick={fetchData}>Fetch user_id</button>
     </div>
   );
 }
