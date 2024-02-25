@@ -22,6 +22,7 @@
     "@supabase/supabase-js": "^2.39.7",
     "@thirdweb-dev/auth": "^4.1.25",
     "@thirdweb-dev/react": "^4.3.2",
+    "@types/react-loader-spinner": "^4.0.0",
     "@types/react-vertical-timeline-component": "^3.3.6",
     "chart.js": "^4.4.1",
     "ethers": "^5.7.2",
@@ -42,6 +43,7 @@
     "react-tilt": "^1.0.2",
     "react-vertical-timeline-component": "^3.6.0",
     "styled-components": "^6.1.8",
+    "swr": "^2.2.5",
     "typewriter-effect": "^2.21.0"
   },
   "devDependencies": {

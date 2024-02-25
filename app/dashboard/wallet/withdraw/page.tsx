@@ -17,7 +17,7 @@ function App() {
     // TODO #1: Replace with your JWT template name
     const supabaseAccessToken = await getToken({ template: 'BinanceFX' });
  
-    const supabase = await supabaseClient(supabaseAccessToken);
+    const supabase = await supabaseClient(supabaseAccessToken: string);
     
     // TODO #2: Replace with your database table name
     
