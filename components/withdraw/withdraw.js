@@ -4,10 +4,11 @@ import { useUser } from "@clerk/clerk-react";
 import { SignedIn, SignedOut, UserButton,  } from "@clerk/nextjs";
 import Link from 'next/link';
 import  { useState } from 'react';
-
+import {Button} from "@nextui-org/react";
 const WithdrawalPage = () => {
   const [selectedCoin, setSelectedCoin] = useState(null);
   const [walletAddress, setWalletAddress] = useState('');
+  const [amount, setAmount] = useState('');
   const [showPending, setShowPending] = useState(false);
   const [showNoFunds, setShowNoFunds] = useState(false);
   const { isLoaded, isSignedIn, user } = useUser();
@@ -27,24 +28,24 @@ const WithdrawalPage = () => {
   const coins = [
     { fullName: 'Bitcoin', symbol: 'BTC' },
     { fullName: 'Ethereum', symbol: 'ETH' },
-    // Add other coins as needed
+    { fullName: 'Binance', symbol: 'BNB' },
+    { fullName: 'Tron', symbol: 'TRON' },   
+    { fullName: 'Doge', symbol: 'DOGE' },
+    { fullName: 'XRP', symbol: 'XRP' },
   ];
   return (
     <div className="relative overflow-hidden">
-      <div aria-hidden="true" className="flex absolute -top-96 start-1/2 transform -translate-x-1/2">
-        <div className="bg-gradient-to-r from-violet-300/50 to-purple-100 blur-3xl w-[25rem] h-[44rem] rotate-[-60deg] transform -translate-x-[10rem] dark:from-violet-900/50 dark:to-purple-900"></div>
-        <div className="bg-gradient-to-tl from-blue-50 via-blue-100 to-blue-50 blur-3xl w-[90rem] h-[50rem] rounded-fulls origin-top-left -rotate-12 -translate-x-[15rem] dark:from-indigo-900/70 dark:via-indigo-900/70 dark:to-blue-900/70"></div>
-      </div>
+   
 
       <div className="relative z-10">
-        <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16">
+        <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16 bg-black">
           <div className="max-w-2xl text-center mx-auto">
-            <p className="inline-block text-sm font-medium bg-clip-text bg-gradient-to-l from-blue-600 to-violet-500 text-transparent dark:from-blue-400 dark:to-violet-400">
+            <p className="inline-block text-md font-medium bg-clip-text text-sky-700 ">
             Fast Withdrawal
             </p>
 
-            <div className="mt-5 max-w-2xl">
-              <h1 className="block font-bold text-sky-700 text-2xl md:text-4xl lg:text-6xl ">
+            <div className="mt-2 max-w-2xl">
+              <h1 className="block font-bold text-blue-600 text-3xl md:text-4xl lg:text-6xl ">
                 WITHDRAW
               </h1>
             </div>
@@ -53,10 +54,10 @@ const WithdrawalPage = () => {
               <p className="text-md text-gray-200 ">Always verify the wallet address you&apos;re sending to. A single typo can result in your funds being sent to an unintended address, making them irretrievable</p>
             </div>
 
-            <div className="mt-8 gap-3 flex flex-col justify-center">
-          <p className="block font-bold text-white text-xl md:text-2xl  "> Withdrawal Process</p>
-          <div className="mt-8 gap-6 flex flex-row justify-center">
-  <h1>Withdraw From :</h1>
+            <div className="mt-14 gap-3 flex flex-col  text-white font-bold justify-start items-start align-middle">
+          <p className="block font-bold text-white text-2xl md:text-2xl justify-center items-center align-middle "> Withdrawal Process</p>
+          <div className="mt-8 gap-6 flex flex-row  justify-start items-start align-middle">
+  <h1 className="font-bold text-white text-xl md:text-2xl  ">Withdraw From :</h1>
 
 
   <div class="flex max-w-xs items-center border-l-8 border-emerald-500 bg-emerald-50 p-4 text-emerald-900 shadow-lg">
@@ -66,40 +67,81 @@ const WithdrawalPage = () => {
   </div>
 
 </div>
+<div className="mt-8 gap-6 flex flex-row  justify-start items-start align-middle">
+  <h1 className="font-bold text-white text-xl md:text-2xl  ">Withdrawer&apos;s Name :</h1>
+
+
+  <div class="flex max-w-md items-center border-l-8 border-emerald-500 bg-emerald-50 p-2 text-emerald-900 shadow-lg">
+    <div class="min-w-0">
+      
+      <SignedIn>
+        { isSignedIn &&  <h2 class="overflow-hidden text-ellipsis  whitespace-nowrap">Binance FX { user && user.firstName ? user.firstName  : user ? user.username : "FX User "}</h2>
+}
+              </SignedIn>
+    </div>
+  </div>
+
+</div>
+<div className="mt-8 gap-6 flex flex-row  justify-start items-start align-middle">
+  <h1 className="font-bold text-white text-xl md:text-2xl  ">Available Balance :</h1>
+
+
+  <div class="flex max-w-md items-center border-l-8 border-emerald-500 bg-emerald-50 p-2 text-emerald-900 shadow-lg">
+    <div class="min-w-0">
+ <h2 class="overflow-hidden text-ellipsis  whitespace-nowrap">0.00</h2>
+    </div>
+  </div>
+
+</div>
+<div className="mt-8 gap-6 flex flex-row  justify-start items-start align-middle">
+  <h1 className="font-bold text-white text-xl md:text-2xl  ">Transaction Time :</h1>
+
+
+  <div class="flex max-w-md items-center border-l-8 border-emerald-500 bg-emerald-50 p-2 text-emerald-900 shadow-lg">
+    <div class="min-w-0">
+  <h2 class="overflow-hidden text-ellipsis font-bold  whitespace-nowrap">{new Date().toLocaleTimeString()}</h2>
+
+    </div>
+  </div>
+
+</div>
 <div>
 <div className="p-4">
       <div className="flex justify-between items-center mb-4">
-      <SignedIn>
-        { isSignedIn &&  <h1 className="text-xl"> { user && user.firstName ? user.firstName  : user ? user.username : "FX User "}</h1> 
-}
-              </SignedIn>
+   
        
-        <p className="text-sm">{new Date().toLocaleTimeString()}</p>
+        <p className="text-sm"></p>
       </div>
+      <div className="mt-8 gap-6 flex flex-row  justify-start items-start align-middle">
+  <h1 className="font-bold text-white text-xl md:text-2xl  ">Amount :</h1>
+    <div class="Flex flex-row gap-5">
+    <div className="mb-4">
+    
+    <input
+          type="text"
+      
+          className="w-full p-2 border border-gray-300 rounded"
+          value={amount}
+          onChange={(e) => setAmount(e.target.value)}
+        />
+      </div>
+    <div className="mb-4">
 
-      <div className="mb-4">
-        <label htmlFor="coinSelect" className="block mb-2">Select Coin</label>
         <select
           id="coinSelect"
           className="w-full p-2 border border-gray-300 rounded"
           onChange={(e) => setSelectedCoin(coins.find(coin => coin.symbol === e.target.value))}
         >
-          <option value="">Select a coin</option>
+          <option value="">Select </option>
           {coins.map((coin) => (
             <option key={coin.symbol} value={coin.symbol}>{coin.symbol}</option>
           ))}
         </select>
       </div>
-
-      {selectedCoin && (
-        <div className="mb-4">
-          <p className="text-lg">{selectedCoin.fullName}</p>
-          <p className="text-sm">{selectedCoin.symbol}</p>
-        </div>
-      )}
-
-      <div className="mb-4">
-        <label htmlFor="walletAddress" className="block mb-2">Wallet Address</label>
+    </div>
+</div>
+      <div className="mb-4 flex flex-row">
+        <label htmlFor="walletAddress" className="block mb-2">Wallet Address </label>
         <input
           type="text"
           id="walletAddress"
@@ -108,12 +150,23 @@ const WithdrawalPage = () => {
           onChange={(e) => setWalletAddress(e.target.value)}
         />
       </div>
+      <div className=' flex flex-row justify-between align-middle items-center gap-4 px-3 py-5'>
 
-      <button
-        className="bg-blue-500 text-white px-4 py-2 rounded"
-        onClick={handleWithdraw}
+      </div>
+      <Button
+      disableRipple
+      className="relative flex flex-col m-2 w-auto h-auto align-middle overflow-visible rounded-full hover:-translate-y-1 px-6 shadow-xl bg-background/30 after:content-[''] after:absolute after:rounded-full after:inset-0 after:bg-background/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0"
+      size="lg"
+      onClick={handleWithdraw}
+    >
+
+      <p className="font-bold text-white">Withdraw</p>  
+    </Button>
+    <button
+        className="bg-green-500 text-white px-4 py-2 rounded"
+       
       >
-        Withdraw
+        Share
       </button>
 
       {showPending && <div>Pending request...</div>}
