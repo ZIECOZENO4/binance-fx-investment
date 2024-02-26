@@ -123,18 +123,15 @@ const WithdrawalPage = () => {
    
            <div className="mt-8 gap-6 flex flex-row   justify-between items-start align-middle">
   <h1 className="font-bold text-white text-xl md:text-2xl  w-[30vw]  ">Amount :</h1>
-    <div class="Flex flex-row gap-5">
-    <div className="mb-4">
+ 
     
     <input
-          type="text"
+          type="number"
       
-          className="w-[30vw] p-2 border border-gray-300 rounded"
+          className="w-[30vw] p-2 border border-gray-300 rounded text-black"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
         />
-      </div>
-    <div className="mb-4">
 
         <select
           id="coinSelect"
@@ -146,15 +143,13 @@ const WithdrawalPage = () => {
             <option key={coin.symbol} value={coin.symbol}>{coin.symbol}</option>
           ))}
         </select>
-      </div>
-    </div>
 </div>
       <div className="mb-4 flex flex-row  w-[100vw] justify-between">
-        <label htmlFor="walletAddress" className="block mb-2  w-[50vw] ">Wallet Address </label>
+        <label htmlFor="walletAddress" className="block mb-2 text-bold  w-[40vw] ">Wallet Address </label>
         <input
           type="text"
           id="walletAddress"
-          className=" p-2 border border-gray-300 rounded  w-[50vw] "
+          className=" p-2 border border-gray-300 rounded  w-[60vw] text-black "
           value={walletAddress}
           onChange={(e) => setWalletAddress(e.target.value)}
         />
@@ -162,7 +157,7 @@ const WithdrawalPage = () => {
    
       </div>
   
-      <div className=' flex flex-row justify-between align-middle items-center gap-4 px-2 py-5  w-[100vw] '>
+      <div className=' flex flex-row justify-between align-middle items-center gap-4 mx-4 py-5  w-[100vw] '>
        <button
         className="bg-green-500 text-white px-4 py-2 rounded  w-[40vw] "
        
