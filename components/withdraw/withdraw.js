@@ -121,8 +121,8 @@ const WithdrawalPage = () => {
 <div className="p-4">
       <div className="flex justify-center flex-col items-center mb-4">
    
-           <div className="mt-8 gap-6 flex flex-row   justify-between items-start align-middle">
-  <h1 className="font-bold text-white text-xl md:text-2xl  w-[30vw]  ">Amount :</h1>
+           <div className="mt-8 gap-3 flex flex-row   justify-between items-start align-middle">
+  <h1 className="font-bold text-white text-xl md:text-2xl  w-[20vw]  ">Amount :</h1>
  
     
     <input
@@ -135,7 +135,7 @@ const WithdrawalPage = () => {
 
         <select
           id="coinSelect"
-          className="w-[40vw] p-2 border border-gray-300 rounded"
+          className="w-[30vw] p-2 border border-gray-300 text-black rounded"
           onChange={(e) => setSelectedCoin(coins.find(coin => coin.symbol === e.target.value))}
         >
           <option value="">Select </option>
@@ -144,8 +144,8 @@ const WithdrawalPage = () => {
           ))}
         </select>
 </div>
-      <div className="mb-4 flex flex-row  w-[100vw] justify-between">
-        <label htmlFor="walletAddress" className="block mb-2 text-bold  w-[40vw] ">Wallet Address </label>
+      <div className="mb-4 flex flex-row mt-8  w-[100vw] justify-between">
+        <label htmlFor="walletAddress" className="block mb-2 font-bold  w-[40vw]  text-xl md:text-2xl">Wallet Address :</label>
         <input
           type="text"
           id="walletAddress"
