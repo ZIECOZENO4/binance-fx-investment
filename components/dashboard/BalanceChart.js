@@ -9,6 +9,8 @@ import Options from './options'
 import Table from "./table"
 import Calendar from "./calendar"
 import NewMembers from "./newmembers"
+import { useEffect } from 'react';
+import storeUserInSupabase from '../../utils/storeUserInSupabase';
 const data = {
   labels: [
     'Apr',
@@ -55,10 +57,17 @@ const options = {
 }
 
 const BalanceChart = () => {
+  useEffect(() => {
+    if (user) {
+      storeUserInSupabase(user);
+    }
+  }, [user]);
+
   const { isLoaded, isSignedIn, user } = useUser();
   if (!isLoaded) {
     return null;
   }
+  
   return (
     <div className=' flex px-[1vw] md:w-[53vw] w-[100vw] flex-col  overflow-x-hidden'>
       <div className="  justify-between md:p-6 mx-2 py-6 flex flex-row">
