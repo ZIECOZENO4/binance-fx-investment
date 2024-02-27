@@ -2,33 +2,61 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, RadioGroup, Radio} from "@nextui-org/react";
-type MouseEvent = React.MouseEvent<HTMLButtonElement>;
-type ChangeEvent = React.ChangeEvent<HTMLInputElement>;
+import { CircularProgress, Card, CardBody } from '@nextui-org/react';
 const Basic2 = () => {
   const [timeLeft, setTimeLeft] = useState(0);
   const [startTime, setStartTime] = useState(8 *  24 *  60 *  60); //  8 days in seconds
   const [isActive, setIsActive] = useState(false);
 
+// useEffect(() => {
+//   let interval: NodeJS.Timeout | number | null = null;
+//   if (isActive && timeLeft >   0) {
+//     interval = setInterval(() => {
+//       setTimeLeft(timeLeft -   1);
+//     },   1000) as unknown as number; 
+//   } else if (!isActive && timeLeft ===   0) {
+//     clearInterval(interval as unknown as number); // Type assertion to number
+//   }
+//   return () => clearInterval(interval as unknown as number); // Type assertion to number
+// }, [isActive, timeLeft]);
+
+//   const startCountdown = () => {
+//     setIsActive(true);
+//     setTimeLeft(startTime);
+//   };
+
+//   const getColor = (timeLeft: number) => {
+//     return timeLeft <= startTime /  2 ? 'bg-red-500' : 'bg-green-500';
+//   };
+
+const [timeLeft, setTimeLeft] = useState(0); // Initial time left, you can set it to your desired value
+const [startTime, setStartTime] = useState(null); // To store the start time of the countdown
+
+// Function to start the countdown
+const startCountdown = () => {
+  const endTime = new Date().getTime() + timeLeft *  1000; // Assuming timeLeft is in seconds
+  setStartTime(endTime);
+};
+
+// Effect to update the countdown every second
 useEffect(() => {
-  let interval: NodeJS.Timeout | number | null = null;
-  if (isActive && timeLeft >   0) {
-    interval = setInterval(() => {
-      setTimeLeft(timeLeft -   1);
-    },   1000) as unknown as number; 
-  } else if (!isActive && timeLeft ===   0) {
-    clearInterval(interval as unknown as number); // Type assertion to number
-  }
-  return () => clearInterval(interval as unknown as number); // Type assertion to number
-}, [isActive, timeLeft]);
+  if (!startTime) return;
 
-  const startCountdown = () => {
-    setIsActive(true);
-    setTimeLeft(startTime);
-  };
+  const interval = setInterval(() => {
+    const now = new Date().getTime();
+    const timeRemaining = startTime - now;
 
-  const getColor = (timeLeft: number) => {
-    return timeLeft <= startTime /  2 ? 'bg-red-500' : 'bg-green-500';
-  };
+    // Update the time left state
+    setTimeLeft(Math.max(0, Math.ceil(timeRemaining /  1000)));
+  },  1000);
+
+  // Clean up the interval on component unmount
+  return () => clearInterval(interval);
+}, [startTime]);
+
+// Calculate the percentage of time left for the progress circle
+const progressPercentage = (timeLeft /  60) *  100; // Assuming the countdown is  60 seconds
+
   const basicPlan = { monthlyPrice: "5% Daily", items: ['Total Roll:   40%', 'Duration:   8 Days', 'Minium Deposit:        $ 200', 'Maxium Deposit:  $   2000', '5% Referral Bonus']};
   const advancePlan = { monthlyPrice: "5% Daily", items: ['Total Roll:   60%', 'Duration:   12 Days', 'Minium Deposit:     $ 2,100', 'Maxium Deposit:  $   10,000', '5% Referral Bonus']};
   const proPlan = { monthlyPrice: "5% Daily", items: ['Total Roll:   80%', 'Duration:   14 Days', 'Minium Deposit:  $ 10,100', 'Maxium Deposit:  $   20,000', '5% Referral Bonus' ]};
@@ -123,17 +151,29 @@ useEffect(() => {
   const [activeTab, setActiveTab] = useState('Basic');
   return (
     <div>
-    <div className="flex  flex-wrap space-x-4">
-      <div className={`text-white p-4 rounded-full text-center ${getColor(timeLeft)}`}>
-        {Math.floor(timeLeft / (24 *  60 *  60))} days
+     <div className="flex flex-wrap space-x-4">
+      <Card className="w-[240px] h-[240px] bg-gradient-to-br from-violet-500 to-fuchsia-500">
+        <CardBody className="justify-center items-center py-0">
+          <CircularProgress
+            classNames={{
+              svg: "w-36 h-36 drop-shadow-md",
+              indicator: "stroke-white",
+              track: "stroke-white/10",
+              value: "text-3xl font-semibold text-white",
+            }}
+            value={progressPercentage} // Update the value based on time left
+            strokeWidth={4}
+            showValueLabel={true}
+          />
+        </CardBody>
+      </Card>
+      <div className="text-white p-4 rounded-full text-center">
+        {Math.floor(timeLeft / (60 *  60))} hours
       </div>
-      <div className={`text-white p-4 rounded-full text-center ${getColor(timeLeft)}`}>
-        {Math.floor((timeLeft % (24 *  60 *  60)) / (60 *  60))} hours
-      </div>
-      <div className={`text-white p-4 rounded-full text-center ${getColor(timeLeft)}`}>
+      <div className="text-white p-4 rounded-full text-center">
         {Math.floor((timeLeft % (60 *  60)) /  60)} minutes
       </div>
-      <div className={`text-white p-4 rounded-full text-center ${getColor(timeLeft)}`}>
+      <div className="text-white p-4 rounded-full text-center">
         {timeLeft %  60} seconds
       </div>
       <button
