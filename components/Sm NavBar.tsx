@@ -14,7 +14,7 @@ import NewsDrop from './NewsDrop';
 import SupportDrop from './SupportDrop';
 import RegisterDrop from './RegisterDrop';
 import LogoutDrop from './LogoutDrop';
-
+import WalletDrop  from "./WalletDrop"
 export default function SmNavbar() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
@@ -26,7 +26,7 @@ export default function SmNavbar() {
     { name: "SELL",  component:   <SellDrop />, path: "/dashboard/sell" },
     { name: "COMMUNITY",  component: <CommunityDrop />, path: "/community" },
     { name: "FEATURES",  component:  <FeaturesDrop />, path: "/features" },
-    { name: "WALLET",  component: <InvestDrop />, path: "/dashboard/wallet" },
+    { name: "WALLET",  component: <WalletDrop />, path: "/dashboard/wallet" },
     { name: "MORE",  component:   <MoreDrop />, path: "/more" },
     { name: "NEWS",  component:   <NewsDrop />, path: "/news" },
     { name: "SUPPORT",  component: <SupportDrop />, path: "/support" },
