@@ -2,40 +2,13 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, RadioGroup, Radio} from "@nextui-org/react";
-import { CountdownCircleTimer } from 'react-countdown-circle-timer';
-interface CountdownCardProps {
-  timeLeft: number; // The time left in seconds
-  unit: string; // The unit of time (e.g., "Days", "Hours", "Minutes", "Seconds")
-}
-const CountdownCard: React.FC<CountdownCardProps> = ({ timeLeft, unit }) => {
-  const colors = ['#004777', '#F7B801', '#A30000', '#A30000'];
-  const colorsTime = [8,  5,  2,  0];
-
-  return (
-    <div className="flex flex-wrap space-x-4">
-      <div className="w-[240px] h-[240px] bg-gradient-to-br from-violet-500 to-fuchsia-500 p-4 rounded-lg">
-        <CountdownCircleTimer
-          isPlaying
-          duration={timeLeft}
-          colors={colors}
-          colorsTime={colorsTime}
-        >
-          {({ remainingTime }) => remainingTime}
-        </CountdownCircleTimer>
-        <div className="text-white text-center">{unit}</div>
-      </div>
-    </div>
-  );
-};
-
+type MouseEvent = React.MouseEvent<HTMLButtonElement>;
+type ChangeEvent = React.ChangeEvent<HTMLInputElement>;
 const Basic2 = () => {
   const [timeLeft, setTimeLeft] = useState(0);
   const [startTime, setStartTime] = useState(8 *  24 *  60 *  60); //  8 days in seconds
   const [isActive, setIsActive] = useState(false);
-  const [timeLeft, setTimeLeft] = useState({ days:  8, hours:  24, minutes:  60, seconds:  60 });
 
-  // Convert the timeLeft object into seconds for the CountdownCircleTimer component
-  const timeLeftInSeconds = Object.values(timeLeft).reduce((a, b) => a + b,  0);
 useEffect(() => {
   let interval: NodeJS.Timeout | number | null = null;
   if (isActive && timeLeft >   0) {
@@ -150,11 +123,25 @@ useEffect(() => {
   const [activeTab, setActiveTab] = useState('Basic');
   return (
     <div>
-    <div className="flex flex-wrap space-x-4">
-      <CountdownCard timeLeft={timeLeftInSeconds} unit="Days" />
-      <CountdownCard timeLeft={timeLeftInSeconds} unit="Hours" />
-      <CountdownCard timeLeft={timeLeftInSeconds} unit="Minutes" />
-      <CountdownCard timeLeft={timeLeftInSeconds} unit="Seconds" />
+    <div className="flex  flex-wrap space-x-4">
+      <div className={`text-white p-4 rounded-full text-center ${getColor(timeLeft)}`}>
+        {Math.floor(timeLeft / (24 *  60 *  60))} days
+      </div>
+      <div className={`text-white p-4 rounded-full text-center ${getColor(timeLeft)}`}>
+        {Math.floor((timeLeft % (24 *  60 *  60)) / (60 *  60))} hours
+      </div>
+      <div className={`text-white p-4 rounded-full text-center ${getColor(timeLeft)}`}>
+        {Math.floor((timeLeft % (60 *  60)) /  60)} minutes
+      </div>
+      <div className={`text-white p-4 rounded-full text-center ${getColor(timeLeft)}`}>
+        {timeLeft %  60} seconds
+      </div>
+      <button
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        onClick={startCountdown}
+      >
+        Start
+      </button>
     </div>
 
 
