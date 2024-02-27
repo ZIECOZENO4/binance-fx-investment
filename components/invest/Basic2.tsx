@@ -1,13 +1,58 @@
 'use client'
-import React, { useState, useEffect } from 'react';
+import React, { useState,  useRef, FC, useEffect} from 'react';
 import { motion } from 'framer-motion';
+import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, RadioGroup, Radio} from "@nextui-org/react";
-type MouseEvent = React.MouseEvent<HTMLButtonElement>;
-type ChangeEvent = React.ChangeEvent<HTMLInputElement>;
+type RenderTimeProps = {
+  remainingTime: number;
+};
+
+const RenderTime: FC<RenderTimeProps> = ({ remainingTime }) => {
+  const [, setOneLastRerender] = useState(0);
+  const currentTime = useRef(remainingTime);
+  const prevTime = useRef<number | null>(null);
+  const isNewTimeFirstTick = useRef(false);
+ 
+
+  if (currentTime.current !== remainingTime) {
+    isNewTimeFirstTick.current = true;
+    prevTime.current = currentTime.current;
+    currentTime.current = remainingTime;
+  } else {
+    isNewTimeFirstTick.current = false;
+  }
+
+  if (remainingTime ===  0) {
+    setTimeout(() => {
+      setOneLastRerender((val) => val +  1);
+    },  20);
+  }
+
+  const isTimeUp = isNewTimeFirstTick.current;
+
+  return (
+    <div className="time-wrapper relative w-20 h-15 text-9xl font-mono">
+      <div key={remainingTime} className={`time absolute inset-0 flex items-center justify-center transform transition-all duration-200 ${isTimeUp ? "opacity-0 -translate-y-full" : ""}`}>
+        {remainingTime}
+      </div>
+      {prevTime.current !== null && (
+        <div
+          key={prevTime.current}
+          className={`time absolute inset-0 flex items-center justify-center transform transition-all duration-200 ${!isTimeUp ? "opacity-0 translate-y-full" : ""}`}
+        >
+          {prevTime.current}
+        </div>
+      )}
+    </div>
+  );
+};
+
 const Basic2 = () => {
   const [timeLeft, setTimeLeft] = useState(0);
   const [startTime, setStartTime] = useState(8 *  24 *  60 *  60); //  8 days in seconds
   const [isActive, setIsActive] = useState(false);
+  const daysToCountDown =  8; // Number of days you want to count down from
+  const durationInSeconds = daysToCountDown *  24 *  60 *  60;
 
 useEffect(() => {
   let interval: NodeJS.Timeout | number | null = null;
@@ -123,25 +168,22 @@ useEffect(() => {
   const [activeTab, setActiveTab] = useState('Basic');
   return (
     <div>
-    <div className="flex  flex-wrap space-x-4">
-      <div className={`text-white p-4 rounded-full text-center ${getColor(timeLeft)}`}>
-        {Math.floor(timeLeft / (24 *  60 *  60))} days
+    <div className="App text-center mb-10">
+      <h1 className="font-roboto text-4xl mb-10">
+        CountdownCircleTimer
+        <br />
+        React Component
+      </h1>
+      <div className="timer-wrapper flex justify-center">
+        <CountdownCircleTimer
+          isPlaying
+          duration={durationInSeconds}
+          colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
+          colorsTime={[10,  6,  3,  0]}
+        >
+          {RenderTime}
+        </CountdownCircleTimer>
       </div>
-      <div className={`text-white p-4 rounded-full text-center ${getColor(timeLeft)}`}>
-        {Math.floor((timeLeft % (24 *  60 *  60)) / (60 *  60))} hours
-      </div>
-      <div className={`text-white p-4 rounded-full text-center ${getColor(timeLeft)}`}>
-        {Math.floor((timeLeft % (60 *  60)) /  60)} minutes
-      </div>
-      <div className={`text-white p-4 rounded-full text-center ${getColor(timeLeft)}`}>
-        {timeLeft %  60} seconds
-      </div>
-      <button
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        onClick={startCountdown}
-      >
-        Start
-      </button>
     </div>
 
 
