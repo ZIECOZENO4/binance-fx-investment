@@ -2,7 +2,7 @@
 import React from "react";
 import {Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenuItem, NavbarMenu, NavbarContent, NavbarItem, Link, Button} from "@nextui-org/react";
 import ConnectButton from "./connectbutton";
-import InvestDrop from './InvestDrop'; // Assuming you have these components
+import InvestDrop from './InvestDrop'; 
 import NftsDrop from './NftsDrop';
 import TradeDrop from './TradeDrop';
 import BuyDrop from './BuyDrop';
@@ -70,7 +70,7 @@ export default function SmNavbar() {
         </NavbarItem>
       </NavbarContent>
 
-      <NavbarMenu>
+      <NavbarMenu className="bg-slate-800">
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={index}>
             <Link href={item.path} className="w-full">
