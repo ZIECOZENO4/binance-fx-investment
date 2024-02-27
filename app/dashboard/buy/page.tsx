@@ -4,7 +4,7 @@ const Page = () => {
   return (
     <div>
 
-<div className="relative isolate overflow-x-hidden bg-black">
+<div className="relative isolate overflow-x-hidden h-[100vh] bg-black">
 
 
   <div className="mx-auto max-w-7xl px-6 pb-24 pt-10 sm:pb-32 lg:flex lg:px-8 lg:py-40">
