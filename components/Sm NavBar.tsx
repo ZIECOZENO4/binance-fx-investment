@@ -73,7 +73,7 @@ export default function SmNavbar() {
       <NavbarMenu className="bg-slate-800">
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={index}>
-            <Link href={item.path} className="w-full">
+            <Link href={item.path} className="w-full overflow-x-hidden">
               {item.component}
             </Link>
           </NavbarMenuItem>
