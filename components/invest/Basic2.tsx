@@ -2,61 +2,60 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, RadioGroup, Radio} from "@nextui-org/react";
-import { CircularProgress, Card, CardBody } from '@nextui-org/react';
+import { CountdownCircleTimer } from 'react-countdown-circle-timer';
+interface CountdownCardProps {
+  timeLeft: number; // The time left in seconds
+  unit: string; // The unit of time (e.g., "Days", "Hours", "Minutes", "Seconds")
+}
+const CountdownCard: React.FC<CountdownCardProps> = ({ timeLeft, unit }) => {
+  const colors = ['#004777', '#F7B801', '#A30000', '#A30000'];
+  const colorsTime = [8,  5,  2,  0];
+
+  return (
+    <div className="flex flex-wrap space-x-4">
+      <div className="w-[240px] h-[240px] bg-gradient-to-br from-violet-500 to-fuchsia-500 p-4 rounded-lg">
+        <CountdownCircleTimer
+          isPlaying
+          duration={timeLeft}
+          colors={colors}
+          colorsTime={colorsTime}
+        >
+          {({ remainingTime }) => remainingTime}
+        </CountdownCircleTimer>
+        <div className="text-white text-center">{unit}</div>
+      </div>
+    </div>
+  );
+};
+
 const Basic2 = () => {
   const [timeLeft, setTimeLeft] = useState(0);
   const [startTime, setStartTime] = useState(8 *  24 *  60 *  60); //  8 days in seconds
   const [isActive, setIsActive] = useState(false);
+  const [timeLeft, setTimeLeft] = useState({ days:  8, hours:  24, minutes:  60, seconds:  60 });
 
-// useEffect(() => {
-//   let interval: NodeJS.Timeout | number | null = null;
-//   if (isActive && timeLeft >   0) {
-//     interval = setInterval(() => {
-//       setTimeLeft(timeLeft -   1);
-//     },   1000) as unknown as number; 
-//   } else if (!isActive && timeLeft ===   0) {
-//     clearInterval(interval as unknown as number); // Type assertion to number
-//   }
-//   return () => clearInterval(interval as unknown as number); // Type assertion to number
-// }, [isActive, timeLeft]);
-
-//   const startCountdown = () => {
-//     setIsActive(true);
-//     setTimeLeft(startTime);
-//   };
-
-//   const getColor = (timeLeft: number) => {
-//     return timeLeft <= startTime /  2 ? 'bg-red-500' : 'bg-green-500';
-//   };
-
-const [timeLeft, setTimeLeft] = useState(0); // Initial time left, you can set it to your desired value
-const [startTime, setStartTime] = useState(null); // To store the start time of the countdown
-
-// Function to start the countdown
-const startCountdown = () => {
-  const endTime = new Date().getTime() + timeLeft *  1000; // Assuming timeLeft is in seconds
-  setStartTime(endTime);
-};
-
-// Effect to update the countdown every second
+  // Convert the timeLeft object into seconds for the CountdownCircleTimer component
+  const timeLeftInSeconds = Object.values(timeLeft).reduce((a, b) => a + b,  0);
 useEffect(() => {
-  if (!startTime) return;
+  let interval: NodeJS.Timeout | number | null = null;
+  if (isActive && timeLeft >   0) {
+    interval = setInterval(() => {
+      setTimeLeft(timeLeft -   1);
+    },   1000) as unknown as number; 
+  } else if (!isActive && timeLeft ===   0) {
+    clearInterval(interval as unknown as number); // Type assertion to number
+  }
+  return () => clearInterval(interval as unknown as number); // Type assertion to number
+}, [isActive, timeLeft]);
 
-  const interval = setInterval(() => {
-    const now = new Date().getTime();
-    const timeRemaining = startTime - now;
+  const startCountdown = () => {
+    setIsActive(true);
+    setTimeLeft(startTime);
+  };
 
-    // Update the time left state
-    setTimeLeft(Math.max(0, Math.ceil(timeRemaining /  1000)));
-  },  1000);
-
-  // Clean up the interval on component unmount
-  return () => clearInterval(interval);
-}, [startTime]);
-
-// Calculate the percentage of time left for the progress circle
-const progressPercentage = (timeLeft /  60) *  100; // Assuming the countdown is  60 seconds
-
+  const getColor = (timeLeft: number) => {
+    return timeLeft <= startTime /  2 ? 'bg-red-500' : 'bg-green-500';
+  };
   const basicPlan = { monthlyPrice: "5% Daily", items: ['Total Roll:   40%', 'Duration:   8 Days', 'Minium Deposit:        $ 200', 'Maxium Deposit:  $   2000', '5% Referral Bonus']};
   const advancePlan = { monthlyPrice: "5% Daily", items: ['Total Roll:   60%', 'Duration:   12 Days', 'Minium Deposit:     $ 2,100', 'Maxium Deposit:  $   10,000', '5% Referral Bonus']};
   const proPlan = { monthlyPrice: "5% Daily", items: ['Total Roll:   80%', 'Duration:   14 Days', 'Minium Deposit:  $ 10,100', 'Maxium Deposit:  $   20,000', '5% Referral Bonus' ]};
@@ -151,37 +150,11 @@ const progressPercentage = (timeLeft /  60) *  100; // Assuming the countdown is
   const [activeTab, setActiveTab] = useState('Basic');
   return (
     <div>
-     <div className="flex flex-wrap space-x-4">
-      <Card className="w-[240px] h-[240px] bg-gradient-to-br from-violet-500 to-fuchsia-500">
-        <CardBody className="justify-center items-center py-0">
-          <CircularProgress
-            classNames={{
-              svg: "w-36 h-36 drop-shadow-md",
-              indicator: "stroke-white",
-              track: "stroke-white/10",
-              value: "text-3xl font-semibold text-white",
-            }}
-            value={progressPercentage} // Update the value based on time left
-            strokeWidth={4}
-            showValueLabel={true}
-          />
-        </CardBody>
-      </Card>
-      <div className="text-white p-4 rounded-full text-center">
-        {Math.floor(timeLeft / (60 *  60))} hours
-      </div>
-      <div className="text-white p-4 rounded-full text-center">
-        {Math.floor((timeLeft % (60 *  60)) /  60)} minutes
-      </div>
-      <div className="text-white p-4 rounded-full text-center">
-        {timeLeft %  60} seconds
-      </div>
-      <button
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        onClick={startCountdown}
-      >
-        Start
-      </button>
+    <div className="flex flex-wrap space-x-4">
+      <CountdownCard timeLeft={timeLeftInSeconds} unit="Days" />
+      <CountdownCard timeLeft={timeLeftInSeconds} unit="Hours" />
+      <CountdownCard timeLeft={timeLeftInSeconds} unit="Minutes" />
+      <CountdownCard timeLeft={timeLeftInSeconds} unit="Seconds" />
     </div>
 
 
