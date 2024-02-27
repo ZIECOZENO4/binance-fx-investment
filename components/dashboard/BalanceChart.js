@@ -86,7 +86,7 @@ const BalanceChart = () => {
       <div className="  justify-between md:p-6 mx-2 py-6 flex flex-row">
       <SignedIn>
         <UserButton/>
-        { isSignedIn && <div className="font-serif flex text-header text-xl  md:text-2xl font-bold font-sans gap-3 text-white uppercase"> INVESTOR  { user && user.firstName ? user.firstName  : user ? user.username : "FX User "}
+        { isSignedIn && <div className="font-serif flex text-header text-xl  md:text-2xl font-bold  gap-3 text-white uppercase"> INVESTOR  { user && user.firstName ? user.firstName  : user ? user.username : "FX User "}
 </div> }
               </SignedIn>
       <SignedOut>
