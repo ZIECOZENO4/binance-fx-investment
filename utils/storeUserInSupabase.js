@@ -12,6 +12,7 @@ async function storeUserInSupabase(user) {
   }
 
   console.log('User stored successfully:', data);
+  console.log('Email address:', user.emailAddresses.primary.emailAddress);
   return true;
 }
 
