@@ -497,7 +497,7 @@ Edit
 <div className="flex items-center justify-between">
   <div className="flex items-center mr-auto">
 
-    <div className="inline-flex w-12 h-12"><img src="h/images/t2.png" alt="aji" className=" relative p-1 w-12 h-12 object-cover rounded-2xl"/><span className="absolute w-12 h-12 inline-flex border-2 rounded-2xl border-slate-400 opacity-75"></span>
+    <div className="inline-flex w-12 h-12"><img src="/images/t2.png" alt="aji" className=" relative p-1 w-12 h-12 object-cover rounded-2xl"/><span className="absolute w-12 h-12 inline-flex border-2 rounded-2xl border-slate-400 opacity-75"></span>
       <span></span>
     </div>
 
@@ -569,7 +569,7 @@ Edit
 </div>
         <div className="flex flex-col p-4 bg-gray-800 border-gray-800 shadow-md hover:shodow-lg rounded-2xl">
           <div className="flex">
-            <img src="https://images.unsplash.com/photo-1575390730294-dfc5efa5250b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=255&q=80" alt="Just a flower" className=" w-16  object-fit  h-16 rounded-2xl"/>
+            <img src="/images/t4.png" alt="Just a flower" className=" w-16  object-fit  h-16 rounded-2xl"/>
             <div className="flex flex-col justify-center w-full px-2 py-1">
               <div className="flex justify-between items-center ">
                 <div className="flex flex-col">
