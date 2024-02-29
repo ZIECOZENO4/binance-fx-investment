@@ -1,3 +1,7 @@
+"use client"
+import { SignInButton } from "@clerk/nextjs";
+import { SignUpButton } from "@clerk/nextjs";
+
 const Banner = () => (
     <div className="relative isolate flex items-center gap-x-6 overflow-hidden bg-gray-300 px-6 py-2.5 sm:px-3.5 sm:before:flex-1">
       <div className="absolute left-0 top-1/2 -z-10 -translate-y-1/2 transform-gpu blur-2xl" aria-hidden="true">
@@ -10,7 +14,9 @@ const Banner = () => (
         <p className="text-sm leading-6 text-gray-900">
           <strong className="font-semibold">Binance FX 2023</strong> Join Our Binance FX Crypto Empowerment Program, our promo will be from April 9-29
         </p>
-        <a href="https://cryptobitcoinwebapp.vercel.app/" className="flex-none rounded-full bg-gray-900 px-3.5 py-1 text-sm font-semibold text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900">Register now <span aria-hidden="true">&rarr;</span></a>
+        <SignInButton mode="modal" afterSignInUrl="/dashboard" afterSignUpUrl="/dashboard">
+        <div className="flex-none rounded-full bg-gray-900 px-3.5 py-1 text-sm font-semibold text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900">Register now <span aria-hidden="true">&rarr;</span></div>
+        </SignInButton>
       </div>
       <div className="flex flex-1 justify-end">
         <button type="button" className="p-3 focus:outline-none">

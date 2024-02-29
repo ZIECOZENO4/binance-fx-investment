@@ -5,16 +5,14 @@ import { useUser } from "@clerk/clerk-react";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { useCountdownManager } from '../../../../components/invest/countdowns/countdowncontest';
 
-interface TriggerButtonProps {
- id: string;
-}
+
 
 // Define the interface for the return value of useCountdownManager
 interface CountdownManager {
  startCountdown: (id: string, endDate: Date) => void;
 }
 
-const Page: React.FC<TriggerButtonProps> = ({ id }) => {
+const Page = () => {
  const [walletAddress, setWalletAddress] = useState('');
  const [transactionId, setTransactionId] = useState('');
  // Use type assertion to inform TypeScript about the return type of useCountdownManager
@@ -36,7 +34,7 @@ const Page: React.FC<TriggerButtonProps> = ({ id }) => {
  const handleTrigger = () => {
     const endDate = new Date();
     endDate.setDate(endDate.getDate() + 8); // Set to 8 days from now
-    startCountdown(id, endDate);
+    startCountdown(endDate);
  };
   return (
   
