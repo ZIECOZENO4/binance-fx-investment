@@ -2,12 +2,11 @@
 import { useUser } from "@clerk/clerk-react";
 import { SignedIn, SignedOut, UserButton,  } from "@clerk/nextjs";
 import {User, Link} from "@nextui-org/react";
-import {Button} from "@nextui-org/react";
 import React, { useState, useEffect } from 'react';
 import Eye from '../../components/dashboard/eye';
 import Noeye from '../../components/dashboard/noeye';
 import { SignOutButton } from "@clerk/nextjs";
- 
+import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, RadioGroup, Radio} from "@nextui-org/react";
 
 const Wallet = () => {
   const [investmentIndex, setInvestmentIndex] = useState(0);
@@ -19,7 +18,8 @@ const Wallet = () => {
 
   ];
 
-
+  const {isOpen, onOpen, onOpenChange} = useDisclosure();
+  const [modalPlacement, setModalPlacement] = React.useState("auto");
   const toggleBalanceVisibility = () => {
     setIsBalanceHidden(!isBalanceHidden);
   };
@@ -143,7 +143,7 @@ Edit
   </div>
  
 </div>
-            <div className="flex-auto sm:ml-5 justify-evenly "> 
+            <div className="flex-auto sm:ml-5 justify-evenly mt-4 "> 
               <div className="flex p-2  text-sm text-gray-400 ">
                 <div className="flex-1 inline-flex items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
@@ -158,7 +158,39 @@ Edit
                   </svg>
                   <p className="">Junior</p>
                 </div>
-                <Link href="/dashboard/wallet/upgrade" target="_blank" className="flex-no-shrink bg-green-400 hover:bg-green-500 px-5 ml-4 py-2 text-xs shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-green-300 hover:border-green-500 text-white rounded-full transition ease-in duration-300">Upgrade</Link>
+                <div className="">
+    <Button onPress={() => {
+  setModalPlacement("bottom");
+  onOpen();
+}} className="flex-no-shrink bg-green-400 hover:bg-green-500 px-5 ml-4 py-2 text-xs shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-green-300 hover:border-green-500 text-white rounded-full transition ease-in duration-300">Upgrade</Button>
+
+<Modal  
+  isOpen={isOpen}  
+  placement={modalPlacement as "auto" | "center" | "bottom" | "top" | "top-center" | "bottom-center" | undefined}
+  onOpenChange={onOpenChange}  
+>
+        <ModalContent>
+          {(onClose) => (
+            <>
+              <ModalHeader className="flex flex-col gap-1">Calculate Profit</ModalHeader>
+              <ModalBody>
+{/* body */}
+
+
+              </ModalBody>
+              <ModalFooter>
+                <Button color="danger" variant="solid" onPress={onClose}>
+                  Close
+                </Button>
+                <Button color="success" onPress={onClose}>
+                  Next
+                </Button>
+              </ModalFooter>
+            </>
+          )}
+        </ModalContent>
+      </Modal>
+    </div>
               </div>
             </div>
           </div>
