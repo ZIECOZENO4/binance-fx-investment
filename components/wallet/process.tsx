@@ -25,13 +25,13 @@ const MultiStepForm = () => {
       <div className="text-center mb-8">
         <h2 className="text-2xl font-bold">Upgrade Process</h2>
       </div>
-      <div className="border-b-2 border-green-500">
-        {steps.map((step, index) => (
-          <div key={index} className={`py-2 ${index === activeStep ? 'font-bold' : ''}`}>
-            {step.name}
-          </div>
-        ))}
-      </div>
+      <div className="overflow-x-auto">
+ {steps.map((step, index) => (
+    <div key={index} className={`py-2 flex flex-row justify-start align-middle items-start${index === activeStep ? ' font-bold border-b-2 border-green-500 ' : ' border-b-2 border-red-500 '}`}>
+      {step.name}
+    </div>
+  ))}
+</div>
       <div className="mt-8">
         {steps[activeStep].component}
         {activeStep < steps.length - 1 && (

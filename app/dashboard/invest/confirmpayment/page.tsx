@@ -3,8 +3,13 @@ import React from 'react'
 import { useState } from 'react';
 import { useUser } from "@clerk/clerk-react";
 import { SignedIn, SignedOut, UserButton,  } from "@clerk/nextjs";
+import { useCountdownManager } from '../../../../components/invest/countdowns/countdowncontest';
 
-const Page = () => {
+interface TriggerButtonProps {
+  id: string; 
+ }
+ 
+const Page: React.FC<TriggerButtonProps> = ({ id })=> {
   const [walletAddress, setWalletAddress] = useState('');
   const [transactionId, setTransactionId] = useState('');
   const { isLoaded, isSignedIn, user } = useUser();
@@ -19,6 +24,13 @@ const Page = () => {
     setTransactionId(event.target.value);
   };
 
+
+
+ const handleTrigger = () => {
+    const endDate = new Date();
+    endDate.setDate(endDate.getDate() + 8); // Set to 8 days from now
+    startCountdown(id, endDate);
+ };
   return (
   
 <div className="container">
@@ -166,10 +178,11 @@ const Page = () => {
     </div>
               </div>
               <button
-                className="w-full bg-green-600 text-white px-2 py-2 rounded-md"
-              >
-                Accept
-              </button>
+      className="w-full bg-green-600 text-white px-2 py-2 rounded-md"
+      onClick={handleTrigger}
+    >
+      Accept
+    </button>
             </div>
             <div className="px-3 py-5 border-b-2  border-gray-200">
               <button

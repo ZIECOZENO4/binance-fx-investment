@@ -47,7 +47,9 @@ export function Providers({children}: { children: React.ReactNode }) {
     <NextUIProvider>
     <QueryClientProvider client={queryClient}>
     <SWRConfig>
+    <CountdownManagerProvider>
       {children}
+      </CountdownManagerProvider>
       </SWRConfig>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
