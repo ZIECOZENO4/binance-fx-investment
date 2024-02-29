@@ -12,6 +12,7 @@ interface TriggerButtonProps {
 const Page: React.FC<TriggerButtonProps> = ({ id })=> {
   const [walletAddress, setWalletAddress] = useState('');
   const [transactionId, setTransactionId] = useState('');
+ const { startCountdown } = useCountdownManager();
   const { isLoaded, isSignedIn, user } = useUser();
   if (!isLoaded) {
     return null;
