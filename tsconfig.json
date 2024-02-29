@@ -21,6 +21,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/gettingstarted.js", "components/invest/note.js", "components/invest/MailIcon.jsx", "components/trade/trade.jsx", "components/Wideget1.jsx", "components/trending table.js", "components/invest/countdowns/eightdays.tsx", "components/wallet/DriversLicense.jsx", "components/wallet/Introduction.jsx", "components/wallet/Upgrade.jsx", "components/mining/ming page.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/gettingstarted.js", "components/invest/note.js", "components/invest/MailIcon.jsx", "components/trade/trade.jsx", "components/Wideget1.jsx", "components/trending table.js", "components/invest/countdowns/eightdays.tsx", "components/wallet/DriversLicense.jsx", "components/wallet/Introduction.jsx", "components/wallet/Upgrade.jsx", "components/mining/ming page.jsx", "components/component/jk.jsx", "components/component/uiop.jsx", "components/component/mki.jsx"],
   "exclude": ["node_modules"]
 }

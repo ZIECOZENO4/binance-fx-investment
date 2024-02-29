@@ -119,7 +119,7 @@ export function mki() {
             <div>
               <CardDescription>1. Get a mining rig</CardDescription>
               <p className="text-sm text-gray-500 dark:text-gray-400">
-                You'll need a computer specifically designed for mining cryptocurrency.
+                You&apos;ll need a computer specifically designed for mining cryptocurrency.
               </p>
             </div>
             <div>
@@ -133,13 +133,13 @@ export function mki() {
               <CardDescription>3. Download mining software</CardDescription>
               <p className="text-sm text-gray-500 dark:text-gray-400">
                 There are various mining programs available for download, depending on your operating system and the
-                type of hardware you're using.
+                type of hardware you&apos;re using.
               </p>
             </div>
             <div>
               <CardDescription>4. Start mining</CardDescription>
               <p className="text-sm text-gray-500 dark:text-gray-400">
-                Once you've set up your mining rig and connected to a mining pool, you can start the mining software and
+                Once you&apos;ve set up your mining rig and connected to a mining pool, you can start the mining software and
                 begin generating FX COIN.
               </p>
             </div>
@@ -165,8 +165,8 @@ export function mki() {
               <div>
                 <CardDescription>Support the network</CardDescription>
                 <p className="text-sm text-gray-500 dark:text-gray-400">
-                  By participating in the mining process, you're helping to secure the FX COIN network and validate
-                  transactions, which is essential for the cryptocurrency's decentralization and security.
+                  By participating in the mining process, you&apos;re helping to secure the FX COIN network and validate
+                  transactions, which is essential for the cryptocurrency&apos;s decentralization and security.
                 </p>
               </div>
             </div>
