@@ -1,8 +1,14 @@
 "use client"
+import React, { useState } from 'react';
 import { CardDescription, CardTitle, CardHeader, CardContent, Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-
+import FXMining from './ming page';
 export default function Component() {
+  const [showFXMining, setShowFXMining] = useState(false);
+
+  const toggleFXMining = () => {
+     setShowFXMining(!showFXMining);
+  };
   return (
     <>
       <Card>
@@ -28,9 +34,10 @@ export default function Component() {
             <CardDescription>Total Mined</CardDescription>
             <CardTitle>1,234.567 FX</CardTitle>
           </div>
-          <Button className="ml-auto md:ml-auto" size="sm" variant="outline">
-            Details
+          <Button className="ml-auto md:ml-auto" size="sm" variant="outline"  onClick={toggleFXMining}>
+           Mine FX
           </Button>
+          {showFXMining && <FXMining />}
         </CardHeader>
         <CardContent className="flex items-center justify-center p-6">
           <div className="flex flex-col items-center gap-2 text-center">

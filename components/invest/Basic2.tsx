@@ -199,7 +199,8 @@ useEffect(() => {
      </motion.header>
    </div>
    <div  className=' h-1 w-full bg-slate-300 mt-2 mb-5'/>
-   <EightDays />
+   <EightDays id="uniqueCountdownId" />
+
    {activeTab === 'Basic' && 
    <div className="text-gray-900  mt-[20px]  bg-no-repeat bg-bottom sm:bg-bottom   mb-auto">
    <div className="flex flex-col md:flex-row md:transform md:scale-75 lg:scale-100 justify-center ">

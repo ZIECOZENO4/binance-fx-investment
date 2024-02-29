@@ -8,23 +8,7 @@ export default function FXMining() {
   return (
     <div className="grid gap-4 lg:grid-cols-[280px_1fr]">
       <div className="flex flex-col">
-        <header className="flex h-14 items-center gap-4 border-b bg-gray-100/40 px-6 dark:bg-gray-800/40">
-          <Link className="lg:hidden" href="#">
-            <Package2Icon className="h-6 w-6" />
-            <span className="sr-only">Home</span>
-          </Link>
-          <h1 className="font-semibold text-lg md:text-xl">FX COIN</h1>
-          <div className="ml-auto flex items-center gap-2">
-            <Button className="rounded-full border" size="icon" variant="outline">
-              <BellIcon className="h-4 w-4" />
-              <span className="sr-only">Toggle notifications</span>
-            </Button>
-            <Button className="rounded-full border" size="icon" variant="outline">
-              <StarIcon className="h-4 w-4" />
-              <span className="sr-only">Toggle favorites</span>
-            </Button>
-          </div>
-        </header>
+      
         <main className="grid gap-4 p-4 md:gap-8 md:p-6">
           <Card>
             <CardHeader className="flex flex-col md:flex-row items-start md:items-center gap-4">
