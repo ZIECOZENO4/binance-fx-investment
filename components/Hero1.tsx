@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import AutoScrollingComponent from "./autoscroll";
 import Rate3 from "./rate3";
 import {Button} from "@nextui-org/react";
-
+import { SignUpButton } from "@clerk/nextjs";
 function Hero1() {
   const address = useAddress();
   const router = useRouter();
@@ -78,8 +78,9 @@ function Hero1() {
       size="lg"
    
     >
-
-      <p className="font-bold text-green-600 ">Register</p>  
+    <SignUpButton mode="modal" afterSignInUrl="/dashboard" afterSignUpUrl="/dashboard">
+    <p className='p-2 text-xl font-bold text-green-400'>Register</p>
+    </SignUpButton> 
     </Button>
             <button
               onClick={handleInvestNowClick}

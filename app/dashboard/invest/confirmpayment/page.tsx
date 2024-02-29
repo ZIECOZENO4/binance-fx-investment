@@ -38,7 +38,7 @@ const Page = () => {
               "
             >
               <p className="text-gray-400 ml-4">Name</p>
-              <p className="text-black mr-4">      <SignedIn>
+              <p className="text-indigo-600 mr-4">      <SignedIn>
         { isSignedIn &&  <h2> { user && user.firstName ? user.firstName  : user ? user.username : "----- "}</h2>
 }
               </SignedIn></p>
@@ -54,7 +54,7 @@ const Page = () => {
               "
             >
               <p className="text-gray-400 ml-4">Payment to</p>
-              <p className="text-black mr-4">Binance FX</p>
+              <p className="text-indigo-600 mr-4">Binance FX</p>
             </div>
             <div
               className="
@@ -67,7 +67,7 @@ const Page = () => {
               "
             >
               <p className="text-gray-400 ml-4">Wallet Address</p>
-              <p className="text-black mr-4">ox......ioed</p>
+              <p className="text-indigo-600 mr-4">ox......ioed</p>
             </div>
             <div
               className="
@@ -80,7 +80,7 @@ const Page = () => {
               "
             >
               <p className="text-gray-400 ml-4">Time</p>
-              <p className="text-black mr-4">{new Date().toLocaleTimeString()}</p>
+              <p className="text-indigo-600 mr-4">{new Date().toLocaleTimeString()}</p>
             </div>
             <div
               className="
@@ -146,7 +146,7 @@ const Page = () => {
             >
               <div className="mb-5 flex flex-col min-w-full">
               <div className="p-8 gap-6">
-                <p className=" items-center align-middle justify-center font-green-600 text-xl font-bold py-4">Provide Prove of Payment</p>
+                <p className=" items-center align-middle justify-center font-green-600 text-xl font-bold py-4 uppercase text-indigo-600">Provide Prove of Payment</p>
       <label htmlFor="walletAddress" className="font-medium text-white text-md">Your Wallet Address</label>
       <input
         type="text"
@@ -190,7 +190,7 @@ const Page = () => {
         
         </div>
       </div>
-      <div className=' bg-white py-5 flex justify-start items-start align-middle leading-8 font-bold text-md gap-2'>
+      <div className=' bg-white py-5 flex justify-start items-start align-middle leading-8 font-bold text-md gap-2 px-2'>
         <p><span className="text-red-500 text-xl mr-1">NOTE:<p className='leading-6 text-green-400'>If you click on accept the transaction will automatically procced and it will be withdrawn from your Binance FX wallet, but if you don&apos;t have money in your wallet simply copy the company&apos;s wallet address and make payment, after you provide your wallet address and transaction ID for comfirmation </p>  </span>ALL DEPOSIT SHOULD BE MADE TO COMPANY&apos;S WALLET ADDRESS [OX........UIBV], WHEN DONE CLICK ACCEPT FOR THE TRANSACTION TO TAKE PLACE. THANKS FOR INVESTI NG ON BINANCE FX</p>
       </div>
     </div>
