@@ -9,7 +9,7 @@ import { useCountdownManager } from '../../../../components/invest/countdowns/co
 
 // Define the interface for the return value of useCountdownManager
 interface CountdownManager {
- startCountdown: (id: string, endDate: Date) => void;
+ startCountdown: (endDate: Date) => void;
 }
 
 const Page = () => {
