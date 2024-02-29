@@ -57,7 +57,7 @@ const WithdrawalPage = () => {
             <div className="mt-14 gap-3 flex flex-col  text-white font-bold justify-start items-start align-middle">
           <p className="block font-bold text-white text-2xl md:text-2xl justify-center items-center align-middle mr-4"> Withdrawal Process</p>
           <div className="mt-8 gap-6 flex flex-row  justify-start items-start align-middle w-[100vw]">
-  <h1 className="font-bold text-white text-xl md:text-2xl w-[40vw] ">Withdraw From :</h1>
+  <h1 className="font-bold text-white  justify-start items-start align-middle text-xl md:text-2xl w-[40vw] ">Withdraw From :</h1>
 
 
   <div class="flex  items-center border-l-8 border-emerald-500 bg-emerald-50 p-4 text-emerald-900 shadow-lg  w-[60vw] ">
@@ -68,7 +68,7 @@ const WithdrawalPage = () => {
 
 </div>
 <div className="mt-8 gap-2 flex flex-row  justify-start items-start align-middle  w-[100vw] ">
-  <h1 className="font-bold text-white text-xl md:text-2xl   w-[40vw] ">Withdrawer&apos;s Name :</h1>
+  <h1 className="font-bold text-white text-xl md:text-2xl justify-start items-start align-middle   w-[40vw] ">Withdrawer&apos;s Name :</h1>
 
 
   <div class="flex max-w-md items-center border-l-8 border-emerald-500 bg-emerald-50 p-2  w-[60vw] text-emerald-900 shadow-lg">
@@ -83,7 +83,7 @@ const WithdrawalPage = () => {
 
 </div>
 <div className="mt-8 gap-6 flex flex-row  justify-start items-start align-middle  w-[100vw] ">
-  <h1 className="font-bold text-white text-xl md:text-2xl  w-[40vw]   ">Available Balance :</h1>
+  <h1 className="font-bold text-white text-xl md:text-2xl  justify-start items-start align-middle  w-[40vw]   ">Available Balance :</h1>
 
 
   <div class="flex max-w-md items-center border-l-8 border-emerald-500 bg-emerald-50 p-2  w-[60vw] text-emerald-900 shadow-lg">
@@ -94,7 +94,7 @@ const WithdrawalPage = () => {
 
 </div>
 <div className="mt-8 gap-6 flex flex-row  justify-start items-start align-middle  w-[100vw] ">
-  <h1 className="font-bold text-white text-xl md:text-2xl  w-[40vw]  ">Transaction Time :</h1>
+  <h1 className="font-bold text-white text-xl md:text-2xl  justify-start items-start align-middle w-[40vw]  ">Transaction Time :</h1>
 
 
   <div class="flex max-w-md items-center border-l-8 border-emerald-500 bg-emerald-50 p-2 text-emerald-900 shadow-lg  w-[60vw] ">
@@ -106,7 +106,7 @@ const WithdrawalPage = () => {
 
 </div>
 <div className="mt-8 gap-6 flex flex-row  justify-start items-start align-middle  w-[100vw] ">
-  <h1 className="font-bold text-white text-xl md:text-2xl  w-[40vw]  ">Gass Fee :</h1>
+  <h1 className="font-bold text-white text-xl md:text-2xl  w-[40vw]  justify-start items-start align-middle ">Gass Fee :</h1>
 
 
   <div class="flex max-w-md items-center border-l-8 border-emerald-500 bg-emerald-50 p-2 text-emerald-900 shadow-lg  w-[60vw] ">
@@ -122,7 +122,7 @@ const WithdrawalPage = () => {
       <div className="flex justify-center flex-col items-center mb-4">
    
            <div className="mt-8 gap-3 flex flex-row   justify-between items-start align-middle">
-  <h1 className="font-bold text-white text-xl md:text-2xl  w-[20vw]  ">Amount :</h1>
+  <h1 className="font-bold text-white text-xl md:text-2xl  justify-start items-start align-middle w-[20vw]  ">Amount :</h1>
  
     
     <input
@@ -145,7 +145,7 @@ const WithdrawalPage = () => {
         </select>
 </div>
       <div className="mb-4 flex flex-row mt-8  w-[100vw] justify-between">
-        <label htmlFor="walletAddress" className="block mb-2 font-bold  w-[40vw]  text-xl md:text-2xl">Wallet Address :</label>
+        <label htmlFor="walletAddress" className="block mb-2 font-bold  w-[40vw]  text-xl md:text-2xl  justify-start items-start align-middle">Wallet Address :</label>
         <input
           type="text"
           id="walletAddress"
