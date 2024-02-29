@@ -1,22 +1,28 @@
 'use client'
-import React from 'react'
+import React from 'react';
 import { useState } from 'react';
 import { useUser } from "@clerk/clerk-react";
-import { SignedIn, SignedOut, UserButton,  } from "@clerk/nextjs";
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { useCountdownManager } from '../../../../components/invest/countdowns/countdowncontest';
 
 interface TriggerButtonProps {
-  id: string; 
- }
- 
-const Page: React.FC<TriggerButtonProps> = ({ id })=> {
-  const [walletAddress, setWalletAddress] = useState('');
-  const [transactionId, setTransactionId] = useState('');
- const { startCountdown } = useCountdownManager();
-  const { isLoaded, isSignedIn, user } = useUser();
-  if (!isLoaded) {
+ id: string;
+}
+
+// Define the interface for the return value of useCountdownManager
+interface CountdownManager {
+ startCountdown: (id: string, endDate: Date) => void;
+}
+
+const Page: React.FC<TriggerButtonProps> = ({ id }) => {
+ const [walletAddress, setWalletAddress] = useState('');
+ const [transactionId, setTransactionId] = useState('');
+ // Use type assertion to inform TypeScript about the return type of useCountdownManager
+ const { startCountdown } = useCountdownManager() as CountdownManager;
+ const { isLoaded, isSignedIn, user } = useUser();
+ if (!isLoaded) {
     return null;
-  }
+ }
   const handleWalletAddressChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setWalletAddress(event.target.value);
   };
