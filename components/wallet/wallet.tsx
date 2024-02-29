@@ -127,7 +127,7 @@ Edit
 </div>
 <Button color="primary" variant="shadow">View History</Button>
   </div>
-  <div  className="text-2xl text-white font-bold ">
+  <div  className="text-2xl text-white font-bold ml-2">
   {isBalanceHidden ? '*****' : '$   0.00 USDT'}
   </div>
   <div className="flex flex-row justify-between gap-4 items-center align-middle py-4 px-2 ">
@@ -139,7 +139,7 @@ Edit
 </div>
 <Button color="primary" variant="shadow">View History</Button>
   </div>
-  <div  className="text-2xl text-white font-bold ">
+  <div  className="text-2xl text-white font-bold ml-2">
   {isBalanceHidden ? '*****' : `${investments[investmentIndex].balance} ${investments[investmentIndex].symbol}`}
   </div>
  
