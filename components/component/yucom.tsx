@@ -13,8 +13,8 @@ export function yucom() {
       <div className="space-y-2">
         <div className="flex items-center space-x-4">
           <div className="space-y-1.5">
-            <h1 className="text-3xl font-bold tracking-tight">Driver's License Application</h1>
-            <p className="text-gray-500 dark:text-gray-400">Enter your information to apply for a driver's license</p>
+            <h1 className="text-3xl font-bold tracking-tight">Driver&apos;s License Application</h1>
+            <p className="text-gray-500 dark:text-gray-400">Enter your information to apply for a driver&apos;s license</p>
           </div>
           <img
             alt="User avatar"
@@ -58,7 +58,7 @@ export function yucom() {
           </div>
         </fieldset>
         <fieldset>
-          <legend className="text-lg font-semibold">Driver's License Information</legend>
+          <legend className="text-lg font-semibold">Driver&apos;s License Information</legend>
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="license">License Number</Label>
