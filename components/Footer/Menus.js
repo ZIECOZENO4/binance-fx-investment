@@ -1,18 +1,18 @@
 export const PATTERNERS = [
-  { name: "Realmarid", link: "#" },
-  { name: "Manchestercity", link: "#" },
-  { name: "Al Nassar", link: "#" },
+  { name: "Binance", link: "#" },
+  { name: "Betasporting", link: "#" },
+  { name: "Investment Home", link: "#" },
 ];
-export const BETASPORTING = [
-  { name: "How to play", link: "#" },
-  { name: "Safe gambling", link: "#" },
+export const BINANCEFX = [
+  { name: "What is Binance FX", link: "#" },
+  { name: "Safe Investment", link: "#" },
   { name: "Documentation", link: "#" },
   { name: "Blog", link: "#" },
   { name: "Online event", link: "#" },
   { name: "Terms and conditions", link: "#" },
 ];
 export const COMPANY = [
-  { name: "Beta groups", link: "#" },
+  { name: "Binance FX", link: "#" },
   { name: "About us", link: "#" },
   { name: "Press", link: "#" },
   { name: "Customer Stories", link: "#" },

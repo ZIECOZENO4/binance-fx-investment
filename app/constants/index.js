@@ -112,7 +112,7 @@ const experiences = [
       label: "TRADE",
     },
     {
-      imgURL: "/assets/earn.svg",
+      imgURL: "/assets/earn2.svg",
       route: "/earn",
       label: "EARNS",
     },

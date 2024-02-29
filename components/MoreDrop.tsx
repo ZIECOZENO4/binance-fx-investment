@@ -17,7 +17,7 @@ const MoreDrop = () => {
           </div>
           <div className="left">
             <div className="header text-sky-600 font-bold text-xl">More</div>
-            <div className="desc text-white">View more</div>
+            <div className="desc text-white">View more options  on Binance FX</div>
           </div>
           <div className="right m-auto mr-0">
             <div className="icon">

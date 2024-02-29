@@ -5,7 +5,7 @@ import { useAddress } from "@thirdweb-dev/react";
 import { useRouter } from "next/navigation";
 import AutoScrollingComponent from "./autoscroll";
 import Rate3 from "./rate3";
-
+import {Button} from "@nextui-org/react";
 
 function Hero1() {
   const address = useAddress();
@@ -44,11 +44,16 @@ function Hero1() {
           </div>
         </div>
         <div className="md:gap-14 hidden md:flex-row  md:flex md:justify-start ">
-          <input
-            type="email"
-            className="h-14 w-[300px] rounded-2xl bg-slate-700 border-white"
-            placeholder="     Enter Your Wallet Address"
-          />
+        <Button
+      disableRipple
+      className="relative flex flex-col m-2  h-12 align-middle overflow-visible rounded-full hover:-translate-y-1 px-6 shadow-xl bg-background/30 after:content-[''] after:absolute after:rounded-full after:inset-0 after:bg-background/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0  "
+      size="lg"
+   
+    >
+
+      <p className="font-bold text-green-600 ">Register</p>  
+    </Button>
+   
           <button 
               onClick={handleInvestNowClick}
           className=" w-[200px] h-14 bg-orange-500 text-black rounded-3xl cursor-pointer font-bold">
@@ -67,11 +72,15 @@ function Hero1() {
             <TypingComponent />
           </div>
           <div className="gap-2 md:hidden flex-col flex justify-start w-full px-8 ">
-            <input
-              type="text"
-              className="h-14 w-full rounded-2xl bg-slate-700 border-white"
-              placeholder="    Enter Your Wallet Address"
-            />
+          <Button
+      disableRipple
+      className="relative flex flex-col m-2  h-12 align-middle overflow-visible rounded-full hover:-translate-y-1 px-6 shadow-xl bg-background/30 after:content-[''] after:absolute after:rounded-full after:inset-0 after:bg-background/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0  "
+      size="lg"
+   
+    >
+
+      <p className="font-bold text-green-600 ">Register</p>  
+    </Button>
             <button
               onClick={handleInvestNowClick}
               className=" w-full h-14 bg-orange-500 text-black rounded-3xl cursor-pointer font-bold"

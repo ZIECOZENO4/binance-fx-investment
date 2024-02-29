@@ -2,7 +2,9 @@ import React from 'react'
 
 const Vip2 = () => {
   return (
-    <div>Vip2</div>
+  
+      <div className=" h-[30vh] items-center align-middle flex flex-col font-bold  text-xl text-white justify-center">
+        Not yet open for you</div>
   )
 }
 
