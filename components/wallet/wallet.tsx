@@ -7,6 +7,7 @@ import Eye from '../../components/dashboard/eye';
 import Noeye from '../../components/dashboard/noeye';
 import { SignOutButton } from "@clerk/nextjs";
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, RadioGroup, Radio} from "@nextui-org/react";
+import MultiStepForm from "./process";
 
 const Wallet = () => {
   const [investmentIndex, setInvestmentIndex] = useState(0);
@@ -174,8 +175,7 @@ Edit
             <>
               <ModalHeader className="flex flex-col gap-1">UPGRADE TO TIRE TWO</ModalHeader>
               <ModalBody>
-{/* body */}
-
+              <MultiStepForm /> 
 
               </ModalBody>
               <ModalFooter>
