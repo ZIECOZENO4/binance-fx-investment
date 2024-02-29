@@ -4,6 +4,9 @@ import "./globals.css";
 import NavBar from "@/components/navbar";
 import {Providers} from "./providers";
 import SmNavbar from "@/components/Sm NavBar";
+import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
+import Loading from "./loading";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,7 +31,9 @@ export default function RootLayout({
        <SmNavbar /> 
         </div>
        
-        {children}
+        <Suspense fallback={<Loading />}>
+              {children}
+            </Suspense>
         </div>
         </Providers>
         </body>
