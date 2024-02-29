@@ -18,6 +18,7 @@ import {
 
  import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
+import { CountdownManagerProvider } from '@/components/invest/countdowns/countdowncontest';
 
 const queryClient = new QueryClient();
 
