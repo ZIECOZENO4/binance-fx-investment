@@ -172,7 +172,7 @@ Edit
         <ModalContent>
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1">Calculate Profit</ModalHeader>
+              <ModalHeader className="flex flex-col gap-1">UPGRADE TO TIRE TWO</ModalHeader>
               <ModalBody>
 {/* body */}
 
@@ -183,7 +183,7 @@ Edit
                   Close
                 </Button>
                 <Button color="success" onPress={onClose}>
-                  Next
+                  Finish
                 </Button>
               </ModalFooter>
             </>
@@ -354,9 +354,7 @@ Edit
               <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 -m-1 flex items-center text-blue-400 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
               </svg>
-              <svg xmlns="http://www.w3.org/2000/svg" className="w-16 h-16 flex items-center text-gray-600 mx-auto" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
-              </svg>
+              <svg fill="#ffffff" height="50px" width="50px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 229" className="flex items-center mx-auto"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M193,147.9h-37.8v-39.4c0-17.4-14.1-31.5-31.5-31.5H33.5C16.1,77,2,91.1,2,108.5v104.4c0,7.6,6.2,13.8,13.8,13.8 c3.8,0,7.3-1.5,9.8-4s4-5.9,4-9.8v-88.7c0-2.1,1.7-3.9,3.9-3.9h0.1c2.2,0,3.9,1.7,3.9,3.9v102.5h82.7V124.5c0-2.3,1.5-4.2,4.2-4.2 c2.5,0.1,3.7,2.2,3.7,4.3v35c0,8.7,7.1,15.8,15.8,15.7l49.1,0.1c7.6,0,13.8-6.2,13.8-13.8l0,0C206.8,154,200.6,147.9,193,147.9z M247,90.6c-7.3-11.9-22.8-32.1-30.5-42l20.3-29.9h-56.2l20.2,29.8c-7.7,9.8-23.3,30.1-30.6,42.1c-3.3,5.4-7,11.5-7,21.4 c0,15.4,11.7,28,26.1,28h38.5c14.4,0,26.1-12.6,26.1-28C254,102.1,250.3,96,247,90.6z M211.8,116.9v5.4h-6.7v-5.6 c-3.5-0.8-6.8-2.5-9.8-5.3l5.1-5.6c0,0,3.7,3.2,7.2,3.7c4,0.6,6.4-1.3,6.7-3.8c0.5-4.7-8.7-6.5-12-8.3c-4-2.1-7.9-5-7.9-11.1 c0-6.2,4.3-10.8,10.8-11.4v-5.8h6.7v6c4.2,0.9,7.1,3.2,9.4,4.9l-4.6,6c-1.4-1.3-4.1-3-6.6-3.6c-3.2-0.8-6.7,0.1-6.9,3.6 c-0.1,1.4,0.5,4.3,7.5,6.4c3.7,1.2,12.3,3.7,12.3,12.7C222.9,111.3,218.2,116.2,211.8,116.9z M46.3,35.8c0-18,14.6-32.7,32.7-32.7 s32.7,14.6,32.7,32.7S97,68.5,79,68.5S46.3,53.9,46.3,35.8z"></path> </g></svg>
               <h2 className="text-xl font-bold py-4 text-gray-200">Upgrade Your Investment Plan</h2>
                 <p className="text-sm text-gray-500 px-8">The Board and Shared plan is now out with alot of features and good cash out options. Rush Now</p>
             </div>
@@ -376,7 +374,7 @@ Edit
             <div className="flex items-center justify-between">
               <div className="flex items-center mr-auto">
 
-                <div className="inline-flex w-12 h-12"><img src="https://tailwindcomponents.com/storage/avatars/njkIbPhyZCftc4g9XbMWwVsa7aGVPajYLRXhEeoo.jpg" alt="aji" className=" relative w-12 h-12 object-cover rounded-2xl"/><span className="animate-ping absolute w-12 h-12 inline-flex border-2 rounded-2xl border-green-400 opacity-75"></span>
+                <div className="inline-flex w-12 h-12"><img src="/images/t9.png" alt="aji" className=" relative w-12 h-12 object-cover rounded-2xl"/><span className="animate-ping absolute w-12 h-12 inline-flex border-2 rounded-2xl border-green-400 opacity-75"></span>
                   <span></span>
                 </div>
 
@@ -396,7 +394,7 @@ Edit
             <div className="flex items-center justify-between">
               <div className="flex items-center mr-auto">
 
-                <div className="inline-flex w-12 h-12"><img src="https://tailwindcomponents.com/storage/avatars/njkIbPhyZCftc4g9XbMWwVsa7aGVPajYLRXhEeoo.jpg" alt="aji" className=" relative p-1 w-12 h-12 object-cover rounded-2xl"/><span className="absolute w-12 h-12 inline-flex border-2 rounded-2xl border-green-400 opacity-75"></span>
+                <div className="inline-flex w-12 h-12"><img src="/images/t5.png" alt="aji" className=" relative p-1 w-12 h-12 object-cover rounded-2xl"/><span className="absolute w-12 h-12 inline-flex border-2 rounded-2xl border-green-400 opacity-75"></span>
                   <span></span>
                 </div>
 
@@ -420,7 +418,7 @@ Edit
           <div className="flex flex-col p-4 bg-gray-800 border-gray-800 shadow-md hover:shodow-lg rounded-2xl cursor-pointer transition ease-in duration-500  transform hover:scale-105">
             <div className="flex items-center justify-between">
               <div className="flex items-center mr-auto">
-                <div className="inline-flex w-12 h-12"><img src="https://tailwindcomponents.com/storage/avatars/njkIbPhyZCftc4g9XbMWwVsa7aGVPajYLRXhEeoo.jpg" alt="aji" className=" relative p-1 w-12 h-12 object-cover rounded-2xl"/><span className="absolute w-12 h-12 inline-flex border-2 rounded-2xl border-gray-600 opacity-75"></span>
+                <div className="inline-flex w-12 h-12"><img src="/images/t6.png" alt="aji" className=" relative p-1 w-12 h-12 object-cover rounded-2xl"/><span className="absolute w-12 h-12 inline-flex border-2 rounded-2xl border-gray-600 opacity-75"></span>
                   <span></span>
                 </div>
 
@@ -448,7 +446,7 @@ Edit
 <div className="flex items-center justify-between">
   <div className="flex items-center mr-auto">
 
-    <div className="inline-flex w-12 h-12"><img src="https://tailwindcomponents.com/storage/avatars/njkIbPhyZCftc4g9XbMWwVsa7aGVPajYLRXhEeoo.jpg" alt="aji" className=" relative p-1 w-12 h-12 object-cover rounded-2xl"/><span className="absolute w-12 h-12 inline-flex border-2 rounded-2xl border-slate-400 opacity-75"></span>
+    <div className="inline-flex w-12 h-12"><img src="/images/t7.png" alt="aji" className=" relative p-1 w-12 h-12 object-cover rounded-2xl"/><span className="absolute w-12 h-12 inline-flex border-2 rounded-2xl border-slate-400 opacity-75"></span>
       <span></span>
     </div>
 
@@ -474,7 +472,7 @@ Edit
 <div className="flex items-center justify-between">
   <div className="flex items-center mr-auto">
 
-    <div className="inline-flex w-12 h-12"><img src="https://tailwindcomponents.com/storage/avatars/njkIbPhyZCftc4g9XbMWwVsa7aGVPajYLRXhEeoo.jpg" alt="aji" className=" relative p-1 w-12 h-12 object-cover rounded-2xl"/><span className="absolute w-12 h-12 inline-flex border-2 rounded-2xl border-slate-400 opacity-75"></span>
+    <div className="inline-flex w-12 h-12"><img src="/images/t1.png" alt="aji" className=" relative p-1 w-12 h-12 object-cover rounded-2xl"/><span className="absolute w-12 h-12 inline-flex border-2 rounded-2xl border-slate-400 opacity-75"></span>
       <span></span>
     </div>
 
@@ -499,7 +497,7 @@ Edit
 <div className="flex items-center justify-between">
   <div className="flex items-center mr-auto">
 
-    <div className="inline-flex w-12 h-12"><img src="https://tailwindcomponents.com/storage/avatars/njkIbPhyZCftc4g9XbMWwVsa7aGVPajYLRXhEeoo.jpg" alt="aji" className=" relative p-1 w-12 h-12 object-cover rounded-2xl"/><span className="absolute w-12 h-12 inline-flex border-2 rounded-2xl border-slate-400 opacity-75"></span>
+    <div className="inline-flex w-12 h-12"><img src="h/images/t2.png" alt="aji" className=" relative p-1 w-12 h-12 object-cover rounded-2xl"/><span className="absolute w-12 h-12 inline-flex border-2 rounded-2xl border-slate-400 opacity-75"></span>
       <span></span>
     </div>
 
@@ -524,7 +522,7 @@ Edit
 <div className="flex items-center justify-between">
   <div className="flex items-center mr-auto">
 
-    <div className="inline-flex w-12 h-12"><img src="https://tailwindcomponents.com/storage/avatars/njkIbPhyZCftc4g9XbMWwVsa7aGVPajYLRXhEeoo.jpg" alt="aji" className=" relative p-1 w-12 h-12 object-cover rounded-2xl"/><span className="absolute w-12 h-12 inline-flex border-2 rounded-2xl border-slate-400 opacity-75"></span>
+    <div className="inline-flex w-12 h-12"><img src="/images/t10.png" alt="aji" className=" relative p-1 w-12 h-12 object-cover rounded-2xl"/><span className="absolute w-12 h-12 inline-flex border-2 rounded-2xl border-slate-400 opacity-75"></span>
       <span></span>
     </div>
 
@@ -549,7 +547,7 @@ Edit
 <div className="flex items-center justify-between">
   <div className="flex items-center mr-auto">
 
-    <div className="inline-flex w-12 h-12"><img src="https://tailwindcomponents.com/storage/avatars/njkIbPhyZCftc4g9XbMWwVsa7aGVPajYLRXhEeoo.jpg" alt="aji" className=" relative p-1 w-12 h-12 object-cover rounded-2xl"/><span className="absolute w-12 h-12 inline-flex border-2 rounded-2xl border-slate-400 opacity-75"></span>
+    <div className="inline-flex w-12 h-12"><img src="/images/t3.png" alt="aji" className=" relative p-1 w-12 h-12 object-cover rounded-2xl"/><span className="absolute w-12 h-12 inline-flex border-2 rounded-2xl border-slate-400 opacity-75"></span>
       <span></span>
     </div>
 
@@ -604,7 +602,7 @@ Edit
 <div className="flex items-center justify-between">
   <div className="flex items-center mr-auto">
 
-    <div className="inline-flex w-12 h-12"><img src="https://tailwindcomponents.com/storage/avatars/njkIbPhyZCftc4g9XbMWwVsa7aGVPajYLRXhEeoo.jpg" alt="aji" className=" relative p-1 w-12 h-12 object-cover rounded-2xl"/><span className="absolute w-12 h-12 inline-flex border-2 rounded-2xl border-slate-400 opacity-75"></span>
+    <div className="inline-flex w-12 h-12"><img src="/images/t8.png" alt="aji" className=" relative p-1 w-12 h-12 object-cover rounded-2xl"/><span className="absolute w-12 h-12 inline-flex border-2 rounded-2xl border-slate-400 opacity-75"></span>
       <span></span>
     </div>
 
