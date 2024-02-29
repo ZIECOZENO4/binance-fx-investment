@@ -3,6 +3,8 @@ import React, { useState,  useRef, FC, useEffect} from 'react';
 import { motion } from 'framer-motion';
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, RadioGroup, Radio} from "@nextui-org/react";
+import EightDays from './countdowns/eightdays';
+
 type RenderTimeProps = {
   remainingTime: number;
 };
@@ -168,25 +170,6 @@ useEffect(() => {
   const [activeTab, setActiveTab] = useState('Basic');
   return (
     <div>
-    <div className="App text-center mb-10">
-      <h1 className="font-roboto text-4xl mb-10">
-        CountdownCircleTimer
-        <br />
-        React Component
-      </h1>
-      <div className="timer-wrapper flex justify-center">
-        <CountdownCircleTimer
-          isPlaying
-          duration={durationInSeconds}
-          colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
-          colorsTime={[10,  6,  3,  0]}
-        >
-          {RenderTime}
-        </CountdownCircleTimer>
-      </div>
-    </div>
-
-
    <div className='flex flex-row md:mx-2 justify-between pt-14'>
      <motion.header
        onClick={() => setActiveTab('Basic')}
@@ -216,6 +199,7 @@ useEffect(() => {
      </motion.header>
    </div>
    <div  className=' h-1 w-full bg-slate-300 mt-2 mb-5'/>
+   <EightDays />
    {activeTab === 'Basic' && 
    <div className="text-gray-900  mt-[20px]  bg-no-repeat bg-bottom sm:bg-bottom   mb-auto">
    <div className="flex flex-col md:flex-row md:transform md:scale-75 lg:scale-100 justify-center ">
