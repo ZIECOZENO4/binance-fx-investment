@@ -3,7 +3,7 @@ import { CardTitle, CardHeader, CardContent, Card } from "../../components/ui/ca
 import { TableHead, TableRow, TableHeader, TableCell, TableBody, Table } from "../../components/ui/table"
 import { Button } from "../../components/ui/button"
 
-export default function Component() {
+export default function Admin() {
   return (
     <Card>
       <CardHeader>
