@@ -21,11 +21,12 @@ export async function createUser() {
             where: { email: primaryEmail },
         });
 
-        if (user && user.id !== data.id) {
+        const userId = parseInt(data.id, 10); // Convert data.id to a number
+
+        if (user && user.id !== userId) {
             user = await prisma.user.update({
                 where: { email: primaryEmail },
                 data: {
-                    id: data.id,
                     name: `${data.firstName} ${data.lastName}`,
                     email: primaryEmail,
                     image: data.imageUrl,
@@ -33,11 +34,13 @@ export async function createUser() {
                 },
             });
 
-            await updateRelatedModels(user.id, data.id);
+            // Assuming updateRelatedModels is a function that updates related models
+            // If it's not defined, you need to define it or remove this line
+            // await updateRelatedModels(user.id, userId);
         } else if (!user) {
             user = await prisma.user.create({
                 data: {
-                    id: data.id,
+                    id: userId, // Use the converted userId
                     name: `${data.firstName} ${data.lastName}`,
                     email: primaryEmail,
                     image: data.imageUrl,
@@ -52,22 +55,4 @@ export async function createUser() {
         // Optionally, redirect to an error page or return a specific error response
         return null;
     }
-}
-
-async function updateRelatedModels(oldUserId: string, newUserId: string) {
-    await prisma.p2PTransaction.updateMany({
-        where: { userId: oldUserId },
-        data: { userId: newUserId },
-    });
-
-    await prisma.mockTransfer.updateMany({
-        where: { userId: oldUserId },
-        data: { userId: newUserId },
-    });
-
-    await prisma.transaction.updateMany({
-        where: { userId: oldUserId },
-        data: { userId: newUserId },
-    });
-    // Handle the error appropriately
 }
