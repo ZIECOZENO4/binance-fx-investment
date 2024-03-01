@@ -5,116 +5,12 @@ import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, RadioGroup, Radio} from "@nextui-org/react";
 import {Input} from "@nextui-org/react";
 import Link from 'next/link';
+import Countdown from './UseCountDown';
 
-type RenderTimeProps = {
-  remainingTime: number;
-  days: number;
-   hours: number;
-    minutes: number;
-};
 
-const RenderTime: FC<RenderTimeProps> = ({ remainingTime }) => {
-  const [, setOneLastRerender] = useState(0);
-  const currentTime = useRef(remainingTime);
-  const prevTime = useRef<number | null>(null);
-  const isNewTimeFirstTick = useRef(false);
-  const [timeLeft, setTimeLeft] = useState<{ days: number, hours: number, minutes: number } | null>(null);
- const [countdownStarted, setCountdownStarted] = useState(false);
-
- useEffect(() => {
-  let interval: NodeJS.Timeout;
-    if (countdownStarted) {
-      const countdownDate = new Date().getTime() + 8 * 24 * 60 * 60 * 1000; // 8 days from now
-
-      interval = setInterval(() => {
-        const now = new Date().getTime();
-        const distance = countdownDate - now;
-
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-
-        setTimeLeft({ days, hours, minutes });
-
-        if (distance < 0) {
-          clearInterval(interval);
-          setTimeLeft(null);
-          setCountdownStarted(false);
-        }
-      }, 1000);
-    }
-
-    return () => {
-      if (interval) {
-        clearInterval(interval);
-      }
-    };
- }, [countdownStarted]);
-
- const startCountdown = () => {
-    setCountdownStarted(true);
- };
-
-  if (currentTime.current !== remainingTime) {
-    isNewTimeFirstTick.current = true;
-    prevTime.current = currentTime.current;
-    currentTime.current = remainingTime;
-  } else {
-    isNewTimeFirstTick.current = false;
-  }
-
-  if (remainingTime ===  0) {
-    setTimeout(() => {
-      setOneLastRerender((val) => val +  1);
-    },  20);
-  }
-
-  const isTimeUp = isNewTimeFirstTick.current;
-
-  return (
-    <div className="time-wrapper relative w-20 h-15 text-9xl font-mono">
-      <div key={remainingTime} className={`time absolute inset-0 flex items-center justify-center transform transition-all duration-200 ${isTimeUp ? "opacity-0 -translate-y-full" : ""}`}>
-        {remainingTime}
-      </div>
-      {prevTime.current !== null && (
-        <div
-          key={prevTime.current}
-          className={`time absolute inset-0 flex items-center justify-center transform transition-all duration-200 ${!isTimeUp ? "opacity-0 translate-y-full" : ""}`}
-        >
-          {prevTime.current}
-        </div>
-      )}
-    </div>
-  );
-};
 
 const Basic2 = () => {
-  const [timeLeft, setTimeLeft] = useState(0);
-  const [startTime, setStartTime] = useState(8 *  24 *  60 *  60); //  8 days in seconds
-  const [isActive, setIsActive] = useState(false);
-  const daysToCountDown =  8; // Number of days you want to count down from
-  const durationInSeconds = daysToCountDown *  24 *  60 *  60;
 
-useEffect(() => {
-  let interval: NodeJS.Timeout | number | null = null;
-  if (isActive && timeLeft >   0) {
-    interval = setInterval(() => {
-      setTimeLeft(timeLeft -   1);
-    },   1000) as unknown as number; 
-  } else if (!isActive && timeLeft ===   0) {
-    clearInterval(interval as unknown as number); // Type assertion to number
-  }
-  return () => clearInterval(interval as unknown as number); // Type assertion to number
-}, [isActive, timeLeft]);
-
-  const startCountdown = () => {
-    setIsActive(true);
-    setTimeLeft(startTime);
-  };
-
-  const getColor = (timeLeft: number) => {
-    return timeLeft <= startTime /  2 ? 'bg-red-500' : 'bg-green-500';
-  };
   const basicPlan = { monthlyPrice: "5% Daily", items: ['Total Roll:   40%', 'Duration:   8 Days', 'Minium Deposit:        $ 200', 'Maxium Deposit:  $   2000', '5% Referral Bonus']};
   const advancePlan = { monthlyPrice: "5% Daily", items: ['Total Roll:   60%', 'Duration:   12 Days', 'Minium Deposit:     $ 2,100', 'Maxium Deposit:  $   10,000', '5% Referral Bonus']};
   const proPlan = { monthlyPrice: "5% Daily", items: ['Total Roll:   80%', 'Duration:   14 Days', 'Minium Deposit:  $ 10,100', 'Maxium Deposit:  $   20,000', '5% Referral Bonus' ]};
@@ -245,47 +141,7 @@ useEffect(() => {
    <div>
     
     <div className="flex flex-col items-center justify-center bg-[#0000000] text-white rounded-lg p-4">
-      <div>
-        {timeLeft && (
-          <div className="flex items-center justify-between">
-            <svg
-      xmlns="http://www.w3.org/20000/svg"
-      width="24"
-      height="24"
-      className="w-6 h-6 text-white"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="m9 18 6-6-6-6-6" />
-    </svg>
-            <div className="flex space-x-2 mt-4">
-              <div className="flex flex-col items-center justify-center bg-white text-black rounded-lg p-2">
-                <span className="text-2xl font-bold">{timeLeft.days}</span>
-                <span className="text-xs uppercase">days</span>
-              </div>
-              <span className="text-2xl font-bold">:</span>
-              <div className="flex flex-col items-center justify-center bg-white text-black rounded-lg p-2">
-                <span className="text-2xl font-bold">{timeLeft.hours}</span>
-                <span className="text-xs uppercase">hours</span>
-              </div>
-              <span className="text-2xl font-bold">:</span>
-              <div className="flex flex-col items-center justify-center bg-white text-black rounded-lg p-2">
-                <span className="text-2xl font-bold">{timeLeft.minutes}</span>
-                <span className="text-xs uppercase">minutes</span>
-              </div>
-            </div>
-          </div>
-        )}
-      </div>
-      {/* {!countdownStarted && (
-        <button onClick={startCountdown} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-          Start Countdown
-        </button>
-      )} */}
+  <Countdown />
     </div>
    </div>
    <div className="text-gray-900  mt-[20px]  bg-no-repeat bg-bottom sm:bg-bottom   mb-auto">

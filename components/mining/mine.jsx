@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { CardDescription, CardTitle, CardHeader, CardContent, Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import FXMining from './ming page';
-export default function Component() {
+export default function FXcoin() {
   const [showFXMining, setShowFXMining] = useState(false);
 
   const toggleFXMining = () => {
