@@ -45,14 +45,14 @@ const Register = () => {
     
  <button className='rounded-3xl font-bold justify-center align-middle text-2xl border-spacing-8 space-x-8 border-b-large border-blue-200 bg-green-600 md:ml-8'>
    
-    <SignUpButton mode="modal" afterSignInUrl="/dashboard" afterSignUpUrl="/dashboard">
+    <SignUpButton mode="modal" afterSignInUrl="/sync-user" afterSignUpUrl="/sync-user">
     <p className='p-3'>SIGN UP</p>
     </SignUpButton>
  </button>
 
  <button className='rounded-3xl font-bold justify-center px-8 align-middle text-2xl border-spacing-8 space-x-8 border-b-large border-blue-200 bg-[#FFD700]'>
   
-    <SignInButton mode="modal" afterSignInUrl="/dashboard" afterSignUpUrl="/dashboard">
+    <SignInButton mode="modal" afterSignInUrl="/sync-user" afterSignUpUrl="/sync-user">
     <p className='p-3 text-black'>SIGN IN</p>
     </SignInButton>
  </button>

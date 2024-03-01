@@ -50,6 +50,7 @@
     "react-modal": "^3.16.1",
     "react-query": "^3.39.3",
     "react-responsive-carousel": "^3.2.23",
+    "react-spinners": "^0.13.8",
     "react-swipeable": "^7.0.1",
     "react-tilt": "^1.0.2",
     "react-vertical-timeline-component": "^3.6.0",

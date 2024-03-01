@@ -7,7 +7,7 @@ export default function Component() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-2xl font-bold text-gray-800 dark:text-gray-300 flex justify-center align-middle items-center py-3 font-extrabold">User Information</CardTitle>
+        <CardTitle className="text-2xl  text-gray-800 dark:text-gray-300 flex justify-center align-middle items-center py-3 font-extrabold">User Information</CardTitle>
       </CardHeader>
       <CardContent>
         <Table className="w-full">

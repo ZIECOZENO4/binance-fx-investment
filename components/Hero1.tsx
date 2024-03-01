@@ -78,7 +78,7 @@ function Hero1() {
       size="lg"
    
     >
-    <SignUpButton mode="modal" afterSignInUrl="/dashboard" afterSignUpUrl="/dashboard">
+    <SignUpButton mode="modal" afterSignInUrl="/sync-user" afterSignUpUrl="/sync-user">
     <p className='p-2 text-xl font-bold text-green-400'>Register</p>
     </SignUpButton> 
     </Button>
