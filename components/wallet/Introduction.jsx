@@ -1,9 +1,9 @@
 "use client"
 import React from 'react'
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
+import { Button } from "../../components/ui/button"
 
-export default function Introduction() {
+export default function Introducti() {
   return (
     <div className="bg-[#6c5ce7] min-h-screen flex flex-col items-center justify-center text-white">
  

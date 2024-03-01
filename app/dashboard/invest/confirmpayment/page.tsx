@@ -8,15 +8,11 @@ import { useCountdownManager } from '../../../../components/invest/countdowns/co
 
 
 // Define the interface for the return value of useCountdownManager
-interface CountdownManager {
- startCountdown: (endDate: Date) => void;
-}
+
 
 const Page = () => {
  const [walletAddress, setWalletAddress] = useState('');
  const [transactionId, setTransactionId] = useState('');
- // Use type assertion to inform TypeScript about the return type of useCountdownManager
- const { startCountdown } = useCountdownManager() as CountdownManager;
  const { isLoaded, isSignedIn, user } = useUser();
  if (!isLoaded) {
     return null;
@@ -29,13 +25,6 @@ const Page = () => {
     setTransactionId(event.target.value);
   };
 
-
-
- const handleTrigger = () => {
-    const endDate = new Date();
-    endDate.setDate(endDate.getDate() + 8); // Set to 8 days from now
-    startCountdown(endDate);
- };
   return (
   
 <div className="container">
@@ -184,7 +173,7 @@ const Page = () => {
               </div>
               <button
       className="w-full bg-green-600 text-white px-2 py-2 rounded-md"
-      onClick={handleTrigger}
+   
     >
       Accept
     </button>

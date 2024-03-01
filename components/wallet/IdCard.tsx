@@ -1,9 +1,9 @@
 "use client"
-import { CardTitle, CardDescription, CardHeader, CardContent, CardFooter, Card } from "@/components/ui/card"
-import { Label } from "@/components/ui/label"
-import { Input } from "@/components/ui/input"
-import { SelectValue, SelectTrigger, SelectItem, SelectContent, Select } from "@/components/ui/select"
-import { Button } from "@/components/ui/button"
+import { CardTitle, CardDescription, CardHeader, CardContent, CardFooter, Card } from "../../components/ui/card"
+import { Label } from "../../components/ui/label"
+import { Input } from "../../components/ui/input"
+import { SelectValue, SelectTrigger, SelectItem, SelectContent, Select } from "../../components/ui/select"
+import { Button } from "../../components/ui/button"
 
 export default function IdCard() {
   return (

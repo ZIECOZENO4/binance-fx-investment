@@ -1,21 +1,19 @@
 "use client"
 
+//"use client"
+
 // Countdown.js
 import React, { useEffect, useState } from 'react';
 import { useCountdownManager } from './countdowncontest';
 
 // Define a type for the props of ChevronRightIcon
-type ChevronRightIconProps = React.SVGProps<SVGSVGElement>;
+
 
 // Define a type for the return value of useCountdownManager if it's not already defined
 // For this example, let's assume it returns an object with activeCountdowns property
-interface CountdownManagerReturn {
- activeCountdowns: Record<string, number>;
-}
 
-export default function EightDays({ id }: { id: string }) {
- const { activeCountdowns } = useCountdownManager() as CountdownManagerReturn;
- const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0 });
+export default function EightDays({ id }) {
+ const [timeLeft, setTimeLeft] = useState<{ days: number, hours: number, minutes: number } | null>(null);
 
  useEffect(() => {
     const countdownDate = activeCountdowns[id];
@@ -36,13 +34,15 @@ export default function EightDays({ id }: { id: string }) {
       }, 1000);
 
       return () => clearInterval(interval);
+    } else {
+      setTimeLeft(null);
     }
  }, [activeCountdowns, id]);
 
  return (
     <div className="flex flex-col items-center justify-center bg-[#000000] text-white rounded-lg p-4">
       <div>
-        {timeLeft.days > 0 && (
+        {timeLeft && (
           <div className="flex items-center justify-between">
             <ChevronRightIcon className="w-6 h-6 text-white" />
             <div className="flex space-x-2 mt-4">
