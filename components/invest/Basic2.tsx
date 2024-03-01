@@ -3,12 +3,14 @@ import React, { useState,  useRef, FC, useEffect} from 'react';
 import { motion } from 'framer-motion';
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, RadioGroup, Radio} from "@nextui-org/react";
-import EightDays from './countdowns/eightdays';
 import {Input} from "@nextui-org/react";
 import Link from 'next/link';
 
 type RenderTimeProps = {
   remainingTime: number;
+  days: number;
+   hours: number;
+    minutes: number;
 };
 
 const RenderTime: FC<RenderTimeProps> = ({ remainingTime }) => {
@@ -16,7 +18,42 @@ const RenderTime: FC<RenderTimeProps> = ({ remainingTime }) => {
   const currentTime = useRef(remainingTime);
   const prevTime = useRef<number | null>(null);
   const isNewTimeFirstTick = useRef(false);
- 
+  const [timeLeft, setTimeLeft] = useState<{ days: number, hours: number, minutes: number } | null>(null);
+ const [countdownStarted, setCountdownStarted] = useState(false);
+
+ useEffect(() => {
+  let interval: NodeJS.Timeout;
+    if (countdownStarted) {
+      const countdownDate = new Date().getTime() + 8 * 24 * 60 * 60 * 1000; // 8 days from now
+
+      interval = setInterval(() => {
+        const now = new Date().getTime();
+        const distance = countdownDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+        setTimeLeft({ days, hours, minutes });
+
+        if (distance < 0) {
+          clearInterval(interval);
+          setTimeLeft(null);
+          setCountdownStarted(false);
+        }
+      }, 1000);
+    }
+
+    return () => {
+      if (interval) {
+        clearInterval(interval);
+      }
+    };
+ }, [countdownStarted]);
+
+ const startCountdown = () => {
+    setCountdownStarted(true);
+ };
 
   if (currentTime.current !== remainingTime) {
     isNewTimeFirstTick.current = true;
@@ -205,6 +242,52 @@ useEffect(() => {
 
    {activeTab === 'Basic' && 
    <div>
+   <div>
+    
+    <div className="flex flex-col items-center justify-center bg-[#0000000] text-white rounded-lg p-4">
+      <div>
+        {timeLeft && (
+          <div className="flex items-center justify-between">
+            <svg
+      xmlns="http://www.w3.org/20000/svg"
+      width="24"
+      height="24"
+      className="w-6 h-6 text-white"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="m9 18 6-6-6-6-6" />
+    </svg>
+            <div className="flex space-x-2 mt-4">
+              <div className="flex flex-col items-center justify-center bg-white text-black rounded-lg p-2">
+                <span className="text-2xl font-bold">{timeLeft.days}</span>
+                <span className="text-xs uppercase">days</span>
+              </div>
+              <span className="text-2xl font-bold">:</span>
+              <div className="flex flex-col items-center justify-center bg-white text-black rounded-lg p-2">
+                <span className="text-2xl font-bold">{timeLeft.hours}</span>
+                <span className="text-xs uppercase">hours</span>
+              </div>
+              <span className="text-2xl font-bold">:</span>
+              <div className="flex flex-col items-center justify-center bg-white text-black rounded-lg p-2">
+                <span className="text-2xl font-bold">{timeLeft.minutes}</span>
+                <span className="text-xs uppercase">minutes</span>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+      {/* {!countdownStarted && (
+        <button onClick={startCountdown} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          Start Countdown
+        </button>
+      )} */}
+    </div>
+   </div>
    <div className="text-gray-900  mt-[20px]  bg-no-repeat bg-bottom sm:bg-bottom   mb-auto">
    <div className="flex flex-col md:flex-row md:transform md:scale-75 lg:scale-100 justify-center ">
      <div className="border rounded-lg text-center p-5 mx-auto md:mx-10 my-2 md:my-6 bg-slate-600 text-green-400 text-[30px] md:text-[40px] z-10 shadow-lg">

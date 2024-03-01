@@ -1,83 +1,12 @@
-// 'use client'
-// import React, { useState } from 'react';
-// import { motion } from 'framer-motion';
 
-
-// const Premium2 = () => {
-//   const [activeTab, setActiveTab] = useState('VIP -1');
-//   return (
-//     <div>
-//    <div className='flex flex-row md:mx-2 justify-between pt-14'>
-//      <motion.header
-//        onClick={() => setActiveTab('VIP -1')}
-//        className={`text-slate-200 font-heading  text-xl md:text-2xl border-b-2 md:mx-5  mx-1 pt-4  cursor-pointer ${activeTab === 'VIP -1' ? 'border-green-700  rounded-md  bg-gradient-to-r from-red-500 to-sky-500 bg-clip-text text-transparent animate-gradient' : 'border-amber-100'}`}
-//        animate={{ scale: activeTab === 'VIP -1' ? 1.2 : 1 }}
-//      >
-//     VIP -1
-//      </motion.header>
-//      <motion.header
-//        onClick={() => setActiveTab('VIP -2')}
-//        className={`text-slate-200 font-heading  text-xl md:text-2xl border-b-2 md:mx-5 mx-1 pt-4 backdrop:pt-4  cursor-pointer ${activeTab === 'VIP -2' ? 'border-green-700  rounded-md  bg-gradient-to-r from-red-500 to-sky-500 bg-clip-text text-transparent animate-gradient' : 'border-amber-100'}`}
-//      >
-//     VIP -2
-//      </motion.header>
-//      <motion.header
-//        onClick={() => setActiveTab('VIP -3')}
-//        className={`text-slate-200 font-heading  text-xl md:text-2xl border-b-2 md:mx-5 mx-1 pt-4  cursor-pointer ${activeTab === 'VIP -3' ? 'border-green-700  rounded-md  bg-gradient-to-r from-red-500 to-sky-500 bg-clip-text text-transparent animate-gradient' : 'border-amber-100'}`}
-//      >
-//      VIP -3
-//      </motion.header>
-
-//    </div>
-//    <div  className=' h-1 w-full bg-slate-300 mt-2 mb-5'/>
-//    {activeTab === 'VIP -1' && 
-//    <div className=" flex flex-col justify-center align-middle p-2 font-bold font-sono text-xl text-white leading-6 gap-2 md:gap-4">
-//     <h1 className=" text-2xl text-sky-600">75% Daily </h1>
-// <p>Total roll: 150%</p>
-// <p>DURATION: 48 days</p>
-// <p>Min deposit $50,000</p>
-// <p>Max deposit $100,000</p>
-// <p>5% referral bonus</p>
-// <div>
-
-// </div>
-//   </div>}
-//    {activeTab === 'VIP -2' && 
-//      <div className=" flex flex-col justify-center align-middle p-2 font-bold font-sono text-xl text-white leading-6 gap-2 md:gap-4">
-//     <h1 className=" text-2xl text-sky-600">100% Daily </h1>
-// <p>Total roll: 200%</p>
-// <p>DURATION: 48 days</p>
-// <p>Min deposit $100,000</p>
-// <p>Max deposit $200,000</p>
-// <p>5% referral bonus</p>
-// <div>
-  
-// </div>
-//   </div>
-//    }
-//    {activeTab === 'VIP -3' && 
-//     <div className=" flex flex-col justify-center align-middle p-2 font-bold font-sono text-xl text-white leading-6 gap-2 md:gap-4">
-//     <h1 className=" text-2xl text-sky-600">125% Daily </h1>
-// <p>Total roll: 100%</p>
-// <p>DURATION: 48 days</p>
-// <p>Min deposit $200,000</p>
-// <p>Max deposit $500,000</p>
-// <p>5% referral bonus</p>
-// <div>
-  
-// </div>
-//   </div>
-//    }
-//  </div>
-//   )
-// }
-
-// export default Premium2
 
 'use client'
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, RadioGroup, Radio} from "@nextui-org/react";
+import {Input} from "@nextui-org/react";
+import Link from 'next/link';
+
 type MouseEvent = React.MouseEvent<HTMLButtonElement>;
 type ChangeEvent = React.ChangeEvent<HTMLInputElement>;
 const Premium2 = () => {
@@ -176,27 +105,6 @@ useEffect(() => {
   return (
     <div>
     <div className="flex  flex-wrap space-x-4">
-      <div className={`text-white p-4 rounded-full text-center ${getColor(timeLeft)}`}>
-        {Math.floor(timeLeft / (24 *  60 *  60))} days
-      </div>
-      <div className={`text-white p-4 rounded-full text-center ${getColor(timeLeft)}`}>
-        {Math.floor((timeLeft % (24 *  60 *  60)) / (60 *  60))} hours
-      </div>
-      <div className={`text-white p-4 rounded-full text-center ${getColor(timeLeft)}`}>
-        {Math.floor((timeLeft % (60 *  60)) /  60)} minutes
-      </div>
-      <div className={`text-white p-4 rounded-full text-center ${getColor(timeLeft)}`}>
-        {timeLeft %  60} seconds
-      </div>
-      <button
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        onClick={startCountdown}
-      >
-        Start
-      </button>
-    </div>
-
-
    <div className='flex flex-row md:mx-2 justify-between pt-14'>
      <motion.header
        onClick={() => setActiveTab('Vip1')}
@@ -221,7 +129,8 @@ useEffect(() => {
    </div>
    <div  className=' h-1 w-full bg-slate-300 mt-2 mb-5'/>
    {activeTab === 'Vip1' && 
-   <div className="text-gray-900  mt-[20px]  bg-no-repeat bg-bottom sm:bg-bottom   mb-auto">
+   <div>
+      <div className="text-gray-900  mt-[20px]  bg-no-repeat bg-bottom sm:bg-bottom   mb-auto">
    <div className="flex flex-col md:flex-row md:transform md:scale-75 lg:scale-100 justify-center ">
      <div className="border rounded-lg text-center p-5 mx-auto md:mx-10 my-2 md:my-6 bg-slate-600 text-green-400 text-[30px] md:text-[40px] z-10 shadow-lg">
       
@@ -298,8 +207,55 @@ useEffect(() => {
      </div>
      </div>
      </div>
+      <div className="flex flex-col justify-center align-middle items-center mb-20  mt-4 p-2 border border-white rounded-xl box-border ">
+      <h1 className="flex justify-center align-middle items-center p-4 text-2xl font-serif font-bold text-sky-600">
+        PAYMENT
+      </h1>
+      <p className="flex justify-center align-middle items-center p-2 text-xl font-serif font-bold text-sky-600">Select Coin</p>
+  
+  
+  
+      <div className="flex flex-col gap-4">
+        <div className="flex w-full flex-wrap md:flex-nowrap mb-6 md:mb-0 gap-4">
+         <Input
+            
+            placeholder="0.00"
+            labelPlacement="outside"
+            startContent={
+              <div className="flex items-center">
+                <label className="sr-only" htmlFor="currency">
+                  COIN
+                </label>
+                <select
+                  className="outline-none border-0 bg-transparent text-default-400 text-small"
+                  id="currency"
+                  name="currency"
+                >
+                  <option>BTC</option>
+                  <option>ETH</option>
+                  <option>BNB</option>
+                  <option>TRON</option>
+                  <option>DOGE</option>
+                  <option>XRP</option>
+  
+                </select>
+              </div>
+            }
+            type="number"
+          />
+        </div>
+      </div>  
+      <Link href="/dashboard/invest/confirmpayment">
+         <Button color="primary" variant="ghost" >
+        INVEST NOW
+      </Button>
+      </Link>
+  
+    </div>
+       </div>
      }
    {activeTab === 'Vip2' && 
+   <div>
    <div className="border rounded-lg text-center p-5 mx-auto md:mx-0 my-2 md:my-6 bg-sky-700 text-[#FFD700] font-bold  tracking-widest transition-transform-colors text-[30px] md:text-[40px] z-10 shadow-lg">
          
           <div className="font-bold md:text-[45px] text-[35px]">{vip2Plan.monthlyPrice}</div>
@@ -367,8 +323,55 @@ useEffect(() => {
       </Modal>
     </div>
         </div>
+        <div className="flex flex-col justify-center align-middle items-center mb-20  mt-4 p-2 border border-white rounded-xl box-border ">
+    <h1 className="flex justify-center align-middle items-center p-4 text-2xl font-serif font-bold text-sky-600">
+      PAYMENT
+    </h1>
+    <p className="flex justify-center align-middle items-center p-2 text-xl font-serif font-bold text-sky-600">Select Coin</p>
+
+
+
+    <div className="flex flex-col gap-4">
+      <div className="flex w-full flex-wrap md:flex-nowrap mb-6 md:mb-0 gap-4">
+       <Input
+          
+          placeholder="0.00"
+          labelPlacement="outside"
+          startContent={
+            <div className="flex items-center">
+              <label className="sr-only" htmlFor="currency">
+                COIN
+              </label>
+              <select
+                className="outline-none border-0 bg-transparent text-default-400 text-small"
+                id="currency"
+                name="currency"
+              >
+                <option>BTC</option>
+                <option>ETH</option>
+                <option>BNB</option>
+                <option>TRON</option>
+                <option>DOGE</option>
+                <option>XRP</option>
+
+              </select>
+            </div>
+          }
+          type="number"
+        />
+      </div>
+    </div>  
+    <Link href="/dashboard/invest/confirmpayment">
+       <Button color="primary" variant="ghost" >
+      INVEST NOW
+    </Button>
+    </Link>
+
+  </div>
+     </div>
    }
    {activeTab === 'Vip3' && 
+   <div>
  <div className="text-gray-900 border rounded-lg text-center p-5 mx-auto my-2 md:my-6 bg-slate-600  text-[25px] md:text-[40px] z-10 shadow-lg mt-[20px]  bg-no-repeat bg-bottom sm:bg-bottom md:mx-[3vw] mb-auto">
  <div className="flex flex-col md:flex-row md:transform md:scale-75 lg:scale-100 justify-center ">
    <div className="border rounded-lg text-center p-5 mx-auto md:mx-0 my-2 md:my-6 bg-slate-600 text-green-400 text-[30px] md:text-[40px] z-10 shadow-lg">
@@ -440,7 +443,54 @@ useEffect(() => {
    </div>
    </div>
    </div>
+   <div className="flex flex-col justify-center align-middle items-center mb-20  mt-4 p-2 border border-white rounded-xl box-border ">
+    <h1 className="flex justify-center align-middle items-center p-4 text-2xl font-serif font-bold text-sky-600">
+      PAYMENT
+    </h1>
+    <p className="flex justify-center align-middle items-center p-2 text-xl font-serif font-bold text-sky-600">Select Coin</p>
+
+
+
+    <div className="flex flex-col gap-4">
+      <div className="flex w-full flex-wrap md:flex-nowrap mb-6 md:mb-0 gap-4">
+       <Input
+          
+          placeholder="0.00"
+          labelPlacement="outside"
+          startContent={
+            <div className="flex items-center">
+              <label className="sr-only" htmlFor="currency">
+                COIN
+              </label>
+              <select
+                className="outline-none border-0 bg-transparent text-default-400 text-small"
+                id="currency"
+                name="currency"
+              >
+                <option>BTC</option>
+                <option>ETH</option>
+                <option>BNB</option>
+                <option>TRON</option>
+                <option>DOGE</option>
+                <option>XRP</option>
+
+              </select>
+            </div>
+          }
+          type="number"
+        />
+      </div>
+    </div>  
+    <Link href="/dashboard/invest/confirmpayment">
+       <Button color="primary" variant="ghost" >
+      INVEST NOW
+    </Button>
+    </Link>
+
+  </div>
+     </div>
    }
+    </div>
     </div>
   )
 }

@@ -6,11 +6,11 @@ import { Button } from "../../components/ui/button"
 
 export default function Component() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 py-4 mt-4">
       <div className="space-y-2">
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center just-fy-center align-middle space-x-4">
           <div className="space-y-1.5">
-            <h1 className="text-3xl font-bold tracking-tight">Driver&apos;s License Application</h1>
+            <h1 className="text-3xl font-bold tracking-tight ">Driver&apos;s License Application</h1>
             <p className="text-gray-500 dark:text-gray-400">Enter your information to apply for a driver&apos;s license</p>
           </div>
           <img
@@ -79,7 +79,7 @@ export default function Component() {
           </div>
         </fieldset>
       </div>
-      <Button className="w-full max-w-sm justify-center">Submit Application</Button>
+      <Button className="w-full max-w-sm justify-center bg-green-500 ">Submit Application</Button>
     </div>
   )
 }

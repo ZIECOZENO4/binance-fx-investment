@@ -170,22 +170,13 @@ Edit
   placement={modalPlacement as "auto" | "center" | "bottom" | "top" | "top-center" | "bottom-center" | undefined}
   onOpenChange={onOpenChange}  
 >
-        <ModalContent>
+        <ModalContent >
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1">UPGRADE TO TIRE TWO</ModalHeader>
+              <ModalHeader className="flex flex-col gap-1  justify-center align-middle items-center">UPGRADE TO TIRE TWO</ModalHeader>
               <ModalBody>
               <MultiStepForm /> 
-
               </ModalBody>
-              <ModalFooter>
-                <Button color="danger" variant="solid" onPress={onClose}>
-                  Close
-                </Button>
-                <Button color="success" onPress={onClose}>
-                  Finish
-                </Button>
-              </ModalFooter>
             </>
           )}
         </ModalContent>

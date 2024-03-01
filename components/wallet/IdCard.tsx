@@ -114,7 +114,7 @@ export default function IdCard() {
         </div>
       </CardContent>
       <CardFooter>
-        <Button className="ml-auto">Submit</Button>
+        <Button className="ml-auto bg-green font-bold">Submit</Button>
       </CardFooter>
     </Card>
   )

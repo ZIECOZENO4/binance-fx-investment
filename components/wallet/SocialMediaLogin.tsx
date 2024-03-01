@@ -8,7 +8,7 @@ export default function SocialMediaLogin() {
     <div className="mx-auto max-w-sm space-y-4">
       <div className="space-y-2 text-center">
         <h1 className="text-3xl font-bold">Sign In</h1>
-        <p className="text-gray-500 dark:text-gray-400">Sign in to access your account</p>
+        <p className="text-gray-500 dark:text-gray-400">To verify your identity</p>
       </div>
       <div className="space-y-4">
         <div className="space-y-2">
@@ -19,7 +19,7 @@ export default function SocialMediaLogin() {
           <Label htmlFor="password">Password</Label>
           <Input id="password" placeholder="Enter your password" required type="password" />
         </div>
-        <Button className="w-full">Sign In</Button>
+        <Button className="w-full bg-green-700 font-bold">Sign In</Button>
       </div>
     </div>
   )
