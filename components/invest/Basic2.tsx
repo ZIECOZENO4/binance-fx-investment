@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, RadioGroup, Radio} from "@nextui-org/react";
 import EightDays from './countdowns/eightdays';
+import {Input} from "@nextui-org/react";
+import Link from 'next/link';
 
 type RenderTimeProps = {
   remainingTime: number;
@@ -199,9 +201,10 @@ useEffect(() => {
      </motion.header>
    </div>
    <div  className=' h-1 w-full bg-slate-300 mt-2 mb-5'/>
-   <EightDays id="uniqueCountdownId" />
+  
 
    {activeTab === 'Basic' && 
+   <div>
    <div className="text-gray-900  mt-[20px]  bg-no-repeat bg-bottom sm:bg-bottom   mb-auto">
    <div className="flex flex-col md:flex-row md:transform md:scale-75 lg:scale-100 justify-center ">
      <div className="border rounded-lg text-center p-5 mx-auto md:mx-10 my-2 md:my-6 bg-slate-600 text-green-400 text-[30px] md:text-[40px] z-10 shadow-lg">
@@ -279,8 +282,55 @@ useEffect(() => {
      </div>
      </div>
      </div>
+     <div className="flex flex-col justify-center align-middle items-center mb-20  mt-4 p-2 border border-white rounded-xl box-border ">
+    <h1 className="flex justify-center align-middle items-center p-4 text-2xl font-serif font-bold text-sky-600">
+      PAYMENT
+    </h1>
+    <p className="flex justify-center align-middle items-center p-2 text-xl font-serif font-bold text-sky-600">Select Coin</p>
+
+
+
+    <div className="flex flex-col gap-4">
+      <div className="flex w-full flex-wrap md:flex-nowrap mb-6 md:mb-0 gap-4">
+       <Input
+          
+          placeholder="0.00"
+          labelPlacement="outside"
+          startContent={
+            <div className="flex items-center">
+              <label className="sr-only" htmlFor="currency">
+                COIN
+              </label>
+              <select
+                className="outline-none border-0 bg-transparent text-default-400 text-small"
+                id="currency"
+                name="currency"
+              >
+                <option>BTC</option>
+                <option>ETH</option>
+                <option>BNB</option>
+                <option>TRON</option>
+                <option>DOGE</option>
+                <option>XRP</option>
+
+              </select>
+            </div>
+          }
+          type="number"
+        />
+      </div>
+    </div>  
+    <Link href="/dashboard/invest/confirmpayment">
+       <Button color="primary" variant="ghost" >
+      INVEST NOW
+    </Button>
+    </Link>
+
+  </div>
+     </div>
      }
    {activeTab === 'Advance' && 
+   <div>
    <div className="border rounded-lg text-center p-5 mx-auto md:mx-0 my-2 md:my-6 bg-sky-700 text-[#FFD700] font-bold  tracking-widest transition-transform-colors text-[30px] md:text-[40px] z-10 shadow-lg">
          
           <div className="font-bold md:text-[45px] text-[35px]">{advancePlan.monthlyPrice}</div>
@@ -348,8 +398,55 @@ useEffect(() => {
       </Modal>
     </div>
         </div>
+             <div className="flex flex-col justify-center align-middle items-center mb-20  mt-4 p-2 border border-white rounded-xl box-border ">
+             <h1 className="flex justify-center align-middle items-center p-4 text-2xl font-serif font-bold text-sky-600">
+               PAYMENT
+             </h1>
+             <p className="flex justify-center align-middle items-center p-2 text-xl font-serif font-bold text-sky-600">Select Coin</p>
+         
+         
+         
+             <div className="flex flex-col gap-4">
+               <div className="flex w-full flex-wrap md:flex-nowrap mb-6 md:mb-0 gap-4">
+                <Input
+                   
+                   placeholder="0.00"
+                   labelPlacement="outside"
+                   startContent={
+                     <div className="flex items-center">
+                       <label className="sr-only" htmlFor="currency">
+                         COIN
+                       </label>
+                       <select
+                         className="outline-none border-0 bg-transparent text-default-400 text-small"
+                         id="currency"
+                         name="currency"
+                       >
+                         <option>BTC</option>
+                         <option>ETH</option>
+                         <option>BNB</option>
+                         <option>TRON</option>
+                         <option>DOGE</option>
+                         <option>XRP</option>
+         
+                       </select>
+                     </div>
+                   }
+                   type="number"
+                 />
+               </div>
+             </div>  
+             <Link href="/dashboard/invest/confirmpayment">
+                <Button color="primary" variant="ghost" >
+               INVEST NOW
+             </Button>
+             </Link>
+         
+           </div>
+              </div>
    }
    {activeTab === 'Pro Plan' && 
+   <div>
  <div className="text-gray-900 border rounded-lg text-center p-5 mx-auto my-2 md:my-6 bg-slate-600  text-[25px] md:text-[40px] z-10 shadow-lg mt-[20px]  bg-no-repeat bg-bottom sm:bg-bottom md:mx-[3vw] mb-auto">
  <div className="flex flex-col md:flex-row md:transform md:scale-75 lg:scale-100 justify-center ">
    <div className="border rounded-lg text-center p-5 mx-auto md:mx-0 my-2 md:my-6 bg-slate-600 text-green-400 text-[30px] md:text-[40px] z-10 shadow-lg">
@@ -421,8 +518,55 @@ useEffect(() => {
    </div>
    </div>
    </div>
+        <div className="flex flex-col justify-center align-middle items-center mb-20  mt-4 p-2 border border-white rounded-xl box-border ">
+        <h1 className="flex justify-center align-middle items-center p-4 text-2xl font-serif font-bold text-sky-600">
+          PAYMENT
+        </h1>
+        <p className="flex justify-center align-middle items-center p-2 text-xl font-serif font-bold text-sky-600">Select Coin</p>
+    
+    
+    
+        <div className="flex flex-col gap-4">
+          <div className="flex w-full flex-wrap md:flex-nowrap mb-6 md:mb-0 gap-4">
+           <Input
+              
+              placeholder="0.00"
+              labelPlacement="outside"
+              startContent={
+                <div className="flex items-center">
+                  <label className="sr-only" htmlFor="currency">
+                    COIN
+                  </label>
+                  <select
+                    className="outline-none border-0 bg-transparent text-default-400 text-small"
+                    id="currency"
+                    name="currency"
+                  >
+                    <option>BTC</option>
+                    <option>ETH</option>
+                    <option>BNB</option>
+                    <option>TRON</option>
+                    <option>DOGE</option>
+                    <option>XRP</option>
+    
+                  </select>
+                </div>
+              }
+              type="number"
+            />
+          </div>
+        </div>  
+        <Link href="/dashboard/invest/confirmpayment">
+           <Button color="primary" variant="ghost" >
+          INVEST NOW
+        </Button>
+        </Link>
+    
+      </div>
+         </div>
    }
    {activeTab === 'Premium' && 
+   <div>
    <div className="border rounded-lg text-center p-5 mx-auto md:mx-0 my-2 md:my-6 bg-sky-700 text-[#FFD700] font-bold  tracking-widest transition-transform-colors text-[30px] md:text-[40px] z-10 shadow-lg">
        
           <div className="font-bold md:text-[45px] text-[35px]">{premiumPlan.monthlyPrice}</div>
@@ -490,6 +634,52 @@ useEffect(() => {
       </Modal>
     </div>
         </div>
+        <div className="flex flex-col justify-center align-middle items-center mb-20  mt-4 p-2 border border-white rounded-xl box-border ">
+    <h1 className="flex justify-center align-middle items-center p-4 text-2xl font-serif font-bold text-sky-600">
+      PAYMENT
+    </h1>
+    <p className="flex justify-center align-middle items-center p-2 text-xl font-serif font-bold text-sky-600">Select Coin</p>
+
+
+
+    <div className="flex flex-col gap-4">
+      <div className="flex w-full flex-wrap md:flex-nowrap mb-6 md:mb-0 gap-4">
+       <Input
+          
+          placeholder="0.00"
+          labelPlacement="outside"
+          startContent={
+            <div className="flex items-center">
+              <label className="sr-only" htmlFor="currency">
+                COIN
+              </label>
+              <select
+                className="outline-none border-0 bg-transparent text-default-400 text-small"
+                id="currency"
+                name="currency"
+              >
+                <option>BTC</option>
+                <option>ETH</option>
+                <option>BNB</option>
+                <option>TRON</option>
+                <option>DOGE</option>
+                <option>XRP</option>
+
+              </select>
+            </div>
+          }
+          type="number"
+        />
+      </div>
+    </div>  
+    <Link href="/dashboard/invest/confirmpayment">
+       <Button color="primary" variant="ghost" >
+      INVEST NOW
+    </Button>
+    </Link>
+
+  </div>
+     </div>
    }
     </div>
   )
