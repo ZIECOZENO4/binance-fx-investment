@@ -15,7 +15,7 @@ const Basic2 = () => {
   const advancePlan = { monthlyPrice: "5% Daily", items: ['Total Roll:   60%', 'Duration:   12 Days', 'Minium Deposit:     $ 2,100', 'Maxium Deposit:  $   10,000', '5% Referral Bonus']};
   const proPlan = { monthlyPrice: "5% Daily", items: ['Total Roll:   80%', 'Duration:   14 Days', 'Minium Deposit:  $ 10,100', 'Maxium Deposit:  $   20,000', '5% Referral Bonus' ]};
   const premiumPlan = { monthlyPrice:  "10% Daily", items: ['Total Roll:   100%', 'Duration:   5 Days', 'Minium Deposit:  $ 21,100', 'Maxium Deposit:  $   50,000', '5% Referral Bonus' ]};
-
+  const duration = 8 * 24 * 60 * 60;
     const [amount, setAmount] = useState('');
     const [profit, setProfit] = useState<number | null>(null);
     const [error, setError] = useState('');
@@ -141,7 +141,7 @@ const Basic2 = () => {
    <div>
     
     <div className="flex flex-col items-center justify-center bg-[#0000000] text-white rounded-lg p-4">
-  <Countdown />
+  <Countdown duration={duration} />
     </div>
    </div>
    <div className="text-gray-900  mt-[20px]  bg-no-repeat bg-bottom sm:bg-bottom   mb-auto">
