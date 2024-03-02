@@ -21,12 +21,11 @@ export async function createUser() {
             where: { email: primaryEmail },
         });
 
-        const userId = parseInt(data.id, 10); // Convert data.id to a number
-
-        if (user && user.id !== userId) {
+        if (user && user.id !== data.id) {
             user = await prisma.user.update({
                 where: { email: primaryEmail },
                 data: {
+                    id: data.id,
                     name: `${data.firstName} ${data.lastName}`,
                     email: primaryEmail,
                     image: data.imageUrl,
@@ -34,13 +33,15 @@ export async function createUser() {
                 },
             });
 
+
             // Assuming updateRelatedModels is a function that updates related models
             // If it's not defined, you need to define it or remove this line
             // await updateRelatedModels(user.id, userId);
+    
         } else if (!user) {
             user = await prisma.user.create({
                 data: {
-                    id: userId, // Use the converted userId
+                    id: data.id,
                     name: `${data.firstName} ${data.lastName}`,
                     email: primaryEmail,
                     image: data.imageUrl,
