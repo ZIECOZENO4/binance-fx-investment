@@ -1,20 +1,79 @@
+// // ... other imports
+// import { useRouter } from 'next/router';
+
+
+//  const [currentView, setCurrentView] = useState<ViewType>('account');
+//  const [investmentIndex, setInvestmentIndex] = useState(0);
+//  const [isBalanceHidden, setIsBalanceHidden] = useState(false);
+//  const [balance, setBalance] = useState<number | null>(null);
+//  const investments = [
+//     { balance: '0.000', symbol: 'ETH' },
+//     { balance: '0.000', symbol: 'BTC' },
+//     { balance: '0.000', symbol: 'LTC' },
+//  ];
+
+//  useEffect(() => {
+//     let timer: NodeJS.Timeout | undefined;
+//     if (currentView === 'investment') {
+//       timer = setInterval(() => {
+//         setInvestmentIndex((prevIndex) => (prevIndex + 1) % investments.length);
+//       }, 3000); // Change every 3 seconds
+//     }
+
+
+
+//     return () => {
+ // Add userId to the dependency array
+
+//  // ... rest of your component code
+
+//  return (
+//     <div className="relative overflow-hidden bg-gradient-to-r from-blue-600 to-sky-200 rounded-2xl flex flex-col justify-start align-middle items-start gap-5 p-4 h-40 md:px-3 px-10">
+//       {currentView === 'account' && (
+//         <div className="w-full transition-transform duration-500 ease-in-out transform">
+//           <div className="flex flex-row justify-between ">
+//             <div className="flex flex-col justify-start gap-5 md:gap-10">
+//               <p className="font-bold md:text-2xl text-xl sm:text-md font-sono gap-3">ACCOUNT BALANCE</p>
+//               <p className="font-bold md:text-4xl text-3xl font-serif gap-3">
+//                 {isBalanceHidden ? '*****' : balance !== null ? `$${balance.toFixed(2)}` : 'Loading...'}
+//               </p>
+//             </div>
+//             <div onClick={toggleBalanceVisibility}>
+//               {isBalanceHidden ? <Eye /> : <Noeye />}
+//             </div>
+//           </div>
+//           <button
+//             className="text-white font-bold py-2 px-4 underline text=bold"
+//             onClick={() => setCurrentView('investment')}
+//           >
+//             Show Investment
+//           </button>
+//         </div>
+//       )}
+//       {/* ... rest of your component code */}
+//     </div>
+//  );
+// };
+
+// export default BalanceShow;
 "use client"
 import React, { useState, useEffect } from 'react';
-import { prisma } from '../../prisma/db/db'; 
+import { useRouter } from 'next/router';
 import Eye from './eye';
 import Noeye from './noeye';
 
 type ViewType = 'account' | 'investment';
 
 interface BalanceShowProps {
- userId: string; // Define the type for userId
+ userId: string;
 }
 
-const BalanceShow: React.FC<BalanceShowProps> = ({ userId }) => { // Add type annotation for props
+const BalanceShow: React.FC<BalanceShowProps> = ({ userId }) => {
  const [currentView, setCurrentView] = useState<ViewType>('account');
  const [investmentIndex, setInvestmentIndex] = useState(0);
  const [isBalanceHidden, setIsBalanceHidden] = useState(false);
- const [balance, setBalance] = useState<number | null>(null); // Specify that balance can be a number or null
+ const [balance, setBalance] = useState<number | null>(null); // Define balance state here
+
  const investments = [
     { balance: '0.000', symbol: 'ETH' },
     { balance: '0.000', symbol: 'BTC' },
@@ -31,11 +90,9 @@ const BalanceShow: React.FC<BalanceShowProps> = ({ userId }) => { // Add type an
 
     const fetchBalance = async () => {
       try {
-        const user = await prisma.user.findUnique({
-          where: { id: userId },
-          select: { balance: true },
-        });
-        setBalance(user?.balance ?? null); // Use null if balance is undefined
+        const response = await fetch(`/api/balance?userId=${userId}`);
+        const data = await response.json();
+        setBalance(data.balance); // Use setBalance here
       } catch (error) {
         console.error('Failed to fetch balance:', error);
       }
@@ -46,13 +103,14 @@ const BalanceShow: React.FC<BalanceShowProps> = ({ userId }) => { // Add type an
     return () => {
       if (timer) clearInterval(timer); // Clean up on component unmount
     };
- }, [currentView, userId]); // Add userId to the dependency array
+ }, [currentView, investments.length, userId]); // Add userId to the dependency array
 
  const toggleBalanceVisibility = () => {
     setIsBalanceHidden(!isBalanceHidden);
  };
 
- return (
+
+  return (
     <div className="relative overflow-hidden bg-gradient-to-r from-blue-600 to-sky-200 rounded-2xl flex flex-col justify-start align-middle items-start gap-5 p-4 h-40 md:px-3 px-10">
       {currentView === 'account' && (
         <div className="w-full transition-transform duration-500 ease-in-out transform">
@@ -60,7 +118,7 @@ const BalanceShow: React.FC<BalanceShowProps> = ({ userId }) => { // Add type an
             <div className="flex flex-col justify-start gap-5 md:gap-10">
               <p className="font-bold md:text-2xl text-xl sm:text-md font-sono gap-3">ACCOUNT BALANCE</p>
               <p className="font-bold md:text-4xl text-3xl font-serif gap-3">
-                {isBalanceHidden ? '*****' : balance !== null ? `$${balance.toFixed(2)}` : 'Loading...'}
+             {isBalanceHidden ? '*****' : balance !== null ? `$${balance.toFixed(2)}` : 'Loading...'}
               </p>
             </div>
             <div onClick={toggleBalanceVisibility}>
@@ -72,6 +130,27 @@ const BalanceShow: React.FC<BalanceShowProps> = ({ userId }) => { // Add type an
             onClick={() => setCurrentView('investment')}
           >
             Show Investment
+          </button>
+        </div>
+      )}
+      {currentView === 'investment' && (
+        <div className="w-full transition-transform duration-500 ease-in-out transform">
+          <div className="flex flex-row justify-between ">
+            <div className="flex flex-col justify-start gap-8">
+              <p className="font-bold md:text-2xl sm:text-md text-xl font-sono gap-3">INVESTMENT BALANCE</p>
+              <p className="font-bold md:text-4xl text-3xl font-serif gap-3">
+                {isBalanceHidden ? '*****' : `${investments[investmentIndex].balance} ${investments[investmentIndex].symbol}`}
+              </p>
+            </div>
+            <div onClick={toggleBalanceVisibility}>
+              {isBalanceHidden ? <Eye /> : <Noeye />}
+            </div>
+          </div>
+          <button
+            className="text-white font-bold py-2 px-4 underline text=bold"
+            onClick={() => setCurrentView('account')}
+          >
+            Show Account
           </button>
         </div>
       )}
