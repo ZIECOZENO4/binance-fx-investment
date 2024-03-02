@@ -21,9 +21,8 @@ export async function POST(request: NextRequest, res: NextResponse): Promise<Nex
         }
         console.log("Fetching user from database");
         const user = await prisma.user.findUnique({
-            where: { id: parseInt(userId, 10) }, // Convert userId to a number
+            where: { id: userId },
         });
-      
         console.log(`User fetched from database: ${JSON.stringify(user)}`);
         if (user) {
             console.log("User found, redirecting to user-dashboard");
