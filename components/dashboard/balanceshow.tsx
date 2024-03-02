@@ -90,7 +90,7 @@ const BalanceShow: React.FC<BalanceShowProps> = ({ userId }) => {
 
     const fetchBalance = async () => {
       try {
-        const response = await fetch(`/api/balance?userId=${userId}`);
+        const response = await fetch(`/api/accountbalance?userId=${userId}`);
         const data = await response.json();
         setBalance(data.balance); // Use setBalance here
       } catch (error) {
