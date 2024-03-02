@@ -39,7 +39,7 @@ const SyncUser = () => {
     }, []);
 
     return (
-        <div className="flex justify-center items-center bg-white dark:bg-black h-screen">
+        <div className="flex justify-center items-center bg-black h-screen">
             {isLoading && <PuffLoader color="#36D7B7" size={150} />}
             {isError && <AutoSignOut />}
             {isSuccess && <MdCheckCircle className="text-green-500" size="150" />}

@@ -6,7 +6,7 @@ interface CountdownProps {
  duration: number; // Duration in seconds
 }
 
-const Countdown2a: React.FC<CountdownProps> = ({ duration }) => {
+const Countdown2b: React.FC<CountdownProps> = ({ duration }) => {
  const calculateTimeLeft = () => {
     let timeLeft = duration;
     const days = Math.floor(timeLeft / 86400);
@@ -63,4 +63,4 @@ const Countdown2a: React.FC<CountdownProps> = ({ duration }) => {
  );
 };
 
-export default Countdown2a;
+export default Countdown2b;

@@ -12,12 +12,13 @@ generator client {
 // prisma/schema.prisma
 
 model User {
- id        String   @id @default(cuid())
- email     String   @unique
- name      String?
- image     String?
- createdAt DateTime @default(now())
- updatedAt DateTime @updatedAt
+ id          String         @id @default(cuid())
+ email       String        @unique
+ name        String?
+ image       String?
+ createdAt   DateTime      @default(now())
+ updatedAt   DateTime      @updatedAt
+ balance     Float?       
 }
 
 // Add more models as needed to match your

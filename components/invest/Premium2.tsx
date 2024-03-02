@@ -7,39 +7,20 @@ import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDis
 import {Input} from "@nextui-org/react";
 import Link from 'next/link';
 import Countdown2a from './2day1';
-
+import Countdown2b from './2day2';
+import Countdown2c from './2day3';
 type MouseEvent = React.MouseEvent<HTMLButtonElement>;
 type ChangeEvent = React.ChangeEvent<HTMLInputElement>;
 const Premium2 = () => {
-  const [timeLeft, setTimeLeft] = useState(0);
-  const [startTime, setStartTime] = useState(8 *  24 *  60 *  60); //  8 days in seconds
   const [isActive, setIsActive] = useState(false);
 
-useEffect(() => {
-  let interval: NodeJS.Timeout | number | null = null;
-  if (isActive && timeLeft >   0) {
-    interval = setInterval(() => {
-      setTimeLeft(timeLeft -   1);
-    },   1000) as unknown as number; 
-  } else if (!isActive && timeLeft ===   0) {
-    clearInterval(interval as unknown as number); // Type assertion to number
-  }
-  return () => clearInterval(interval as unknown as number); // Type assertion to number
-}, [isActive, timeLeft]);
 
-  const startCountdown = () => {
-    setIsActive(true);
-    setTimeLeft(startTime);
-  };
-
-  const getColor = (timeLeft: number) => {
-    return timeLeft <= startTime /  2 ? 'bg-red-500' : 'bg-green-500';
-  };
   const vip1Plan = { monthlyPrice: "75% Daily", items: ['Total Roll: 150%', 'Duration: 48 Hours', 'Minium Deposit:  $ 50,000', 'Maxium Deposit:  $ 100,000', '5% Referral Bonus']};
   const vip2Plan = { monthlyPrice: "100% Daily", items: ['Total Roll: 200%', 'Duration: 48 Hours', 'Minium Deposit:  $ 100,000', 'Maxium Deposit:  $ 200,000', '5% Referral Bonus' ]};
   const vip3Plan = { monthlyPrice:  "100% Daily", items: ['Total Roll: 250%', 'Duration: 48 Hours', 'Minium Deposit:  $ 200,000', 'Maxium Deposit:  $ 500,000', '15% Referral Bonus' ]};
-  const duration21 = 48 * 60 * 60;
-
+  const duration21 =  2 * 24 * 60 * 60;
+  const duration22 =  2 * 24 * 60 * 60;
+  const duration23 =  2 * 24 * 60 * 60;
     const [amount, setAmount] = useState('');
     const [profit, setProfit] = useState<number | null>(null);
     const [error, setError] = useState('');
@@ -260,6 +241,9 @@ useEffect(() => {
      }
    {activeTab === 'Vip2' && 
    <div>
+          <div className="flex flex-col items-center justify-center bg-[#0000000] text-white rounded-lg p-4">
+  <Countdown2b duration={duration22} />
+    </div>
    <div className="border rounded-lg text-center p-5 mx-auto md:mx-0 my-2 md:my-6 bg-sky-700 text-[#FFD700] font-bold  tracking-widest transition-transform-colors text-[30px] md:text-[40px] z-10 shadow-lg">
          
           <div className="font-bold md:text-[45px] text-[35px]">{vip2Plan.monthlyPrice}</div>
@@ -376,6 +360,9 @@ useEffect(() => {
    }
    {activeTab === 'Vip3' && 
    <div>
+          <div className="flex flex-col items-center justify-center bg-[#0000000] text-white rounded-lg p-4">
+  <Countdown2c duration={duration23} />
+    </div>
  <div className="text-gray-900 border rounded-lg text-center p-5 mx-auto my-2 md:my-6 bg-slate-600  text-[25px] md:text-[40px] z-10 shadow-lg mt-[20px]  bg-no-repeat bg-bottom sm:bg-bottom md:mx-[3vw] mb-auto">
  <div className="flex flex-col md:flex-row md:transform md:scale-75 lg:scale-100 justify-center ">
    <div className="border rounded-lg text-center p-5 mx-auto md:mx-0 my-2 md:my-6 bg-slate-600 text-green-400 text-[30px] md:text-[40px] z-10 shadow-lg">
