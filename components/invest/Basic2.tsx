@@ -6,6 +6,9 @@ import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDis
 import {Input} from "@nextui-org/react";
 import Link from 'next/link';
 import Countdown from './UseCountDown';
+import Countdown5 from './5days';
+import Countdown12 from './12days';
+import Countdown14 from './14days';
 
 
 
@@ -16,6 +19,9 @@ const Basic2 = () => {
   const proPlan = { monthlyPrice: "5% Daily", items: ['Total Roll:   80%', 'Duration:   14 Days', 'Minium Deposit:  $ 10,100', 'Maxium Deposit:  $   20,000', '5% Referral Bonus' ]};
   const premiumPlan = { monthlyPrice:  "10% Daily", items: ['Total Roll:   100%', 'Duration:   5 Days', 'Minium Deposit:  $ 21,100', 'Maxium Deposit:  $   50,000', '5% Referral Bonus' ]};
   const duration = 8 * 24 * 60 * 60;
+  const duration5 = 5 * 24 * 60 * 60;
+  const duration14 = 14 * 24 * 60 * 60;
+  const duration12 = 14 * 24 * 60 * 60;
     const [amount, setAmount] = useState('');
     const [profit, setProfit] = useState<number | null>(null);
     const [error, setError] = useState('');
@@ -270,6 +276,12 @@ const Basic2 = () => {
      }
    {activeTab === 'Advance' && 
    <div>
+       <div>
+    
+    <div className="flex flex-col items-center justify-center bg-[#0000000] text-white rounded-lg p-4">
+  <Countdown12 duration={duration12} />
+    </div>
+   </div>
    <div className="border rounded-lg text-center p-5 mx-auto md:mx-0 my-2 md:my-6 bg-sky-700 text-[#FFD700] font-bold  tracking-widest transition-transform-colors text-[30px] md:text-[40px] z-10 shadow-lg">
          
           <div className="font-bold md:text-[45px] text-[35px]">{advancePlan.monthlyPrice}</div>
@@ -386,6 +398,12 @@ const Basic2 = () => {
    }
    {activeTab === 'Pro Plan' && 
    <div>
+       <div>
+    
+    <div className="flex flex-col items-center justify-center bg-[#0000000] text-white rounded-lg p-4">
+  <Countdown14 duration={duration14} />
+    </div>
+   </div>
  <div className="text-gray-900 border rounded-lg text-center p-5 mx-auto my-2 md:my-6 bg-slate-600  text-[25px] md:text-[40px] z-10 shadow-lg mt-[20px]  bg-no-repeat bg-bottom sm:bg-bottom md:mx-[3vw] mb-auto">
  <div className="flex flex-col md:flex-row md:transform md:scale-75 lg:scale-100 justify-center ">
    <div className="border rounded-lg text-center p-5 mx-auto md:mx-0 my-2 md:my-6 bg-slate-600 text-green-400 text-[30px] md:text-[40px] z-10 shadow-lg">
@@ -505,7 +523,14 @@ const Basic2 = () => {
          </div>
    }
    {activeTab === 'Premium' && 
+
    <div>
+       <div>
+    
+    <div className="flex flex-col items-center justify-center bg-[#0000000] text-white rounded-lg p-4">
+  <Countdown5 duration={duration5} />
+    </div>
+   </div>
    <div className="border rounded-lg text-center p-5 mx-auto md:mx-0 my-2 md:my-6 bg-sky-700 text-[#FFD700] font-bold  tracking-widest transition-transform-colors text-[30px] md:text-[40px] z-10 shadow-lg">
        
           <div className="font-bold md:text-[45px] text-[35px]">{premiumPlan.monthlyPrice}</div>
