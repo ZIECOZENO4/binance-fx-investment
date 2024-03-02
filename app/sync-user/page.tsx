@@ -15,7 +15,7 @@ const SyncUser = () => {
     const { mutateAsync: syncUser, isLoading, isError, isSuccess } = useMutation({
         mutationKey: ['sync-user'],
         mutationFn: async () => {
-            const response = await fetch(addBaseURL('api/sync-user'), {
+            const response = await fetch(addBaseURL('api/syncUser'), {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
