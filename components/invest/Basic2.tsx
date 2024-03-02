@@ -21,7 +21,7 @@ const Basic2 = () => {
   const duration = 8 * 24 * 60 * 60;
   const duration5 = 5 * 24 * 60 * 60;
   const duration14 = 14 * 24 * 60 * 60;
-  const duration12 = 14 * 24 * 60 * 60;
+  const duration12 = 12 * 24 * 60 * 60;
     const [amount, setAmount] = useState('');
     const [profit, setProfit] = useState<number | null>(null);
     const [error, setError] = useState('');

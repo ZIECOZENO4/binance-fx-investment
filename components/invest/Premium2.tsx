@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, RadioGroup, Radio} from "@nextui-org/react";
 import {Input} from "@nextui-org/react";
 import Link from 'next/link';
+import Countdown2a from './2day1';
 
 type MouseEvent = React.MouseEvent<HTMLButtonElement>;
 type ChangeEvent = React.ChangeEvent<HTMLInputElement>;
@@ -37,7 +38,7 @@ useEffect(() => {
   const vip1Plan = { monthlyPrice: "75% Daily", items: ['Total Roll: 150%', 'Duration: 48 Hours', 'Minium Deposit:  $ 50,000', 'Maxium Deposit:  $ 100,000', '5% Referral Bonus']};
   const vip2Plan = { monthlyPrice: "100% Daily", items: ['Total Roll: 200%', 'Duration: 48 Hours', 'Minium Deposit:  $ 100,000', 'Maxium Deposit:  $ 200,000', '5% Referral Bonus' ]};
   const vip3Plan = { monthlyPrice:  "100% Daily", items: ['Total Roll: 250%', 'Duration: 48 Hours', 'Minium Deposit:  $ 200,000', 'Maxium Deposit:  $ 500,000', '15% Referral Bonus' ]};
-
+  const duration21 = 48 * 60 * 60;
 
     const [amount, setAmount] = useState('');
     const [profit, setProfit] = useState<number | null>(null);
@@ -130,6 +131,9 @@ useEffect(() => {
    <div  className=' h-1 w-full bg-slate-300 mt-2 mb-5'/>
    {activeTab === 'Vip1' && 
    <div>
+        <div className="flex flex-col items-center justify-center bg-[#0000000] text-white rounded-lg p-4">
+  <Countdown2a duration={duration21} />
+    </div>
       <div className="text-gray-900  mt-[20px]  bg-no-repeat bg-bottom sm:bg-bottom   mb-auto">
    <div className="flex flex-col md:flex-row md:transform md:scale-75 lg:scale-100 justify-center ">
      <div className="border rounded-lg text-center p-5 mx-auto md:mx-10 my-2 md:my-6 bg-slate-600 text-green-400 text-[30px] md:text-[40px] z-10 shadow-lg">
