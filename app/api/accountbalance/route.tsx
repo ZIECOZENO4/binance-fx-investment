@@ -1,12 +1,12 @@
 // app/api/accountbalance/route.tsx
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '../../../prisma/db/db';
 
-export async function GET(req: NextApiRequest, res: NextApiResponse) {
- const { userId } = req.query;
+export async function GET(req: NextRequest) {
+ const { userId } = req.nextUrl.query;
 
  if (typeof userId !== 'string') {
-    return res.status(400).json({ error: 'Invalid user ID' });
+    return NextResponse.json({ error: 'Invalid user ID' }, { status: 400 });
  }
 
  try {
@@ -16,12 +16,12 @@ export async function GET(req: NextApiRequest, res: NextApiResponse) {
     });
 
     if (!user) {
-      return res.status(404).json({ error: 'User not found' });
+      return NextResponse.json({ error: 'User not found please retry' }, { status: 404 });
     }
 
-    return res.status(200).json({ balance: user.balance });
+    return NextResponse.json({ balance: user.balance });
  } catch (error) {
     console.error('Failed to fetch balance:', error);
-    return res.status(500).json({ error: 'Failed to fetch balance' });
+    return NextResponse.json({ error: 'Failed to fetch balance' }, { status: 500 });
  }
 }
