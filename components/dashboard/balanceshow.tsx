@@ -118,7 +118,7 @@ const BalanceShow: React.FC<BalanceShowProps> = ({ userId }) => {
             <div className="flex flex-col justify-start gap-5 md:gap-10">
               <p className="font-bold md:text-2xl text-xl sm:text-md font-sono gap-3">ACCOUNT BALANCE</p>
               <p className="font-bold md:text-4xl text-3xl font-serif gap-3">
-             {isBalanceHidden ? '*****' : balance !== null ? `$${balance.toFixed(2)}` : 'Loading...'}
+             {isBalanceHidden ? '*****' : balance !== null ? `$${balance.toFixed(2)}` : '0.00'}
               </p>
             </div>
             <div onClick={toggleBalanceVisibility}>
