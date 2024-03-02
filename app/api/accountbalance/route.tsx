@@ -1,8 +1,8 @@
-
+// app/api/accountbalance/route.tsx
 import { NextApiRequest, NextApiResponse } from 'next';
 import { prisma } from '../../../prisma/db/db';
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export async function GET(req: NextApiRequest, res: NextApiResponse) {
  const { userId } = req.query;
 
  if (typeof userId !== 'string') {
