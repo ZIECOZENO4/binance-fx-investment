@@ -3,7 +3,7 @@ import React from 'react'
 import { Progress } from "@nextui-org/react";
 export default function Upgrade() {
   return (
-    <div className="flex flex-col items-center space-y-4">
+    <div className="flex flex-col items-center space-y-4 w-full">
       <ShieldCheckIcon className="h-10 w-10" />
       <div className="flex flex-col items-center space-y-2 text-center">
         <h2 className="text-lg font-semibold">Verification in progress</h2>

@@ -169,6 +169,7 @@ Edit
   isOpen={isOpen}  
   placement={modalPlacement as "auto" | "center" | "bottom" | "top" | "top-center" | "bottom-center" | undefined}
   onOpenChange={onOpenChange}  
+  className=" h-auto overflow-y-auto"
 >
         <ModalContent >
           {(onClose) => (

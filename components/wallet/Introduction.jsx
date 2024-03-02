@@ -5,11 +5,11 @@ import { Button } from "../../components/ui/button"
 
 export default function Introducti() {
   return (
-    <div className="bg-[#6c5ce7] h-auto  flex flex-col items-center justify-center text-white">
+    <div className="bg-[#6c5ce7] h-auto w-full flex flex-col items-center justify-center text-white my-4">
  
       <main className="flex flex-col items-center justify-center p-10 text-center">
-        <h1 className="text-4xl font-bold mb-3 text-green-600">Tier  2</h1>
-        <h2 className="text-2xl font-semibold mb-6 text-sky-600">Binance FX Pro</h2>
+        <h1 className="text-4xl font-bold mb-3 text-green-300">Tier  2</h1>
+        <h2 className="text-2xl font-semibold mb-6 text-black">Binance FX Pro</h2>
         <p className="mb-6">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
           magna aliqua erat volutpat.

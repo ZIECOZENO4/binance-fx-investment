@@ -7,7 +7,7 @@ import { Button } from "../../components/ui/button"
 
 export default function PhoneNumber() {
   return (
-    <Card className="w-full max-w-3xl">
+    <Card className="w-full h-auto overflow-y-auto">
       <CardHeader>
         <CardTitle>Application Form</CardTitle>
         <CardDescription>Please fill in the form with your accurate information.</CardDescription>

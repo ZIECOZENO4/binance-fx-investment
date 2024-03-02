@@ -7,7 +7,7 @@ import { Button } from "../../components/ui/button"
 
 export default function IdCard() {
   return (
-    <Card>
+    <Card className=" w-full h-auto overflow-y-auto">
       <CardHeader>
         <CardTitle>Complete your ID card</CardTitle>
         <CardDescription>Enter your information and upload your photos.</CardDescription>
