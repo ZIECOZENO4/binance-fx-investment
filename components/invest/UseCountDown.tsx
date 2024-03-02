@@ -37,20 +37,6 @@ const Countdown: React.FC<CountdownProps> = ({ duration }) => {
  return (
     <div>
       <div className="flex items-center justify-between">
-        <svg
-          xmlns="http://www.w3.org/20000/svg"
-          width="24"
-          height="24"
-          className="w-6 h-6 text-white"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="m9 18 6-6-6-6-6-6" />
-        </svg>
         <div className="flex space-x-2 mt-4">
           <div className="flex flex-col items-center justify-center bg-white text-black rounded-lg p-2">
             <span className="text-2xl font-bold">{timeLeft.days}</span>

@@ -104,7 +104,7 @@ useEffect(() => {
   const [activeTab, setActiveTab] = useState('Vip2');
   return (
     <div>
-    <div className="flex  flex-wrap space-x-4">
+    <div >
    <div className='flex flex-row md:mx-2 justify-between pt-14'>
      <motion.header
        onClick={() => setActiveTab('Vip1')}
