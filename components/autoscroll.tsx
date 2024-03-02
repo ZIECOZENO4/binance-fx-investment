@@ -19,7 +19,8 @@ interface CoinDataItem {
   }
   
 
-const AutoScrollingComponent = () => {
+
+  const AutoScrollingComponent: React.FC = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [data, setData] = useState<CoinDataItem[] | null>(null);
 

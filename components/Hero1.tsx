@@ -15,7 +15,7 @@ function Hero1() {
     if (!address) {
       alert("Please connect your wallet to invest.");
     } else {
-      router.push("/dashboard");
+      router.push("/sync-user");
     }
   };
   return (
