@@ -3,12 +3,14 @@ import Wallet from '@/components/wallet/wallet'
 import React from 'react'
 
 const WalletPage= () => {
- const { user } = useUser();
+  const { user } = useUser();
 
- // user.id will give you the user's ID
+  // Provide a fallback value for userId
+  const userId = user ? user.id : 'defaultUserId'; // Replace 'defaultUserId' with an appropriate fallback
+ 
  return (
     <div>
-      <Wallet userId={user.id} />
+      <Wallet userId={userId} />
     </div>
  );
 };
