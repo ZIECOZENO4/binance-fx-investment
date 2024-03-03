@@ -13,7 +13,13 @@ import MultiStepForm from "./process";
 import { GetServerSideProps } from 'next';
 import { getAllUserBalances } from '../../prisma/db/quaries/accountbalance';
 
-
+// Define the type for the user data
+type UserBalance = {
+  id: string;
+  email: string;
+  name: string | null;
+  balance: number | null;
+ };
  
 const Wallet = () => {
   const [investmentIndex, setInvestmentIndex] = useState(0);
@@ -24,7 +30,10 @@ const Wallet = () => {
     { balance: '0.000', symbol: 'LTC' },
 
   ];
-  const [balances, setBalances] = useState([]);
+
+ 
+ // Initialize the state with the correct type
+ const [balances, setBalances] = useState<UserBalance[]>([]);
 
   useEffect(() => {
     async function fetchData() {
