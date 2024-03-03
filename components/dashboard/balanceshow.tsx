@@ -1,21 +1,52 @@
+// // pages/balance.tsx
+
+
+// const BalancePage
+//  return (
+//     <div>
+//       <h1>Balance for User ID: {userId}</h1>
+//       <p>Balance: </p>
+//     </div>
+//  );
+// };
+
+// export default BalancePage;
 
 "use client"
 import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import type { GetServerSideProps } from 'next';
 import Eye from './eye';
 import Noeye from './noeye';
 
 type ViewType = 'account' | 'investment';
+type BalancePageProps = {
+  userId: string;
+  balance: number;
+ };
 
 interface BalanceShowProps {
  userId: string;
 }
 
-const BalanceShow: React.FC<BalanceShowProps> = ({ userId }) => {
+
+ 
+ export const getServerSideProps: GetServerSideProps<BalancePageProps> = async (context) => {
+  const userId = context.params?.userId as string;
+  const res = await fetch(`http://localhost:3000/api/balance?id=${userId}`);
+  const data = await res.json();
+ 
+  return {
+     props: {
+       userId,
+       balance: data.balance,
+     },
+  };
+ };
+ 
+const BalanceShow: React.FC<BalancePageProps> = ({ userId, balance }) => {
  const [currentView, setCurrentView] = useState<ViewType>('account');
  const [investmentIndex, setInvestmentIndex] = useState(0);
  const [isBalanceHidden, setIsBalanceHidden] = useState(false);
- const [balance, setBalance] = useState<number | null>(null); // Define balance state here
 
  const investments = [
     { balance: '0.000', symbol: 'ETH' },
@@ -30,23 +61,6 @@ const BalanceShow: React.FC<BalanceShowProps> = ({ userId }) => {
         setInvestmentIndex((prevIndex) => (prevIndex + 1) % investments.length);
       }, 3000); // Change every 3 seconds
     }
-
-    const fetchBalance = async () => {     
-if (!userId) {
-      console.error('User ID is undefined');
-      return;
-    }
-
-      try {
-        const response = await fetch(`/api/accountbalance?userId=${userId}`);
-        const data = await response.json();
-        setBalance(data.balance); // Use setBalance here
-      } catch (error) {
-        console.error('Failed to fetch balance:', error);
-      }
-    };
-
-    fetchBalance();
 
     return () => {
       if (timer) clearInterval(timer); // Clean up on component unmount

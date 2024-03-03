@@ -1,28 +1,32 @@
-// app/api/accountbalance/route.tsx
-import { NextRequest, NextResponse } from 'next/server';
-import { prisma } from '../../../prisma/db/db';
+// pages/api/balance.ts
+import type { NextApiRequest, NextApiResponse } from 'next';
+import { PrismaClient } from '@prisma/client';
 
-export async function GET(req: NextRequest, res: NextResponse): Promise<NextResponse> { 
-   const userId = req.nextUrl.searchParams.get('userId');
-  
-   if (typeof userId !== 'string') {
-      return NextResponse.json({ error: 'Invalid user ID' }, { status: 400 });
-   }
-  
+const prisma = new PrismaClient();
+
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+ const { id } = req.query;
+
+ if (!id) {
+    return res.status(400).json({ error: 'User ID is required' });
+ }
 
  try {
     const user = await prisma.user.findUnique({
-      where: { id: userId },
-      select: { balance: true },
+      where: {
+        id: String(id),
+      },
+      select: {
+        balance: true,
+      },
     });
 
     if (!user) {
-      return NextResponse.json({ error: 'User not found please retry' }, { status: 404 });
+      return res.status(404).json({ error: 'User not found' });
     }
 
-    return NextResponse.json({ balance: user.balance });
+    return res.status(200).json({ balance: user.balance });
  } catch (error) {
-    console.error('Failed to fetch balance:', error);
-    return NextResponse.json({ error: 'Failed to fetch balance' }, { status: 500 });
+    return res.status(500).json({ error: 'Internal server error' });
  }
 }

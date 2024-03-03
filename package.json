@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "prisma": "prisma"
-   },
+  },
   "dependencies": {
     "@3rdweb/hooks": "^1.9.2",
     "@3rdweb/sdk": "^1.42.1",
@@ -24,6 +24,8 @@
     "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-select": "^2.0.0",
     "@radix-ui/react-slot": "^1.0.2",
+    "@react-email/components": "^0.0.15",
+    "@react-email/render": "^0.0.12",
     "@sanity/client": "^6.12.1",
     "@sanity/image-url": "^1.0.2",
     "@supabase/ssr": "^0.1.0",
@@ -47,6 +49,7 @@
     "react-chartjs-2": "^5.2.0",
     "react-countdown-circle-timer": "^3.2.1",
     "react-dom": "^18.2.0",
+    "react-email": "^2.1.0",
     "react-loader-spinner": "^6.1.6",
     "react-modal": "^3.16.1",
     "react-query": "^3.39.3",
@@ -55,6 +58,7 @@
     "react-swipeable": "^7.0.1",
     "react-tilt": "^1.0.2",
     "react-vertical-timeline-component": "^3.6.0",
+    "resend": "^3.2.0",
     "styled-components": "^6.1.8",
     "swr": "^2.2.5",
     "tailwind-merge": "^2.2.1",
