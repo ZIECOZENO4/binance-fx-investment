@@ -6,7 +6,7 @@ import {User, Link} from "@nextui-org/react";
 import React, { useState, useEffect } from 'react';
 import Eye from '../../components/dashboard/eye';
 import Noeye from '../../components/dashboard/noeye';
-import { fetchUserBalances } from '../lib/data';
+import { fetchUserBalances } from '../../lib/data';
 import { SignOutButton } from "@clerk/nextjs";
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, RadioGroup, Radio} from "@nextui-org/react";
 import MultiStepForm from "./process";
