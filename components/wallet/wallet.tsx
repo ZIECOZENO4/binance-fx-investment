@@ -1,70 +1,51 @@
 
 'use client'
-import { useUser } from "@clerk/clerk-react";
-import { SignedIn, SignedOut, UserButton,  } from "@clerk/nextjs";
-import {User, Link} from "@nextui-org/react";
 import React, { useState, useEffect } from 'react';
+import { useUser } from "@clerk/clerk-react";
+import { SignedIn, SignedOut, UserButton, SignOutButton } from "@clerk/nextjs";
+import { User, Link } from "@nextui-org/react";
 import Eye from '../../components/dashboard/eye';
 import Noeye from '../../components/dashboard/noeye';
-import { fetchUserBalances } from '../../lib/data';
-import { SignOutButton } from "@clerk/nextjs";
-import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, RadioGroup, Radio} from "@nextui-org/react";
+import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, RadioGroup, Radio } from "@nextui-org/react";
 import MultiStepForm from "./process";
 import { GetServerSideProps } from 'next';
 import { getAllUserBalances } from '../../prisma/db/quaries/accountbalance';
+import { useUserBalances } from '../hooks/useUserBalances'; // Adjust the import path according to your setup
 
-// Define the type for the user data
-type UserBalance = {
-  id: string;
-  email: string;
-  name: string | null;
-  balance: number | null;
- };
- 
-const Wallet = () => {
-  const [investmentIndex, setInvestmentIndex] = useState(0);
-  const [isBalanceHidden, setIsBalanceHidden] = useState(false); // New state for balance visibility
-  const investments = [
+const Wallet: React.FC = () => {
+ const [investmentIndex, setInvestmentIndex] = useState(0);
+ const [isBalanceHidden, setIsBalanceHidden] = useState(false);
+ const investments = [
     { balance: '0.000', symbol: 'ETH' },
     { balance: '0.000', symbol: 'BTC' },
     { balance: '0.000', symbol: 'LTC' },
+ ];
 
-  ];
+ const { isLoaded, isSignedIn, user } = useUser();
+ const { data: users, isLoading, error } = useUserBalances(); // Call the hook at the top level
 
- 
- // Initialize the state with the correct type
- const [balances, setBalances] = useState<UserBalance[]>([]);
+ const { isOpen, onOpen, onOpenChange } = useDisclosure();
+ const [modalPlacement, setModalPlacement] = React.useState("auto");
 
-  useEffect(() => {
-    async function fetchData() {
-      const data = await fetchUserBalances();
-      setBalances(data);
-    }
-    fetchData();
-  }, []);
-
-  const {isOpen, onOpen, onOpenChange} = useDisclosure();
-  const [modalPlacement, setModalPlacement] = React.useState("auto");
-  const toggleBalanceVisibility = () => {
+ const toggleBalanceVisibility = () => {
     setIsBalanceHidden(!isBalanceHidden);
-  };
-  const { isLoaded, isSignedIn, user } = useUser();
-  if (!isLoaded) {
-    return null;
-  }
-   const copyIdToClipboard = () => {
+ };
+
+ const copyIdToClipboard = () => {
     if (user && user.id) {
       navigator.clipboard.writeText(user.id);
-  alert("Your ID is copied")
+      alert("Your ID is copied");
     }
-  };
- 
-  
+ };
 
+ if (!isLoaded) {
+    return null;
+ }
 
- 
+ if (isLoading) return <div>Loading...</div>;
+ if (error) return <div>An error occurred: {error.message}</div>;
 
-  const shortenedId = user && user.id ? user.id.substring(0,  3) + '...' + user.id.substring(user.id.length -  3) : "ID: ---";
+ const shortenedId = user && user.id ? user.id.substring(0, 3) + '...' + user.id.substring(user.id.length - 3) : "ID: ---";
 
   return (
     <div   className=' flex flex-col justify-center align-middle items-center overflow-x-hidden'>
@@ -151,9 +132,13 @@ Edit
 </div>
 <Button color="primary" variant="shadow">View History</Button>
   </div>
-  {balances.map((user) => (
+  {users.map((user) => (
   <div  key={user.id} className="text-2xl text-white font-bold ml-2">
-  {isBalanceHidden ? '*****' :  `$${user.balance} USDT`}
+        {users?.map(user => (
+        <p key={user.id}>
+          {isBalanceHidden ? '*****' :   `$${user.balance?.toFixed(2)} USDT`}
+        </p>
+      ))}
   </div>
       ))}
   <div className="flex flex-row justify-between gap-4 items-center align-middle py-4 px-2 ">
