@@ -238,7 +238,12 @@ const Basic2 = () => {
     <div className="flex flex-col gap-4">
       <div className="flex w-full flex-wrap md:flex-nowrap mb-6 md:mb-0 gap-4">
        <Input
-          
+                   id="amount"
+                 
+               value={amount}
+               onChange={handleInputChange}
+               min="200"
+               max="2000"
           placeholder="0.00"
           labelPlacement="outside"
           startContent={
@@ -251,6 +256,7 @@ const Basic2 = () => {
                 id="currency"
                 name="currency"
               >
+               <option>USDT</option>
                 <option>BTC</option>
                 <option>ETH</option>
                 <option>BNB</option>

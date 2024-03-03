@@ -8,8 +8,28 @@ import Noeye from '../../components/dashboard/noeye';
 import { SignOutButton } from "@clerk/nextjs";
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, RadioGroup, Radio} from "@nextui-org/react";
 import MultiStepForm from "./process";
+import { GetServerSideProps } from 'next';
+import { getAllUserBalances } from '../../prisma/db/quaries/accountbalance';
 
-const Wallet = () => {
+interface WalletPageProps {
+  users: {
+     id: string;
+     email: string;
+     balance: number | null;
+  }[];
+ }
+ 
+ export const getServerSideProps: GetServerSideProps<WalletPageProps> = async () => {
+  const users = await getAllUserBalances();
+  return {
+     props: {
+       users,
+     },
+  };
+ };
+
+ 
+const Wallet: React.FC<WalletPageProps> = ({ users }) => {
   const [investmentIndex, setInvestmentIndex] = useState(0);
   const [isBalanceHidden, setIsBalanceHidden] = useState(false); // New state for balance visibility
   const investments = [
@@ -127,9 +147,11 @@ Edit
 </div>
 <Button color="primary" variant="shadow">View History</Button>
   </div>
-  <div  className="text-2xl text-white font-bold ml-2">
-  {isBalanceHidden ? '*****' : '$   0.00 USDT'}
+  {users.map((user) => (
+  <div  key={user.id} className="text-2xl text-white font-bold ml-2">
+  {isBalanceHidden ? '*****' :  `$${user.balance?.toFixed(2)} USDT`}
   </div>
+      ))}
   <div className="flex flex-row justify-between gap-4 items-center align-middle py-4 px-2 ">
 <div className="flex flex-row justify-between gap-4 items-center align-middle w-[70%]">
   <p className="text-md text-white  ">INVESTMENT</p>
