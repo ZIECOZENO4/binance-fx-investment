@@ -48,7 +48,7 @@ const Wallet: React.FC<UserBalanceProps> = ({ userId }) => {
   useEffect(() => {
     const fetchUserBalance = async () => {
         try {
-            const response = await fetch(`/api/user/balance/${userId}`);
+            const response = await fetch(`/api/[id]/${userId}`);
             if (response.ok) {
                 const data = await response.json();
                 setBalance(data);
