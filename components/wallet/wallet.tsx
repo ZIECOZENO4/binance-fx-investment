@@ -10,8 +10,17 @@ import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDi
 import MultiStepForm from "./process";
 import { GetServerSideProps } from 'next';
 import { getAllUserBalances } from '../../prisma/db/quaries/accountbalance';
-import { useUserBalances } from '../hooks/useUserBalances'; // Adjust the import path according to your setup
+import { useUserBalances } from '../../hooks/userBalances'; // Adjust the import path according to your setup
 
+interface User {
+  id: string;
+  email: string;
+  name: string;
+  balance: number;
+  message: string;
+  user: sring;
+ }
+ 
 const Wallet: React.FC = () => {
  const [investmentIndex, setInvestmentIndex] = useState(0);
  const [isBalanceHidden, setIsBalanceHidden] = useState(false);
