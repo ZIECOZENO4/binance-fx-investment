@@ -153,7 +153,7 @@ Edit
   </div>
   {balances.map((user) => (
   <div  key={user.id} className="text-2xl text-white font-bold ml-2">
-  {isBalanceHidden ? '*****' :  `$${user.balance?.toFixed(2)} USDT`}
+  {isBalanceHidden ? '*****' :  `$${user.balance} USDT`}
   </div>
       ))}
   <div className="flex flex-row justify-between gap-4 items-center align-middle py-4 px-2 ">
