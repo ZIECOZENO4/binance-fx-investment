@@ -1,5 +1,5 @@
 // lib/db/queries.ts
-import { prisma } from '../db/db';
+import { prisma } from '../../db/db';
 
 export async function getAllUserBalances() {
  const users = await prisma.user.findMany({
