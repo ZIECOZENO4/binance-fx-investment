@@ -1,3 +1,4 @@
+
 'use client'
 import { useUser } from "@clerk/clerk-react";
 import { SignedIn, SignedOut, UserButton,  } from "@clerk/nextjs";
@@ -5,31 +6,16 @@ import {User, Link} from "@nextui-org/react";
 import React, { useState, useEffect } from 'react';
 import Eye from '../../components/dashboard/eye';
 import Noeye from '../../components/dashboard/noeye';
+import { fetchUserBalances } from '../lib/data';
 import { SignOutButton } from "@clerk/nextjs";
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, RadioGroup, Radio} from "@nextui-org/react";
 import MultiStepForm from "./process";
 import { GetServerSideProps } from 'next';
 import { getAllUserBalances } from '../../prisma/db/quaries/accountbalance';
 
-interface WalletPageProps {
-  users: {
-     id: string;
-     email: string;
-     balance: number | null;
-  }[];
- }
- 
- export const getServerSideProps: GetServerSideProps<WalletPageProps> = async () => {
-  const users = await getAllUserBalances();
-  return {
-     props: {
-       users,
-     },
-  };
- };
 
  
-const Wallet: React.FC<WalletPageProps> = ({ users }) => {
+const Wallet = () => {
   const [investmentIndex, setInvestmentIndex] = useState(0);
   const [isBalanceHidden, setIsBalanceHidden] = useState(false); // New state for balance visibility
   const investments = [
@@ -38,6 +24,15 @@ const Wallet: React.FC<WalletPageProps> = ({ users }) => {
     { balance: '0.000', symbol: 'LTC' },
 
   ];
+  const [balances, setBalances] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const data = await fetchUserBalances();
+      setBalances(data);
+    }
+    fetchData();
+  }, []);
 
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
   const [modalPlacement, setModalPlacement] = React.useState("auto");
@@ -147,7 +142,7 @@ Edit
 </div>
 <Button color="primary" variant="shadow">View History</Button>
   </div>
-  {users.map((user) => (
+  {balances.map((user) => (
   <div  key={user.id} className="text-2xl text-white font-bold ml-2">
   {isBalanceHidden ? '*****' :  `$${user.balance?.toFixed(2)} USDT`}
   </div>
