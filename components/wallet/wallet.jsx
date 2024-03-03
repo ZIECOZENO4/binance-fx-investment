@@ -3,8 +3,8 @@ import React, { useState, useEffect } from "react";
 import { useUser } from "@clerk/clerk-react";
 import { SignedIn, SignedOut, UserButton, SignOutButton } from "@clerk/nextjs";
 import { User, Link } from "@nextui-org/react";
-import Eye from "../dashboard/eye";
-import Noeye from "../dashboard/noeye";
+import Eye from "../../components/dashboard/eye";
+import Noeye from "../../components/dashboard/noeye";
 import {
   Modal,
   ModalContent,
@@ -21,13 +21,16 @@ import { GetServerSideProps } from "next";
 import { getAllUserBalances } from "../../prisma/db/quaries/accountbalance";
 import { useUserBalances } from "../../hooks/userBalances";
 
-interface UserBalanceProps {
-  userId: string;
+interface User {
+  id: string;
+  email: string;
+  name: string;
+  balance: number;
+  message: string;
+  user: string;
 }
 
-
-const Wallet: React.FC<UserBalanceProps> = ({ userId }) => {
-  const [balance, setBalance] = useState<number | null>(null);
+const Wallet: React.FC = () => {
   const [investmentIndex, setInvestmentIndex] = useState(0);
   const [isBalanceHidden, setIsBalanceHidden] = useState(false);
   const investments = [
@@ -45,23 +48,6 @@ const Wallet: React.FC<UserBalanceProps> = ({ userId }) => {
   const toggleBalanceVisibility = () => {
     setIsBalanceHidden(!isBalanceHidden);
   };
-  useEffect(() => {
-    const fetchUserBalance = async () => {
-        try {
-            const response = await fetch(`/api/user/balance/${userId}`);
-            if (response.ok) {
-                const data = await response.json();
-                setBalance(data);
-            } else {
-                console.error('Failed to fetch user balance');
-            }
-        } catch (error) {
-            console.error('Error fetching user balance:', error);
-        }
-    };
-
-    fetchUserBalance();
-}, [userId]);
 
   const copyIdToClipboard = () => {
     if (user && user.id) {
@@ -70,9 +56,12 @@ const Wallet: React.FC<UserBalanceProps> = ({ userId }) => {
     }
   };
 
-  if (balance === null) {
-    return <div>0.00 USDT</div>;
-}
+  if (!isLoaded) {
+    return null;
+  }
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>An error occurred: {error.message}</div>;
 
   const shortenedId =
     user && user.id
@@ -191,20 +180,20 @@ const Wallet: React.FC<UserBalanceProps> = ({ userId }) => {
                         View History
                       </Button>
                     </div>
-                 
+                    {users.map((user) => (
                       <div
-                     
+                        key={user.id}
                         className="text-2xl text-white font-bold ml-2"
                       >
-                    
-                   
+                        {users?.map((user) => (
+                          <p key={user.id}>
                             {isBalanceHidden
                               ? "*****"
-                              : `$${balance?.toFixed(2)} USDT`}
-                  
-                    
+                              : `$${user.balance?.toFixed(2)} USDT`}
+                          </p>
+                        ))}
                       </div>
-            
+                    ))} 
                     <div className="flex flex-row justify-between gap-4 items-center align-middle py-4 px-2 ">
                       <div className="flex flex-row justify-between gap-4 items-center align-middle w-[70%]">
                         <p className="text-md text-white  ">INVESTMENT</p>
