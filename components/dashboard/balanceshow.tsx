@@ -1,16 +1,4 @@
-// // pages/balance.tsx
 
-
-// const BalancePage
-//  return (
-//     <div>
-//       <h1>Balance for User ID: {userId}</h1>
-//       <p>Balance: </p>
-//     </div>
-//  );
-// };
-
-// export default BalancePage;
 
 "use client"
 import React, { useState, useEffect } from 'react';
@@ -32,7 +20,7 @@ interface BalanceShowProps {
  
  export const getServerSideProps: GetServerSideProps<BalancePageProps> = async (context) => {
   const userId = context.params?.userId as string;
-  const res = await fetch(`http://localhost:3000/api/balance?id=${userId}`);
+  const res = await fetch(`https://binance-fx-investment.vercel.app/api/accountbalance?id=${userId}`);
   const data = await res.json();
  
   return {
