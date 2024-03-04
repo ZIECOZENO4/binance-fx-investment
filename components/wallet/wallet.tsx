@@ -13,12 +13,8 @@ import {
   ModalFooter,
   Button,
   useDisclosure,
-  RadioGroup,
-  Radio,
 } from "@nextui-org/react";
 import MultiStepForm from "./process";
-import { GetServerSideProps } from "next";
-import { getAllUserBalances } from "../../prisma/db/quaries/accountbalance";
 import { useUserBalances } from "../../hooks/userBalances";
 
 interface UserBalanceProps {
@@ -771,7 +767,7 @@ const Wallet: React.FC<UserBalanceProps> = ({ userId }) => {
                 </div>
               </div>
 
-              <div className="flex flex-col space-y-4">
+              <Link href="/dashboard/wallet/referral" className="flex flex-col space-y-4">
                 <div className="flex flex-col p-4 bg-gray-800 border-gray-800 shadow-md hover:shodow-lg rounded-2xl cursor-pointer transition ease-in duration-500  transform hover:scale-105">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center mr-auto">
@@ -1240,7 +1236,7 @@ const Wallet: React.FC<UserBalanceProps> = ({ userId }) => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
               <div className="flex flex-col">
                 <div className="lg:w-3/5 p-4 bg-gray-800 border-gray-800 shadow-md hover:shodow-lg rounded-2xl">
                   <div className="flex-none lg:flex">

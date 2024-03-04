@@ -112,7 +112,7 @@ const Options = () => {
 </Link>
 </div>
        <div className="flex flex-row justify-between md:hidden p-1 md:p-4 items-center ">
-<Link href="/dashboard/wallet" className="cursor-pointer font-bold md:text-xl text-md text-white flex-col gap-1 flex justify-center align-middle"> 
+<Link href="/dashboard/wallet/referral" className="cursor-pointer font-bold md:text-xl text-md text-white flex-col gap-1 flex justify-center align-middle"> 
 <div className=' rounded-3xl w-full bg-gradient-to-r from-blue-600 to-sky-200 gap-1 flex justify-center align-middle"'>
 <svg fill="#000000" width="50px" height="50px" className='flex justify-center align-middle p-2' viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M18,14c-.053,0-.1.014-.155.016L14.817,8.838a4,4,0,1,0-5.632,0L6.166,14.017C6.109,14.014,6.057,14,6,14a4,4,0,1,0,3.859,5h4.282A3.994,3.994,0,1,0,18,14Zm-3.859,3H9.859a3.994,3.994,0,0,0-1.731-2.376l2.793-4.79a3.589,3.589,0,0,0,2.161,0l2.8,4.786A3.989,3.989,0,0,0,14.141,17Z"></path></g></svg>
 </div>
