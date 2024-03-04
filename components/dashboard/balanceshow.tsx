@@ -144,7 +144,8 @@ const BalanceShow: React.FC<UserBalanceProps> = ({ userId }) => {
 
     const fetchUserBalance = async () => {
       try {
-        const response =  await fetch(`/api/[id]/${userId}`);
+        const response =  await fetch(`/api/users/${userId}`);
+
         if (response.ok) {
           const data = await response.json();
           setBalance(data.balance); // Assuming the API returns an object with a balance property
