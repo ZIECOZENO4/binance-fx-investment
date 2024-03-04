@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { AvatarImage, AvatarFallback, Avatar } from "@/components/ui/avatar"
 import { User, Link } from "@nextui-org/react";
 export default function Referral() {
+  const { isLoaded, isSignedIn, user } = useUser();
   return (
     <div className="bg-blue-500 min-h-screen p-4">
       <div className="flex justify-between items-center text-white">
@@ -15,10 +16,15 @@ export default function Referral() {
       <div className="flex items-center justify-between bg-white p-4 rounded-md shadow mt-4">
         <div className="flex items-center space-x-3">
           <Avatar>
-            <AvatarImage alt="Zieco Zeno" src="/placeholder.svg?height=40&width=40" />
+            <AvatarImage alt="Zieco Zeno"      className="h-16 w-16 rounded-full"
+                              src={user ? user.imageUrl : "/images/ph.PNG"} />  
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
-          <span className="font-bold text-lg">Zieco Zeno</span>
+          <span className="font-bold text-lg"> {user && user.username
+                                  ? user.username
+                                  : user
+                                  ? user.firstName
+                                  : " FX User"}</span>
         </div>
         <BellIcon className="text-blue-500" />
       </div>

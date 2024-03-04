@@ -1,3 +1,4 @@
+"use client"
 import { useUser } from '@clerk/clerk-react';
 import Wallet from '@/components/wallet/wallet'
 import React from 'react'
