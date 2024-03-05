@@ -769,8 +769,8 @@ const Wallet: React.FC<UserBalanceProps> = ({ userId }) => {
                 </div>
               </div>
 
-              <Link href="/dashboard/wallet/referral" className="flex flex-col space-y-4">
-                <div className="flex flex-col p-4 bg-gray-800 border-gray-800 shadow-md hover:shodow-lg rounded-2xl cursor-pointer transition ease-in duration-500  transform hover:scale-105">
+              <div className="flex flex-col space-y-4">
+                <Link  href="/dashboard/wallet/referral" className="flex flex-col p-4 bg-gray-800 border-gray-800 shadow-md hover:shodow-lg rounded-2xl cursor-pointer transition ease-in duration-500  transform hover:scale-105">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center mr-auto">
                       <div className="inline-flex w-12 h-12">
@@ -813,7 +813,7 @@ const Wallet: React.FC<UserBalanceProps> = ({ userId }) => {
                       </svg>
                     </a>
                   </div>
-                </div>
+                </Link>
 
                 <div className="flex flex-col p-4 bg-gray-800 border-gray-800 shadow-md hover:shodow-lg rounded-2xl cursor-pointer transition ease-in duration-500  transform hover:scale-105">
                   <div className="flex items-center justify-between">
@@ -1238,7 +1238,7 @@ const Wallet: React.FC<UserBalanceProps> = ({ userId }) => {
                     </div>
                   </div>
                 </div>
-              </Link>
+              </div>
               <div className="flex flex-col">
                 <div className="lg:w-3/5 p-4 bg-gray-800 border-gray-800 shadow-md hover:shodow-lg rounded-2xl">
                   <div className="flex-none lg:flex">
