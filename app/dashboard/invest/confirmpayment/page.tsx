@@ -74,7 +74,7 @@ const Page = () => {
               "
             >
               <p className="text-gray-400 ml-4">Wallet Address</p>
-              <p className="text-indigo-600 mr-4">0x1b9E45C744c0E2728e<br />5D2418f58d4B924ADb875F</p>
+              <p className="text-indigo-600 mr-4">0x1b9E45C744c<br />0E2728e5D2418f58d<br />4B924ADb875F</p>
             </div>
             <div
               className="
@@ -212,7 +212,7 @@ const Page = () => {
         
         </div>
       </div>
-      <div className=' bg-white py-5 flex justify-start items-start align-middle leading-8 font-bold text-md gap-2 px-2'>
+      <div className=' bg-white py-5 flex flex-wrap overflow-x-auto justify-start items-start align-middle leading-8 font-bold text-md gap-2 px-2'>
         <p className=" mx-1"><span className="text-red-500 text-xl mr-1">NOTE:<p className='leading-6 text-green-400'>If you click on accept the transaction will automatically procced and it will be withdrawn from your Binance FX wallet, but if you don&apos;t have money in your wallet simply copy the company&apos;s wallet address and make payment, after you provide your wallet address and transaction ID for comfirmation </p>  </span>ALL DEPOSIT SHOULD BE MADE TO COMPANY&apos;S WALLET ADDRESS [0x1b9E45C744c0E2728e5D2418f58d4B924ADb875F], WHEN DONE CLICK ACCEPT FOR THE TRANSACTION TO TAKE PLACE. THANKS FOR INVESTI NG ON BINANCE FX</p>
       </div>
     </div>
