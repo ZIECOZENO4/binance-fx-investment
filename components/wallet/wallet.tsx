@@ -45,7 +45,7 @@ const Wallet: React.FC<UserBalanceProps> = ({ userId }) => {
   useEffect(() => {
     const fetchUserBalance = async () => {
         try { 
-            const response = await fetch(`/api/users/${userId}`);
+            const response = await fetch(`/api/users/[id]/route.ts`);
 
             if (response.ok) {
                 const data = await response.json();
@@ -198,7 +198,7 @@ const Wallet: React.FC<UserBalanceProps> = ({ userId }) => {
                    
                             {isBalanceHidden
                               ? "*****"
-                              : `$${balance?.toFixed(2)} USDT`}
+                              : `$${balance}.00  USDT`}
                   
                     
                       </div>
