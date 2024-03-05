@@ -168,7 +168,7 @@ const BalanceShow: React.FC<UserBalanceProps> = ({ userId }) => {
  }
 
  if (error) {
-    return <div>Error: {error.message}</div>;
+    return <div>Error found</div>;
  }
 
  // Assuming userBalances.balance contains the user's balance

@@ -43,7 +43,7 @@ const DepositPage = () => {
               
               <div className="h-full text-left px-4 py-4 bg-gray-800 w-full justify-end border-t-2 border-gray-900">
                 <a href='/' className="flex items-center flex-wrap">
-                  <img alt="testimonial" className="inline-block object-cover object-center w-16 h-16 mb-4 bg-gray-100 rounded" src="https://dummyimage.com/302x302/94a3b8/ffffff" /> <span className="flex flex-col flex-grow pl-4">
+                  <img alt="testimonial" className="inline-block object-cover object-center w-16 h-16 mb-4 bg-gray-100 rounded" src="/images/d2.jpeg" /> <span className="flex flex-col flex-grow pl-4">
                     <span className="font-bold text-lg text-gray-100 -mt-4">Bank: </span>
                     <span className="text-sm text-gray-500 uppercase font-bold">Wallet Address</span>
                   </span>
