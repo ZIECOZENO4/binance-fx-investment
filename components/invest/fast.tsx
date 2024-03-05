@@ -33,7 +33,7 @@ export default function Fast() {
 </div>
 <div className="bg-sky-600 border-l-4 border-orange text-orange-dark p-4 text-black" role="alert">
   <p className="font-bold">Copy FX Wallet Address</p>
-  <p>Copy this address <span className="text-sky-700">[ox....ciiuvb098]</span></p>
+  <p>Copy this address <span className="text-green-500">[0x1b9E45C744c0E2728e5D2418f58d4B924ADb875F]</span></p>
 </div>
 <div className="bg-slate-400 border-l-4 border-orange text-orange-dark p-4 text-black" role="alert">
   <p className="font-bold">Send</p>

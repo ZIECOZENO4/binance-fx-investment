@@ -74,7 +74,7 @@ const Page = () => {
               "
             >
               <p className="text-gray-400 ml-4">Wallet Address</p>
-              <p className="text-indigo-600 mr-4">0x1b9E45C744c0E2728e5D2418f58d4B924ADb875F</p>
+              <p className="text-indigo-600 mr-4">0x1b9E45C744c0E2728e<br />5D2418f58d4B924ADb875F</p>
             </div>
             <div
               className="
