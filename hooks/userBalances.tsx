@@ -2,7 +2,7 @@
 import { useQuery } from '@tanstack/react-query';
 
 async function fetchUserBalances(userId: string) {
- const response = await fetch(`/api/users/${userId}`);
+ const response = await fetch(`/api/balance`);
  if (!response.ok) {
     throw new Error('Network response was not ok');
  }

@@ -19,15 +19,25 @@ const DepositPage = () => {
               <div className="flex  ">
               
               <div className="h-full text-left px-4 py-4 bg-gray-800 w-full justify-end border-t-2 border-gray-900">
-                <a href='/' className="flex items-center flex-wrap">
+                <div className="flex items-center flex-wrap">
                   <img alt="testimonial" className="inline-block object-cover object-center w-16 h-16 mb-4 bg-gray-100 rounded" src="/images/d3.jpeg" /> <span className="flex flex-col flex-grow pl-4">
-                    <span className="font-bold text-lg text-gray-100 -mt-4">Wallet: </span>
+                    <span className="font-bold text-lg text-gray-100 -mt-4">Wallet: Meta Mask </span>
                     <span className="text-sm text-gray-500 uppercase font-bold"> 0x1b9E45C744c0E2728e5D2418f58d4B924ADb875F</span>
                   </span>
-                </a>
+                </div>
                 <div className="flex items-center flex-wrap ">
-        <a href="/" className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0 px-2 py-1 border-2 border-indigo-500 rounded-full text-sm">Copy Address
-        </a>
+                <button onClick={(e) => {
+      e.preventDefault(); // Prevent the default action of the link
+      navigator.clipboard.writeText('0x1b9E45C744c0E2728e5D2418f58d4B924ADb875F')
+        .then(() => {
+          console.log('Address copied to clipboard');
+          // Optionally, show a message to the user that the address has been copied
+        })
+        .catch(err => {
+          console.error('Failed to copy address: ', err);
+        });
+    }} className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0 px-2 py-1 border-2 border-indigo-500 rounded-full text-sm">Copy Address
+    </button>
         <span className="text-gray-800 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 px-2 bg-yellow-500 rounded-full">
           New 
         </span>

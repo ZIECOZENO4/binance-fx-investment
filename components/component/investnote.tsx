@@ -4,7 +4,7 @@
  */
 import Link from "next/link"
 
-export function investnote() {
+export function InvestNote() {
   return (
     <div className="py-12 lg:py-24 xl:py-32">
       <div className="container px-4 md:px-6">
