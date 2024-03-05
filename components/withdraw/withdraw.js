@@ -122,7 +122,7 @@ const WithdrawalPage = () => {
       <div className="flex justify-center flex-col items-center mb-4">
    
            <div className="mt-8 gap-3 flex flex-row   justify-between items-start align-middle">
-  <h1 className="font-bold text-white text-xl md:text-2xl  justify-start items-start align-middle w-[20vw]  ">Amount :</h1>
+  <h1 className="font-bold text-white text-xl md:text-2xl  justify-start items-start align-middle w-[22vw]  ">Amount :</h1>
  
     
     <input
@@ -145,7 +145,7 @@ const WithdrawalPage = () => {
         </select>
 </div>
       <div className="mb-4 flex flex-row mt-8  w-[100vw] justify-between">
-        <label htmlFor="walletAddress" className="block mb-2 font-bold  w-[40vw]  text-xl md:text-2xl  justify-start items-start align-middle">Wallet Address :</label>
+        <label htmlFor="walletAddress" className="block mb-2 font-bold  w-[42vw]  text-xl md:text-2xl  justify-start items-start align-middle">Wallet Address :</label>
         <input
           type="text"
           id="walletAddress"

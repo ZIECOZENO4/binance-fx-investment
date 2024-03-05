@@ -22,7 +22,7 @@ const DepositPage = () => {
                 <div className="flex items-center flex-wrap">
                   <img alt="testimonial" className="inline-block object-cover object-center w-16 h-16 mb-4 bg-gray-100 rounded" src="/images/d3.jpeg" /> <span className="flex flex-col flex-grow pl-4">
                     <span className="font-bold text-lg text-gray-100 -mt-4">Wallet: Meta Mask </span>
-                    <span className="text-sm text-gray-500 uppercase font-bold"> 0x1b9E45C744c0E2728e5D2418f58d4B924ADb875F</span>
+                    <span className="text-sm text-gray-500 uppercase font-bold"> 0x1b9E45C744<br />c0E2728e5D2418f58d4 <br />B924ADb875F</span>
                   </span>
                 </div>
                 <div className="flex items-center flex-wrap ">
@@ -54,7 +54,7 @@ const DepositPage = () => {
               <div className="h-full text-left px-4 py-4 bg-gray-800 w-full justify-end border-t-2 border-gray-900">
                 <a href='/' className="flex items-center flex-wrap">
                   <img alt="testimonial" className="inline-block object-cover object-center w-16 h-16 mb-4 bg-gray-100 rounded" src="/images/d2.jpeg" /> <span className="flex flex-col flex-grow pl-4">
-                    <span className="font-bold text-lg text-gray-100 -mt-4">Bank: </span>
+                    <span className="font-bold text-lg text-gray-100 -mt-4">Wallet: Binance</span>
                     <span className="text-sm text-gray-500 uppercase font-bold">Wallet Address</span>
                   </span>
                 </a>
@@ -77,8 +77,8 @@ const DepositPage = () => {
               
               <div className="h-full text-left px-4 py-4 bg-gray-800 w-full justify-end border-t-2 border-gray-900">
                 <a href='/' className="flex items-center flex-wrap">
-                  <img alt="testimonial" className="inline-block object-cover object-center w-16 h-16 mb-4 bg-gray-100 rounded" src="https://dummyimage.com/302x302/94a3b8/ffffff" /> <span className="flex flex-col flex-grow pl-4">
-                    <span className="font-bold text-lg text-gray-100 -mt-4">Bank::  </span>
+                  <img alt="testimonial" className="inline-block object-cover object-center w-16 h-16 mb-4 bg-gray-100 rounded" src="/images/d4.jpeg" /> <span className="flex flex-col flex-grow pl-4">
+                    <span className="font-bold text-lg text-gray-100 -mt-4">Wallet: Coin Base  </span>
                     <span className="text-sm text-gray-500 uppercase font-bold">Wallet Address</span>
                   </span>
                 </a>
@@ -102,8 +102,8 @@ const DepositPage = () => {
               
               <div className="h-full text-left px-4 py-4 bg-gray-800 w-full justify-end border-t-2 border-gray-900">
                 <a href='/' className="flex items-center flex-wrap">
-                  <img alt="testimonial" className="inline-block object-cover object-center w-16 h-16 mb-4 bg-gray-100 rounded" src="https://dummyimage.com/302x302/94a3b8/ffffff" /> <span className="flex flex-col flex-grow pl-4">
-                    <span className="font-bold text-lg text-gray-100 -mt-4">Bank::  </span>
+                  <img alt="testimonial" className="inline-block object-cover object-center w-16 h-16 mb-4 bg-gray-100 rounded" src="/images/d5.jpeg" /> <span className="flex flex-col flex-grow pl-4">
+                    <span className="font-bold text-lg text-gray-100 -mt-4">Wallet: Meta Mask  </span>
                     <span className="text-sm text-gray-500 uppercase font-bold">Wallet Address</span>
                   </span>
                 </a>
@@ -126,8 +126,8 @@ const DepositPage = () => {
               
               <div className="h-full text-left px-4 py-4 bg-gray-800 w-full justify-end border-t-2 border-gray-900">
                 <a href='/' className="flex items-center flex-wrap">
-                  <img alt="testimonial" className="inline-block object-cover object-center w-16 h-16 mb-4 bg-gray-100 rounded" src="https://dummyimage.com/302x302/94a3b8/ffffff" /> <span className="flex flex-col flex-grow pl-4">
-                    <span className="font-bold text-lg text-gray-100 -mt-4">Bank::  </span>
+                  <img alt="testimonial" className="inline-block object-cover object-center w-16 h-16 mb-4 bg-gray-100 rounded" src="/images/d1.jpeg" /> <span className="flex flex-col flex-grow pl-4">
+                    <span className="font-bold text-lg text-gray-100 -mt-4">Bank: </span>
                     <span className="text-sm text-gray-500 uppercase font-bold">Wallet Address</span>
                   </span>
                 </a>

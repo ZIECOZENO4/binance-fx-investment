@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useUser } from "@clerk/clerk-react";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { useCountdownManager } from '../../../../components/invest/countdowns/countdowncontest';
+import { Note } from '@/components/component/note';
 
 
 
@@ -111,8 +112,8 @@ const Page = () => {
                 border-b-2 border-gray-200
               "
             >
-              <p className="text-gray-400 ml-4">Level 1</p>
-              <p className="text-indigo-600 mr-4">$2,665</p>
+              <p className="text-gray-400 ml-4">Plan </p>
+              <p className="text-indigo-600 mr-4">----</p>
             </div>
             <div
               className="
@@ -137,6 +138,19 @@ const Page = () => {
                 border-b-2 border-gray-200
               "
             >
+              <p className="text-gray-400 ml-4">Plan ID</p>
+              <p className="text-indigo-600 mr-4">---</p>
+            </div>
+            <div
+              className="
+                flex
+                justify-between
+                items-center
+                w-full
+                py-5
+                border-b-2 border-gray-200
+              "
+            >
               <p className="text-gray-400 ml-4">Amount</p>
               <p className="text-indigo-600 mr-4">-----</p>
             </div>
@@ -150,7 +164,7 @@ const Page = () => {
                 w-full
               "
             >
-              
+              <Note />
               <div className="mb-5 flex flex-col min-w-full">
               <div className="p-8 gap-6">
                 <p className=" items-center align-middle justify-center font-green-600 text-xl font-bold py-4 uppercase text-indigo-600 flex fleex-row">Provide Prove of Payment</p>
