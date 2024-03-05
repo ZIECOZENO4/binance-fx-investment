@@ -1,17 +1,17 @@
 // hooks/useUserBalances.ts
 import { useQuery } from '@tanstack/react-query';
 
-async function fetchUserBalances() {
- const response = await fetch('/api/userBalances');
+async function fetchUserBalances(userId: string) {
+ const response = await fetch(`/api/users/${userId}`);
  if (!response.ok) {
     throw new Error('Network response was not ok');
  }
  return response.json();
 }
 
-export function useUserBalances() {
+export function useUserBalances(userId: string) {
  return useQuery({
-    queryKey: ['userBalances'],
-    queryFn: fetchUserBalances,
+    queryKey: ['userBalances', userId],
+    queryFn: () => fetchUserBalances(userId),
  });
 }

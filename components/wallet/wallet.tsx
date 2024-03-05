@@ -34,7 +34,7 @@ const Wallet: React.FC<UserBalanceProps> = ({ userId }) => {
   ];
 
   const { isLoaded, isSignedIn, user } = useUser();
-  const { data: users, isLoading, error } = useUserBalances(); // Call the hook at the top level
+
 
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [modalPlacement, setModalPlacement] = React.useState("auto");
@@ -45,7 +45,7 @@ const Wallet: React.FC<UserBalanceProps> = ({ userId }) => {
   useEffect(() => {
     const fetchUserBalance = async () => {
         try { 
-            const response = await fetch(`/api/users/[id]/route.ts`);
+            const response = await fetch(`/api/users/${userId}`);
 
             if (response.ok) {
                 const data = await response.json();
@@ -198,7 +198,7 @@ const Wallet: React.FC<UserBalanceProps> = ({ userId }) => {
                    
                             {isBalanceHidden
                               ? "*****"
-                              : `$${balance}.00  USDT`}
+                              : `$${balance} USDT`}
                   
                     
                       </div>
