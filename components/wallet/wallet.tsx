@@ -16,6 +16,7 @@ import {
 } from "@nextui-org/react";
 import MultiStepForm from "./process";
 import { useUserBalances } from "../../hooks/userBalances";
+import Loading from "../../app/loading";
 
 interface UserBalanceProps {
   userId: string;
@@ -68,7 +69,7 @@ const Wallet: React.FC<UserBalanceProps> = ({ userId }) => {
   };
 
   if (balance === null) {
-    return <div>0.00 USDT</div>;
+    return <div><Loading /></div>;
 }
 
   const shortenedId =

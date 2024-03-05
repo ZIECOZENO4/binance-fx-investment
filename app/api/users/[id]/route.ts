@@ -1,4 +1,4 @@
-import prisma from "../../../prisma/db/db";
+import prisma from "../../../../prisma/db/db";
 
 
 export async function GET(request: Request, {params}:{params:{id:number}}) {
