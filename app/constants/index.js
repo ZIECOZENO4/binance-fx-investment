@@ -69,7 +69,7 @@ const experiences = [
     {
       title: "REQUEST WITHDRAWALS",
       company_name: "Help Team",
-      icon: one,
+      icon: fx,
       iconBg: "#E6DEDD",
       date: "Step 5",
       points: [

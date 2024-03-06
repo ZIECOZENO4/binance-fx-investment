@@ -51,7 +51,7 @@ function Hero1() {
    
     >
 
-      <p className="font-bold text-green-600 ">Register</p>  
+      <p className="font-bold text-green-600 text-xl gap-4 ">Register</p>  
     </Button>
    
           <button 
