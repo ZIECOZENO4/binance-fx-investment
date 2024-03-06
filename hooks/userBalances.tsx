@@ -22,7 +22,7 @@ import { useQuery } from '@tanstack/react-query';
 // import { useQuery } from '@tanstack/react-query';
 
 async function fetchUserBalances(userId: string) {
- const response = await fetch(`/api/balance`);
+ const response = await fetch(`/api/userInfo`);
  if (!response.ok) {
     throw new Error('Network response was not ok');
  }

@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-=======
+
 // // hooks/useUserInfo.ts
 // import { useSuspenseQuery, UseSuspenseQueryResult } from '@tanstack/react-query';
 // import { addBaseURL } from '../addBaseUrl';
@@ -28,7 +27,6 @@
 //     });
 // }
 
->>>>>>> c45e6e773f58bb64d9bcf080b739e8dee477bd9e
 
 // hooks/useUserInfo.ts
 import { useSuspenseQuery, UseSuspenseQueryResult } from '@tanstack/react-query';
@@ -56,8 +54,5 @@ export function useUserInfo() {
         queryFn: fetchUserInfo,
         staleTime: 1000 * 60 * 60 * 24, // 24 hours
     });
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> c45e6e773f58bb64d9bcf080b739e8dee477bd9e
+
