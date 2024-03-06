@@ -1,7 +1,7 @@
 
 'use client'
 import { SWRConfig } from 'swr';
-import {NextUIProvider} from '@nextui-org/react'
+import { NextUIProvider } from '@nextui-org/react'
 import {
   ThirdwebProvider,
   ConnectWallet,
@@ -11,53 +11,47 @@ import {
   localWallet,
   embeddedWallet,
   trustWallet,
- } from "@thirdweb-dev/react";
+} from "@thirdweb-dev/react";
 
- import { ClerkProvider } from "@clerk/nextjs";
- import { dark } from "@clerk/themes";
+import { ClerkProvider } from "@clerk/nextjs";
+import { dark } from "@clerk/themes";
 
- import { QueryClient, QueryClientProvider } from 'react-query';
-import { ReactQueryDevtools } from 'react-query/devtools';
 import { CountdownManagerProvider } from '@/components/invest/countdowns/countdowncontest';
 
-const queryClient = new QueryClient();
 
-export function Providers({children}: { children: React.ReactNode }) {
+export function Providers({ children }: { children: React.ReactNode }) {
   return (
-    <ClerkProvider   publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
-    appearance={{
-      baseTheme: dark,
-    }}
-  >
-    <ThirdwebProvider
-    activeChain="ethereum"
-    clientId={process.env.NEXT_PUBLIC_THIRDWEB_CLIENT_ID}
-
-    supportedWallets={[
-      metamaskWallet(),
-      coinbaseWallet({ recommended: true }),
-      walletConnect(),
-      localWallet(),
-      embeddedWallet({
-      }),
-      trustWallet(),
-    ]}
-
+    <ClerkProvider publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
+      appearance={{
+        baseTheme: dark,
+      }}
     >
- 
-    <NextUIProvider>
-    <QueryClientProvider client={queryClient}>
-    <SWRConfig>
-    <CountdownManagerProvider>
-      {children}
-      </CountdownManagerProvider>
-      </SWRConfig>
-      <ReactQueryDevtools initialIsOpen={false} />
-    </QueryClientProvider>
-    
-    </NextUIProvider>
+      <ThirdwebProvider
+        activeChain="ethereum"
+        clientId={process.env.NEXT_PUBLIC_THIRDWEB_CLIENT_ID}
 
-    </ThirdwebProvider>
+        supportedWallets={[
+          metamaskWallet(),
+          coinbaseWallet({ recommended: true }),
+          walletConnect(),
+          localWallet(),
+          embeddedWallet({
+          }),
+          trustWallet(),
+        ]}
+
+      >
+
+        <NextUIProvider>
+          <SWRConfig>
+            <CountdownManagerProvider>
+              {children}
+            </CountdownManagerProvider>
+          </SWRConfig>
+
+        </NextUIProvider>
+
+      </ThirdwebProvider>
     </ClerkProvider>
   )
 }

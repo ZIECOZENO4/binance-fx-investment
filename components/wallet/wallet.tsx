@@ -15,7 +15,7 @@ import {
   useDisclosure,
 } from "@nextui-org/react";
 import MultiStepForm from "./process";
-import { useUserBalances } from "../../hooks/userBalances";
+
 import Loading from "../../app/loading";
 
 interface UserBalanceProps {
@@ -44,22 +44,22 @@ const Wallet: React.FC<UserBalanceProps> = ({ userId }) => {
   };
   useEffect(() => {
     const fetchUserBalance = async () => {
-        try { 
-            const response = await fetch(`/api/users/${userId}`);
+      try {
+        const response = await fetch(`/api/users/${userId}`);
 
-            if (response.ok) {
-                const data = await response.json();
-                setBalance(data);
-            } else {
-                console.error('Failed to fetch user balance');
-            }
-        } catch (error) {
-            console.error('Error fetching user balance:', error);
+        if (response.ok) {
+          const data = await response.json();
+          setBalance(data);
+        } else {
+          console.error('Failed to fetch user balance');
         }
+      } catch (error) {
+        console.error('Error fetching user balance:', error);
+      }
     };
 
     fetchUserBalance();
-}, [userId]);
+  }, [userId]);
 
   const copyIdToClipboard = () => {
     if (user && user.id) {
@@ -70,7 +70,7 @@ const Wallet: React.FC<UserBalanceProps> = ({ userId }) => {
 
   if (balance === null) {
     return <div><Loading /></div>;
-}
+  }
 
   const shortenedId =
     user && user.id
@@ -100,8 +100,8 @@ const Wallet: React.FC<UserBalanceProps> = ({ userId }) => {
                                 {user && user.username
                                   ? user.username
                                   : user
-                                  ? user.firstName
-                                  : " FX User"}
+                                    ? user.firstName
+                                    : " FX User"}
                               </h3>
                               <span className="text-blue-600 text-xl uppercase flex">
                                 ID: {shortenedId}
@@ -189,20 +189,20 @@ const Wallet: React.FC<UserBalanceProps> = ({ userId }) => {
                         View History
                       </Button>
                     </div>
-                 
-                      <div
-                     
-                        className="text-2xl text-white font-bold ml-2"
-                      >
-                    
-                   
-                            {isBalanceHidden
-                              ? "*****"
-                              : `$${balance} USDT`}
-                  
-                    
-                      </div>
-            
+
+                    <div
+
+                      className="text-2xl text-white font-bold ml-2"
+                    >
+
+
+                      {isBalanceHidden
+                        ? "*****"
+                        : `$${balance} USDT`}
+
+
+                    </div>
+
                     <div className="flex flex-row justify-between gap-4 items-center align-middle py-4 px-2 ">
                       <div className="flex flex-row justify-between gap-4 items-center align-middle w-[70%]">
                         <p className="text-md text-white  ">INVESTMENT</p>
@@ -265,13 +265,13 @@ const Wallet: React.FC<UserBalanceProps> = ({ userId }) => {
                           isOpen={isOpen}
                           placement={
                             modalPlacement as
-                              | "auto"
-                              | "center"
-                              | "bottom"
-                              | "top"
-                              | "top-center"
-                              | "bottom-center"
-                              | undefined
+                            | "auto"
+                            | "center"
+                            | "bottom"
+                            | "top"
+                            | "top-center"
+                            | "bottom-center"
+                            | undefined
                           }
                           onOpenChange={onOpenChange}
                           className=" h-auto overflow-y-auto"
@@ -772,7 +772,7 @@ const Wallet: React.FC<UserBalanceProps> = ({ userId }) => {
               </div>
 
               <div className="flex flex-col space-y-4">
-                <Link  href="/dashboard/wallet/referral" className="flex flex-col p-4 bg-gray-800 border-gray-800 shadow-md hover:shodow-lg rounded-2xl cursor-pointer transition ease-in duration-500  transform hover:scale-105">
+                <Link href="/dashboard/wallet/referral" className="flex flex-col p-4 bg-gray-800 border-gray-800 shadow-md hover:shodow-lg rounded-2xl cursor-pointer transition ease-in duration-500  transform hover:scale-105">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center mr-auto">
                       <div className="inline-flex w-12 h-12">

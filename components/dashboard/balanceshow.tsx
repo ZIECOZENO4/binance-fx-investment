@@ -35,11 +35,11 @@
 //     if (!isLoaded || isLoading) {
 //       return <div>Loading...</div>; // Show a loading indicator while data is being fetched
 //    }
-  
+
 //    if (error) {
 //       return <div>Error: {error.message}</div>; // Show an error message if there's an error
 //    }
-  
+
 //    // Assuming userBalances.balance contains the user's balance
 //    const userBalance = userBalances?.balance;
 
@@ -110,41 +110,39 @@
 // };
 
 // export default BalanceShow;
-"use client"
 
 "use client"
 import React, { useState, useEffect } from 'react';
-import { useUserBalances } from '../../hooks/userBalances'; 
 import Eye from './eye';
 import Noeye from './noeye';
+import { useUserInfo } from '@/tenstack-hooks/user-info';
 
 type ViewType = 'account' | 'investment';
 
 interface UserBalanceProps {
- userId: string;
+  userId: string;
 }
 
 interface Investment {
- balance: string;
- symbol: string;
+  balance: string;
+  symbol: string;
 }
 
-const BalanceShow: React.FC<UserBalanceProps> = ({ userId }) => {
- const [currentView, setCurrentView] = useState<ViewType>('account');
- const [investmentIndex, setInvestmentIndex] = useState(0);
- const [isBalanceHidden, setIsBalanceHidden] = useState(false);
- const [balance, setBalance] = useState<number | null>(null); // Define balance state
+const BalanceShow: React.FC = () => {
+  const { data: userInfo } = useUserInfo();
+  const [currentView, setCurrentView] = useState<ViewType>('account');
+  const [investmentIndex, setInvestmentIndex] = useState(0);
+  const [isBalanceHidden, setIsBalanceHidden] = useState(false);
 
- // Assuming useUserBalances returns an object with a balance property
- const { data: userBalances, isLoading, error } = useUserBalances(userId);
+  // Assuming useUserBalances returns an object with a balance property
 
- const investments: Investment[] = [
+  const investments: Investment[] = [
     { balance: '0.000', symbol: 'ETH' },
     { balance: '0.000', symbol: 'BTC' },
     { balance: '0.000', symbol: 'LTC' },
- ];
+  ];
 
- useEffect(() => {
+  useEffect(() => {
     let timer: NodeJS.Timeout | undefined;
 
     if (currentView === 'investment') {
@@ -156,25 +154,19 @@ const BalanceShow: React.FC<UserBalanceProps> = ({ userId }) => {
     return () => {
       if (timer) clearInterval(timer); // Clean up on component unmount
     };
- }, [currentView, investments.length]); // Correctly placed dependency array
+  }, [currentView, investments.length]); // Correctly placed dependency array
 
- const toggleBalanceVisibility = () => {
+  const toggleBalanceVisibility = () => {
     setIsBalanceHidden(!isBalanceHidden);
- };
+  };
 
- // Check if data is still loading or if there was an error
- if (isLoading) {
-    return <div>Loading...</div>;
- }
+  // Check if data is still loading or if there was an error
 
- if (error) {
-    return <div>Error found</div>;
- }
 
- // Assuming userBalances.balance contains the user's balance
- const userBalance = userBalances?.balance;
-
- return (
+  // Assuming userBalances.balance contains the user's balance
+  const userBalance = userInfo.balance;
+  console.log("this is hte user balance form the backend", userBalance);
+  return (
     <div className="relative overflow-hidden bg-gradient-to-r from-blue-600 to-sky-200 rounded-2xl flex flex-col justify-start align-middle items-start gap-5 p-4 h-40 md:px-3 px-10">
       {currentView === 'account' && (
         <div className="w-full transition-transform duration-500 ease-in-out transform">
@@ -182,7 +174,7 @@ const BalanceShow: React.FC<UserBalanceProps> = ({ userId }) => {
             <div className="flex flex-col justify-start gap-5 md:gap-10">
               <p className="font-bold md:text-2xl text-xl sm:text-md font-sono gap-3">ACCOUNT BALANCE</p>
               <p className="font-bold md:text-4xl text-3xl font-serif gap-3">
-                {isBalanceHidden ? '*****' : balance !== null ? `$${balance.toFixed(2)}` : '0.00'}
+                {isBalanceHidden ? '*****' : userBalance !== null ? `$${userBalance.toFixed(2)}` : '0.00'}
               </p>
             </div>
             <div onClick={toggleBalanceVisibility}>
@@ -222,7 +214,7 @@ const BalanceShow: React.FC<UserBalanceProps> = ({ userId }) => {
         {/* ... */}
       </div>
     </div>
- );
+  );
 };
 
 export default BalanceShow;
