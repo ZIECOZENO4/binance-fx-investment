@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/navbar";
-import {Providers} from "./providers";
+import { Providers as TenstackProviders } from "./tenstack-provider";
+import { Providers } from "./providers";
 import SmNavbar from "@/components/Sm NavBar";
 import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
@@ -23,19 +24,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} overflow-x-hidden`}>
-
-      <Providers>
-        <div className=" w-[100vw] bg-black ">
-        <div className='w-[100vw] z-30 sticky'>
-       <NavBar />   
-       <SmNavbar /> 
-        </div>
-       
-        <Suspense fallback={<Loading />}>
-              {children}
-            </Suspense>
-        </div>
-        </Providers>
+      <TenstackProviders>
+          <Providers>
+            <div className=" w-[100vw] bg-black ">
+              <div className='w-[100vw] z-30 sticky'>
+                <NavBar />
+                <SmNavbar />
+              </div>
+              <Suspense fallback={<Loading />}>
+                {children}
+              </Suspense>
+            </div>
+          </Providers>
+        </TenstackProviders>
+ 
         </body>
     </html>
   );
