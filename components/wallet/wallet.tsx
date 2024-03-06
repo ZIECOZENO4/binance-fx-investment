@@ -210,9 +210,11 @@ const Wallet: React.FC<UserBalanceProps> = ({ userId }) => {
                           {isBalanceHidden ? <Eye /> : <Noeye />}
                         </div>
                       </div>
+                      <Link href="/history">
                       <Button color="primary" variant="shadow">
                         View History
-                      </Button>
+                      </Button> 
+                      </Link>
                     </div>
                     <div className="text-2xl text-white font-bold ml-2">
                       {isBalanceHidden

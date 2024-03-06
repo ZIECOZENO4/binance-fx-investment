@@ -1,6 +1,6 @@
 import {
 
-bs,  one,  zenoweb,   aba, AccountImage,  
+bs,fx,  One,  zenoweb,   aba, AccountImage,  
   
 } from "../../public/assets/index";
 
@@ -82,7 +82,7 @@ const experiences = [
     {
       title: "REFER ANYONE",
       company_name: "Help Team",
-      icon: one,
+      icon: One,
       iconBg: "#E6DEDD",
       date: "Step 6",
       points: [
