@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/navbar";
-import { Providers as TenstackProviders } from "./tenstack-provider";
 import SmNavbar from "@/components/Sm NavBar";
 import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
