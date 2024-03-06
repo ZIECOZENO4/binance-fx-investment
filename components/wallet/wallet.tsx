@@ -185,11 +185,8 @@ const Wallet: React.FC = () => {
 
                       className="text-2xl text-white font-bold ml-2"
                     >
-
  {isBalanceHidden ? '*****' : userBalance !== null ? `$${userBalance.toFixed(2)}` : '$  0.00 '}
-
-
-                    </div>
+                 </div>
 
                     <div className="flex flex-row justify-between gap-4 items-center align-middle py-4 px-2 ">
                       <div className="flex flex-row justify-between gap-4 items-center align-middle w-[70%]">
