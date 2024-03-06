@@ -1,10 +1,10 @@
 import {
 
-bs,fx,  One,  zenoweb,   aba, AccountImage,  
+bs,fx,  zenoweb,   aba, AccountImage,  
   
 } from "../../public/assets/index";
 
-
+import One from "../../public/assets/svg/one";
        
           
 
@@ -13,7 +13,7 @@ const experiences = [
     {
       title: "OPEN AN ACCOUNT",
       company_name: "Help Team",
-      icon: AccountImage,
+      icon: <One />,
       iconBg: "#383E56",
       date: "Step 1",
       points: [
