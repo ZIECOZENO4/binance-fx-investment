@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+// Assuming this file is located at /pages/api/user/[id].ts
+// Import the Prisma client instance
+// Import types from 'next'
+>>>>>>> c45e6e773f58bb64d9bcf080b739e8dee477bd9e
 import prisma from '@/prisma/db/db';
 import { getUserId } from '@/utils/auth';
 import { NextRequest, NextResponse } from 'next/server';
@@ -27,4 +33,8 @@ export async function GET(request: NextRequest) {
 
     // Return all the user's information in the response
     return NextResponse.json(user);
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> c45e6e773f58bb64d9bcf080b739e8dee477bd9e

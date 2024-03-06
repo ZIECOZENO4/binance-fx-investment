@@ -1,3 +1,18 @@
+<<<<<<< HEAD
+=======
+// export function addBaseURL(url: string): string {
+//     const env = process.env.NODE_ENV;
+
+//     if (env === 'development') {
+//         return `http://localhost:3000/${url}`;
+//     } else {
+//         // if (process.env.VERCEL_URL) {
+//         return `/${url}`;
+//         // }
+//     }
+// }
+
+>>>>>>> c45e6e773f58bb64d9bcf080b739e8dee477bd9e
 
 export function addBaseURL(url: string): string {
     const env = process.env.NODE_ENV;
@@ -17,4 +32,8 @@ export function addBaseURL(url: string): string {
             throw new Error('VERCEL_URL or NEXT_PUBLIC_VERCEL_URL environment variable is not set');
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> c45e6e773f58bb64d9bcf080b739e8dee477bd9e

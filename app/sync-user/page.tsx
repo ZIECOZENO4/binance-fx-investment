@@ -12,7 +12,7 @@ const SyncUser = () => {
     const router = useRouter();
 
 
-    const { mutateAsync: syncUser, isLoading, isError, isSuccess } = useMutation({
+    const { mutateAsync: syncUser, isPending, isError, isSuccess } = useMutation({
         mutationKey: ['sync-user'],
         mutationFn: async () => {
             const response = await fetch(addBaseURL('api/syncUser'), {
@@ -40,7 +40,7 @@ const SyncUser = () => {
 
     return (
         <div className="flex justify-center items-center bg-black h-screen">
-            {isLoading && <PuffLoader color="#36D7B7" size={150} />}
+            {isPending && <PuffLoader color="#36D7B7" size={150} />}
             {isError && <AutoSignOut />}
             {isSuccess && <MdCheckCircle className="text-green-500" size="150" />}
         </div>
