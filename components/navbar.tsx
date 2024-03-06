@@ -3,7 +3,11 @@ import Image from "next/image";
 import ConnectButton from "./connectbutton";
 import Search from "../public/assets/svg/search";
 import { useState } from "react";
-import AccoutDropdown from "./Investdropdown";
+import InvestNav from "./InvestNav";
+import NFTNav from "./nftnav";
+import TradeNav from "./tradenav";
+import FeaturesNav from "./featuresnav";
+import MoreNav from "./morenav";
 import Link from "next/link";
 const styles = {
   navLink: `text-white flex mx-[10px]`,
@@ -48,7 +52,7 @@ const NavBar = () => {
             </div>
             {hoveredItem === 'invest' && (
               <div className="absolute left-0 mt-2 w-50 rounded-md shadow-lg bg-white text-white z-50">
-                <AccoutDropdown />
+                <InvestNav />
               </div>
             )}
           </div>
@@ -65,7 +69,7 @@ const NavBar = () => {
             </div>
             {hoveredItem === 'nft' && (
               <div className="absolute left-0 mt-2 w-50 rounded-md shadow-lg bg-white text-white z-50">
-                <AccoutDropdown />
+                <NFTNav />
               </div>
             )}
           </div>
@@ -82,7 +86,7 @@ const NavBar = () => {
             </div>
             {hoveredItem === 'trade' && (
               <div className="absolute left-0 mt-2 w-50 rounded-md shadow-lg bg-white text-white z-50">
-                <AccoutDropdown />
+                <TradeNav />
               </div>
             )}
           </div>
@@ -107,7 +111,7 @@ const NavBar = () => {
             </div>
             {hoveredItem === 'features' && (
               <div className="absolute left-0 mt-2 w-50 rounded-md shadow-lg bg-white text-white z-50">
-                <AccoutDropdown />
+                <FeaturesNav />
               </div>
             )}
           </div>
@@ -129,7 +133,7 @@ const NavBar = () => {
             </div>
             {hoveredItem === 'more' && (
               <div className="absolute left-0 mt-2 w-50 rounded-md shadow-lg bg-white text-white z-50">
-                <AccoutDropdown />
+                <MoreNav />
               </div>
             )}
           </div>
