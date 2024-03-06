@@ -9,7 +9,7 @@ import Premium2 from './Premium2';
 import Vip2 from './Vip2';
 import React from "react";
 import TradeSide from './tradeside';
-
+import { useUserInfo } from '@/tenstack-hooks/user-info';
 interface CoinDataItem {
   name: string;
   current_price: number;
@@ -27,9 +27,19 @@ interface CoinDataItem {
   last_updated: string;
 }
 
-const Invest = () => {
+interface UserBalanceProps {
+  userId: string;
+}
+
+interface Investment {
+  balance: string;
+  symbol: string;
+}
+
+const Invest: React.FC = () => {
   const [data1, setData1] = useState<CoinDataItem[] | null>(null);
   const [activeTab, setActiveTab] = useState('BOARD');
+  const { data: userInfo } = useUserInfo();
   useEffect(() => {
     const fetchData = async () => {
       const url1 = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en';
@@ -55,6 +65,8 @@ const Invest = () => {
   if (!isLoaded) {
     return null;
   }
+  const userBalance = userInfo.balance;
+  console.log("this is hte user balance form the backend", userBalance);
   return (
     <div className='text-white h-[330vh]  md:h-[400vh]'>
     <div className=' relative md:w-[100vw] w-[100vw] md:h-[50vh] h-[20vh] bg-no-repeat object-cover bg-track flex justify-center items-center align-middle  bg-fixed  '>
@@ -75,7 +87,7 @@ const Invest = () => {
 </div>
 <div className=" flex  flex-col align-middle items-center justify-center">
 <svg fill="#000000" width="64px" height="64px" viewBox="0 0 24 24" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><title></title><path d="M22,11V7.83L12,2.06,2,7.83V11H4v8H2v2H22V19H20V11ZM4,9l8-4.62L20,9H4ZM6,19V11H8v8Zm4,0V11h4v8Zm8,0H16V11h2Z"></path></g></svg>
-<p className=' md:text-2xl text-xl font-bold font-sans gap-3 text-white'>BALANCE : $ 0.000</p>
+<p className=' md:text-2xl text-xl font-bold font-sans gap-3 text-white'>BALANCE : { userBalance !== null ? `$${userBalance.toFixed(2)}` : '0.00 USDT'}</p>
 </div>
 <div>
 
