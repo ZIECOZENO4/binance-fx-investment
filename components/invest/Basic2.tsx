@@ -24,8 +24,8 @@ const Basic2 = () => {
   const duration12 = 12 * 24 * 60 * 60;
     const [amount, setAmount] = useState('');
     const [profit, setProfit] = useState<number | null>(null);
+    const [selectedCoin, setSelectedCoin] = useState('USDT');
     const [error, setError] = useState('');
-  
     const calculateProfit = (input: string) => {
       const value = parseInt(input,  10);
       if (value <  200 || value >  2000) {
@@ -251,32 +251,34 @@ const Basic2 = () => {
               <label className="sr-only" htmlFor="currency">
                 COIN
               </label>
-              <select
-                className="outline-none border-0 bg-transparent text-default-400 text-small"
-                id="currency"
-                name="currency"
-              >
-               <option>USDT</option>
-                <option>BTC</option>
-                <option>ETH</option>
-                <option>BNB</option>
-                <option>TRON</option>
-                <option>DOGE</option>
-                <option>XRP</option>
-
-              </select>
+             
+<select
+ className="outline-none border-0 bg-transparent text-default-400 text-small"
+ id="currency"
+ name="currency"
+ value={selectedCoin}
+ onChange={(e) => setSelectedCoin(e.target.value)}
+>
+ <option value="USDT">USDT</option>
+ <option value="BTC">BTC</option>
+ <option value="ETH">ETH</option>
+ <option value="BNB">BNB</option>
+ <option value="TRON">TRON</option>
+ <option value="DOGE">DOGE</option>
+ <option value="XRP">XRP</option>
+</select>
             </div>
           }
           type="number"
         />
       </div>
     </div>  
-    <Link href="/dashboard/invest/confirmpayment">
-       <Button color="primary" variant="ghost" >
-      INVEST NOW
-    </Button>
-    </Link>
 
+    <Button color="primary" variant="ghost" onClick={() => calculateProfit(amount)}>
+ <Link href={{ pathname: '/dashboard/invest/confirmpayment', query: { amount: parseFloat(amount), coin: selectedCoin, plan: 'Basic', planId: 'BFXITB00001' } }}>
+    INVEST NOW
+</Link>
+</Button>
   </div>
      </div>
      }
