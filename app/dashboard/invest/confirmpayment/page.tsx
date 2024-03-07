@@ -5,15 +5,21 @@ import { useUser } from "@clerk/clerk-react";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { useCountdownManager } from '../../../../components/invest/countdowns/countdowncontest';
 import { Note } from '@/components/component/note';
+import { useUserInfo } from '@/tenstack-hooks/user-info';
 
+interface UserBalanceProps {
+  userId: string;
+}
 
+interface Investment {
+  balance: string;
+  symbol: string;
+}
 
-// Define the interface for the return value of useCountdownManager
-
-
-const Page = () => {
+const Page: React.FC = () => {
  const [walletAddress, setWalletAddress] = useState('');
  const [transactionId, setTransactionId] = useState('');
+ const { data: userInfo } = useUserInfo();
  const { isLoaded, isSignedIn, user } = useUser();
  if (!isLoaded) {
     return null;
@@ -25,7 +31,8 @@ const Page = () => {
   const handleTransactionIdChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTransactionId(event.target.value);
   };
-
+  const userBalance = userInfo.balance;
+  console.log("this is hte user balance form the backend", userBalance);
   return (
   
 <div className="container">
@@ -100,7 +107,7 @@ const Page = () => {
               "
             >
               <p className="text-gray-400 ml-4">Balance</p>
-              <p className="text-indigo-600 mr-4">0.00 USDT</p>
+              <p className="text-indigo-600 mr-4">   {userBalance !== null ? `$${userBalance.toFixed(2)}` : '0.00 USDT'}</p>
             </div>
             <div
               className="

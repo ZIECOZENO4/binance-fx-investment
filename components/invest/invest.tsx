@@ -8,24 +8,8 @@ import Basic2 from './Basic2';
 import Premium2 from './Premium2';
 import Vip2 from './Vip2';
 import React from "react";
-import TradeSide from './tradeside';
+
 import { useUserInfo } from '@/tenstack-hooks/user-info';
-interface CoinDataItem {
-  name: string;
-  current_price: number;
-  market_cap: number;
-  symbol: string;
-  image: string;
-  market_cap_rank: number;
-  high_24h: number;
-  low_24h: number;
-  price_change_24h: number;
-  market_cap_change_24h: number;
-  circulating_supply: number;
-  total_supply: number;
-  ath: number;
-  last_updated: string;
-}
 
 interface UserBalanceProps {
   userId: string;
@@ -37,13 +21,10 @@ interface Investment {
 }
 
 const Invest: React.FC = () => {
-  const [data1, setData1] = useState<CoinDataItem[] | null>(null);
+
   const [activeTab, setActiveTab] = useState('BOARD');
   const { data: userInfo } = useUserInfo();
   const { isLoaded, isSignedIn, user } = useUser();
-  if (!isLoaded) {
-    return null;
-  }
   const userBalance = userInfo.balance;
   console.log("this is hte user balance form the backend", userBalance);
   return (
