@@ -5,7 +5,8 @@ import AdminPageVerification from '../../components/admin/verification'
 const Page = () => {
   return (
     <div>
-        <AdminPageVerification />
+      hello
+        {/* <AdminPageVerification /> */}
     </div>
   )
 }
