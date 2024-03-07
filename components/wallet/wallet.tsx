@@ -57,9 +57,6 @@ const Wallet: React.FC = () => {
     }
   };
 
-  if (balance === null) {
-    return <div><Loading /></div>;
-  }
 
   const shortenedId =
     user && user.id

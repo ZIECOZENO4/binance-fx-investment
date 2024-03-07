@@ -1,9 +1,9 @@
 import React from 'react'
-
+import AdminsPage from '../../../components/admin/admin'
 const AdimnsOnly = () => {
   return (
     <div>
-        <Admin />
+        <AdminsPage />
     </div>
   )
 }

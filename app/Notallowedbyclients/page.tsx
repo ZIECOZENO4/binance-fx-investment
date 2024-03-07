@@ -1,5 +1,6 @@
 
 import React from 'react'
+import AdminPageVerification from '../../components/admin/verification'
 
 const Page = () => {
   return (

@@ -3,7 +3,7 @@ import { CardTitle, CardHeader, CardContent, Card } from "../../components/ui/ca
 import { TableHead, TableRow, TableHeader, TableCell, TableBody, Table } from "../../components/ui/table"
 import { Button } from "../../components/ui/button"
 
-export default function Admin() {
+export default function AdminsPage() {
   return (
     <div className=" bg-white">
       <h1 className=" flex flex-row justify-center align-middle text-3xl uppercase font-bold text-sky-700"> admin confirmation dashboard <span className="text-red-500">privacy</span></h1>
