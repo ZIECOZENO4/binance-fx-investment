@@ -1,10 +1,10 @@
-import Admin from '@/components/admin/admin'
+
 import React from 'react'
 
 const Page = () => {
   return (
     <div>
-        <Admin />
+        <AdminPageVerification />
     </div>
   )
 }
