@@ -40,27 +40,6 @@ const Invest: React.FC = () => {
   const [data1, setData1] = useState<CoinDataItem[] | null>(null);
   const [activeTab, setActiveTab] = useState('BOARD');
   const { data: userInfo } = useUserInfo();
-  useEffect(() => {
-    const fetchData = async () => {
-      const url1 = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en';
-      const options1 = {
-        method: 'GET',
-        headers: {
-          'Accept': 'application/json'
-        }
-      };
-
-      try {
-        const response1 = await fetch(url1, options1);
-        const result1: CoinDataItem[] = await response1.json();
-        setData1(result1);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchData();
-  }, []);
   const { isLoaded, isSignedIn, user } = useUser();
   if (!isLoaded) {
     return null;
@@ -123,9 +102,6 @@ const Invest: React.FC = () => {
     {activeTab === 'SHARES' && <div><Vip2 /></div>}
   </div>
 
-  </div>
-  <div className='  flex justify-end w-[20vw] '>
-  <TradeSide /> 
   </div>
     </div>
   
