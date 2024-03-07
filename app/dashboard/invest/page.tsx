@@ -11,15 +11,16 @@ const InvdestPage = () => {
   if (!isLoaded) {
     return null;
   }
-  return (
+  return (   
+  <Suspense fallback={<div><Loading /> </div>}>
     <div>
-        <Suspense fallback={<div><Loading /> </div>}>
       <Invest />
       <div className="  flex items-end justify-end align-top absolute top-[10vh] md:top-[20vh] ">
         <Fast />
       </div>
-      </Suspense>
+     
     </div>
+    </Suspense>
   )
 }
 
