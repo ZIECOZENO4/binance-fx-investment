@@ -2,9 +2,9 @@
 import React, { useState,  useRef, FC, useEffect} from 'react';
 import { motion } from 'framer-motion';
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
-import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, RadioGroup, Radio} from "@nextui-org/react";
+import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, RadioGroup, Radio, Link} from "@nextui-org/react";
 import {Input} from "@nextui-org/react";
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 import Countdown from './UseCountDown';
 import Countdown5 from './5days';
 import Countdown12 from './12days';
@@ -96,7 +96,20 @@ const Basic2 = () => {
       calculateProfit4(amount);
   
     };
+    const router = useRouter();
 
+    const handleInvestNowClick = () => {
+       calculateProfit(amount);
+       router.push({
+         pathname: '/dashboard/invest/confirmpayment',
+         query: {
+           amount: parseFloat(amount),
+           coin: selectedCoin,
+           plan: 'Basic',
+           planId: 'BFXITB00001'
+         }
+       });
+    };
     const currentDate = new Date();
     const dateFourDaysFromNow = new Date();
     const dateTwelveDaysFromNow = new Date();
@@ -265,7 +278,6 @@ const Basic2 = () => {
  <option value="BNB">BNB</option>
  <option value="TRON">TRON</option>
  <option value="DOGE">DOGE</option>
- <option value="XRP">XRP</option>
 </select>
             </div>
           }
@@ -275,9 +287,9 @@ const Basic2 = () => {
     </div>  
 
     <Button color="primary" variant="ghost" onClick={() => calculateProfit(amount)}>
- <Link href={{ pathname: '/dashboard/invest/confirmpayment', query: { amount: parseFloat(amount), coin: selectedCoin, plan: 'Basic', planId: 'BFXITB00001' } }}>
-    INVEST NOW
-</Link>
+    <Button color="primary" variant="ghost" onClick={handleInvestNowClick}>
+      INVEST NOW
+    </Button>
 </Button>
   </div>
      </div>

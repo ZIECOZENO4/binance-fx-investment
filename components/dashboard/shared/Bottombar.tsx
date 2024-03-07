@@ -17,9 +17,9 @@ function Bottombar() {
              const isActive = pathname === link.route;
  
              return (
-               <Link href={link.route} key={link.label} className={`relative flex flex-col items-center gap-2 rounded-lg p-2 sm:flex-1 sm:px-2 sm:py-2.5 ${isActive ? 'bg-gradient-to-r from-blue-600 to-sky-200 text-black' : ''}`}>
+               <Link href={link.route} key={link.label} className={`relative flex flex-col items-center gap-2 rounded-lg p-2 sm:flex-1 sm:px-2 sm:py-1 ${isActive ? ' text-blue-700' : ''}`}>
                  <Image src={link.imgURL} alt={link.label} width={20} height={20}/>
-                 <p className={`text-white text-light-1 max-sm:text-sm ${isActive ? ' text-black' : ''}`}>{link.label.split(/\s+/)[0]}</p>
+                 <p className={`text-blue-700 text-light-1 max-sm:text-[20px] ${isActive ? ' text-black' : ''}`}>{link.label.split(/\s+/)[0]}</p>
                </Link>
              );
            })
