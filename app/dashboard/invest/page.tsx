@@ -4,8 +4,13 @@ import Fast from '@/components/invest/fast'
 import Invest from '@/components/invest/invest'
 import React from 'react'
 import { Suspense, useEffect } from 'react';
-
+import { useUser } from "@clerk/clerk-react";
 const InvdestPage = () => {
+  const { isLoaded, isSignedIn, user } = useUser();
+
+  if (!isLoaded) {
+    return null;
+  }
   return (
     <div>
         <Suspense fallback={<div><Loading /> </div>}>

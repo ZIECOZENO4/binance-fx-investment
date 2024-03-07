@@ -56,18 +56,6 @@ const options = {
   },
 }
 
-// const BalanceChart = () => {
-
-
-//   const { isLoaded, isSignedIn, user } = useUser();
-//   if (!isLoaded) {
-//     return null;
-//   }
-//   useEffect(() => {
-//     if (user) {
-//       storeUserInSupabase(user);
-//     }
-//   }, [user]);
 const BalanceChart = () => {
   const { isLoaded, isSignedIn, user } = useUser();
 
