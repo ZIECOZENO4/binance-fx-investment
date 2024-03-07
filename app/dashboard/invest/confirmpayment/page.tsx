@@ -6,7 +6,8 @@ import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { useCountdownManager } from '../../../../components/invest/countdowns/countdowncontest';
 import { Note } from '@/components/component/note';
 import { useUserInfo } from '@/tenstack-hooks/user-info';
-
+import { Suspense, useEffect } from 'react';
+import Loading from '@/app/loading';
 interface UserBalanceProps {
   userId: string;
 }
@@ -34,7 +35,7 @@ const Page: React.FC = () => {
   const userBalance = userInfo.balance;
   console.log("this is hte user balance form the backend", userBalance);
   return (
-  
+    <Suspense fallback={<div><Loading /> </div>}>
 <div className="container">
       <div className="mt-5">
         <div className="w-full mx-auto bg-slate-600 bg-opacity-50 rounded-md">
@@ -222,7 +223,9 @@ const Page: React.FC = () => {
       <div className=' bg-white py-5 flex flex-wrap overflow-x-auto justify-start items-start align-middle leading-8 font-bold text-md gap-2 px-2'>
         <p className=" mx-1"><span className="text-red-500 text-xl mr-1">NOTE:<p className='leading-6 text-green-400'>If you click on accept the transaction will automatically procced and it will be withdrawn from your Binance FX wallet, but if you don&apos;t have money in your wallet simply copy the company&apos;s wallet address and make payment, after you provide your wallet address and transaction ID for comfirmation </p>  </span>ALL DEPOSIT SHOULD BE MADE TO COMPANY&apos;S WALLET ADDRESS [0x1b9E45C744c0E2728e5D2418f58d4B924ADb875F], WHEN DONE CLICK ACCEPT FOR THE TRANSACTION TO TAKE PLACE. THANKS FOR INVESTI NG ON BINANCE FX</p>
       </div>
-    </div>
+    </div> 
+    </Suspense>
+
   )
 }
 
