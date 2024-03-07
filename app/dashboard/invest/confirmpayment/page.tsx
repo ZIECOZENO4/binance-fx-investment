@@ -3,11 +3,8 @@ import React from 'react';
 import { useState } from 'react';
 import { useUser } from "@clerk/clerk-react";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
-
 import { Note } from '@/components/component/note';
-import { useUserInfo } from '@/tenstack-hooks/user-info';
-import { Suspense, useEffect } from 'react';
-import Loading from '@/app/loading';
+
 interface UserBalanceProps {
   userId: string;
 }
@@ -17,10 +14,9 @@ interface Investment {
   symbol: string;
 }
 
-const Page: React.FC = () => {
+const ComfirmPayment: React.FC = () => {
  const [walletAddress, setWalletAddress] = useState('');
  const [transactionId, setTransactionId] = useState('');
- const { data: userInfo } = useUserInfo();
  const { isLoaded, isSignedIn, user } = useUser();
  if (!isLoaded) {
     return null;
@@ -32,8 +28,6 @@ const Page: React.FC = () => {
   const handleTransactionIdChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTransactionId(event.target.value);
   };
-  const userBalance = userInfo.balance;
-  console.log("this is hte user balance form the backend", userBalance);
   return (
 <div className="container">
       <div className="mt-5">
@@ -107,7 +101,7 @@ const Page: React.FC = () => {
               "
             >
               <p className="text-gray-400 ml-4">Balance</p>
-              <p className="text-indigo-600 mr-4">   {userBalance !== null ? `$${userBalance.toFixed(2)}` : '0.00 USDT'}</p>
+              <p className="text-indigo-600 mr-4">  ---</p>
             </div>
             <div
               className="
@@ -228,4 +222,4 @@ const Page: React.FC = () => {
   )
 }
 
-export default Page 
+export default ComfirmPayment 
