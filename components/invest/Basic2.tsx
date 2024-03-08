@@ -13,7 +13,20 @@ import Countdown14 from './14days';
 
 
 const Basic2 = () => {
+  const router = useRouter();
 
+  const handleInvestNowClick = () => {
+     calculateProfit(amount);
+     router.push({
+       pathname: '/dashboard/invest/confirmpayment',
+       query: {
+         amount: parseFloat(amount),
+         coin: selectedCoin,
+         plan: 'Basic',
+         planId: 'BFXITB00001'
+       }
+     });
+  };
   const basicPlan = { monthlyPrice: "5% Daily", items: ['Total Roll:   40%', 'Duration:   8 Days', 'Minium Deposit:        $ 200', 'Maxium Deposit:  $   2000', '5% Referral Bonus', 'Plan:  Basic PLan', 'Plan ID:  BFXITB00001']};
   const advancePlan = { monthlyPrice: "5% Daily", items: ['Total Roll:   60%', 'Duration:   12 Days', 'Minium Deposit:     $ 2,100', 'Maxium Deposit:  $   10,000', '5% Referral Bonus', 'Plan:  Advance PLan', 'Plan ID:  BFXITB00002']};
   const proPlan = { monthlyPrice: "5% Daily", items: ['Total Roll:   80%', 'Duration:   14 Days', 'Minium Deposit:  $ 10,100', 'Maxium Deposit:  $   20,000', '5% Referral Bonus', 'Plan:  Pro PLan', 'Plan ID:  BFXITB00004' ]};
@@ -96,20 +109,7 @@ const Basic2 = () => {
       calculateProfit4(amount);
   
     };
-    const router = useRouter();
-
-    const handleInvestNowClick = () => {
-       calculateProfit(amount);
-       router.push({
-         pathname: '/dashboard/invest/confirmpayment',
-         query: {
-           amount: parseFloat(amount),
-           coin: selectedCoin,
-           plan: 'Basic',
-           planId: 'BFXITB00001'
-         }
-       });
-    };
+   
     const currentDate = new Date();
     const dateFourDaysFromNow = new Date();
     const dateTwelveDaysFromNow = new Date();
@@ -278,6 +278,7 @@ const Basic2 = () => {
  <option value="BNB">BNB</option>
  <option value="TRON">TRON</option>
  <option value="DOGE">DOGE</option>
+ <option value="DOGE">XRP</option>
 </select>
             </div>
           }
@@ -286,10 +287,8 @@ const Basic2 = () => {
       </div>
     </div>  
 
-    <Button color="primary" variant="ghost" onClick={() => calculateProfit(amount)}>
     <Button color="primary" variant="ghost" onClick={handleInvestNowClick}>
-      INVEST NOW
-    </Button>
+ INVEST NOW
 </Button>
   </div>
      </div>

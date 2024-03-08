@@ -5,7 +5,10 @@ import { SignedIn, SignedOut, UserButton,  } from "@clerk/nextjs";
 import Link from 'next/link';
 import  { useState } from 'react';
 import {Button} from "@nextui-org/react";
+import { useUserInfo } from '@/tenstack-hooks/user-info';
+
 const WithdrawalPage = () => {
+  const { data: userInfo } = useUserInfo();
   const [selectedCoin, setSelectedCoin] = useState(null);
   const [walletAddress, setWalletAddress] = useState('');
   const [amount, setAmount] = useState('');
@@ -33,6 +36,9 @@ const WithdrawalPage = () => {
     { fullName: 'Doge', symbol: 'DOGE' },
     { fullName: 'XRP', symbol: 'XRP' },
   ];
+
+  const userBalance = userInfo.balance;
+  console.log("this is hte user balance form the backend", userBalance);
   return (
     <div className="relative overflow-hidden">
    
@@ -88,7 +94,7 @@ const WithdrawalPage = () => {
 
   <div class="flex max-w-md items-center border-l-8 border-emerald-500 bg-emerald-50 p-2  w-[60vw] text-emerald-900 shadow-lg">
     <div class="min-w-0">
- <h2 class="overflow-hidden text-ellipsis  whitespace-nowrap">0.00</h2>
+ <h2 class="overflow-hidden text-ellipsis  whitespace-nowrap">   { userBalance !== null ? `$${userBalance.toFixed(2)}` : '0.00 USDT'}</h2>
     </div>
   </div>
 

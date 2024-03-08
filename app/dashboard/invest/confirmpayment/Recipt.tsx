@@ -6,6 +6,8 @@ import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { Note } from '@/components/component/note';
 import { useUserInfo } from '@/tenstack-hooks/user-info';
 import { useRouter } from 'next/router';
+import {Button} from "@nextui-org/react";
+import ConfirmationPopup from './ConfirmationPopup';
 interface UserBalanceProps {
   userId: string;
 }
@@ -14,17 +16,19 @@ interface Investment {
   balance: string;
   symbol: string;
 }
-
-const ComfirmPayment: React.FC = () => {
+interface ComfirmPaymentProps {
+  amount: number;
+  coin: string;
+  plan: string;
+  planId: string;
+ }
+ const ComfirmPayment: React.FC<ComfirmPaymentProps> = ({ amount, coin, plan, planId }) => {
     const { data: userInfo } = useUserInfo();
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
  const [walletAddress, setWalletAddress] = useState('');
  const [transactionId, setTransactionId] = useState('');
  const { isLoaded, isSignedIn, user } = useUser();
- const router = useRouter();
- const { amount, plan, planId, coin } = router.query;
 
- // Convert the amount from string to number if needed
- const calculatedAmount = amount ? parseFloat(amount as string) : 0;
 
  if (!isLoaded) {
     return null;
@@ -36,6 +40,17 @@ const ComfirmPayment: React.FC = () => {
   const handleTransactionIdChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTransactionId(event.target.value);
   };
+  const handleButtonClick = () => {
+    setIsPopupOpen(true);
+ };
+
+ const handleOkClick = () => {
+    setIsPopupOpen(false);
+ };
+ const calculatedAmount = amount; 
+
+ const amountString = calculatedAmount.toString(); 
+
   const userBalance = userInfo.balance;
   console.log("this is hte user balance form the backend", userBalance);
   return (
@@ -163,7 +178,7 @@ const ComfirmPayment: React.FC = () => {
               "
             >
               <p className="text-gray-400 ml-4">Amount</p>
-              <p className="text-indigo-600 mr-4">{calculatedAmount.toFixed(2)}  {coin}</p>
+              <p className="text-indigo-600 mr-4">{amountString}.00 {coin}</p>
             </div>
             <div
               className="
@@ -175,6 +190,24 @@ const ComfirmPayment: React.FC = () => {
                 w-full
               "
             >
+
+<Button
+        onClick={handleButtonClick}
+        disableRipple
+        className="relative overflow-visible rounded-full hover:-translate-y-1 px-12 shadow-xl bg-green-500 after:content-[''] after:absolute after:rounded-full after:inset-0 after:bg-background/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0 w-full "
+        size="lg"
+      >
+        Payment Confirmed 
+      </Button>
+      {isPopupOpen && (
+        <ConfirmationPopup
+          plan={plan}
+          planId={planId}
+          amount={amount}
+          onClose={handleOkClick}
+        />
+      )}
+
               <Note />
               <div className="mb-5 flex flex-col min-w-full">
               <div className="p-8 gap-6">

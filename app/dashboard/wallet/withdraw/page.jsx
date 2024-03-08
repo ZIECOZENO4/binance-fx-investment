@@ -1,42 +1,22 @@
-// import { useAuth } from '@clerk/clerk-react';
-// import { createClient } from "@supabase/supabase-js";
-  
-// const supabaseClient = async (supabaseAccessToken) => {
-//     const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_KEY, {
-//       global: { headers: { Authorization: `Bearer ${supabaseAccessToken}` } },
-//     });
-//     return supabase;
-// };
-   
-// function App() {
-//   const { getToken } = useAuth();
-  
-//   const fetchData = async () => {
-//     const supabaseAccessToken = await getToken({ template: 'BinanceFX' });
-  
-//     // Corrected function call: Pass the variable directly without specifying its type
-//     const supabase = await supabaseClient(supabaseAccessToken);
-
-    
-//     const { data, error } = await supabase.from('user_id').select();
-  
-//     // Handle the response as needed
-//   };
-  
-//   return (
-//     <div className="app">
-//       <button onClick={fetchData}>Fetch user_id</button>
-//     </div>
-//   );
-// }
-
-import WithdrawalPage from "../../../../components/withdraw/withdraw"
+"use client"
+import Loading from '@/app/loading';
 import React from 'react'
+import { Suspense, useEffect } from 'react';
+import { useUser } from "@clerk/clerk-react";
+import WithdrawalPage from "../../../../components/withdraw/withdraw"
+
 
 const Page = () => {
+  const { isLoaded, isSignedIn, user } = useUser();
+
+  if (!isLoaded) {
+    return null;
+  }
   return (
+    <Suspense fallback={<div><Loading /> </div>}>
     <div><WithdrawalPage /></div>
+    </Suspense>
   )
 }
 
-export default Page
+export default Page;
