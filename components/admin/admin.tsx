@@ -41,13 +41,13 @@ export default function AdminsPage() {
               <TableCell>2022-01-01 12:00:00</TableCell>
               <TableCell>
                 <div className="flex gap-2">
-                  <Button className="bg-green-500 text-white dark:bg-green-600" size="sm">
+                  <Button className="bg-green-500 text-white dark:bg-green-600" >
                     Confirmed
                   </Button>
-                  <Button className="bg-red-500 text-white dark:bg-red-600" size="sm">
+                  <Button className="bg-red-500 text-white dark:bg-red-600" >
                     False
                   </Button>
-                  <Button className="bg-yellow-500 text-white dark:bg-yellow-600" size="sm">
+                  <Button className="bg-yellow-500 text-white dark:bg-yellow-600" >
                     Pending
                   </Button>
                 </div>
@@ -90,13 +90,13 @@ export default function AdminsPage() {
              <TableCell>2022-01-01 12:00:00</TableCell>
              <TableCell>
                <div className="flex gap-2">
-                 <Button className="bg-green-500 text-white dark:bg-green-600" size="sm">
+                 <Button className="bg-green-500 text-white dark:bg-green-600" >
                    Confirmed
                  </Button>
-                 <Button className="bg-red-500 text-white dark:bg-red-600" size="sm">
+                 <Button className="bg-red-500 text-white dark:bg-red-600">
                    False
                  </Button>
-                 <Button className="bg-yellow-500 text-white dark:bg-yellow-600" size="sm">
+                 <Button className="bg-yellow-500 text-white dark:bg-yellow-600" >
                    Pending
                  </Button>
                </div>
@@ -139,13 +139,13 @@ export default function AdminsPage() {
              <TableCell>2022-01-01 12:00:00</TableCell>
              <TableCell>
                <div className="flex gap-2">
-                 <Button className="bg-green-500 text-white dark:bg-green-600" size="sm">
+                 <Button className="bg-green-500 text-white dark:bg-green-600" >
                    Confirmed
                  </Button>
-                 <Button className="bg-red-500 text-white dark:bg-red-600" size="sm">
+                 <Button className="bg-red-500 text-white dark:bg-red-600" >
                    False
                  </Button>
-                 <Button className="bg-yellow-500 text-white dark:bg-yellow-600" size="sm">
+                 <Button className="bg-yellow-500 text-white dark:bg-yellow-600" >
                    Pending
                  </Button>
                </div>
