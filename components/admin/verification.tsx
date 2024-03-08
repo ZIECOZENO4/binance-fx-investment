@@ -3,25 +3,23 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import AutoSignOut from '@/app/sync-user/autosignout';
 
-
 const AdminPageVerification = () => {
+ const router = useRouter();
  const [step, setStep] = useState(1);
  const [email, setEmail] = useState('');
  const [password, setPassword] = useState('');
  const [passcode, setPasscode] = useState('');
  const [error, setError] = useState(false);
 
- const router = useRouter();
-
  const hardcodedEmail = 'binanceFX2023admin200098@example.com';
- const hardcodedPassword = 'password123';
- const hardcodedPasscode = '123456';
+ const hardcodedPassword = 'BFXpassword89onmcsdyvvb09089@#%$%^$##@';
+ const hardcodedPasscode = '@FDJUHV$%&^$njdbnjg1234';
 
  const sendEmailNotification = async () => {
-    // Placeholder for sending email notification
     console.log('Email notification sent');
  };
 
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  useEffect(() => {
     if (step === 1 && email === hardcodedEmail && password === hardcodedPassword) {
       setStep(2);
@@ -30,7 +28,7 @@ const AdminPageVerification = () => {
       sendEmailNotification();
     } else if (step === 3) {
       // Navigate to the admin page
-      router.push('/admin-dashboard');
+      router.push('/Notallowedbyclients/admins');
     } else {
       setError(true);
     }
