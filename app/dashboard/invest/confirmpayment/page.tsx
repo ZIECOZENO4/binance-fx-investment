@@ -1,5 +1,5 @@
 "use client"
-import Loading from '@/app/loading';
+import Loading from '../../../loading';
 import React from 'react';
 import { Suspense, useEffect } from 'react';
 import { useUser } from "@clerk/clerk-react";

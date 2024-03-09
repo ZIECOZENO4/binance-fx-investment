@@ -1,7 +1,7 @@
 "use client"
-import Loading from '@/app/loading';
-import Fast from '@/components/invest/fast'
-import Invest from '@/components/invest/invest'
+import Loading from '../../loading';
+import Fast from '../../../components/invest/fast'
+import Invest from '../../../components/invest/invest'
 import React from 'react'
 import { Suspense, useEffect } from 'react';
 import { useUser } from "@clerk/clerk-react";
