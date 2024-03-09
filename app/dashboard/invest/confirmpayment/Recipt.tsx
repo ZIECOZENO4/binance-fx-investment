@@ -3,7 +3,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useUser } from "@clerk/clerk-react";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
-import { Note } from '@/components/component/note';
+import { Note } from '../../../../components/component/note';
 import { useUserInfo } from '@/tenstack-hooks/user-info';
 import { useRouter } from 'next/navigation'
 import {Button} from "@nextui-org/react";
