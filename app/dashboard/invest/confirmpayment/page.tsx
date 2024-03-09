@@ -4,7 +4,7 @@ import React from 'react'
 import { Suspense, useEffect } from 'react';
 import { useUser } from "@clerk/clerk-react";
 import ComfirmPayment from './Recipt';
-import { useRouter } from 'next/router'; // Import the useRouter hook
+import { useRouter } from 'next/navigation'
 
 const InvdestPage = () => {
   const { isLoaded, isSignedIn, user } = useUser();

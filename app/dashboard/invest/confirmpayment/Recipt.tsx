@@ -5,7 +5,7 @@ import { useUser } from "@clerk/clerk-react";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { Note } from '@/components/component/note';
 import { useUserInfo } from '@/tenstack-hooks/user-info';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation'
 import {Button} from "@nextui-org/react";
 import ConfirmationPopup from './ConfirmationPopup';
 interface UserBalanceProps {

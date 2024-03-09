@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, RadioGroup, Radio, Link} from "@nextui-org/react";
 import {Input} from "@nextui-org/react";
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation'
 import Countdown from './UseCountDown';
 import Countdown5 from './5days';
 import Countdown12 from './12days';

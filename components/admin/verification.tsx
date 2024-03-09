@@ -1,6 +1,6 @@
 "use client"
 import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation'
 import AutoSignOut from '@/app/sync-user/autosignout';
 
 const AdminPageVerification = () => {
