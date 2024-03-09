@@ -10,6 +10,8 @@
     "prisma": "prisma"
   },
   "dependencies": {
+    "@clerk/clerk-react": "^4.30.7",
+    "@clerk/nextjs": "^4.29.9",
     "@prisma/client": "^5.10.2",
     "next": "^14.1.3"
   },
