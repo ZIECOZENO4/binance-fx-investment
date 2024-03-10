@@ -16,7 +16,7 @@ const ConfirmationPopup: React.FC<ConfirmationPopupProps> = ({ plan, planId, amo
         <p>Plan ID: {planId}</p>
         <p>Amount: {amount}</p>
         <p>Wait for confirmation...</p>
-        <button onClick={onClose} className="bg-blue-500 text-white px-4 py-2 rounded">OK</button>
+        <button onClick={onClose} className="bg-blue-500 text-white px-4 py-2 rounded">DONE</button>
       </div>
     </div>
  );
