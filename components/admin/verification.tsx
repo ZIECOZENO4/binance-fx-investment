@@ -1,19 +1,25 @@
 "use client"
 import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation'
+
+import { useRouter } from 'next/navigation';
+
 import AutoSignOut from '@/app/sync-user/autosignout';
 
 const AdminPageVerification = () => {
- const router = useRouter();
+
+  const router = useRouter();
+
  const [step, setStep] = useState(1);
  const [email, setEmail] = useState('');
  const [password, setPassword] = useState('');
  const [passcode, setPasscode] = useState('');
  const [error, setError] = useState(false);
 
+
  const hardcodedEmail = 'binanceFX2023admin200098@example.com';
  const hardcodedPassword = 'BFXpassword89onmcsdyvvb09089@#%$%^$##@';
  const hardcodedPasscode = '@FDJUHV$%&^$njdbnjg1234';
+
 
  const sendEmailNotification = async () => {
     console.log('Email notification sent');

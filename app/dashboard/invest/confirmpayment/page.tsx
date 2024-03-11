@@ -3,13 +3,13 @@ import Loading from '../../../loading';
 import React from 'react';
 import { Suspense, useEffect } from 'react';
 import { useUser } from "@clerk/clerk-react";
-import ComfirmPayment from './Recipt';
-import { useRouter } from 'next/navigation'; // Corrected import
+
+import ComfirmPayment from './Recipt';// Corrected import
 import { useSearchParams } from 'next/navigation'; // Import useSearchParams
 
 const InvdestPage = () => {
- const router = useRouter();
- const [searchParams] = useSearchParams(); // Use useSearchParams to get query parameters
+  const searchParams = useSearchParams()
+
  const { isLoaded, isSignedIn, user } = useUser();
  const amount = searchParams.get('amount');
  const coin = searchParams.get('coin');
