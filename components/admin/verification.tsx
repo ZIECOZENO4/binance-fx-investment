@@ -15,7 +15,7 @@ const AdminPageVerification = () => {
 
 
  const hardcodedEmail = 'binanceFX2023admin200098@example.com';
- const hardcodedPassword = 'password123';
+ const hardcodedPassword = 'inanceFX2023admin200098sword123';
  const hardcodedPasscode = '123456';
 
  const sendEmailNotification = async () => {
