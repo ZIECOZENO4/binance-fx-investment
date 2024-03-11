@@ -16,6 +16,7 @@ const Basic2 = () => {
   const pathname = usePathname();
 
   const handleInvestNowClick = () => {
+    const router = useRouter();
      calculateProfit(amount);
   const url = `/dashboard/invest/confirmpayment?amount=${parseFloat(amount)}&coin=${selectedCoin}&plan=Basic&planId=BFXITB00001`;
      router.push(url);
