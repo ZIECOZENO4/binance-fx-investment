@@ -92,7 +92,7 @@ function Hero1() {
           <div className="">
             <img
               src="/images/h1.jpeg"
-              className="w-[60vw] h-[55vh] object-cover rounded-3xl"
+              className="w-[60vw] h-[60vh] object-cover rounded-3xl"
               alt="hero 1"
             />
           </div>

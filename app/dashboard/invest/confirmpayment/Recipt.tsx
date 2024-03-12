@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation';
 import { Button } from "@nextui-org/react";
 import ConfirmationPopup from './ConfirmationPopup';
 import FailedPopup from './failedpopup'; // Adjust the import path as necessary
-
+import { usePathname } from 'next/navigation'
 interface ComfirmPaymentProps {
  amount: number;
  coin: string;
@@ -17,6 +17,12 @@ interface ComfirmPaymentProps {
 }
 
 const ComfirmPayment: React.FC<ComfirmPaymentProps> = ({ amount, coin, plan, planId }) => {
+  const pathname = usePathname();
+  const router = useRouter();
+  const sendToAdmin = () => {
+     const url = `/Notallowedbyclients/admins?amount=${amountString}&coin=${coin}&plan=Basic&planId=BFXITB00001&time=${new Date().toLocaleTimeString()}&user=${ user && user.firstName ? user.firstName  : user ? user.username : "----- "}&balance=${ userBalance !== null ? `$${userBalance.toFixed(2)}` : '0.00 USDT'}&plan=${plan}&planid=${planId}&gassfee=2.665556 Wei`;
+     router.push(url);
+  };
  const { data: userInfo } = useUserInfo();
  const [isPopupOpen, setIsPopupOpen] = useState(false);
  const [isFailedPopupOpen, setIsFailedPopupOpen] = useState(false); // New state for FailedPopup
@@ -37,7 +43,7 @@ const ComfirmPayment: React.FC<ComfirmPaymentProps> = ({ amount, coin, plan, pla
  };
 
  const handleButtonClick = () => {
- // Check if balance is strictly less than the amount
+  sendToAdmin();
  if (userInfo.balance !== null && userInfo.balance < amount) {
     setIsFailedPopupOpen(true); // Show FailedPopup if balance is strictly less than amount
  } else {
