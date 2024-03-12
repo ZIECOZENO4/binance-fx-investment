@@ -13,15 +13,15 @@ import { usePathname } from 'next/navigation'
 
 
 const Basic2 = () => {
-
   const pathname = usePathname();
-
+  const router = useRouter();
+ 
   const handleInvestNowClick = () => {
-    const router = useRouter();
      calculateProfit(amount);
-  const url = `/dashboard/invest/confirmpayment?amount=${parseFloat(amount)}&coin=${selectedCoin}&plan=Basic&planId=BFXITB00001`;
+     const url = `/dashboard/invest/confirmpayment?amount=${parseFloat(amount)}&coin=${selectedCoin}&plan=Basic&planId=BFXITB00001`;
      router.push(url);
   };
+ 
  
   const basicPlan = { monthlyPrice: "5% Daily", items: ['Total Roll:   40%', 'Duration:   8 Days', 'Minium Deposit:        $ 200', 'Maxium Deposit:  $   2000', '5% Referral Bonus', 'Plan:  Basic PLan', 'Plan ID:  BFXITB00001']};
   const advancePlan = { monthlyPrice: "5% Daily", items: ['Total Roll:   60%', 'Duration:   12 Days', 'Minium Deposit:     $ 2,100', 'Maxium Deposit:  $   10,000', '5% Referral Bonus', 'Plan:  Advance PLan', 'Plan ID:  BFXITB00002']};
