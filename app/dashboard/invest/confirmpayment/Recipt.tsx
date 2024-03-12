@@ -35,15 +35,16 @@ const ComfirmPayment: React.FC<ComfirmPaymentProps> = ({ amount, coin, plan, pla
  const handleTransactionIdChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTransactionId(event.target.value);
  };
- const handleButtonClick = () => {
 
-  if (userInfo.balance === null || userInfo.balance <= amount) {
-     setIsFailedPopupOpen(true); 
-  } else {
-     setIsPopupOpen(true); 
-  }
+ const handleButtonClick = () => {
+ // Check if balance is strictly less than the amount
+ if (userInfo.balance !== null && userInfo.balance < amount) {
+    setIsFailedPopupOpen(true); // Show FailedPopup if balance is strictly less than amount
+ } else {
+    setIsPopupOpen(true); // Otherwise, show ConfirmationPopup
+ }
  };
- 
+
  const handleOkClick = () => {
     setIsPopupOpen(false);
  };

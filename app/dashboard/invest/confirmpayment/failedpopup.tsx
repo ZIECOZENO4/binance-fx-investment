@@ -34,7 +34,7 @@ const FailedPopup: React.FC<FailedPopupProps> = ({ onClose }) => {
     <CardContent className="flex items-center justify-center p-6">
       <div />
     </CardContent>
-    <div className="flex flex-row mx-4 align-middle justify-center items-center">
+    <div className="flex flex-row mx-4 align-middle justify-center items-center gap-8">
     <Link href="/dashboard/invest">
     Retry
     </Link>

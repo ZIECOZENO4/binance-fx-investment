@@ -19,9 +19,9 @@ function Bottombar() {
              const isActive = pathname === link.route;
  
              return (
-              <Link href={link.route} key={link.label} className={`relative flex flex-col items-center  rounded-lg ${isActive ? 'bg-blue-700 text-white text-sm' : 'text-[#FFD700] text-sm'}`}>
-                 <Image src={link.imgURL} alt={link.label} width={30} height={30} className={`${isActive ? 'filter-invert' : ''}`} />
-                 <p className={`${isActive ? 'text-white text-sm' : 'text-[#FFD700] text-sm'}`}>{link.label.split(/\s+/)[0]}</p>
+              <Link href={link.route} key={link.label} className={`relative flex flex-col items-center  rounded-lg ${isActive ? 'bg-blue-700 text-white text-sm' : 'text-blue-600 text-sm'}`}>
+                 <Image src={link.imgURL} alt={link.label} width={35} height={35} className={`${isActive ? 'filter-invert' : ''}`} />
+                 <p className={`${isActive ? 'text-white text-sm' : 'text-blue-600 text-sm'}`}>{link.label.split(/\s+/)[0]}</p>
               </Link>
              );
            })
