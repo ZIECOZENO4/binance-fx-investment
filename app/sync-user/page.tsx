@@ -20,7 +20,6 @@ const SyncUser = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                // Include necessary data for the mutation
             });
 
             if (!response.ok) {

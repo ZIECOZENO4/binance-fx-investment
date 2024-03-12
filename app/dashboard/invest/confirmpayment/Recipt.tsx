@@ -1,51 +1,55 @@
-'use client'
-import React from 'react';
-import { useState } from 'react';
+"use client";
+import React, { useState } from 'react';
 import { useUser } from "@clerk/clerk-react";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { Note } from '../../../../components/component/note';
 import { useUserInfo } from '@/tenstack-hooks/user-info';
-import { useRouter } from 'next/navigation'
-import {Button} from "@nextui-org/react";
+import { useRouter } from 'next/navigation';
+import { Button } from "@nextui-org/react";
 import ConfirmationPopup from './ConfirmationPopup';
-interface UserBalanceProps {
-  userId: string;
+import FailedPopup from './failedpopup'; // Adjust the import path as necessary
+
+interface ComfirmPaymentProps {
+ amount: number;
+ coin: string;
+ plan: string;
+ planId: string;
 }
 
-interface Investment {
-  balance: string;
-  symbol: string;
-}
-interface ComfirmPaymentProps {
-  amount: number;
-  coin: string;
-  plan: string;
-  planId: string;
- }
- const ComfirmPayment: React.FC<ComfirmPaymentProps> = ({ amount, coin, plan, planId }) => {
-    const { data: userInfo } = useUserInfo();
-    const [isPopupOpen, setIsPopupOpen] = useState(false);
+const ComfirmPayment: React.FC<ComfirmPaymentProps> = ({ amount, coin, plan, planId }) => {
+ const { data: userInfo } = useUserInfo();
+ const [isPopupOpen, setIsPopupOpen] = useState(false);
+ const [isFailedPopupOpen, setIsFailedPopupOpen] = useState(false); // New state for FailedPopup
  const [walletAddress, setWalletAddress] = useState('');
  const [transactionId, setTransactionId] = useState('');
  const { isLoaded, isSignedIn, user } = useUser();
 
-
  if (!isLoaded) {
     return null;
  }
-  const handleWalletAddressChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setWalletAddress(event.target.value);
-  };
 
-  const handleTransactionIdChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setTransactionId(event.target.value);
-  };
-  const handleButtonClick = () => {
-    setIsPopupOpen(true);
+ const handleWalletAddressChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setWalletAddress(event.target.value);
  };
 
+ const handleTransactionIdChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setTransactionId(event.target.value);
+ };
+ const handleButtonClick = () => {
+
+  if (userInfo.balance === null || userInfo.balance <= amount) {
+     setIsFailedPopupOpen(true); 
+  } else {
+     setIsPopupOpen(true); 
+  }
+ };
+ 
  const handleOkClick = () => {
     setIsPopupOpen(false);
+ };
+
+ const handleFailedOkClick = () => {
+    setIsFailedPopupOpen(false); // Close FailedPopup
  };
  const calculatedAmount = amount; 
 
@@ -194,11 +198,14 @@ interface ComfirmPaymentProps {
 <Button
         onClick={handleButtonClick}
         disableRipple
-        className="relative overflow-visible rounded-full hover:-translate-y-1 px-12 shadow-xl bg-green-500 after:content-[''] after:absolute after:rounded-full after:inset-0 after:bg-background/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0 w-full "
+        className="relative overflow-visible rounded-full hover:-translate-y-1 px-12 shadow-xl bg-green-500 after:content-[''] after:absolute after:rounded-full after:inset-0 after:bg-background/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0 w-full my-4 mb-3"
         size="lg"
       >
         Payment Confirmed 
       </Button>
+      {isFailedPopupOpen && (
+        <FailedPopup onClose={handleFailedOkClick} />
+      )}
       {isPopupOpen && (
         <ConfirmationPopup
           plan={plan}
