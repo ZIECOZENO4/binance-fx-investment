@@ -11,7 +11,7 @@ interface FailedPopupProps {
  }
 const FailedPopup: React.FC<FailedPopupProps> = ({ onClose }) => {
   return (
-    <Card className="w-full max-w-lg p-0">
+    <Card className="w-full max-w-lg p-0 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-4 rounded shadow-lg z-20">
     <CardHeader className="flex flex-col items-center gap-2 p-6">
     <svg
       xmlns="http://www.w3.org/2000/svg"

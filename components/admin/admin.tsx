@@ -3,7 +3,7 @@ import { CardTitle, CardHeader, CardContent, Card } from "../../components/ui/ca
 import { TableHead, TableRow, TableHeader, TableCell, TableBody, Table } from "../../components/ui/table"
 import { Button } from "../../components/ui/button"
 import { useEffect, useState } from "react";
-interface Transaction {
+interface Item {
   amount: number;
   coin: string;
   plan: string;
@@ -16,33 +16,19 @@ interface Transaction {
  }
  
  const AdminsPage: React.FC = () => {
-  const [transactions, setTransactions] = useState<Transaction[]>([]);
+  const [data, setData]  = useState<Item[]>([]);
  
   useEffect(() => {
-     const fetchData = async () => {
-       try {
-         const response = await fetch('/api/sendToAdmin', {
-           method: 'GET',
-           headers: {
-             'Content-Type': 'application/json',
-           },
-         });
-         if (response.ok) {
-           const data = await response.json();
-           setTransactions(data);
-         } else {
-           console.error('Failed to fetch transactions');
-         }
-       } catch (error) {
-         console.error('Error fetching transactions:', error);
-       }
-     };
- 
-     fetchData();
-  }, []);
+    // Replace '/api/sendToAdmin' with the actual endpoint you're fetching data from
+    fetch('/api/sendToAdmin')
+      .then(response => response.json())
+      .then(data => setData(data))
+      .catch(error => console.error('Error fetching data:', error));
+    
+ }, []);
   return (
-    <div className=" bg-black">
-      <h1 className=" flex flex-row justify-center align-middle text-2xl  font-bold text-sky-700 uppercase"> admin confirmation dashboard </h1>
+    <div className=" bg-black flex flex-col justify-center align-middle">
+      <h1 className="  text-2xl  font-bold text-sky-700 uppercase"> admin confirmation dashboard </h1>
       <p className="text-red-500 my-3">privacy</p>
 <Card>
  <CardHeader>
@@ -65,17 +51,17 @@ interface Transaction {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {transactions.map((transaction) => (
-          <TableRow key={transaction.userId} className="bg-gray-200 dark:bg-gray-700">
-            <TableCell>{transaction.userId}</TableCell>
-            <TableCell>{transaction.user}</TableCell>
-            <TableCell>{transaction.plan}</TableCell>
-            <TableCell>{transaction.balance}</TableCell>
-            <TableCell>{transaction.coin}</TableCell>
-            <TableCell>{transaction.amount}</TableCell>
-            <TableCell>{transaction.planId}</TableCell>
-            <TableCell>{transaction.gasFee}</TableCell>
-            <TableCell>{transaction.time}</TableCell>
+      {data.map((item, index) => (
+          <TableRow key={index} className="bg-gray-200 dark:bg-gray-700">
+            <TableCell>{item.userId}</TableCell>
+            <TableCell>{item.user}</TableCell>
+            <TableCell>{item.plan}</TableCell>
+            <TableCell>{item.balance}</TableCell>
+            <TableCell>{item.coin}</TableCell>
+            <TableCell>{item.amount}</TableCell>
+            <TableCell>{item.planId}</TableCell>
+            <TableCell>{item.gasFee}</TableCell>
+            <TableCell>{item.time}</TableCell>
             <TableCell>
               <div className="flex gap-2">
                 <Button className="bg-green-500 text-white dark:bg-green-600">
@@ -110,7 +96,7 @@ interface Transaction {
              <TableHead>Balance</TableHead>
              <TableHead>Coins</TableHead>
              <TableHead>Investment</TableHead>
-             <TableHead>Transaction ID</TableHead>
+             <TableHead>Item ID</TableHead>
              <TableHead>Amount</TableHead>
              <TableHead>Time of payment</TableHead>
              <TableHead>Confirmed</TableHead>
@@ -159,7 +145,7 @@ interface Transaction {
              <TableHead>Balance</TableHead>
              <TableHead>Coins</TableHead>
              <TableHead>Investment</TableHead>
-             <TableHead>Transaction ID</TableHead>
+             <TableHead>Item ID</TableHead>
              <TableHead>Amount</TableHead>
              <TableHead>Time of payment</TableHead>
              <TableHead>Confirmed</TableHead>
