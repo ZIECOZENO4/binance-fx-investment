@@ -9,7 +9,6 @@ import { Button } from "@nextui-org/react";
 import ConfirmationPopup from './ConfirmationPopup';
 import FailedPopup from './failedpopup'; 
 import { usePathname } from 'next/navigation'
-import { PrismaClient } from '@prisma/client';
 
 interface ComfirmPaymentProps {
  amount: number;
@@ -19,10 +18,8 @@ interface ComfirmPaymentProps {
 }
 
 const ComfirmPayment: React.FC<ComfirmPaymentProps> = ({ amount, coin, plan, planId }) => {
-  const pathname = usePathname();
-  const router = useRouter();
-  const prisma = new PrismaClient();
-
+ const pathname = usePathname();
+ const router = useRouter();
 
  const { data: userInfo } = useUserInfo();
  const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -31,43 +28,46 @@ const ComfirmPayment: React.FC<ComfirmPaymentProps> = ({ amount, coin, plan, pla
  const [transactionId, setTransactionId] = useState('');
  const { isLoaded, isSignedIn, user } = useUser();
  const userId = user ? user.id : '-----';
+ const userBalance = userInfo.balance; // Ensure this is correctly retrieved
+ console.log("this is hte user balance form the backend", userBalance);
  if (!isLoaded) {
     return null;
  }
 
  const sendToAdmin = async () => {
-  const data = {
-    amount: amount.toString(),
-    coin,
-    plan,
-    planId,
-    time: new Date().toLocaleTimeString(),
-    balance: userBalance !== null ? `$${userBalance.toFixed(2)}` : '0.00 USDT',
-    gasFee: '2.665556 Wei',
-    userId,
-    userName: user !== null ? `$${user.firstName || user.username}` : 'FX Investor',
+    const data = {
+      amount: amount.toString(),
+      coin,
+      plan,
+      planId,
+      time: new Date().toISOString(), // Use ISO string format for consistency
+      balance: userBalance !== null ? `$${userBalance.toFixed(2)}` : '0.00 USDT',
+      gasFee: '2.665556 Wei',
+      userId,
+      userName: user !== null ? `${user.firstName || user.username}` : 'FX Investor',
+    };
+    try {
+      const response = await fetch('/api/sendToAdmin', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const responseData = await response.json();
+      console.log(responseData);
+      // Handle the response as needed, e.g., show a success message
+    } catch (error) {
+      console.error('Error sending data to admin:', error);
+      // Handle the error, e.g., show an error message
+    }
  };
- try {
-  const response = await fetch('/api/sendToAdmin', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-  });
 
-  if (!response.ok) {
-    throw new Error('Network response was not ok');
-  }
-
-  const responseData = await response.json();
-  console.log(responseData);
-  // Handle the response as needed, e.g., show a success message
-} catch (error) {
-  console.error('Error sending data to admin:', error);
-  // Handle the error, e.g., show an error message
-}
- }; 
 
 if (!isLoaded) {
   return null;
@@ -106,8 +106,7 @@ const shortenedId =
 user && user.id
   ? user.id.substring(0, 3) + "..." + user.id.substring(user.id.length - 3)
   : "ID: ---";
-  const userBalance = userInfo.balance;
-  console.log("this is hte user balance form the backend", userBalance);
+  
   return (
 <div className="container">
       <div className="mt-5">
