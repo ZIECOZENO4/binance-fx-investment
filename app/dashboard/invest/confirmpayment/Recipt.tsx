@@ -16,7 +16,6 @@ interface ComfirmPaymentProps {
  coin: string;
  plan: string;
  planId: string;
- userName:string;
 }
 
 const ComfirmPayment: React.FC<ComfirmPaymentProps> = ({ amount, coin, plan, planId }) => {
