@@ -7,7 +7,7 @@ import { useUserInfo } from '@/tenstack-hooks/user-info';
 import { useRouter } from 'next/navigation';
 import { Button } from "@nextui-org/react";
 import ConfirmationPopup from './ConfirmationPopup';
-import FailedPopup from './failedpopup'; // 
+import FailedPopup from './failedpopup'; 
 import { usePathname } from 'next/navigation'
 import { PrismaClient } from '@prisma/client';
 
@@ -37,16 +37,17 @@ const ComfirmPayment: React.FC<ComfirmPaymentProps> = ({ amount, coin, plan, pla
 
  const sendToAdmin = async () => {
   const data = {
-     amount: amount.toString(),
-     coin,
-     plan,
-     planId,
-     time: new Date().toLocaleTimeString(),
-     user: user ? user.firstName || user.username : '-----',
-     balance: userBalance !== null ? `$${userBalance.toFixed(2)}` : '0.00 USDT',
-     gasFee: '2.665556 Wei',
-     userId,
-  };
+    amount: amount.toString(),
+    coin,
+    plan,
+    planId,
+    time: new Date().toLocaleTimeString(),
+    balance: userBalance !== null ? `$${userBalance.toFixed(2)}` : '0.00 USDT',
+    gasFee: '2.665556 Wei',
+    userId,
+    userName: user ? user.firstName || user.username : '-----', // New field
+};
+
  
   try {
      // Save the data to the database using Prisma Client
