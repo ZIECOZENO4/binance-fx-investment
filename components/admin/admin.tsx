@@ -19,7 +19,7 @@ interface Item {
   const [data, setData] = useState<Item[]>([]);
  
   useEffect(() => {
-     fetch('/api/getAdmins') // Adjusted fetch URL
+     fetch('/api/getAdmin') // Adjusted fetch URL
        .then(response => {
          if (!response.ok) {
            throw new Error('Network response was not ok');
