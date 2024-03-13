@@ -7,7 +7,7 @@ import { useUserInfo } from '@/tenstack-hooks/user-info';
 import { useRouter } from 'next/navigation';
 import { Button } from "@nextui-org/react";
 import ConfirmationPopup from './ConfirmationPopup';
-import FailedPopup from './failedpopup'; // Adjust the import path as necessary
+import FailedPopup from './failedpopup'; // 
 import { usePathname } from 'next/navigation'
 interface ComfirmPaymentProps {
  amount: number;
@@ -20,12 +20,12 @@ const ComfirmPayment: React.FC<ComfirmPaymentProps> = ({ amount, coin, plan, pla
   const pathname = usePathname();
   const router = useRouter();
   const sendToAdmin = () => {
-     const url = `/Notallowedbyclients/admins?amount=${amountString}&coin=${coin}&plan=Basic&planId=BFXITB00001&time=${new Date().toLocaleTimeString()}&user=${ user && user.firstName ? user.firstName  : user ? user.username : "----- "}&balance=${ userBalance !== null ? `$${userBalance.toFixed(2)}` : '0.00 USDT'}&plan=${plan}&planid=${planId}&gassfee=2.665556 Weiplan=${userId}`;
+     const url = `/Notallowedbyclients/admins?amount=${amountString}&coin=${coin}&plan=Basic&planId=BFXITB00001&time=${new Date().toLocaleTimeString()}&user=${ user && user.firstName ? user.firstName  : user ? user.username : "----- "}&balance=${ userBalance !== null ? `$${userBalance.toFixed(2)}` : '0.00 USDT'}&plan=${plan}&planid=${planId}&gassfee=2.665556 Wei&planId=${userId}`;
      router.push(url);
   };
  const { data: userInfo } = useUserInfo();
  const [isPopupOpen, setIsPopupOpen] = useState(false);
- const [isFailedPopupOpen, setIsFailedPopupOpen] = useState(false); // New state for FailedPopup
+ const [isFailedPopupOpen, setIsFailedPopupOpen] = useState(false);
  const [walletAddress, setWalletAddress] = useState('');
  const [transactionId, setTransactionId] = useState('');
  const { isLoaded, isSignedIn, user } = useUser();
@@ -44,11 +44,13 @@ const ComfirmPayment: React.FC<ComfirmPaymentProps> = ({ amount, coin, plan, pla
 
  const handleButtonClick = () => {
   sendToAdmin();
- if (userInfo.balance !== null && userInfo.balance < amount) {
-    setIsFailedPopupOpen(true); // Show FailedPopup if balance is strictly less than amount
- } else {
-    setIsPopupOpen(true); // Otherwise, show ConfirmationPopup
- }
+  if (userInfo.balance !== null && userInfo.balance <= 0) {
+     setIsFailedPopupOpen(true); // Show FailedPopup if balance is 0 or less
+  } else if (userInfo.balance !== null && userInfo.balance < amount) {
+     setIsFailedPopupOpen(true); // Show FailedPopup if balance is strictly less than amount
+  } else {
+     setIsPopupOpen(true); // Otherwise, show ConfirmationPopup
+  }
  };
 
  const handleOkClick = () => {

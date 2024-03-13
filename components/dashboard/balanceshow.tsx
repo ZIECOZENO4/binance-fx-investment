@@ -5,7 +5,6 @@ import React, { useState, useEffect } from 'react';
 import Eye from './eye';
 import Noeye from './noeye';
 import { useUserInfo } from '@/tenstack-hooks/user-info';
-import { formatBalance } from '../../utils/addcomma'; 
 
 type ViewType = 'account' | 'investment';
 
@@ -52,6 +51,15 @@ const BalanceShow: React.FC = () => {
  const userBalance = userInfo.balance;
  console.log("this is the user balance from the backend", userBalance);
 
+ function formatWithCommas(value: number | string): string {
+  let strValue = value.toString().replace(/,/g, '');
+  let parts = strValue.split('.');
+  let wholePart = parts[0];
+  let decimalPart = parts.length > 1 ? '.' + parts[1] : '';
+  wholePart = wholePart.split('').reverse().join('').replace(/(\d{3})(?=\d)/g, '$1,').split('').reverse().join('');
+  return wholePart + decimalPart;
+}
+
 
 
  return (
@@ -62,7 +70,7 @@ const BalanceShow: React.FC = () => {
             <div className="flex flex-col justify-start gap-5 md:gap-10">
               <p className="font-bold md:text-2xl text-xl sm:text-md font-sono gap-3">ACCOUNT BALANCE</p>
               <p className="font-bold md:text-4xl text-3xl font-serif gap-3">
-              {isBalanceHidden ? '*****' : userBalance !== null ? `$${userBalance.toFixed(2)}` : '$  0.00 '}
+              {isBalanceHidden ? '*****' : userBalance !== null ? `$${formatWithCommas(userBalance.toFixed(2))}` : '$  0.00 '}
               </p>
             </div>
             <div onClick={toggleBalanceVisibility}>
