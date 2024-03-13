@@ -52,12 +52,7 @@ const BalanceShow: React.FC = () => {
  const userBalance = userInfo.balance;
  console.log("this is the user balance from the backend", userBalance);
 
- // Format the user's balance and the investment balances
- const formattedUserBalance = formatBalance(userBalance);
- const formattedInvestmentBalances = investments.map(investment => ({
-    ...investment,
-    balance: formatBalance(investment.balance),
- }));
+
 
  return (
     <div className="relative overflow-hidden bg-gradient-to-r from-blue-600 to-sky-400 rounded-2xl flex flex-col justify-start align-middle items-start gap-5 p-4 h-40 md:px-3 px-10">
@@ -67,7 +62,7 @@ const BalanceShow: React.FC = () => {
             <div className="flex flex-col justify-start gap-5 md:gap-10">
               <p className="font-bold md:text-2xl text-xl sm:text-md font-sono gap-3">ACCOUNT BALANCE</p>
               <p className="font-bold md:text-4xl text-3xl font-serif gap-3">
-                {isBalanceHidden ? '*****' : {formattedUserBalance} !== null ? `$${formattedUserBalance}` : '$  0.00 '}
+              {isBalanceHidden ? '*****' : userBalance !== null ? `$${userBalance.toFixed(2)}` : '$  0.00 '}
               </p>
             </div>
             <div onClick={toggleBalanceVisibility}>
@@ -88,7 +83,9 @@ const BalanceShow: React.FC = () => {
             <div className="flex flex-col justify-start gap-8">
               <p className="font-bold md:text-2xl sm:text-md text-xl font-sono gap-3">INVESTMENT BALANCE</p>
               <p className="font-bold md:text-4xl text-3xl font-serif gap-3">
-                {isBalanceHidden ? '*****' : `${formattedInvestmentBalances[investmentIndex].balance} ${formattedInvestmentBalances[investmentIndex].symbol}`}
+              {isBalanceHidden
+                        ? "*****"
+                        : `${investments[investmentIndex].balance} ${investments[investmentIndex].symbol}`}
               </p>
             </div>
             <div onClick={toggleBalanceVisibility}>
