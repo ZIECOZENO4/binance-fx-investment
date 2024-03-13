@@ -1,15 +1,16 @@
 // app/api/sendToAdmin.ts
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextRequest, NextResponse } from 'next/server';
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
- if (req.method === 'POST') {
-    const { amount, coin, plan, planId, time, user, balance, gasFee, userId } = req.body;
+export async function POST(request: NextRequest) {
+    // Extract the request body
+    const body = await request.json();
+
+    // Destructure the expected fields from the request body
+    const { amount, coin, plan, planId, time, user, balance, gasFee, userId } = body;
 
     // Process the data as needed, e.g., save it to a database, send an email, etc.
     console.log({ amount, coin, plan, planId, time, user, balance, gasFee, userId });
 
-    res.status(200).json({ message: 'Data received successfully' });
- } else {
-    res.status(405).json({ message: 'Method not allowed' });
- }
+    // Return a 200 OK response with a success message
+    return NextResponse.json({ message: 'Data received successfully' });
 }
