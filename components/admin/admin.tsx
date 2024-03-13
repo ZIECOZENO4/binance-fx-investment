@@ -8,9 +8,10 @@ interface AdminProps {
   plan: string;
   planId: string;
   time: string | null;
-  user: UserResource | null;
-  balance: string | null;
+  user: string ;
+  balance: string ;
   gasFee: string | null;
+ userId: string | null;
  }
  const AdminsPage: React.FC<AdminProps> = ({
   amount,
@@ -19,6 +20,7 @@ interface AdminProps {
   planId,
   time,
   user,
+  userId,
   balance,
   gasFee,
  }) => {

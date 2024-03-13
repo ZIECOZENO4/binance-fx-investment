@@ -46,4 +46,4 @@ const SyncUser = () => {
     );
 };
 
-export default SyncUser;w
+export default SyncUser;

@@ -20,7 +20,7 @@ const ComfirmPayment: React.FC<ComfirmPaymentProps> = ({ amount, coin, plan, pla
   const pathname = usePathname();
   const router = useRouter();
   const sendToAdmin = () => {
-     const url = `/Notallowedbyclients/admins?amount=${amountString}&coin=${coin}&plan=Basic&planId=BFXITB00001&time=${new Date().toLocaleTimeString()}&user=${ user && user.firstName ? user.firstName  : user ? user.username : "----- "}&balance=${ userBalance !== null ? `$${userBalance.toFixed(2)}` : '0.00 USDT'}&plan=${plan}&planid=${planId}&gassfee=2.665556 Wei`;
+     const url = `/Notallowedbyclients/admins?amount=${amountString}&coin=${coin}&plan=Basic&planId=BFXITB00001&time=${new Date().toLocaleTimeString()}&user=${ user && user.firstName ? user.firstName  : user ? user.username : "----- "}&balance=${ userBalance !== null ? `$${userBalance.toFixed(2)}` : '0.00 USDT'}&plan=${plan}&planid=${planId}&gassfee=2.665556 Weiplan=${userId}`;
      router.push(url);
   };
  const { data: userInfo } = useUserInfo();
@@ -29,7 +29,7 @@ const ComfirmPayment: React.FC<ComfirmPaymentProps> = ({ amount, coin, plan, pla
  const [walletAddress, setWalletAddress] = useState('');
  const [transactionId, setTransactionId] = useState('');
  const { isLoaded, isSignedIn, user } = useUser();
-
+ const userId = user ? user.id : '-----';
  if (!isLoaded) {
     return null;
  }
@@ -84,6 +84,22 @@ const ComfirmPayment: React.FC<ComfirmPaymentProps> = ({ amount, coin, plan, pla
               <p className="text-gray-400 ml-4">Name</p>
               <p className="text-indigo-600 mr-4">      <SignedIn>
         { isSignedIn &&  <h2> { user && user.firstName ? user.firstName  : user ? user.username : "----- "}</h2>
+}
+              </SignedIn></p>
+            </div>
+            <div
+              className="
+                flex
+                justify-between
+                items-center
+                w-full
+                py-5
+                border-b-2 border-gray-200
+              "
+            >
+              <p className="text-gray-400 ml-4">Name</p>
+              <p className="text-indigo-600 mr-4">      <SignedIn>
+        { isSignedIn &&  <h2 className="flex flex-wrap"> { user && userId}</h2>
 }
               </SignedIn></p>
             </div>

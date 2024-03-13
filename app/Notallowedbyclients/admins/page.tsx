@@ -14,11 +14,11 @@ const AdminsOnly = () => {
  const users = searchParams.get('user');
  const balance = searchParams.get('balance');
  const gasFee = searchParams.get('gassfee');
-
+ const userId = searchParams.get('userId');
  if (!isLoaded) {
   return null;
 }
-if (typeof amount === 'string' && typeof coin === 'string' && typeof plan === 'string' && typeof planId === 'string') {
+if (typeof amount === 'string' && typeof coin === 'string' && typeof plan === 'string' && typeof planId === 'string' && typeof time === 'string'  && typeof users === 'string'  && typeof balance === 'string'  && typeof gasFee === 'string'  && typeof userId === 'string' ) {
   const parsedAmount = parseFloat(amount);
  return (
     <div>
@@ -28,7 +28,8 @@ if (typeof amount === 'string' && typeof coin === 'string' && typeof plan === 's
         plan={plan}
         planId={planId}
         time={time}
-        user={user}
+        user={users}
+        userId={userId}
         balance={balance}
         gasFee={gasFee}
       />
