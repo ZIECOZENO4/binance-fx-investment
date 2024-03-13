@@ -28,7 +28,7 @@ const ComfirmPayment: React.FC<ComfirmPaymentProps> = ({ amount, coin, plan, pla
  const [transactionId, setTransactionId] = useState('');
  const { isLoaded, isSignedIn, user } = useUser();
  const userId = user ? user.id : '-----';
- const userBalance = userInfo.balance; // Ensure this is correctly retrieved
+ const userBalance = userInfo.balance; 
  console.log("this is hte user balance form the backend", userBalance);
  if (!isLoaded) {
     return null;
