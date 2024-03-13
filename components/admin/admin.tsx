@@ -17,16 +17,15 @@ interface Transaction {
  
  const AdminsPage: React.FC = () => {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
-
+ 
   useEffect(() => {
      const fetchData = async () => {
        try {
          const response = await fetch('/api/sendToAdmin', {
-           method: 'POST',
+           method: 'GET',
            headers: {
              'Content-Type': 'application/json',
            },
-           // Assuming you don't need to send any data in the body for fetching transactions
          });
          if (response.ok) {
            const data = await response.json();

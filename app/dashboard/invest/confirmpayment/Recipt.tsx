@@ -137,8 +137,8 @@ const amountString = calculatedAmount.toString();
               "
             >
               <p className="text-gray-400 ml-4">User ID</p>
-              <p className="text-indigo-600 mr-4 break-words max-w-xs">      <SignedIn>
-        { isSignedIn &&  <h2 > { user && userId}</h2>
+              <p className="text-indigo-600 mr-4 ">      <SignedIn>
+        { isSignedIn &&  <h2 className="break-words max-w-xs"> { user && userId}</h2>
 }
               </SignedIn></p>
             </div>

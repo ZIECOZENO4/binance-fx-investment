@@ -12,5 +12,5 @@ export async function POST(request: NextRequest) {
     console.log({ amount, coin, plan, planId, time, user, balance, gasFee, userId });
 
     // Return a 200 OK response with a success message
-    return NextResponse.json({ message: 'Data received successfully' });
+    return NextResponse.json({ message: 'Data received successfully', amount, coin, plan, planId, time, user, balance, gasFee, userId  });
 }
