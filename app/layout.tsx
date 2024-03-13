@@ -24,8 +24,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} overflow-x-hidden`}>  
+      <Providers>
         <TenstackProviders>
-        <Providers>
+     
             <div className=" w-[100vw] bg-black ">
               <div className='w-[100vw] z-30 sticky'>
                 <NavBar />
@@ -35,8 +36,9 @@ export default function RootLayout({
                 {children}
               </Suspense>
             </div>
-          </Providers>
+         
         </TenstackProviders>
+        </Providers>
         </body>
 
     </html>
