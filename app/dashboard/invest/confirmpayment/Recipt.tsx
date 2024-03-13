@@ -47,18 +47,26 @@ const ComfirmPayment: React.FC<ComfirmPaymentProps> = ({ amount, coin, plan, pla
     userId,
     userName: user !== null ? `$${user.firstName || user.username}` : 'FX Investor',
  };
+ try {
+  const response = await fetch('/api/sendToAdmin', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  });
 
- 
-  try {
-
-     const payment = await prisma.payment.create({
-       data,
-     });
- 
-     console.log('Payment saved:', payment);
-  } catch (error) {
-     console.error('Error saving data to the database:', error);
+  if (!response.ok) {
+    throw new Error('Network response was not ok');
   }
+
+  const responseData = await response.json();
+  console.log(responseData);
+  // Handle the response as needed, e.g., show a success message
+} catch (error) {
+  console.error('Error sending data to admin:', error);
+  // Handle the error, e.g., show an error message
+}
  }; 
 
 if (!isLoaded) {
