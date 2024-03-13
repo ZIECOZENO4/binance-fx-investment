@@ -27,6 +27,14 @@ const Invest: React.FC = () => {
   const { isLoaded, isSignedIn, user } = useUser();
   const userBalance = userInfo.balance;
   console.log("this is hte user balance form the backend", userBalance);
+  function formatWithCommas(value: number | string): string {
+    let strValue = value.toString().replace(/,/g, '');
+    let parts = strValue.split('.');
+    let wholePart = parts[0];
+    let decimalPart = parts.length > 1 ? '.' + parts[1] : '';
+    wholePart = wholePart.split('').reverse().join('').replace(/(\d{3})(?=\d)/g, '$1,').split('').reverse().join('');
+    return wholePart + decimalPart;
+  }  
   return (
     <div className='text-white h-[330vh]  md:h-[400vh]'>
     <div className=' relative md:w-[100vw] w-[100vw] md:h-[50vh] h-[20vh] bg-no-repeat object-cover bg-track flex justify-center items-center align-middle  bg-fixed  '>
@@ -47,7 +55,7 @@ const Invest: React.FC = () => {
 </div>
 <div className=" flex  flex-col align-middle items-center justify-center">
 <svg fill="#000000" width="64px" height="64px" viewBox="0 0 24 24" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><title></title><path d="M22,11V7.83L12,2.06,2,7.83V11H4v8H2v2H22V19H20V11ZM4,9l8-4.62L20,9H4ZM6,19V11H8v8Zm4,0V11h4v8Zm8,0H16V11h2Z"></path></g></svg>
-<p className=' md:text-2xl text-xl font-bold font-sans gap-3 text-white'>BALANCE : { userBalance !== null ? `$${userBalance.toFixed(2)}` : '$ 0.00'}</p>
+<p className=' md:text-2xl text-xl font-bold font-sans gap-3 text-white'>BALANCE : { userBalance !== null ? `$${formatWithCommas(userBalance.toFixed(2))}` : '$ 0.00'}</p>
 </div>
 <div>
 

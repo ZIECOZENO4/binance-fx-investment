@@ -65,6 +65,16 @@ const Wallet: React.FC = () => {
 
       const userBalance = userInfo.balance;
       console.log("this is hte user balance form the backend", userBalance);
+      function formatWithCommas(value: number | string): string {
+        let strValue = value.toString().replace(/,/g, '');
+        let parts = strValue.split('.');
+        let wholePart = parts[0];
+        let decimalPart = parts.length > 1 ? '.' + parts[1] : '';
+        wholePart = wholePart.split('').reverse().join('').replace(/(\d{3})(?=\d)/g, '$1,').split('').reverse().join('');
+        return wholePart + decimalPart;
+      }
+      
+      
   return (
     <div className=" flex flex-col justify-center align-middle items-center overflow-x-hidden">
       <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900">
@@ -182,8 +192,7 @@ const Wallet: React.FC = () => {
 
                       className="text-2xl text-white font-bold ml-2"
                     >
- {isBalanceHidden ? '*****' : userBalance !== null ? `$${userBalance.toFixed(2)}` : '$  0.00 '}
-                 </div>
+   {isBalanceHidden ? '*****' : userBalance !== null ? `$${formatWithCommas(userBalance.toFixed(2))}` : '$  0.00 '}         </div>
 
                     <div className="flex flex-row justify-between gap-4 items-center align-middle py-4 px-2 ">
                       <div className="flex flex-row justify-between gap-4 items-center align-middle w-[70%]">

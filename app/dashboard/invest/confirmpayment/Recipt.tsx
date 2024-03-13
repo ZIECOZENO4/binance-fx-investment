@@ -19,10 +19,8 @@ interface ComfirmPaymentProps {
 const ComfirmPayment: React.FC<ComfirmPaymentProps> = ({ amount, coin, plan, planId }) => {
   const pathname = usePathname();
   const router = useRouter();
-  const sendToAdmin = () => {
-     const url = `/Notallowedbyclients/admins?amount=${amountString}&coin=${coin}&plan=Basic&planId=BFXITB00001&time=${new Date().toLocaleTimeString()}&user=${ user && user.firstName ? user.firstName  : user ? user.username : "----- "}&balance=${ userBalance !== null ? `$${userBalance.toFixed(2)}` : '0.00 USDT'}&plan=${plan}&planid=${planId}&gassfee=2.665556 Wei&planId=${userId}`;
-     router.push(url);
-  };
+
+
  const { data: userInfo } = useUserInfo();
  const [isPopupOpen, setIsPopupOpen] = useState(false);
  const [isFailedPopupOpen, setIsFailedPopupOpen] = useState(false);
@@ -34,35 +32,74 @@ const ComfirmPayment: React.FC<ComfirmPaymentProps> = ({ amount, coin, plan, pla
     return null;
  }
 
- const handleWalletAddressChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setWalletAddress(event.target.value);
- };
+ const sendToAdmin = async () => {
+  const data = {
+    amount: amount.toString(),
+    coin, // Corrected syntax
+    plan, // Corrected syntax
+    planId, // Corrected syntax
+    time: new Date().toLocaleTimeString(),
+    user: user ? user.firstName || user.username : '-----',
+    balance: userBalance !== null ? `$${userBalance.toFixed(2)}` : '0.00 USDT', // Corrected syntax
+    gasFee: '2.665556 Wei',
+    userId, // Corrected syntax
+  };
 
- const handleTransactionIdChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setTransactionId(event.target.value);
- };
+  try {
+    const response = await fetch('/api/sendToAdmin', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
 
- const handleButtonClick = () => {
-  sendToAdmin();
-  if (userInfo.balance !== null && userInfo.balance <= 0) {
-     setIsFailedPopupOpen(true); // Show FailedPopup if balance is 0 or less
-  } else if (userInfo.balance !== null && userInfo.balance < amount) {
-     setIsFailedPopupOpen(true); // Show FailedPopup if balance is strictly less than amount
-  } else {
-     setIsPopupOpen(true); // Otherwise, show ConfirmationPopup
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    const responseData = await response.json();
+    console.log(responseData);
+    // Handle the response as needed, e.g., show a success message
+  } catch (error) {
+    console.error('Error sending data to admin:', error);
+    // Handle the error, e.g., show an error message
   }
- };
+};
 
- const handleOkClick = () => {
-    setIsPopupOpen(false);
- };
+if (!isLoaded) {
+  return null;
+}
 
- const handleFailedOkClick = () => {
-    setIsFailedPopupOpen(false); // Close FailedPopup
- };
- const calculatedAmount = amount; 
+const handleWalletAddressChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  setWalletAddress(event.target.value);
+};
 
- const amountString = calculatedAmount.toString(); 
+const handleTransactionIdChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  setTransactionId(event.target.value);
+};
+
+const handleButtonClick = () => {
+  sendToAdmin();
+  if (userBalance !== null && userBalance <= 0) {
+    setIsFailedPopupOpen(true); // Show FailedPopup if balance is 0 or less
+  } else if (userBalance !== null && userBalance < amount) {
+    setIsFailedPopupOpen(true); // Show FailedPopup if balance is strictly less than amount
+  } else {
+    setIsPopupOpen(true); // Otherwise, show ConfirmationPopup
+  }
+};
+
+const handleOkClick = () => {
+  setIsPopupOpen(false);
+};
+
+const handleFailedOkClick = () => {
+  setIsFailedPopupOpen(false); // Close FailedPopup
+};
+
+const calculatedAmount = amount;
+const amountString = calculatedAmount.toString();
 
   const userBalance = userInfo.balance;
   console.log("this is hte user balance form the backend", userBalance);
@@ -99,7 +136,7 @@ const ComfirmPayment: React.FC<ComfirmPaymentProps> = ({ amount, coin, plan, pla
                 border-b-2 border-gray-200
               "
             >
-              <p className="text-gray-400 ml-4">Name</p>
+              <p className="text-gray-400 ml-4">User ID</p>
               <p className="text-indigo-600 mr-4">      <SignedIn>
         { isSignedIn &&  <h2 className="flex flex-wrap"> { user && userId}</h2>
 }
