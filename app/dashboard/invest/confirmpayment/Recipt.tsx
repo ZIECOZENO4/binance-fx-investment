@@ -16,6 +16,7 @@ interface ComfirmPaymentProps {
  coin: string;
  plan: string;
  planId: string;
+ userName:string;
 }
 
 const ComfirmPayment: React.FC<ComfirmPaymentProps> = ({ amount, coin, plan, planId }) => {
@@ -45,21 +46,19 @@ const ComfirmPayment: React.FC<ComfirmPaymentProps> = ({ amount, coin, plan, pla
     balance: userBalance !== null ? `$${userBalance.toFixed(2)}` : '0.00 USDT',
     gasFee: '2.665556 Wei',
     userId,
-    userName: user ? user.firstName || user.username : '-----', // New field
-};
+    userName: user ? (user.firstName || user.username || '-----'),
+ };
 
  
   try {
-     // Save the data to the database using Prisma Client
+
      const payment = await prisma.payment.create({
        data,
      });
  
      console.log('Payment saved:', payment);
-     // Handle the response as needed, e.g., show a success message
   } catch (error) {
      console.error('Error saving data to the database:', error);
-     // Handle the error, e.g., show an error message
   }
  }; 
 
@@ -78,11 +77,11 @@ const handleTransactionIdChange = (event: React.ChangeEvent<HTMLInputElement>) =
 const handleButtonClick = () => {
   sendToAdmin();
   if (userBalance !== null && userBalance <= 0) {
-    setIsFailedPopupOpen(true); // Show FailedPopup if balance is 0 or less
+    setIsFailedPopupOpen(true); 
   } else if (userBalance !== null && userBalance < amount) {
-    setIsFailedPopupOpen(true); // Show FailedPopup if balance is strictly less than amount
+    setIsFailedPopupOpen(true);
   } else {
-    setIsPopupOpen(true); // Otherwise, show ConfirmationPopup
+    setIsPopupOpen(true);
   }
 };
 
@@ -91,7 +90,7 @@ const handleOkClick = () => {
 };
 
 const handleFailedOkClick = () => {
-  setIsFailedPopupOpen(false); // Close FailedPopup
+  setIsFailedPopupOpen(false); 
 };
 
 const calculatedAmount = amount;
