@@ -13,7 +13,7 @@ interface ConfirmationPopupProps {
 
 const ConfirmationPopup: React.FC<ConfirmationPopupProps> = ({ plan, planId, amount, onClose }) => {
  return (
-    <Card className="w-full max-w-lg p-0 fixed  left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-4 rounded shadow-lg z-20">
+    <Card className="w-full max-w-lg p-0 fixed p-4 rounded shadow-lg z-20">
       <CardHeader className="flex flex-col items-center gap-2 p-6">
       <svg
       xmlns="http://www.w3.org/2000/svg"

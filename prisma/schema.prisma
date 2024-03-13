@@ -9,16 +9,26 @@ generator client {
  provider = "prisma-client-js"
 }
 
-// prisma/schema.prisma
-
 model User {
  id          String         @id @default(cuid())
- email       String        @unique
+ email       String         @unique
  name        String?
  image       String?
- createdAt   DateTime      @default(now())
- updatedAt   DateTime      @updatedAt
- balance     Float?       
+ createdAt   DateTime       @default(now())
+ updatedAt   DateTime       @updatedAt
+ balance     Float?
+ payments    Payment[]     
 }
 
-// Add more models as needed to match your
+model Payment {
+ id          String         @id @default(cuid())
+ amount      String
+ coin        String
+ plan        String
+ planId      String
+ time        DateTime       @default(now())
+ balance     String
+ gasFee      String
+ userId      String         @map("user_id")
+ user        User           @relation(fields: [userId], references: [id])
+}

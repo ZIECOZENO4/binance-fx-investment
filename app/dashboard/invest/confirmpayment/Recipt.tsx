@@ -9,6 +9,8 @@ import { Button } from "@nextui-org/react";
 import ConfirmationPopup from './ConfirmationPopup';
 import FailedPopup from './failedpopup'; // 
 import { usePathname } from 'next/navigation'
+import { PrismaClient } from '@prisma/client';
+
 interface ComfirmPaymentProps {
  amount: number;
  coin: string;
@@ -19,6 +21,7 @@ interface ComfirmPaymentProps {
 const ComfirmPayment: React.FC<ComfirmPaymentProps> = ({ amount, coin, plan, planId }) => {
   const pathname = usePathname();
   const router = useRouter();
+  const prisma = new PrismaClient();
 
 
  const { data: userInfo } = useUserInfo();
@@ -34,38 +37,30 @@ const ComfirmPayment: React.FC<ComfirmPaymentProps> = ({ amount, coin, plan, pla
 
  const sendToAdmin = async () => {
   const data = {
-    amount: amount.toString(),
-    coin, // Corrected syntax
-    plan, // Corrected syntax
-    planId, // Corrected syntax
-    time: new Date().toLocaleTimeString(),
-    user: user ? user.firstName || user.username : '-----',
-    balance: userBalance !== null ? `$${userBalance.toFixed(2)}` : '0.00 USDT', // Corrected syntax
-    gasFee: '2.665556 Wei',
-    userId, // Corrected syntax
+     amount: amount.toString(),
+     coin,
+     plan,
+     planId,
+     time: new Date().toLocaleTimeString(),
+     user: user ? user.firstName || user.username : '-----',
+     balance: userBalance !== null ? `$${userBalance.toFixed(2)}` : '0.00 USDT',
+     gasFee: '2.665556 Wei',
+     userId,
   };
-
+ 
   try {
-    const response = await fetch('/api/sendToAdmin', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    });
-
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-
-    const responseData = await response.json();
-    console.log(responseData);
-    // Handle the response as needed, e.g., show a success message
+     // Save the data to the database using Prisma Client
+     const payment = await prisma.payment.create({
+       data,
+     });
+ 
+     console.log('Payment saved:', payment);
+     // Handle the response as needed, e.g., show a success message
   } catch (error) {
-    console.error('Error sending data to admin:', error);
-    // Handle the error, e.g., show an error message
+     console.error('Error saving data to the database:', error);
+     // Handle the error, e.g., show an error message
   }
-};
+ }; 
 
 if (!isLoaded) {
   return null;
@@ -100,7 +95,10 @@ const handleFailedOkClick = () => {
 
 const calculatedAmount = amount;
 const amountString = calculatedAmount.toString();
-
+const shortenedId =
+user && user.id
+  ? user.id.substring(0, 3) + "..." + user.id.substring(user.id.length - 3)
+  : "ID: ---";
   const userBalance = userInfo.balance;
   console.log("this is hte user balance form the backend", userBalance);
   return (
@@ -138,7 +136,7 @@ const amountString = calculatedAmount.toString();
             >
               <p className="text-gray-400 ml-4">User ID</p>
               <p className="text-indigo-600 mr-4 ">      <SignedIn>
-        { isSignedIn &&  <h2 className="break-words max-w-xs"> { user && userId}</h2>
+        { isSignedIn &&  <h2>{shortenedId}</h2>
 }
               </SignedIn></p>
             </div>
