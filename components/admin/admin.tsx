@@ -19,12 +19,15 @@ interface Item {
   const [data, setData]  = useState<Item[]>([]);
  
   useEffect(() => {
-    // Replace '/api/sendToAdmin' with the actual endpoint you're fetching data from
     fetch('/api/sendToAdmin')
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
       .then(data => setData(data))
       .catch(error => console.error('Error fetching data:', error));
-    
  }, []);
   return (
     <div className=" bg-black flex flex-col justify-center align-middle">
