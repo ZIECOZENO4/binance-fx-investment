@@ -23,6 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+         <TenstackProviders>
       <body className={`${inter.className} overflow-x-hidden`}>  
       <Providers>
      
@@ -32,17 +33,17 @@ export default function RootLayout({
                 <NavBar />
                 <SmNavbar />
               </div>
-              <TenstackProviders>
+           
               <Suspense fallback={<Loading />}>
                 {children}
               </Suspense>
-              </TenstackProviders>
+             
             </div>
          
      
         </Providers>
         </body>
-
+        </TenstackProviders>
     </html>
   );
 }
