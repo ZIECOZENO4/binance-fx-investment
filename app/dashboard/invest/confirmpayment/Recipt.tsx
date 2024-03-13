@@ -46,7 +46,7 @@ const ComfirmPayment: React.FC<ComfirmPaymentProps> = ({ amount, coin, plan, pla
     balance: userBalance !== null ? `$${userBalance.toFixed(2)}` : '0.00 USDT',
     gasFee: '2.665556 Wei',
     userId,
-    userName: user ? (user.firstName || user.username || '-----'),
+    userName: user !== null ? `$${user.firstName || user.username}` : 'FX Investor',
  };
 
  
