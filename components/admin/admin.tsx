@@ -3,6 +3,7 @@ import { CardTitle, CardHeader, CardContent, Card } from "../../components/ui/ca
 import { TableHead, TableRow, TableHeader, TableCell, TableBody, Table } from "../../components/ui/table"
 import { Button } from "../../components/ui/button"
 import { useEffect, useState } from "react";
+import { cookies } from 'next/headers'
 interface Item {
   amount: number;
   coin: string;
@@ -19,16 +20,27 @@ interface Item {
   const [data, setData] = useState<Item[]>([]);
  
   useEffect(() => {
-     fetch('/api/getAdmin') 
-       .then(response => {
-         if (!response.ok) {
-           throw new Error('Network response was not ok');
-         }
-         return response.json();
-       })
-       .then(data => setData(data))
-       .catch(error => console.error('Error fetching data:', error));
-  }, []);
+    const fetchData = () => {
+      fetch('/api/getAdmin')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(data => setData(data))
+        .catch(error => console.error('Error fetching data:', error));
+    };
+
+    // Fetch data immediately on component mount
+    fetchData();
+
+    // Set up interval to fetch data every 10 seconds
+    const intervalId = setInterval(fetchData, 10000); // 10000 milliseconds = 10 seconds
+
+    // Clear interval on component unmount
+    return () => clearInterval(intervalId);
+ }, []); 
   return (
     <div className=" bg-black flex flex-col justify-center align-middle">
       <h1 className="  text-2xl  font-bold text-sky-700 uppercase"> admin confirmation dashboard </h1>
