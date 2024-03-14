@@ -15,13 +15,25 @@ interface Item {
   balance: string;
   gasFee: string | null;
  }
- 
+ interface Withdrawal {
+  amount: number;
+  coin: string;
+  walletAddress: string;
+  time: string | null;
+  user: string;
+  userName: string;
+  userId: string | null;
+  balance: string;
+  gasFee: string | null;
+ }
  const AdminsPage: React.FC = () => {
   const [data, setData] = useState<Item[]>([]);
- 
+  const [withdrawdata, setWithdrawData] = useState<Withdrawal[]>([]);
   useEffect(() => {
     const fetchData = () => {
-      fetch('/api/getAdmin')
+      fetch('/api/getAdmin', {
+        cache: 'no-store', 
+       })
         .then(response => {
           if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -36,11 +48,36 @@ interface Item {
     fetchData();
 
     // Set up interval to fetch data every 10 seconds
-    const intervalId = setInterval(fetchData, 10000); // 10000 milliseconds = 10 seconds
+    const intervalId = setInterval(fetchData, 10000); 
 
     // Clear interval on component unmount
     return () => clearInterval(intervalId);
  }, []); 
+
+ useEffect(() => {
+  const fetchData = () => {
+    fetch('/api/getWithdraw', {
+      cache: 'no-store', 
+     })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => setData(data))
+      .catch(error => console.error('Error fetching data:', error));
+  };
+
+  // Fetch data immediately on component mount
+  fetchData();
+
+  // Set up interval to fetch data every 10 seconds
+  const intervalId = setInterval(fetchData, 10000); 
+
+  // Clear interval on component unmount
+  return () => clearInterval(intervalId);
+}, []); 
   return (
     <div className=" bg-black flex flex-col justify-center align-middle">
       <h1 className="  text-2xl  font-bold text-sky-700 uppercase"> admin confirmation dashboard </h1>
@@ -118,31 +155,33 @@ interface Item {
            </TableRow>
          </TableHeader>
          <TableBody>
-           <TableRow className="bg-gray-200 dark:bg-gray-700">
-             <TableCell>1234567890</TableCell>
-             <TableCell>john_doe</TableCell>
-             <TableCell>john@example.com</TableCell>
-             <TableCell>0.0000 USDT</TableCell>
-             <TableCell>0.0000 BTC</TableCell>
-             <TableCell>0.0000 USDT</TableCell>
-             <TableCell>123456</TableCell>
-             <TableCell>0.0000 USDT</TableCell>
-             <TableCell>2022-01-01 12:00:00</TableCell>
-             <TableCell>
-               <div className="flex gap-2">
-                 <Button className="bg-green-500 text-white dark:bg-green-600" >
-                   Confirmed
-                 </Button>
-                 <Button className="bg-red-500 text-white dark:bg-red-600">
-                   False
-                 </Button>
-                 <Button className="bg-yellow-500 text-white dark:bg-yellow-600" >
-                   Pending
-                 </Button>
-               </div>
-             </TableCell>
-           </TableRow>
-         </TableBody>
+              {withdrawdata.map((item, index) => (
+                <TableRow key={index} className="bg-gray-200 dark:bg-gray-700">
+                 <TableCell>{item.userId}</TableCell>
+                 <TableCell>{item.user}</TableCell>
+                 <TableCell>{item.userName}</TableCell>
+                 <TableCell>{item.walletAddress}</TableCell>
+                 <TableCell>{item.balance}</TableCell>
+                 <TableCell>{item.coin}</TableCell>
+                 <TableCell>{item.amount}</TableCell>
+                 <TableCell>{item.gasFee}</TableCell>
+                 <TableCell>{item.time}</TableCell>
+                 <TableCell>
+                    <div className="flex gap-2">
+                      <Button className="bg-green-500 text-white dark:bg-green-600">
+                        Confirmed
+                      </Button>
+                      <Button className="bg-red-500 text-white dark:bg-red-600">
+                        False
+                      </Button>
+                      <Button className="bg-yellow-500 text-white dark:bg-yellow-600">
+                        Pending
+                      </Button>
+                    </div>
+                 </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
        </Table>
      </CardContent>
    </Card>

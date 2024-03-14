@@ -18,6 +18,7 @@ model User {
  updatedAt   DateTime       @updatedAt
  balance     Float?
  payments    Payment[]     
+ withdraw    Withdraw[]
 }
 
 model Payment {
@@ -33,4 +34,18 @@ model Payment {
  userName    String         // New field to store the user's name
  user        User           @relation(fields: [userId], references: [id])
 }
+
+model Withdraw {
+ id          String         @id @default(cuid())
+ amount      String
+ coin        String
+ time        DateTime       @default(now())
+ balance     String
+ walletAddress String
+ gasFee      String
+ userId      String         @map("user_id")
+ userName    String         // New field to store the user's name
+ user        User           @relation(fields: [userId], references: [id])
+}
+
 

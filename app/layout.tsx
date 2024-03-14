@@ -6,7 +6,6 @@ import SmNavbar from "@/components/Sm NavBar";
 import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 import Loading from "./loading";
-import { Providers as TenstackProviders } from "./tenstack-provider";
 import { Providers } from "./providers";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -23,11 +22,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-         <TenstackProviders>
+    
       <body className={`${inter.className} overflow-x-hidden`}>  
       <Providers>
-     
-     
             <div className=" w-[100vw] bg-black ">
               <div className='w-[100vw] z-30 sticky'>
                 <NavBar />
@@ -43,7 +40,6 @@ export default function RootLayout({
      
         </Providers>
         </body>
-        </TenstackProviders>
     </html>
   );
 }

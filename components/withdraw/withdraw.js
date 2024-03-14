@@ -18,15 +18,47 @@ const WithdrawalPage = () => {
   if (!isLoaded) {
     return null;
   }
-  const handleWithdraw = () => {
-
-    // Assuming you have a function to check balance
-    if (checkBalance() ===  0) {
-      setShowNoFunds(true);
+  const handleWithdraw = async () => {
+    // Check if the user's balance is 0, null, or if the withdrawal amount is greater than the balance
+    if (userInfo.balance === 0 || userInfo.balance === null || parseFloat(amount) > parseFloat(userInfo.balance)) {
+       setShowNoFunds(true);
     } else {
-      setShowPending(true);
+       setShowPending(true);
+       try {
+         const data = {
+           amount,
+           coin: selectedCoin,
+           walletAddress,
+           userId: user.id,
+           userName: user.firstName || user.username,
+           gasFee: '0.00234123 Wei',
+           balance: userBalance !== null ? `$${userBalance.toFixed(2)}` : '0.00 USDT',
+           time: new Date().toISOString(),
+         };
+         const response = await fetch('/api/withdraw', {
+           method: 'POST',
+           headers: {
+             'Content-Type': 'application/json',
+           },
+           body: JSON.stringify(data),
+         });
+   
+         if (!response.ok) {
+           throw new Error('Network response was not ok');
+         }
+   
+         const responseData = await response.json();
+         console.log(responseData);
+         // Handle the response as needed, e.g., show a success message
+         setShowPending(false);
+       } catch (error) {
+         console.error('Error sending withdrawal request:', error);
+         // Handle the error, e.g., show an error message
+         setShowPending(false);
+       }
     }
-  };
+   };
+   
 
   const coins = [
     { fullName: 'Bitcoin', symbol: 'BTC' },
