@@ -106,7 +106,7 @@ const WithdrawalPage = () => {
 
 </div>
 <div className="mt-8 gap-2 flex flex-row  justify-start items-start align-middle  w-[100vw] ">
-  <h1 className="font-bold text-white text-xl md:text-2xl justify-start items-start align-middle   w-[40vw] ">Withdrawer&apos;s Name :</h1>
+  <h1 className="font-bold text-white text-md md:text-2xl justify-start items-start align-middle   w-[40vw] ">Withdrawer&apos;s Name :</h1>
 
 
   <div class="flex max-w-md items-center border-l-8 border-emerald-500 bg-emerald-50 p-2  w-[60vw] text-emerald-900 shadow-lg">
@@ -121,7 +121,7 @@ const WithdrawalPage = () => {
 
 </div>
 <div className="mt-8 gap-6 flex flex-row  justify-start items-start align-middle  w-[100vw] ">
-  <h1 className="font-bold text-white text-xl md:text-2xl  justify-start items-start align-middle  w-[40vw]   ">Available Balance :</h1>
+  <h1 className="font-bold text-white text-md md:text-2xl  justify-start items-start align-middle  w-[40vw]   ">Available Balance :</h1>
 
 
   <div class="flex max-w-md items-center border-l-8 border-emerald-500 bg-emerald-50 p-2  w-[60vw] text-emerald-900 shadow-lg">
@@ -132,7 +132,7 @@ const WithdrawalPage = () => {
 
 </div>
 <div className="mt-8 gap-6 flex flex-row  justify-start items-start align-middle  w-[100vw] ">
-  <h1 className="font-bold text-white text-xl md:text-2xl  justify-start items-start align-middle w-[40vw]  ">Transaction Time :</h1>
+  <h1 className="font-bold text-white text-md md:text-2xl  justify-start items-start align-middle w-[40vw]  ">Transaction Time :</h1>
 
 
   <div class="flex max-w-md items-center border-l-8 border-emerald-500 bg-emerald-50 p-2 text-emerald-900 shadow-lg  w-[60vw] ">
@@ -144,7 +144,7 @@ const WithdrawalPage = () => {
 
 </div>
 <div className="mt-8 gap-6 flex flex-row  justify-start items-start align-middle  w-[100vw] ">
-  <h1 className="font-bold text-white text-xl md:text-2xl  w-[40vw]  justify-start items-start align-middle ">Gass Fee :</h1>
+  <h1 className="font-bold text-white text-md md:text-2xl  w-[40vw]  justify-start items-start align-middle ">Gass Fee :</h1>
 
 
   <div class="flex max-w-md items-center border-l-8 border-emerald-500 bg-emerald-50 p-2 text-emerald-900 shadow-lg  w-[60vw] ">
@@ -156,7 +156,7 @@ const WithdrawalPage = () => {
 
 </div>
 <div>
-<div className="p-4">
+<div className="p-4 mx-8 flex justify-center flex-col items-center align-middle ">
       <div className="flex justify-center flex-col items-center mb-4">
    
            <div className="mt-8 gap-3 flex flex-row   justify-between items-start align-middle">
@@ -195,7 +195,7 @@ const WithdrawalPage = () => {
    
       </div>
   
-      <div className=' flex flex-row justify-between align-middle items-center gap-4 mx-4 py-5  w-[100vw] '>
+      <div className=' flex flex-row justify-between align-middle items-center gap-4 mx-8 py-5  w-[80vw] '>
        <button
         className="bg-green-500 text-white px-4 py-2 rounded  w-[40vw] "
        

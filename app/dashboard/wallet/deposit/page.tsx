@@ -1,16 +1,56 @@
 "use client"
 import React from 'react'
 import { useState } from 'react';
+import { useUser } from "@clerk/clerk-react";
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import {Button} from "@nextui-org/react";
+import { useUserInfo } from '@/tenstack-hooks/user-info';
 const DepositPage = () => {
         const [showWalletInfo, setShowWalletInfo] = useState(false);
         const [walletAddress, setWalletAddress] = useState('');
         const [transactionId, setTransactionId] = useState('');
-      
+        const { data: userInfo } = useUserInfo();
+        const { isLoaded, isSignedIn, user } = useUser();
+        const userId = user ? user.id : '-----';
         const toggleWalletInfo = () => {
           setShowWalletInfo(!showWalletInfo);
         };
-
+        const deposit = async () => {
+          const data = {
+            transactionId,
+            walletAddress,
+            time: new Date().toISOString(),
+            userId,
+            userName: user !== null ? `${user.firstName || user.username}` : 'FX Investor',
+          };
+          try {
+            const response = await fetch('/api/deposit', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(data),
+            });
+      
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+      
+            const responseData = await response.json();
+            console.log(responseData);
+            // Handle the response as needed, e.g., show a success message
+          } catch (error) {
+            console.error('Error sending data to admin:', error);
+            // Handle the error, e.g., show an error message
+          }
+       };
+      if (!isLoaded) {
+        return null;
+      }
+      const shortenedId =
+user && user.id
+  ? user.id.substring(0, 3) + "..." + user.id.substring(user.id.length - 3)
+  : "ID: ---";
   return (
     <div className=" flex flex-col justify-center align-middle items-center py-4">
 <h1 className="text-3xl text-white font-bold font-serif uppercase py-3">DEPOSIT</h1>
@@ -21,7 +61,7 @@ const DepositPage = () => {
               <div className="h-full text-left px-4 py-4 bg-gray-800 w-full justify-end border-t-2 border-gray-900">
                 <div className="flex items-center flex-wrap">
                   <img alt="testimonial" className="inline-block object-cover object-center w-16 h-16 mb-4 bg-gray-100 rounded" src="/images/d3.jpeg" /> <span className="flex flex-col flex-grow pl-4">
-                    <span className="font-bold text-lg text-gray-100 -mt-4">Wallet: Meta Mask </span>
+                    <span className="font-bold text-lg text-gray-100 -mt-4">Wallet:Trust Wallet </span>
                     <span className="text-sm text-gray-500 uppercase font-bold"> 0x1b9E45C744<br />c0E2728e5D2418f58d4 <br />B924ADb875F</span>
                   </span>
                 </div>
@@ -78,7 +118,7 @@ const DepositPage = () => {
               <div className="h-full text-left px-4 py-4 bg-gray-800 w-full justify-end border-t-2 border-gray-900">
                 <a href='/' className="flex items-center flex-wrap">
                   <img alt="testimonial" className="inline-block object-cover object-center w-16 h-16 mb-4 bg-gray-100 rounded" src="/images/d4.jpeg" /> <span className="flex flex-col flex-grow pl-4">
-                    <span className="font-bold text-lg text-gray-100 -mt-4">Wallet: Coin Base  </span>
+                    <span className="font-bold text-lg text-gray-100 -mt-4">Wallet: Coinbase  </span>
                     <span className="text-sm text-gray-500 uppercase font-bold">Wallet Address</span>
                   </span>
                 </a>
@@ -127,7 +167,7 @@ const DepositPage = () => {
               <div className="h-full text-left px-4 py-4 bg-gray-800 w-full justify-end border-t-2 border-gray-900">
                 <a href='/' className="flex items-center flex-wrap">
                   <img alt="testimonial" className="inline-block object-cover object-center w-16 h-16 mb-4 bg-gray-100 rounded" src="/images/d1.jpeg" /> <span className="flex flex-col flex-grow pl-4">
-                    <span className="font-bold text-lg text-gray-100 -mt-4">Bank: </span>
+                    <span className="font-bold text-lg text-gray-100 -mt-4">Bank: PayPal</span>
                     <span className="text-sm text-gray-500 uppercase font-bold">Wallet Address</span>
                   </span>
                 </a>
@@ -188,6 +228,7 @@ const DepositPage = () => {
           <span>{showWalletInfo ? 'Hide' : 'Show'}</span> Wallet Information
         </button>
         <Button
+           onClick={deposit}
       disableRipple
       className="relative flex flex-col m-2 py-4 w-auto h-auto align-middle overflow-visible rounded-full hover:-translate-y-1 px-6 shadow-xl bg-background/30 after:content-[''] after:absolute after:rounded-full after:inset-0 after:bg-background/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0"
       size="lg"

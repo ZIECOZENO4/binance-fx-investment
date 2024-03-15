@@ -1,6 +1,16 @@
+"use client"
 import styled from 'styled-components'
-
+import { useAddress } from "@thirdweb-dev/react";
 const Promos = () => {
+  const address = useAddress();
+
+  const handleInvestNowClick = () => {
+    if (!address) {
+      alert("Please connect your wallet to invest, if connected try to refresh for wallet vallidation, Welcome to FX.");
+    } else {
+  
+    }
+  };
   return (
     <div className='sticky right-0 top-0 z-20 flex h-screen text-white  flex-col justify-between gap-8 overflow-auto border-l border-l-dark-4 bg-dark-2 px-3 pb-4 pt-8 max-xl:hidden '>
  <Wrapper>

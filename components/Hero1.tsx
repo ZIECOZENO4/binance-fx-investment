@@ -13,7 +13,7 @@ function Hero1() {
 
   const handleInvestNowClick = () => {
     if (!address) {
-      alert("Please connect your wallet to invest.");
+      alert("Please connect your wallet to invest, if connected try to refresh for wallet vallidation, Welcome to FX.");
     } else {
       router.push("/sync-user");
     }

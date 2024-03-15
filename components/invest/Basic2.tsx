@@ -22,7 +22,23 @@ const Basic2 = () => {
      router.push(url);
   };
  
+  const handleInvestNowClick2 = () => {
+    calculateProfit2(amount);
+    const url = `/dashboard/invest/confirmpayment?amount=${parseFloat(amount)}&coin=${selectedCoin}&plan=Advance PLan&planId=BFXITB00002`;
+    router.push(url);
+ };
  
+ const handleInvestNowClick3 = () => {
+  calculateProfit3(amount);
+  const url = `/dashboard/invest/confirmpayment?amount=${parseFloat(amount)}&coin=${selectedCoin}&plan=Pro PLan&planId=BFXITB00003`;
+  router.push(url);
+};
+
+const handleInvestNowClick4 = () => {
+  calculateProfit4(amount);
+  const url = `/dashboard/invest/confirmpayment?amount=${parseFloat(amount)}&coin=${selectedCoin}&plan=Premium PLan&planId=BFXITB00004`;
+  router.push(url);
+};
   const basicPlan = { monthlyPrice: "5% Daily", items: ['Total Roll:   40%', 'Duration:   8 Days', 'Minium Deposit:        $ 200', 'Maxium Deposit:  $   2000', '5% Referral Bonus', 'Plan:  Basic PLan', 'Plan ID:  BFXITB00001']};
   const advancePlan = { monthlyPrice: "5% Daily", items: ['Total Roll:   60%', 'Duration:   12 Days', 'Minium Deposit:     $ 2,100', 'Maxium Deposit:  $   10,000', '5% Referral Bonus', 'Plan:  Advance PLan', 'Plan ID:  BFXITB00002']};
   const proPlan = { monthlyPrice: "5% Daily", items: ['Total Roll:   80%', 'Duration:   14 Days', 'Minium Deposit:  $ 10,100', 'Maxium Deposit:  $   20,000', '5% Referral Bonus', 'Plan:  Pro PLan', 'Plan ID:  BFXITB00004' ]};
@@ -372,41 +388,49 @@ const Basic2 = () => {
          
          
          
+
              <div className="flex flex-col gap-4">
-               <div className="flex w-full flex-wrap md:flex-nowrap mb-6 md:mb-0 gap-4">
-                <Input
-                   
-                   placeholder="0.00"
-                   labelPlacement="outside"
-                   startContent={
-                     <div className="flex items-center">
-                       <label className="sr-only" htmlFor="currency">
-                         COIN
-                       </label>
-                       <select
-                         className="outline-none border-0 bg-transparent text-default-400 text-small"
-                         id="currency"
-                         name="currency"
-                       >
-                         <option>BTC</option>
-                         <option>ETH</option>
-                         <option>BNB</option>
-                         <option>TRON</option>
-                         <option>DOGE</option>
-                         <option>XRP</option>
-         
-                       </select>
-                     </div>
-                   }
-                   type="number"
-                 />
-               </div>
-             </div>  
-             <Link href="/dashboard/invest/confirmpayment">
-                <Button color="primary" variant="ghost" >
-               INVEST NOW
-             </Button>
-             </Link>
+      <div className="flex w-full flex-wrap md:flex-nowrap mb-6 md:mb-0 gap-4">
+       <Input
+                   id="amount"
+                 
+               value={amount}
+               onChange={handleInputChange}
+               min="2,100"
+               max="10,000"
+          placeholder="0.00"
+          labelPlacement="outside"
+          startContent={
+            <div className="flex items-center">
+              <label className="sr-only" htmlFor="currency">
+                COIN
+              </label>
+             
+<select
+ className="outline-none border-0 bg-transparent text-default-400 text-small"
+ id="currency"
+ name="currency"
+ value={selectedCoin}
+ onChange={(e) => setSelectedCoin(e.target.value)}
+>
+ <option value="USDT">USDT</option>
+ <option value="BTC">BTC</option>
+ <option value="ETH">ETH</option>
+ <option value="BNB">BNB</option>
+ <option value="TRON">TRON</option>
+ <option value="DOGE">DOGE</option>
+ <option value="DOGE">XRP</option>
+</select>
+            </div>
+          }
+          type="number"
+        />
+      </div>
+    </div>  
+
+    <Button color="primary" variant="ghost" onClick={handleInvestNowClick2}>
+ INVEST NOW
+</Button>
          
            </div>
               </div>
@@ -498,41 +522,49 @@ const Basic2 = () => {
     
     
     
-        <div className="flex flex-col gap-4">
-          <div className="flex w-full flex-wrap md:flex-nowrap mb-6 md:mb-0 gap-4">
-           <Input
-              
-              placeholder="0.00"
-              labelPlacement="outside"
-              startContent={
-                <div className="flex items-center">
-                  <label className="sr-only" htmlFor="currency">
-                    COIN
-                  </label>
-                  <select
-                    className="outline-none border-0 bg-transparent text-default-400 text-small"
-                    id="currency"
-                    name="currency"
-                  >
-                    <option>BTC</option>
-                    <option>ETH</option>
-                    <option>BNB</option>
-                    <option>TRON</option>
-                    <option>DOGE</option>
-                    <option>XRP</option>
-    
-                  </select>
-                </div>
-              }
-              type="number"
-            />
-          </div>
-        </div>  
-        <Link href="/dashboard/invest/confirmpayment">
-           <Button color="primary" variant="ghost" >
-          INVEST NOW
-        </Button>
-        </Link>
+      
+    <div className="flex flex-col gap-4">
+      <div className="flex w-full flex-wrap md:flex-nowrap mb-6 md:mb-0 gap-4">
+       <Input
+                   id="amount"
+                 
+               value={amount}
+               onChange={handleInputChange}
+               min="10,100"
+               max="20,000"
+          placeholder="0.00"
+          labelPlacement="outside"
+          startContent={
+            <div className="flex items-center">
+              <label className="sr-only" htmlFor="currency">
+                COIN
+              </label>
+             
+<select
+ className="outline-none border-0 bg-transparent text-default-400 text-small"
+ id="currency"
+ name="currency"
+ value={selectedCoin}
+ onChange={(e) => setSelectedCoin(e.target.value)}
+>
+ <option value="USDT">USDT</option>
+ <option value="BTC">BTC</option>
+ <option value="ETH">ETH</option>
+ <option value="BNB">BNB</option>
+ <option value="TRON">TRON</option>
+ <option value="DOGE">DOGE</option>
+ <option value="DOGE">XRP</option>
+</select>
+            </div>
+          }
+          type="number"
+        />
+      </div>
+    </div>  
+
+    <Button color="primary" variant="ghost" onClick={handleInvestNowClick3}>
+ INVEST NOW
+</Button>
     
       </div>
          </div>
@@ -621,10 +653,16 @@ const Basic2 = () => {
 
 
 
+ 
     <div className="flex flex-col gap-4">
       <div className="flex w-full flex-wrap md:flex-nowrap mb-6 md:mb-0 gap-4">
        <Input
-          
+                   id="amount"
+                 
+               value={amount}
+               onChange={handleInputChange}
+               min="21,100"
+               max="50,000"
           placeholder="0.00"
           labelPlacement="outside"
           startContent={
@@ -632,30 +670,32 @@ const Basic2 = () => {
               <label className="sr-only" htmlFor="currency">
                 COIN
               </label>
-              <select
-                className="outline-none border-0 bg-transparent text-default-400 text-small"
-                id="currency"
-                name="currency"
-              >
-                <option>BTC</option>
-                <option>ETH</option>
-                <option>BNB</option>
-                <option>TRON</option>
-                <option>DOGE</option>
-                <option>XRP</option>
-
-              </select>
+             
+<select
+ className="outline-none border-0 bg-transparent text-default-400 text-small"
+ id="currency"
+ name="currency"
+ value={selectedCoin}
+ onChange={(e) => setSelectedCoin(e.target.value)}
+>
+ <option value="USDT">USDT</option>
+ <option value="BTC">BTC</option>
+ <option value="ETH">ETH</option>
+ <option value="BNB">BNB</option>
+ <option value="TRON">TRON</option>
+ <option value="DOGE">DOGE</option>
+ <option value="DOGE">XRP</option>
+</select>
             </div>
           }
           type="number"
         />
       </div>
     </div>  
-    <Link href="/dashboard/invest/confirmpayment">
-       <Button color="primary" variant="ghost" >
-      INVEST NOW
-    </Button>
-    </Link>
+
+    <Button color="primary" variant="ghost" onClick={handleInvestNowClick4}>
+ INVEST NOW
+</Button>
 
   </div>
      </div>

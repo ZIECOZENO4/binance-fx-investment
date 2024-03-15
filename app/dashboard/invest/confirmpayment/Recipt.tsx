@@ -9,6 +9,7 @@ import { Button } from "@nextui-org/react";
 import ConfirmationPopup from './ConfirmationPopup';
 import FailedPopup from './failedpopup'; 
 import { usePathname } from 'next/navigation'
+import Link from 'next/link';
 
 interface ComfirmPaymentProps {
  amount: number;
@@ -68,7 +69,35 @@ const ComfirmPayment: React.FC<ComfirmPaymentProps> = ({ amount, coin, plan, pla
     }
  };
 
+ const outInvest = async () => {
+    const data = {
+      transactionId,
+      walletAddress,
+      time: new Date().toISOString(),
+      userId,
+      userName: user !== null ? `${user.firstName || user.username}` : 'FX Investor',
+    };
+    try {
+      const response = await fetch('/api/outInvest', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
 
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const responseData = await response.json();
+      console.log(responseData);
+      // Handle the response as needed, e.g., show a success message
+    } catch (error) {
+      console.error('Error sending data to admin:', error);
+      // Handle the error, e.g., show an error message
+    }
+ };
 if (!isLoaded) {
   return null;
 }
@@ -305,13 +334,14 @@ user && user.id
               </div>
               <button
       className="w-full bg-green-600 text-white px-2 py-2 rounded-md"
-   
+      onClick={outInvest}
     >
       Accept
     </button>
             </div>
             <div className="px-3 py-5 border-b-2  border-gray-200">
-              <button
+              <Link
+              href="/dashboard/invest"
                 className="
                   min-w-full
                   bg-red-700
@@ -323,14 +353,14 @@ user && user.id
                 "
               >
                 Reject
-              </button>
+              </Link>
             </div>
           </div>
         
         </div>
       </div>
       <div className=' bg-white py-5 flex flex-wrap overflow-x-auto justify-start items-start align-middle leading-8 font-bold text-md gap-2 px-2'>
-        <p className=" mx-1"><span className="text-red-500 text-xl mr-1">NOTE:<p className='leading-6 text-green-400'>If you click on accept the transaction will automatically procced and it will be withdrawn from your Binance FX wallet, but if you don&apos;t have money in your wallet simply copy the company&apos;s wallet address and make payment, after you provide your wallet address and transaction ID for comfirmation </p>  </span>ALL DEPOSIT SHOULD BE MADE TO COMPANY&apos;S WALLET ADDRESS [0x1b9E45C744c0E2728e5D2418f58d4B924ADb875F], WHEN DONE CLICK ACCEPT FOR THE TRANSACTION TO TAKE PLACE. THANKS FOR INVESTI NG ON BINANCE FX</p>
+        <p className=" mx-1 flex flex-wrap "><span className="text-blue-500 text-sm mr-1">NOTE:<p className='leading-6 text-black'>If you click on accept the transaction will automatically procced and it will be withdrawn from your Binance FX wallet,<br /> but if you don&apos;t have money in your wallet simply copy the company&apos;s wallet address and make payment, after you provide your wallet address and transaction ID for comfirmation </p> <br /> </span>ALL DEPOSIT SHOULD BE MADE TO COMPANY&apos;S WALLET ADDRESS [0x1b9E45C744c0E2728e5D2418f58d4B924ADb875F],<br /> WHEN DONE CLICK ACCEPT FOR THE TRANSACTION TO TAKE PLACE. THANKS FOR INVESTI NG ON BINANCE FX</p>
       </div>
     </div> 
 

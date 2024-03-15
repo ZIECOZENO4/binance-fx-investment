@@ -32,12 +32,12 @@ export function Providers({ children }: { children: React.ReactNode }) {
 
         supportedWallets={[
           metamaskWallet(),
-          coinbaseWallet({ recommended: true }),
+          coinbaseWallet(),
           walletConnect(),
           localWallet(),
           embeddedWallet({
           }),
-          trustWallet(),
+          trustWallet({ recommended: true }),
         ]}
 
       >

@@ -5,9 +5,6 @@ const SellDrop = () => {
     <div className=''>
 
     <div className="main flex flex-col m-2">
-    
-    
-      <a href="/dashboard/sell" target="_new">
         <div className="each flex hover:shadow-lg select-none p-4 rounded-md border-gray-300 border mb-2 hover:border-gray-500 cursor-pointer">
         <div className="left m-auto mr-2">
             
@@ -27,7 +24,6 @@ const SellDrop = () => {
             </div>
           </div>
         </div>
-      </a>
     </div>
     
         </div>

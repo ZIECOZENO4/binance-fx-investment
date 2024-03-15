@@ -13,8 +13,9 @@ import {
  } from "@thirdweb-dev/react";
 import Topbar from "../../components/dashboard/shared/Topbar";
 import LeftSidebar from "../../components/dashboard/shared/Leftsidebar";
-
+import { Providers as TenstackProviders } from "../tenstack-provider";
 import Bottombar from "../../components/dashboard/shared/Bottombar";
+import Promos from "@/components/dashboard/shared/Rightsidebar";
 const inter = Inter({ subsets: ["latin"] });
 
 
@@ -26,18 +27,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <TenstackProviders>
     <ThirdwebProvider
     activeChain="ethereum"
     clientId={process.env.NEXT_PUBLIC_THIRDWEB_CLIENT_ID}
 
     supportedWallets={[
       metamaskWallet(),
-      coinbaseWallet({ recommended: true }),
+      coinbaseWallet(),
       walletConnect(),
       localWallet(),
       embeddedWallet({
       }),
-      trustWallet(),
+      trustWallet({ recommended: true }),
     ]}
 
     >
@@ -50,11 +52,12 @@ export default function RootLayout({
     <div className='w-[100vw] max-w-4xl'>{children}</div>
   
   </section>
-   
+   <Promos />
 </main>
 <div className="h-[100px] w-full bg-black md:hidden"/>
 <Bottombar />
         </div>
             </ThirdwebProvider>
+            </TenstackProviders>
   );
 }
