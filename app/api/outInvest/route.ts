@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
 
     // Process the data as needed, e.g., save it to a database
     try {
-        const outinvest = await prisma.outinvest.create({
+        const outInvest = await prisma.outInvest.create({
             data: {
                 transactionId,
       walletAddress,
@@ -25,10 +25,10 @@ export async function POST(request: NextRequest) {
             },
         });
 
-        console.log('OutInvest saved:', outinvest);
+        console.log('OutInvest saved:', outInvest);
 
         // Return a 200 OK response with a success message
-        return NextResponse.json({ message: 'OutInvest saved successfully', outinvest });
+        return NextResponse.json({ message: 'OutInvest saved successfully', outInvest });
     } catch (error) {
         console.error('Error saving outinvest:', error);
 
