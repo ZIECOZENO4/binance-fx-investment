@@ -16,8 +16,8 @@ export default function NFTNav() {
   return (
 
 
-    <div className="flex flex-col gap-2">
-    <div className="w-[260px] border-small px-1 py-2 rounded-small border-default-200 dark:border-default-100">
+    <div className="flex flex-col gap-2 ">
+    <div className="w-[260px] border-small px-1 py-2 rounded-small bg-black text-white border-default-200 dark:border-default-100">
         <Listbox 
           aria-label="Single selection example"
           variant="flat"

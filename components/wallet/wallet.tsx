@@ -183,9 +183,11 @@ const Wallet: React.FC = () => {
                           {isBalanceHidden ? <Eye /> : <Noeye />}
                         </div>
                       </div>
+                      <Link href="/dashboard/wallet/wallethistory">
                       <Button color="primary" variant="shadow">
                         View History
                       </Button>
+                      </Link>
                     </div>
 
                     <div
@@ -201,7 +203,7 @@ const Wallet: React.FC = () => {
                           {isBalanceHidden ? <Eye /> : <Noeye />}
                         </div>
                       </div>
-                      <Link href="/history">
+                      <Link href="/dashboard/wallet/coinhistory">
                       <Button color="primary" variant="shadow">
                         View History
                       </Button> 
@@ -239,7 +241,7 @@ const Wallet: React.FC = () => {
                             clip-rule="evenodd"
                           ></path>
                         </svg>
-                        <p className="">Junior</p>
+                        <p className="">Level 0</p>
                       </div>
                       <div className="">
                         <Button
@@ -516,7 +518,10 @@ const Wallet: React.FC = () => {
                   <span className="uppercase text-xs text-green-500">
                     upgrade Now
                   </span>
+                  <Link href="/dashboard/feedback">
                   <span className="text-xs text-slate-500">Help Team</span>
+                  </Link>
+              
                 </div>
                 <div className="flex flex-row items-center space-x-3">
                   <div className="flex flex-none items-center justify-center w-10 h-10 rounded-full bg-green-500 text-white">

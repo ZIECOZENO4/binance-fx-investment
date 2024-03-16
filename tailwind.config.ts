@@ -15,6 +15,7 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
           'track' : "url('/images/track.jpg')",
+          'bg-hero-pattern': "url(/images/herobg.png)"
       },
       clipPath: {
         'custom-circle': 'circle(180vh at  50% -80vh)',

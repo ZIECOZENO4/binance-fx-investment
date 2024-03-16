@@ -113,7 +113,7 @@ const experiences = [
     },
     {
       imgURL: "/assets/earn2.svg",
-      route: "/dashboard/earn",
+      route: "/dashboard/wallet/earn",
       label: "EARNS",
     },
     {
@@ -123,7 +123,7 @@ const experiences = [
     },
     {
       imgURL: "/assets/notification.svg",
-      route: "/dashboard/notifications",
+      route: "/dashboard/wallet/notification",
       label: "NOTIFICATION",
     },
     {
