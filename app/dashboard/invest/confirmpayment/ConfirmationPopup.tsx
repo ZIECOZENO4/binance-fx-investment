@@ -4,7 +4,7 @@ import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDi
 import { Progress } from "@nextui-org/react";
 import { CardTitle, CardDescription, CardHeader, CardContent, Card } from "@/components/ui/card";
 import Link from 'next/link';
-import html2canvas from 'html2canvas';
+// import html2canvas from 'html2canvas';
 // import jsPDF from 'jspdf';
 // import { saveAs } from 'file-saver';
 

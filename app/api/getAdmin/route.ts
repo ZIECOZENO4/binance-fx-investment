@@ -1,8 +1,8 @@
 // app/api/getPayments.ts
 import { NextRequest, NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
+import { cookies } from 'next/headers'
 
-// Initialize Prisma Client
 const prisma = new PrismaClient();
 
 export async function GET(request: NextRequest) {

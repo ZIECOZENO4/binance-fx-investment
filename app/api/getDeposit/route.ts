@@ -1,8 +1,7 @@
 // app/api/getDeposits.ts
 import { NextRequest, NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
-
-// Initialize Prisma Client
+import { cookies } from 'next/headers'
 const prisma = new PrismaClient();
 
 export async function GET(request: NextRequest) {

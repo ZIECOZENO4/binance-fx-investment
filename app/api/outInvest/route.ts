@@ -1,7 +1,7 @@
 // app/api/sendToAdmin.ts
 import { NextRequest, NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
-
+import { cookies } from 'next/headers'
 // Initialize Prisma Client
 const prisma = new PrismaClient();
 
