@@ -21,13 +21,16 @@ const ConfirmationPopup: React.FC<ConfirmationPopupProps> = ({ plan, planId, amo
   const componentRef = useRef(null); // Reference to the component's root element
 
   const handleDownload = () => {
-     html2canvas(componentRef.current).then(canvas => {
-       const imgData = canvas.toDataURL('image/png');
-       const pdf = new jsPDF();
-       pdf.addImage(imgData, 'PNG', 0, 0);
-       saveAs(pdf.output('blob'), 'confirmation_popup.pdf');
-     });
-  };
+    if (componentRef.current !== null) {
+       html2canvas(componentRef.current).then(canvas => {
+         const imgData = canvas.toDataURL('image/png');
+         const pdf = new jsPDF();
+         pdf.addImage(imgData, 'PNG', 0, 0);
+         saveAs(pdf.output('blob'), 'confirmation_popup.pdf');
+       });
+    }
+   };
+   
   return (
     <Modal 
     backdrop="opaque" 
