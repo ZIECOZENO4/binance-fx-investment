@@ -17,7 +17,7 @@ export async function GET(request: NextRequest) {
       // Return a 200 OK response with the outinvests data
       return NextResponse.json(outInvests);
     } catch (error) {
-      console.error('Error fetching outinvests:', error);
+      console.error('Error fetching outinvests: ', error);
 
       // Return a 500 Internal Server Error response with an error message
       return NextResponse.json({ error: 'Error fetching outinvests' }, { status: 500 });
