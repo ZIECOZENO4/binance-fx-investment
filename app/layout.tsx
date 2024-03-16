@@ -7,7 +7,7 @@ import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 import Loading from "./loading";
 import { Providers } from "./providers";
-
+import { ToastContainer } from 'react-toastify';
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -30,7 +30,7 @@ export default function RootLayout({
                 <NavBar />
                 <SmNavbar />
               </div>
-           
+              <ToastContainer autoClose={10000} />
               <Suspense fallback={<Loading />}>
                 {children}
               </Suspense>

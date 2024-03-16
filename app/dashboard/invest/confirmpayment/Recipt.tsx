@@ -10,6 +10,8 @@ import ConfirmationPopup from './ConfirmationPopup';
 import FailedPopup from './failedpopup'; 
 import { usePathname } from 'next/navigation'
 import Link from 'next/link';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 interface ComfirmPaymentProps {
  amount: number;
@@ -49,24 +51,33 @@ const ComfirmPayment: React.FC<ComfirmPaymentProps> = ({ amount, coin, plan, pla
     };
     try {
       const response = await fetch('/api/sendToAdmin', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
+         method: 'POST',
+         headers: {
+           'Content-Type': 'application/json',
+         },
+         body: JSON.stringify(data),
       });
-
+     
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+         throw new Error('Network response was not ok');
       }
-
+     
       const responseData = await response.json();
       console.log(responseData);
-      // Handle the response as needed, e.g., show a success message
-    } catch (error) {
+      // Show a success toast notification
+      toast.success("Payment sent successfully!, Plase await confirmation.", {
+         position: "top-center",
+         theme: "colored",
+      });
+     } catch (error) {
       console.error('Error sending data to admin:', error);
-      // Handle the error, e.g., show an error message
-    }
+      // Show an error toast notification
+      toast.error("Error sending payment to admin: Please check your balance ", {
+         position: "top-right",
+
+      });
+     }
+     
  };
 
  const outInvest = async () => {
