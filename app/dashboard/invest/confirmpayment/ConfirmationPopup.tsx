@@ -1,9 +1,13 @@
 "use client";
-import React from 'react';
-import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure} from "@nextui-org/react";
-import { Progress} from "@nextui-org/react";
+import React, { useRef } from 'react';
+import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from "@nextui-org/react";
+import { Progress } from "@nextui-org/react";
 import { CardTitle, CardDescription, CardHeader, CardContent, Card } from "@/components/ui/card";
 import Link from 'next/link';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
+import { saveAs } from 'file-saver';
+
 
 interface ConfirmationPopupProps {
  plan: string;
@@ -14,6 +18,16 @@ interface ConfirmationPopupProps {
 
 const ConfirmationPopup: React.FC<ConfirmationPopupProps> = ({ plan, planId, amount, onClose }) => {
   const {isOpen, onOpenChange} = useDisclosure({ defaultOpen: true });
+  const componentRef = useRef(null); // Reference to the component's root element
+
+  const handleDownload = () => {
+     html2canvas(componentRef.current).then(canvas => {
+       const imgData = canvas.toDataURL('image/png');
+       const pdf = new jsPDF();
+       pdf.addImage(imgData, 'PNG', 0, 0);
+       saveAs(pdf.output('blob'), 'confirmation_popup.pdf');
+     });
+  };
   return (
     <Modal 
     backdrop="opaque" 
@@ -89,9 +103,9 @@ const ConfirmationPopup: React.FC<ConfirmationPopupProps> = ({ plan, planId, amo
     </Card>
               </ModalBody>
               <ModalFooter>
-                <Button color="success" variant="ghost" onPress={onClose}>
-                 Save
-                </Button>
+              <Button color="success" variant="ghost" onPress={handleDownload}>
+            Save
+          </Button>
                 <Button className="bg-[#6f4ef2] shadow-lg shadow-indigo-500/20" onPress={onClose}>
                 Done
                 </Button>
@@ -103,3 +117,5 @@ const ConfirmationPopup: React.FC<ConfirmationPopupProps> = ({ plan, planId, amo
  );
 };
 
+
+export default ConfirmationPopup

@@ -81,34 +81,42 @@ const ComfirmPayment: React.FC<ComfirmPaymentProps> = ({ amount, coin, plan, pla
  };
 
  const outInvest = async () => {
-    const data = {
-      transactionId,
-      walletAddress,
-      time: new Date().toISOString(),
-      userId,
-      userName: user !== null ? `${user.firstName || user.username}` : 'FX Investor',
-    };
-    try {
-      const response = await fetch('/api/outInvest', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
-
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-
-      const responseData = await response.json();
-      console.log(responseData);
-      // Handle the response as needed, e.g., show a success message
-    } catch (error) {
-      console.error('Error sending data to admin:', error);
-      // Handle the error, e.g., show an error message
-    }
+  const data = {
+     transactionId,
+     walletAddress,
+     time: new Date().toISOString(),
+     userId,
+     userName: user !== null ? `${user.firstName || user.username}` : 'FX Investor',
+  };
+  try {
+     const response = await fetch('/api/outInvest', {
+       method: 'POST',
+       headers: {
+         'Content-Type': 'application/json',
+       },
+       body: JSON.stringify(data),
+     });
+ 
+     if (!response.ok) {
+       throw new Error('Network response was not ok');
+     }
+ 
+     const responseData = await response.json();
+     console.log(responseData);
+     // Show a success toast notification
+     toast.success("Payment sent successfully!, Please await confirmation.", {
+       position: "top-center",
+       theme: "colored",
+     });
+  } catch (error) {
+     console.error('Error sending data to admin:', error);
+     // Show an error toast notification
+     toast.error("Error sending payment to admin: Please check your balance ", {
+       position: "top-right",
+     });
+  }
  };
+ 
 if (!isLoaded) {
   return null;
 }
@@ -121,17 +129,22 @@ const handleTransactionIdChange = (event: React.ChangeEvent<HTMLInputElement>) =
   setTransactionId(event.target.value);
 };
 
-const handleButtonClick = () => {
-  sendToAdmin();
-  if (userBalance !== null && userBalance <= 0) {
-    setIsFailedPopupOpen(true); 
-  } else if (userBalance !== null && userBalance < amount) {
-    setIsFailedPopupOpen(true);
-  } else {
-    setIsPopupOpen(true);
+const handleButtonClick = async () => {
+  try {
+     await sendToAdmin();
+     if (userBalance !== null && userBalance <= 0) {
+       setIsFailedPopupOpen(true); 
+     } else if (userBalance !== null && userBalance < amount) {
+       setIsFailedPopupOpen(true);
+     } else {
+       setIsPopupOpen(true);
+     }
+  } catch (error) {
+     console.error('Error in handleButtonClick:', error);
+     // Handle the error as needed, e.g., show an error message
   }
-};
-
+ };
+ 
 const handleOkClick = () => {
   setIsPopupOpen(false);
 };
