@@ -1,9 +1,10 @@
 // app/api/getPayments.ts
 import { NextRequest, NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
-import { cookies } from 'next/headers'
 
 const prisma = new PrismaClient();
+
+export const dynamic = 'force-dynamic'; // Force dynamic execution, bypassing cache
 
 export async function GET(request: NextRequest) {
     try {

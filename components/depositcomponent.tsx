@@ -11,56 +11,64 @@ const DepositPage = () => {
         const [transactionId, setTransactionId] = useState('');
         const { data: userInfo } = useUserInfo();
         const { isLoaded, isSignedIn, user } = useUser();
-        const userId = user ? user.id : '-----';
         const toggleWalletInfo = () => {
           setShowWalletInfo(!showWalletInfo);
         };
+        const userId =
+        user && user.id
+          ? user.id
+          : "ID: ---";
         const deposit = async () => {
           // Validate the inputs
           if (!walletAddress || !transactionId) {
-            alert('Please provide both wallet address and transaction ID.');
-            return;
+             alert('Please provide both wallet address and transaction ID.');
+             return;
           }
-      
+         
+          // Check if the user is signed in
+          if (!isSignedIn) {
+             alert('You must be signed in to make a deposit.');
+             return;
+          }
+         
+          // Prepare the data payload
           const data = {
-            transactionId,
-            walletAddress,
-            time: new Date().toISOString(),
-            userId,
-            user
+             transactionId,
+             walletAddress,
+             time: new Date().toISOString(),
+             userId, 
+             user,
           };
-      
+         
           try {
-            const response = await fetch('/api/pendingDeposit', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(data),
-            });
-      
-            if (!response.ok) {
-              throw new Error('Network response was not ok');
-            }
-      
-            const responseData = await response.json();
-            console.log(responseData);
-            // Handle the response as needed, e.g., show a success message
-            alert('Deposit confirmed successfully!');
+             const response = await fetch('/api/pendingDeposit', {
+               method: 'POST',
+               headers: {
+                 'Content-Type': 'application/json',
+               },
+               body: JSON.stringify(data),
+             });
+         
+             if (!response.ok) {
+               throw new Error('Network response was not ok');
+             }
+         
+             const responseData = await response.json();
+             console.log(responseData);
+             // Handle the response as needed, e.g., show a success message
+             alert('Deposit confirmed successfully!');
           } catch (error) {
-            console.error('Error sending data to admin:', error);
-            // Handle the error, e.g., show an error message
-            alert('An error occurred while confirming the deposit. Please try again.');
+             console.error('Error sending data to admin:', error);
+             // Handle the error, e.g., show an error message
+             alert('An error occurred while confirming the deposit. Please try again.');
           }
-       };
+         };
+         
       
       if (!isLoaded) {
         return null;
       }
-      const shortenedId =
-user && user.id
-  ? user.id.substring(0, 3) + "..." + user.id.substring(user.id.length - 3)
-  : "ID: ---";
+
   return (
     <div className=" flex flex-col justify-center align-middle items-center py-4">
 <h1 className="text-3xl text-white font-bold font-serif uppercase py-3">DEPOSIT</h1>
