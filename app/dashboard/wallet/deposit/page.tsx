@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React from 'react';
 import { useState } from 'react';
 import { useUser } from "@clerk/clerk-react";
 import {Button} from "@nextui-org/react";
@@ -16,14 +16,20 @@ const DepositPage = () => {
           setShowWalletInfo(!showWalletInfo);
         };
         const deposit = async () => {
+          // Validate the inputs
+          if (!walletAddress || !transactionId) {
+            alert('Please provide both wallet address and transaction ID.');
+            return;
+          }
+      
           const data = {
             transactionId,
             walletAddress,
             time: new Date().toISOString(),
             userId,
             userName: (user?.firstName || user?.username) ?? 'FX Investor',
-
           };
+      
           try {
             const response = await fetch('/api/deposit', {
               method: 'POST',
@@ -40,11 +46,14 @@ const DepositPage = () => {
             const responseData = await response.json();
             console.log(responseData);
             // Handle the response as needed, e.g., show a success message
+            alert('Deposit confirmed successfully!');
           } catch (error) {
             console.error('Error sending data to admin:', error);
             // Handle the error, e.g., show an error message
+            alert('An error occurred while confirming the deposit. Please try again.');
           }
        };
+      
       if (!isLoaded) {
         return null;
       }
@@ -221,22 +230,23 @@ user && user.id
             />
           </>
         )}
-        <button
-          id="toggleWalletInfo"
-          className="rounded-full bg-indigo-500 p-2 px-4 text-white hover:bg-orange-500"
-          onClick={toggleWalletInfo}
-        >
-          <span>{showWalletInfo ? 'Hide' : 'Show'}</span> Wallet Information
-        </button>
-        <Button
-           onClick={deposit}
+     <button
+      type="button" // Specify the type attribute
+      id="toggleWalletInfo"
+      className="rounded-full bg-indigo-500 p-2 px-4 text-white hover:bg-orange-500"
+      onClick={toggleWalletInfo}
+    >
+      <span>{showWalletInfo ? 'Hide' : 'Show'}</span> Wallet Information
+    </button>
+    <Button
+      type="button" // Specify the type attribute
+      onClick={deposit}
       disableRipple
       className="relative flex flex-col m-2 py-4 w-auto h-auto align-middle overflow-visible rounded-full hover:-translate-y-1 px-6 shadow-xl bg-background/30 after:content-[''] after:absolute after:rounded-full after:inset-0 after:bg-background/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0"
       size="lg"
     >
-
-        <p className="font-bold text-xl text-white">Confirm</p>  
-          </Button>
+      <p className="font-bold text-xl text-white">Confirm</p>  
+    </Button>
       </div>
     </section>
 
