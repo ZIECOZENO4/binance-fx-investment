@@ -8,7 +8,7 @@ const prisma = new PrismaClient();
 export async function GET(request: NextRequest) {
     try {
    
-      const withdraws = await prisma.withdraw.findMany({
+      const withdraws = await prisma.pendingWithdraw.findMany({
         orderBy: {
           time: 'desc', 
         },

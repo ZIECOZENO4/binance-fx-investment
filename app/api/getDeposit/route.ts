@@ -7,7 +7,7 @@ const prisma = new PrismaClient();
 export async function GET(request: NextRequest) {
     try {
       // Fetch all payment records from the database, sorted by the 'time' field in descending order
-      const deposits = await prisma.deposit.findMany({
+      const deposits = await prisma.pendingDeposit.findMany({
         orderBy: {
           time: 'desc', // Sorting by the 'time' field in descending order
         },
