@@ -158,16 +158,13 @@ interface Item {
                  <TableCell>
                     <div className="flex gap-2">
                     <Button
-                 className="bg-green-500 text-white dark:bg-green-600"
-                 onClick={() => handleConfirmClick(item)}
-                >
-                 Confirmed
-                </Button>
+ className="bg-green-500 text-white dark:bg-green-600"
+ onClick={() => handleConfirmClick({ ...item, time: new Date(item.time || '') })}
+>
+ Confirmed
+</Button>
                       <Button className="bg-red-500 text-white dark:bg-red-600">
                         False
-                      </Button>
-                      <Button className="bg-yellow-500 text-white dark:bg-yellow-600">
-                        Pending
                       </Button>
                     </div>
                  </TableCell>
