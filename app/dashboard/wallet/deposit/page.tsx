@@ -21,7 +21,8 @@ const DepositPage = () => {
             walletAddress,
             time: new Date().toISOString(),
             userId,
-            userName: user !== null ? `${user.firstName || user.username}` : 'FX Investor',
+            userName: (user?.firstName || user?.username) ?? 'FX Investor',
+
           };
           try {
             const response = await fetch('/api/deposit', {
