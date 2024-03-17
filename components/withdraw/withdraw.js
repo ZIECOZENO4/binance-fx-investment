@@ -6,7 +6,8 @@ import Link from 'next/link';
 import  { useState } from 'react';
 import {Button} from "@nextui-org/react";
 import { useUserInfo } from '@/tenstack-hooks/user-info';
-
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const WithdrawalPage = () => {
   const { data: userInfo } = useUserInfo();
   const [selectedCoin, setSelectedCoin] = useState(null);
@@ -49,11 +50,17 @@ const WithdrawalPage = () => {
    
          const responseData = await response.json();
          console.log(responseData);
-         // Handle the response as needed, e.g., show a success message
+         toast.success("Withdrawal request sent successfully!, Plase await confirmation.", {
+          position: "top-center",
+          theme: "colored",
+       });
          setShowPending(false);
        } catch (error) {
          console.error('Error sending withdrawal request:', error);
-         // Handle the error, e.g., show an error message
+         toast.error("Error sending withdrawal request to admin: Please check your balance ", {
+          position: "top-right",
+ 
+       });
          setShowPending(false);
        }
     }
