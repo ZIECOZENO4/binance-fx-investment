@@ -36,7 +36,7 @@ const Invest: React.FC = () => {
     return wholePart + decimalPart;
   }  
   return (
-    <div className='text-white h-[330vh]  md:h-[400vh]'>
+    <div className='text-white h-[380vh]  md:h-[400vh]'>
     <div className=' relative md:w-[100vw] w-[100vw] md:h-[50vh] h-[20vh] bg-no-repeat object-cover bg-track flex justify-center items-center align-middle  bg-fixed  '>
     </div>
     <div className=' flex flex-col md:flex md:justify-between md:flex-row '>

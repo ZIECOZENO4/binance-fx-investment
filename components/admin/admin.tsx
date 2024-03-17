@@ -48,7 +48,7 @@ interface Item {
     fetchData();
 
     // Set up interval to fetch data every 10 seconds
-    const intervalId = setInterval(fetchData, 10000); 
+    const intervalId = setInterval(fetchData, 100000); 
 
     // Clear interval on component unmount
     return () => clearInterval(intervalId);

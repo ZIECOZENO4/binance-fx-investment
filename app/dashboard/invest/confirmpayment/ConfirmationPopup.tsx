@@ -4,9 +4,9 @@ import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDi
 import { Progress } from "@nextui-org/react";
 import { CardTitle, CardDescription, CardHeader, CardContent, Card } from "@/components/ui/card";
 import Link from 'next/link';
-// import html2canvas from 'html2canvas';
-// import jsPDF from 'jspdf';
-// import { saveAs } from 'file-saver';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
+import { saveAs } from 'file-saver';
 
 
 interface ConfirmationPopupProps {
@@ -18,18 +18,8 @@ interface ConfirmationPopupProps {
 
 const ConfirmationPopup: React.FC<ConfirmationPopupProps> = ({ plan, planId, amount, onClose }) => {
   const {isOpen, onOpenChange} = useDisclosure({ defaultOpen: true });
-  // const componentRef = useRef(null); // Reference to the component's root element
+  const componentRef = useRef(null); // Reference to the component's root element
 
-  // const handleDownload = () => {
-  //   if (componentRef.current !== null) {
-  //      html2canvas(componentRef.current).then(canvas => {
-  //        const imgData = canvas.toDataURL('image/png');
-  //        const pdf = new jsPDF();
-  //        pdf.addImage(imgData, 'PNG', 0, 0);
-  //        saveAs(pdf.output('blob'), 'confirmation_popup.pdf');
-  //      });
-  //   }
-  //  };
    
   return (
     <Modal 
@@ -50,8 +40,8 @@ const ConfirmationPopup: React.FC<ConfirmationPopupProps> = ({ plan, planId, amo
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col gap-1">Investment Receipt</ModalHeader>
-              <ModalBody>
-              <Card className="w-full max-w-lg p-0 fixed p-4 rounded shadow-lg z-20">
+              <ModalBody className="h-auto w-auto">
+              <Card className="w-full max-w-lg p-0  p-4 rounded bg-[#292f46]/50 backdrop-opacity-40 shadow-lg ">
       <CardHeader className="flex flex-col items-center gap-2 p-6">
       <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -73,7 +63,7 @@ const ConfirmationPopup: React.FC<ConfirmationPopupProps> = ({ plan, planId, amo
       <CardContent className="flex items-center justify-center p-6">
         <div />
       </CardContent>
-      <CardContent className="p-6 ">
+      <CardContent className="p-6 flex-col justify-center align-middle  ">
         <div className="flex flex-col justify-center align-middle mb-3 gap-4">
           <div>
             <div className="text-sm font-medium text-slate-700">Plan</div>
@@ -187,9 +177,9 @@ const ConfirmationPopup: React.FC<ConfirmationPopupProps> = ({ plan, planId, amo
     </Card>
               </ModalBody>
               <ModalFooter>
-              {/* <Button color="success" variant="ghost" onPress={handleDownload}>
+              <Button color="success" variant="ghost" onPress={handleDownload}>
             Save
-          </Button> */}
+          </Button>
                 <Button className="bg-[#6f4ef2] shadow-lg shadow-indigo-500/20" onPress={onClose}>
                 Done
                 </Button>

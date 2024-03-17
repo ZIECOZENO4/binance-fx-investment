@@ -100,11 +100,17 @@ const ComfirmPayment: React.FC<ComfirmPaymentProps> = ({ amount, coin, plan, pla
      if (!response.ok) {
        throw new Error('Network response was not ok');
      }
- 
+     if (userBalance !== null && userBalance <= 0) {
+      setIsFailedPopupOpen(true); 
+    } else if (userBalance !== null && userBalance < amount) {
+      setIsFailedPopupOpen(true);
+    } else {
+      setIsPopupOpen(true);
+    }
      const responseData = await response.json();
      console.log(responseData);
      // Show a success toast notification
-     toast.success("Payment sent successfully!, Please await confirmation.", {
+     toast.success("Payment sent successfully to the Admins!, Please await confirmation.", {
        position: "top-center",
        theme: "colored",
      });
@@ -132,13 +138,6 @@ const handleTransactionIdChange = (event: React.ChangeEvent<HTMLInputElement>) =
 const handleButtonClick = async () => {
   try {
      await sendToAdmin();
-     if (userBalance !== null && userBalance <= 0) {
-       setIsFailedPopupOpen(true); 
-     } else if (userBalance !== null && userBalance < amount) {
-       setIsFailedPopupOpen(true);
-     } else {
-       setIsPopupOpen(true);
-     }
   } catch (error) {
      console.error('Error in handleButtonClick:', error);
      // Handle the error as needed, e.g., show an error message
