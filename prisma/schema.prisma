@@ -21,8 +21,8 @@ model User {
  withdraw    Withdraw[]
  outinvest   OutInvest[]
  deposit     Deposit[]
- level       Level[]
- details     Details[]
+//  level       Level[]
+//  details     Details[]
 }
 
 model Payment {
@@ -71,20 +71,20 @@ transactionId      String
  user        User           @relation(fields: [userId], references: [id])
 }
 
-model Level {
- id          String         @id @default(cuid())
-tier        Int
- time        DateTime       @default(now())
- userId      String         @map("user_id")
- userName    String     
- user        User           @relation(fields: [userId], references: [id])
-}
+// model Level {
+//  id          String         @id @default(cuid())
+// tier        Int
+//  time        DateTime       @default(now())
+//  userId      String         @map("user_id")
+//  userName    String     
+//  user        User           @relation(fields: [userId], references: [id])
+// }
 
-model Details {
- id          String         @id @default(cuid())
-upgraded     Boolean
- time        DateTime       @default(now())
- verified    Boolean
- userId      String         @map("user_id")
- user        User           @relation(fields: [userId], references: [id])
-}
+// model Details {
+//  id          String         @id @default(cuid())
+// upgraded     Boolean
+//  time        DateTime       @default(now())
+//  verified    Boolean
+//  userId      String         @map("user_id")
+//  user        User           @relation(fields: [userId], references: [id])
+// }
