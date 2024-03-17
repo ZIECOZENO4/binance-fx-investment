@@ -3,88 +3,60 @@ import { CardTitle, CardHeader, CardContent, Card } from "../../components/ui/ca
 import { TableHead, TableRow, TableHeader, TableCell, TableBody, Table } from "../../components/ui/table"
 import { Button } from "../../components/ui/button"
 import { useEffect, useState } from "react";
-import { cookies } from 'next/headers'
 import { PrismaClient, Payment } from '@prisma/client';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const prisma = new PrismaClient();
 interface Item {
-  id: string; // Add this line
-  amount: number;
-  coin: string;
-  plan: string;
-  planId: string;
-  time: string | null; // Consider changing this to Date if you're working with dates
-  user: string;
-  userId: string | null;
-  balance: string;
-  gasFee: string | null;
-  userName: string; // Add this line
- }
- 
- interface Withdrawal {
-  amount: number;
-  coin: string;
-  walletAddress: string;
-  time: string | null;
-  user: string;
-  userName: string;
-  userId: string | null;
-  balance: string;
-  gasFee: string | null;
- }
- const AdminsPage: React.FC = () => {
+ id: string;
+ amount: string; 
+ coin: string;
+ plan: string;
+ planId: string;
+ time: Date; // Ensure this is always a Date object
+ user: string;
+ userId: string | null;
+ balance: string;
+ gasFee: string | null;
+ userName: string;
+}
 
-  const [data, setData] = useState<Item[]>([]);
-  const [withdrawdata, setWithdrawData] = useState<Withdrawal[]>([]);
-  useEffect(() => {
+interface Withdrawal {
+ amount: number;
+ coin: string;
+ walletAddress: string;
+ time: string | null;
+ user: string;
+ userName: string;
+ userId: string | null;
+ balance: string;
+ gasFee: string | null;
+}
+
+const AdminsPage: React.FC = () => {
+ const [data, setData] = useState<Item[]>([]);
+ const [withdrawdata, setWithdrawData] = useState<Withdrawal[]>([]);
+
+ useEffect(() => {
     const fetchData = () => {
       fetch('/api/getAdmin', {
         cache: 'no-store', 
-       })
+      })
         .then(response => {
           if (!response.ok) {
             throw new Error('Network response was not ok');
           }
           return response.json();
         })
-        .then(data => setData(data))
-        .catch(error => console.error('Error fetching data:', error));
+       
     };
 
-    // Fetch data immediately on component mount
     fetchData();
-
-    // Set up interval to fetch data every 10 seconds
     const intervalId = setInterval(fetchData, 200000); 
-
-    // Clear interval on component unmount
     return () => clearInterval(intervalId);
- }, []); 
- const handleConfirmClick = async (item: Payment) => {
-  const balance = parseFloat(item.balance);
-  const amount = parseFloat(item.amount); // Ensure amount is a number
- 
-  if (balance >= amount) {
-     const newBalance = balance - amount;
- 
-     try {
-       await prisma.payment.update({
-         where: { id: item.id },
-         data: { balance: newBalance.toString() }, // Convert the new balance back to a string if necessary
-       });
- 
-       toast.success("Payment confirmed successfully!");
-     } catch (error) {
-       console.error('Error updating balance:', error);
-       toast.error("An error occurred while updating the balance.");
-     }
-  } else {
-     toast.error("Insufficient funds!");
-  }
- };
- 
+ }, []);
+
  useEffect(() => {
   const fetchData = () => {
     fetch('/api/getWithdraw', {
@@ -135,8 +107,8 @@ interface Item {
             </TableHeader>
             <TableBody>
               {data.map((item, index) => {
-                const balance = parseFloat(item.balance);
-                const amount = item.amount;
+const balance = parseFloat(item.balance);
+const amount = parseFloat(item.amount); 
                 return (
                 <TableRow
                   key={index}
@@ -154,15 +126,17 @@ interface Item {
                  <TableCell>{item.amount}</TableCell>
                  <TableCell>{item.planId}</TableCell>
                  <TableCell>{item.gasFee}</TableCell>
-                 <TableCell>{item.time}</TableCell>
+                 <TableCell>{item.time ? item.time.toLocaleString() : ''}</TableCell> 
                  <TableCell>
                     <div className="flex gap-2">
-                    <Button
+ 
+<Button
  className="bg-green-500 text-white dark:bg-green-600"
- onClick={() => handleConfirmClick({ ...item, time: new Date(item.time || '') })}
+
 >
  Confirmed
 </Button>
+
                       <Button className="bg-red-500 text-white dark:bg-red-600">
                         False
                       </Button>
