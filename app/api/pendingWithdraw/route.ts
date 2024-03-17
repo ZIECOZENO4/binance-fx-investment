@@ -31,7 +31,7 @@ export async function POST(request: NextRequest) {
         console.log('Withdraw saved:', pendingWithdraw);
 
         // Return a 200 OK response with a success message
-        return NextResponse.json({ message: 'Withdraw saved successfully', withdraw });
+        return NextResponse.json({ message: 'Withdraw saved successfully',  pendingWithdraw });
     } catch (error) {
         console.error('Error saving withdraw:', error);
 

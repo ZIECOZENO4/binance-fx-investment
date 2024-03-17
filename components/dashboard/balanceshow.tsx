@@ -21,7 +21,11 @@ const BalanceShow: React.FC = () => {
  const { data: userInfo } = useUserInfo();
  const [currentView, setCurrentView] = useState<ViewType>('account');
  const [investmentIndex, setInvestmentIndex] = useState(0);
- const [isBalanceHidden, setIsBalanceHidden] = useState(false);
+ const [isBalanceHidden, setIsBalanceHidden] = useState(() => {
+  const saved = localStorage.getItem('isBalanceHidden');
+  const initialValue = saved ? JSON.parse(saved) : false;
+  return initialValue;
+});
 
  const investments: Investment[] = [
     { balance: '0.000', symbol: 'ETH' },
@@ -44,8 +48,11 @@ const BalanceShow: React.FC = () => {
  }, [currentView, investments.length]); // Correctly placed dependency array
 
  const toggleBalanceVisibility = () => {
-    setIsBalanceHidden(!isBalanceHidden);
- };
+  const newIsBalanceHidden = !isBalanceHidden;
+  setIsBalanceHidden(newIsBalanceHidden);
+  // Update localStorage
+  localStorage.setItem('isBalanceHidden', JSON.stringify(newIsBalanceHidden));
+};
 
  // Assuming userBalances.balance contains the user's balance
  const userBalance = userInfo.balance;

@@ -33,7 +33,12 @@ const Wallet: React.FC = () => {
   const { data: userInfo } = useUserInfo();
   const [balance, setBalance] = useState<number | null>(null);
   const [investmentIndex, setInvestmentIndex] = useState(0);
-  const [isBalanceHidden, setIsBalanceHidden] = useState(false);
+  const [isBalanceHidden, setIsBalanceHidden] = useState(() => {
+    const saved = localStorage.getItem('isBalanceHidden');
+    const initialValue = saved ? JSON.parse(saved) : false;
+    return initialValue;
+  });
+  
   const investments = [
     { balance: "0.000", symbol: "ETH" },
     { balance: "0.000", symbol: "BTC" },
@@ -47,8 +52,11 @@ const Wallet: React.FC = () => {
   const [modalPlacement, setModalPlacement] = React.useState("auto");
 
   const toggleBalanceVisibility = () => {
-    setIsBalanceHidden(!isBalanceHidden);
-  };
+    const newIsBalanceHidden = !isBalanceHidden;
+    setIsBalanceHidden(newIsBalanceHidden);
+    // Update localStorage
+    localStorage.setItem('isBalanceHidden', JSON.stringify(newIsBalanceHidden));
+ };
  
   const copyIdToClipboard = () => {
     if (user && user.id) {
