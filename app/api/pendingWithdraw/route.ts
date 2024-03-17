@@ -14,7 +14,7 @@ export async function POST(request: NextRequest) {
 
     // Process the data as needed, e.g., save it to a database
     try {
-        const withdraw = await prisma.withdraw.create({
+        const pendingWithdraw = await prisma.pendingWithdraw.create({
             data: {
                 amount,
                 coin,
@@ -28,7 +28,7 @@ export async function POST(request: NextRequest) {
             },
         });
 
-        console.log('Withdraw saved:', withdraw);
+        console.log('Withdraw saved:', pendingWithdraw);
 
         // Return a 200 OK response with a success message
         return NextResponse.json({ message: 'Withdraw saved successfully', withdraw });

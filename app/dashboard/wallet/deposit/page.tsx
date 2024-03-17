@@ -9,8 +9,11 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const DepositPage = () => {
         const [showWalletInfo, setShowWalletInfo] = useState(false);
-        const [walletAddress, setWalletAddress] = useState('');
-        const [transactionId, setTransactionId] = useState('');
+        const [depositorName, setDepositorName] = useState('');
+        const [depositorAmount, setDepositorAmount] = useState('');
+        const [depositorCoin, setDepositorCoin] = useState('');
+        const [depositorWalletAddress, setDepositorWalletAddress] = useState('');
+        const [depositorTransactionId, setDepositorTransactionId] = useState('');
         const { data: userInfo } = useUserInfo();
         const { isLoaded, isSignedIn, user } = useUser();
         const toggleWalletInfo = () => {
@@ -22,7 +25,11 @@ const DepositPage = () => {
           : "ID: ---";
         const deposit = async () => {
           // Validate the inputs
-          if (!walletAddress || !transactionId) {
+          if ( !depositorTransactionId ||
+            !depositorWalletAddress ||
+            !depositorAmount ||
+            !depositorName ||
+            !depositorCoin) {
              alert('Please provide both wallet address and transaction ID.');
              return;
           }
@@ -35,11 +42,14 @@ const DepositPage = () => {
          
           // Prepare the data payload
           const data = {
-             transactionId,
-             walletAddress,
+             depositorTransactionId,
+             depositorWalletAddress,
              time: new Date().toISOString(),
              userId, 
              user,
+             depositorAmount,
+             depositorName,
+             depositorCoin
           };
          
           try {
@@ -225,14 +235,24 @@ const DepositPage = () => {
       <div className="flex flex-col items-center justify-center space-y-6">
         {showWalletInfo && (
           <>
+                      <input
+              type="text"
+              id="depositorName"
+              name="depositorName"
+              placeholder="Depositor's Name"
+              className="w-80 appearance-none rounded-full border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
+              value={user ? (user.firstName || user.username || '-----') : '-----'}
+              readOnly 
+              onChange={(e) => setDepositorName(e.target.value)}
+            />
             <input
               type="text"
-              id="walletAddress"
-              name="walletAddress"
+              id="depositorWalletAddress"
+              name="depositorWalletAddress"
               placeholder="Wallet Address"
               className="w-80 appearance-none rounded-full border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
-              value={walletAddress}
-              onChange={(e) => setWalletAddress(e.target.value)}
+              value={depositorWalletAddress}
+              onChange={(e) => setDepositorWalletAddress(e.target.value)}
             />
             <input
               type="text"
@@ -240,8 +260,26 @@ const DepositPage = () => {
               name="transactionId"
               placeholder="Transaction ID"
               className="w-80 appearance-none rounded-full border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
-              value={transactionId}
-              onChange={(e) => setTransactionId(e.target.value)}
+              value={depositorTransactionId}
+              onChange={(e) => setDepositorTransactionId(e.target.value)}
+            />
+                        <input
+              type="text"
+              id="depositorAmount"
+              name="depositorAmount"
+              placeholder="Depositor's Amount"
+              className="w-80 appearance-none rounded-full border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
+              value={depositorAmount}
+              onChange={(e) => setDepositorAmount(e.target.value)}
+            />
+                        <input
+              type="text"
+              id="depositorCoin"
+              name="depositorCoin"
+              placeholder="Depositor's coin"
+              className="w-80 appearance-none rounded-full border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
+              value={depositorCoin}
+              onChange={(e) => setDepositorCoin(e.target.value)}
             />
           </>
         )}
@@ -273,3 +311,13 @@ const DepositPage = () => {
 }
 
 export default DepositPage
+
+// import React from 'react'
+
+// const Page = () => {
+//   return (
+//     <div>Page</div>
+//   )
+// }
+
+// export default Page

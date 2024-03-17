@@ -23,7 +23,6 @@ interface ComfirmPaymentProps {
 const ComfirmPayment: React.FC<ComfirmPaymentProps> = ({ amount, coin, plan, planId }) => {
  const pathname = usePathname();
  const router = useRouter();
-
  const { data: userInfo } = useUserInfo();
  const [isPopupOpen, setIsPopupOpen] = useState(false);
  const [isFailedPopupOpen, setIsFailedPopupOpen] = useState(false);
@@ -81,12 +80,25 @@ const ComfirmPayment: React.FC<ComfirmPaymentProps> = ({ amount, coin, plan, pla
  };
 
  const outInvest = async () => {
+  if (!walletAddress || !transactionId || !outCoin ||
+    !outAmount) {
+    alert('Please provide both wallet address, amount, coin and transaction ID.');
+    return;
+ }
+
+ // Check if the user is signed in
+ if (!isSignedIn) {
+    alert('You must be signed in to make a deposit.');
+    return;
+ }
   const data = {
      transactionId,
      walletAddress,
      time: new Date().toISOString(),
      userId,
      userName: user !== null ? `${user.firstName || user.username}` : 'FX Investor',
+     outCoin,
+     outAmount,
   };
   try {
      const response = await fetch('/api/outInvest', {
@@ -127,6 +139,17 @@ if (!isLoaded) {
   return null;
 }
 
+const [outCoin, setOutCoin] = useState('');
+const [outAmount, setOutAmount] = useState('');
+
+
+const handleCoinChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+ setOutCoin(event.target.value);
+};
+
+const handleAmountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+ setOutAmount(event.target.value);
+};
 const handleWalletAddressChange = (event: React.ChangeEvent<HTMLInputElement>) => {
   setWalletAddress(event.target.value);
 };
@@ -337,6 +360,14 @@ user && user.id
               <div className="mb-5 flex flex-col min-w-full">
               <div className="p-8 gap-6">
                 <p className=" items-center align-middle justify-center font-green-600 text-xl font-bold py-4 uppercase text-indigo-600 flex fleex-row">Provide Prove of Payment</p>
+                <label htmlFor="username" className="font-medium text-white text-md mt-4 py-2">Username</label>
+      <input
+ type="text"
+ id="username"
+ className="w-full py-2 border mt-2 border-gray-300 rounded-md"
+value={user ? (user.firstName || user.username || '-----') : '-----'}
+ readOnly 
+/>
       <label htmlFor="walletAddress" className="font-medium text-white text-md">Your Wallet Address</label>
       <input
         type="text"
@@ -353,6 +384,25 @@ user && user.id
         value={transactionId}
         onChange={handleTransactionIdChange}
       />
+
+<label htmlFor="amount" className="font-medium text-white text-md mt-4 py-2">Amount</label>
+<input
+ type="text"
+ id="amount"
+ className="w-full py-2 border mt-2 border-gray-300 rounded-md"
+ value={outAmount}
+ onChange={handleAmountChange}
+/>out
+<label htmlFor="coin" className="font-medium text-white text-md mt-4 py-2">Coin</label>
+<input
+ type="text"
+ id="coin"
+ className="w-full py-2 border mt-2 border-gray-300 rounded-md"
+ value={outCoin}
+ onChange={handleCoinChange}
+/>
+
+
     </div>
               </div>
               <button

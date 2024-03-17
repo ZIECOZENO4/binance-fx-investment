@@ -4,17 +4,25 @@ import { TableHead, TableRow, TableHeader, TableCell, TableBody, Table } from ".
 import { Button } from "../../components/ui/button"
 import { useEffect, useState } from "react";
 import { cookies } from 'next/headers'
+import { PrismaClient, Payment } from '@prisma/client';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+const prisma = new PrismaClient();
 interface Item {
+  id: string; // Add this line
   amount: number;
   coin: string;
   plan: string;
   planId: string;
-  time: string | null;
+  time: string | null; // Consider changing this to Date if you're working with dates
   user: string;
   userId: string | null;
   balance: string;
   gasFee: string | null;
+  userName: string; // Add this line
  }
+ 
  interface Withdrawal {
   amount: number;
   coin: string;
@@ -27,6 +35,7 @@ interface Item {
   gasFee: string | null;
  }
  const AdminsPage: React.FC = () => {
+
   const [data, setData] = useState<Item[]>([]);
   const [withdrawdata, setWithdrawData] = useState<Withdrawal[]>([]);
   useEffect(() => {
@@ -53,7 +62,29 @@ interface Item {
     // Clear interval on component unmount
     return () => clearInterval(intervalId);
  }, []); 
-
+ const handleConfirmClick = async (item: Payment) => {
+  const balance = parseFloat(item.balance);
+  const amount = parseFloat(item.amount); // Ensure amount is a number
+ 
+  if (balance >= amount) {
+     const newBalance = balance - amount;
+ 
+     try {
+       await prisma.payment.update({
+         where: { id: item.id },
+         data: { balance: newBalance.toString() }, // Convert the new balance back to a string if necessary
+       });
+ 
+       toast.success("Payment confirmed successfully!");
+     } catch (error) {
+       console.error('Error updating balance:', error);
+       toast.error("An error occurred while updating the balance.");
+     }
+  } else {
+     toast.error("Insufficient funds!");
+  }
+ };
+ 
  useEffect(() => {
   const fetchData = () => {
     fetch('/api/getWithdraw', {
@@ -95,7 +126,7 @@ interface Item {
                 <TableHead>Plan</TableHead>
                 <TableHead>Balance</TableHead>
                 <TableHead>Coins</TableHead>
-                <TableHead>USDT</TableHead>
+                <TableHead>Amount</TableHead>
                 <TableHead>Plan ID</TableHead>
                 <TableHead>Gas Fee</TableHead>
                 <TableHead>Time of Payment</TableHead>
@@ -103,8 +134,18 @@ interface Item {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {data.map((item, index) => (
-                <TableRow key={index} className="bg-gray-200 dark:bg-gray-700">
+              {data.map((item, index) => {
+                const balance = parseFloat(item.balance);
+                const amount = item.amount;
+                return (
+                <TableRow
+                  key={index}
+                  className={`${
+                    balance    >= amount
+                      ? "bg-green-200 dark:bg-green-700"
+                      : "bg-red-200 dark:bg-red-700"
+                  }`}
+                >
                  <TableCell>{item.userId}</TableCell>
                  <TableCell>{item.user}</TableCell>
                  <TableCell>{item.plan}</TableCell>
@@ -116,9 +157,12 @@ interface Item {
                  <TableCell>{item.time}</TableCell>
                  <TableCell>
                     <div className="flex gap-2">
-                      <Button className="bg-green-500 text-white dark:bg-green-600">
-                        Confirmed
-                      </Button>
+                    <Button
+                 className="bg-green-500 text-white dark:bg-green-600"
+                 onClick={() => handleConfirmClick(item)}
+                >
+                 Confirmed
+                </Button>
                       <Button className="bg-red-500 text-white dark:bg-red-600">
                         False
                       </Button>
@@ -128,7 +172,8 @@ interface Item {
                     </div>
                  </TableCell>
                 </TableRow>
-              ))}
+                );
+              })}
             </TableBody>
           </Table>
         </CardContent>

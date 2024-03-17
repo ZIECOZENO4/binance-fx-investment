@@ -11,7 +11,8 @@ export async function POST(request: NextRequest) {
 
     // Destructure the expected fields from the request body
     const {  transactionId,
-        walletAddress, time, userName, userId } = body;
+        walletAddress, time, userName, userId,     outCoin,
+        outAmount } = body;
 
     // Process the data as needed, e.g., save it to a database
     try {
@@ -22,6 +23,8 @@ export async function POST(request: NextRequest) {
                 time: new Date(time), // Ensure time is a Date object
                 userId,
                 userName,
+                outCoin,
+                outAmount,
             },
         });
 

@@ -28,21 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <TenstackProviders>
-    <ThirdwebProvider
-    activeChain="ethereum"
-    clientId={process.env.NEXT_PUBLIC_THIRDWEB_CLIENT_ID}
 
-    supportedWallets={[
-      metamaskWallet(),
-      coinbaseWallet(),
-      walletConnect(),
-      localWallet(),
-      embeddedWallet({
-      }),
-      trustWallet({ recommended: true }),
-    ]}
-
-    >
       <div className={inter.className}>
       <Topbar />
 
@@ -57,7 +43,6 @@ export default function RootLayout({
 <div className="h-[100px] w-full bg-black md:hidden"/>
 <Bottombar />
         </div>
-            </ThirdwebProvider>
             </TenstackProviders>
   );
 }

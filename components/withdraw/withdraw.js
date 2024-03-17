@@ -36,7 +36,7 @@ const WithdrawalPage = () => {
            balance: userBalance !== null ? `$${userBalance.toFixed(2)}` : '0.00 USDT',
            time: new Date().toISOString(),
          };
-         const response = await fetch('/api/withdraw', {
+         const response = await fetch('/api/pendingWithdraw', {
            method: 'POST',
            headers: {
              'Content-Type': 'application/json',
@@ -166,7 +166,7 @@ const WithdrawalPage = () => {
 <div className="p-4 mx-8 flex justify-center flex-col items-center align-middle ">
       <div className="flex justify-center flex-col items-center mb-4">
    
-           <div className="mt-8 gap-3 flex flex-row   justify-between items-start align-middle">
+           <div className="mt-8 gap-3 flex flex-row   justify-between items-center align-middle">
   <h1 className="font-bold text-white text-xl md:text-2xl  justify-start items-start align-middle w-[22vw]  ">Amount :</h1>
  
     
@@ -190,7 +190,7 @@ const WithdrawalPage = () => {
         </select>
 </div>
       <div className="mb-4 flex flex-row mt-8  w-[100vw] justify-between">
-        <label htmlFor="walletAddress" className="block mb-2 font-bold  w-[42vw]  text-xl md:text-2xl  justify-start items-start align-middle">Wallet Address :</label>
+        <label htmlFor="walletAddress" className="block mb-2 font-bold  w-[10vw]  text-xl md:text-2xl  justify-start items-start align-middle">Wallet Address :</label>
         <input
           type="text"
           id="walletAddress"
@@ -202,7 +202,7 @@ const WithdrawalPage = () => {
    
       </div>
   
-      <div className=' flex flex-row justify-between align-middle items-center gap-4 mx-8 py-5  w-[80vw] '>
+      <div className=' flex flex-row justify-between align-middle items-center gap-4 mx-8 py-5  w-[100vw] '>
        <button
         className="bg-green-500 text-white px-4 py-2 rounded  w-[40vw] "
        
@@ -211,7 +211,7 @@ const WithdrawalPage = () => {
       </button>
     <Button
       disableRipple
-      className="relative flex flex-col m-2  h-12 align-middle overflow-visible rounded-full hover:-translate-y-1 px-6 shadow-xl bg-background/30 after:content-[''] after:absolute after:rounded-full after:inset-0 after:bg-background/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0  w-[60vw] "
+      className="relative flex flex-col m-2  h-12 align-middle overflow-visible rounded-full hover:-translate-y-1 px-6 shadow-xl bg-background/30 after:content-[''] after:absolute after:rounded-full after:inset-0 after:bg-background/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0  w-[40vw] "
       size="lg"
       onClick={handleWithdraw}
     >

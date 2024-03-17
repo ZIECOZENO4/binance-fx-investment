@@ -10,29 +10,31 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
 
     // Destructure the expected fields from the request body
-    const { transactionId, time, user, userId, walletAddress } = body;
+    const {             depositorTransactionId,
+        depositorWalletAddress,
+        userId,
+        depositorAmount,
+        depositorName,
+        depositorCoin,  user} = body;
 
-    // Validate the request body
-    if (!transactionId || !walletAddress || !userId) {
-        return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
-    }
-
-    // Process the data as needed, e.g., save it to a database
     try {
-        const deposit = await prisma.deposit.create({
+        const pendingDeposit = await prisma.pendingDeposit.create({
             data: {
-                transactionId,
-                walletAddress,
-                time: new Date(time),
-                userId,
+                depositorTransactionId,
+                depositorWalletAddress,
+                time: new Date().toISOString(),
+                userId, 
                 user,
+                depositorAmount,
+                depositorName,
+                depositorCoin
             },
         });
 
-        console.log('Deposit saved:', deposit);
+        console.log('Deposit saved:', pendingDeposit);
 
         // Return a 200 OK response with a success message
-        return NextResponse.json({ message: 'Deposit saved successfully', deposit });
+        return NextResponse.json({ message: 'Deposit saved successfully', pendingDeposit });
     } catch (error) {
         console.error('Error saving deposit:', error);
 
