@@ -10,7 +10,12 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
 
     // Destructure the expected fields from the request body
-    const {  transactionId, time, user, userId, walletAddress} = body;
+    const { transactionId, time, user, userId, walletAddress } = body;
+
+    // Validate the request body
+    if (!transactionId || !walletAddress || !userId) {
+        return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
+    }
 
     // Process the data as needed, e.g., save it to a database
     try {
@@ -18,7 +23,7 @@ export async function POST(request: NextRequest) {
             data: {
                 transactionId,
                 walletAddress,
-                time: new Date(time), 
+                time: new Date(time),
                 userId,
                 user,
             },
