@@ -21,7 +21,6 @@ export async function POST(request: NextRequest) {
                 time: new Date(time), 
                 userId,
                 userName,
-                user
             },
         });
 

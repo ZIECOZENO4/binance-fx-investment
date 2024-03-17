@@ -19,6 +19,16 @@ interface ConfirmationPopupProps {
 const ConfirmationPopup: React.FC<ConfirmationPopupProps> = ({ plan, planId, amount, onClose }) => {
   const {isOpen, onOpenChange} = useDisclosure({ defaultOpen: true });
   const componentRef = useRef(null); // Reference to the component's root element
+ const handleDownload = () => {
+    if (componentRef.current !== null) {
+      html2canvas(componentRef.current).then(canvas => {
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF();
+        pdf.addImage(imgData, 'PNG', 0, 0,0,0,0,0);
+        saveAs(pdf.output('blob'), 'Investment receipt.pdf');
+      });
+    }
+ };
 
    
   return (
