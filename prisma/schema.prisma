@@ -67,8 +67,7 @@ model Deposit {
 transactionId      String
  time        DateTime       @default(now())
  walletAddress String
- userId      String         @map("user_id")
- userName    String     
+ userId      String         @map("user_id") 
  user        User           @relation(fields: [userId], references: [id])
 }
 

@@ -10,7 +10,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
 
     // Destructure the expected fields from the request body
-    const {  transactionId, time, userName, userId, walletAddress} = body;
+    const {  transactionId, time, user, userId, walletAddress} = body;
 
     // Process the data as needed, e.g., save it to a database
     try {
@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
                 walletAddress,
                 time: new Date(time), 
                 userId,
-                userName,
+                user,
             },
         });
 

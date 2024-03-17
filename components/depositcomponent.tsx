@@ -27,7 +27,7 @@ const DepositPage = () => {
             walletAddress,
             time: new Date().toISOString(),
             userId,
-            userName: (user?.firstName || user?.username) ?? 'FX Investor',
+            user
           };
       
           try {
