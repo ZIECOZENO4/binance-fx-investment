@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { PrismaClient, Payment } from '@prisma/client';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import DepositInfo from "../admin info/depositinfo";
 
 const prisma = new PrismaClient();
 interface Item {
@@ -159,6 +160,7 @@ const AdminsPage: React.FC = () => {
 
         </CardContent>
       </Card>
+      <DepositInfo />
    </div>
   )
 }

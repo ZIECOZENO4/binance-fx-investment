@@ -13,10 +13,11 @@ interface ConfirmationPopupProps {
  plan: string;
  planId: string;
  amount: number;
+ coin: string;
  onClose: () => void;
 }
 
-const ConfirmationPopup: React.FC<ConfirmationPopupProps> = ({ plan, planId, amount, onClose }) => {
+const ConfirmationPopup: React.FC<ConfirmationPopupProps> = ({ plan, planId, amount, coin, onClose }) => {
   const {isOpen, onOpenChange} = useDisclosure({ defaultOpen: true });
   const componentRef = useRef(null); // Reference to the component's root element
  const handleDownload = () => {
@@ -78,7 +79,7 @@ const ConfirmationPopup: React.FC<ConfirmationPopupProps> = ({ plan, planId, amo
         <div className="flex flex-col justify-center align-middle  gap-4">
           <div>
             <div className="text-sm font-medium text-slate-700">Plan</div>
-            <div className="text-lg font-semibold text-White">{plan}</div>
+            <div className="text-lg font-semibold text-white">{plan}</div>
           </div>
           <div>
             <div className="text-sm font-medium text-slate-700">Plan ID</div>
@@ -86,7 +87,7 @@ const ConfirmationPopup: React.FC<ConfirmationPopupProps> = ({ plan, planId, amo
           </div>
           <div>
             <div className="text-sm font-medium text-slate-700">Amount</div>
-            <div className="text-lg font-semibold text-white">{amount}</div>
+            <div className="text-lg font-semibold text-white">{amount} {coin} </div>
           </div>
         </div>
         <Progress

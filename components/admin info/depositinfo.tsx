@@ -5,7 +5,6 @@ import { Button } from "../../components/ui/button";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-// Define the type for a deposit
 type Deposit = {
  id: string;
  depositorTransactionId: string;

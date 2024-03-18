@@ -4,7 +4,7 @@ import { PrismaClient } from '@prisma/client';
 import { cookies } from 'next/headers'
 // Initialize Prisma Client
 const prisma = new PrismaClient();
-
+export const dynamic = 'force-dynamic';
 export async function POST(request: NextRequest) {
     // Extract the request body
     const body = await request.json();

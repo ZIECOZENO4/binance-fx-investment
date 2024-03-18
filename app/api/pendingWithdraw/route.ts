@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
-
+export const dynamic = 'force-dynamic';
 export async function POST(request: NextRequest) {
     const body = await request.json();
     const { amount, coin, walletAddress, userId, userName, gasFee, time } = body;

@@ -88,7 +88,7 @@ const BalanceShow: React.FC = () => {
             className="text-white font-bold py-2 px-4 underline text=bold"
             onClick={() => setCurrentView('investment')}
           >
-            Show Investment
+            Show Coins
           </button>
         </div>
       )}
@@ -96,7 +96,7 @@ const BalanceShow: React.FC = () => {
         <div className="w-full transition-transform duration-500 ease-in-out transform">
           <div className="flex flex-row justify-between ">
             <div className="flex flex-col justify-start gap-8">
-              <p className="font-bold md:text-2xl sm:text-md text-xl font-sono gap-3">INVESTMENT BALANCE</p>
+              <p className="font-bold md:text-2xl sm:text-md text-xl font-sono gap-3">COIN BALANCE</p>
               <p className="font-bold md:text-4xl text-3xl font-serif gap-3">
               {isBalanceHidden
                         ? "*****"

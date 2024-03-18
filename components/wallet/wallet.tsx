@@ -191,7 +191,7 @@ const Wallet: React.FC = () => {
                           {isBalanceHidden ? <Eye /> : <Noeye />}
                         </div>
                       </div>
-                      <Link href="/dashboard/wallet/wallethistory">
+                      <Link href="/wallethistory">
                       <Button color="primary" variant="shadow">
                         View History
                       </Button>
@@ -206,12 +206,12 @@ const Wallet: React.FC = () => {
 
                     <div className="flex flex-row justify-between gap-4 items-center align-middle py-4 px-2 ">
                       <div className="flex flex-row justify-between gap-4 items-center align-middle w-[70%]">
-                        <p className="text-md text-white  ">INVESTMENT</p>
+                        <p className="text-md text-white  ">COINS</p>
                         <div onClick={toggleBalanceVisibility}>
                           {isBalanceHidden ? <Eye /> : <Noeye />}
                         </div>
                       </div>
-                      <Link href="/dashboard/wallet/coinhistory">
+                      <Link href="/coinhistory">
                       <Button color="primary" variant="shadow">
                         View History
                       </Button> 

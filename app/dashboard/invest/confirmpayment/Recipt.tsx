@@ -352,6 +352,7 @@ user && user.id
           plan={plan}
           planId={planId}
           amount={amount}
+          coin={coin}
           onClose={handleOkClick}
         />
       )}
