@@ -52,7 +52,7 @@ const ConfirmationPopup: React.FC<ConfirmationPopupProps> = ({ plan, planId, amo
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col gap-1">Processing transaction</ModalHeader>
-              <ModalBody className="h-auto w-auto">
+              <ModalBody className="h-auto w-auto text-white">
               <Card className="w-full max-w-lg p-0  p-4 rounded bg-[#292f46]/50 backdrop-opacity-40 shadow-lg ">
       <CardHeader className="flex flex-col items-center gap-2 p-6">
       <svg
@@ -177,14 +177,7 @@ const ConfirmationPopup: React.FC<ConfirmationPopupProps> = ({ plan, planId, amo
             </div>
           </div>
 </div>
-      <div className=" flex flex-row jusify-center mx-8 mt-3 align-middle items-center gap-8">
-      <Button color="primary" variant="shadow" onClick={onClose}>
-      Save
-      </Button>
-      <Link href="/dashboard/invest" className="rounded-sm text-xl font-bold  bg-green-600 space-x-3 ">
-  Done
-    </Link>
-    </div>
+     
     </Card>
               </ModalBody>
               <ModalFooter>

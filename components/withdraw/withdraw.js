@@ -169,7 +169,7 @@ const WithdrawalPage = () => {
            <div className="mt-8 gap-3 flex flex-row   justify-between items-center align-middle">
   <h1 className="font-bold text-white text-xl md:text-2xl  justify-start items-start align-middle w-[40vw]  ">Amount :</h1>
  
-    <div className="font-bold text-white text-xl md:text-2xl  justify-start items-start align-middle w-[60vw]  ">
+    <div className="font-bold text-white text-xl md:text-2xl flex flex-row justify-start items-start align-middle w-[60vw]  ">
     <input
           type="number"
       
@@ -192,11 +192,11 @@ const WithdrawalPage = () => {
    
 </div>
       <div className="mb-4 flex flex-row mt-8  w-[100vw] justify-between">
-        <label htmlFor="walletAddress" className="block mb-2 font-bold  w-[30vw]  text-xl md:text-2xl  justify-start items-start align-middle">Wallet Address :</label>
+        <label htmlFor="walletAddress" className="block mb-2 font-bold  w-[40vw]  text-xl md:text-2xl  justify-start items-start align-middle">Wallet Address :</label>
         <input
           type="text"
           id="walletAddress"
-          className=" p-2 border border-gray-300 rounded  w-[70vw] text-black "
+          className=" p-2 border border-gray-300 rounded  w-[60vw] text-black "
           value={walletAddress}
           onChange={(e) => setWalletAddress(e.target.value)}
         />
@@ -206,14 +206,14 @@ const WithdrawalPage = () => {
   
       <div className=' flex flex-row justify-between align-middle items-center gap-4 mx-8 py-5  w-[100vw] '>
        <button
-        className="bg-green-500 text-white px-4 py-2 rounded  w-[40vw] "
+        className="bg-green-500 text-white px-4 py-2 rounded  w-[50vw] "
        
       >
         Share
       </button>
     <Button
       disableRipple
-      className="relative flex flex-col m-2  h-12 align-middle overflow-visible rounded-full hover:-translate-y-1 px-6 shadow-xl bg-background/30 after:content-[''] after:absolute after:rounded-full after:inset-0 after:bg-background/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0  w-[60vw] "
+      className="relative flex flex-col m-2  h-12 align-middle overflow-visible rounded-full hover:-translate-y-1 px-6 shadow-xl bg-background/30 after:content-[''] after:absolute after:rounded-full after:inset-0 after:bg-background/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0  w-[50vw] "
       size="lg"
       onClick={handleWithdraw}
     >

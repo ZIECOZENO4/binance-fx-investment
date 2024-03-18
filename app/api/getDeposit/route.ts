@@ -8,7 +8,7 @@ export const dynamic = 'force-dynamic'; // Force dynamic execution, bypassing ca
 
 export async function GET(request: NextRequest) {
     try {
-      const deposits = await prisma.pendingDeposit.findMany({
+      const deposits = await prisma.deposit.findMany({
         orderBy: {
           time: 'desc',
         },

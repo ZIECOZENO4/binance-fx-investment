@@ -7,15 +7,12 @@ const prisma = new PrismaClient();
 export const dynamic = 'force-dynamic'; // Force dynamic execution, bypassing cache
 
 export async function GET(request: NextRequest) {
-    // Extract the user ID from the request query parameters
-    const userId = request.query.userId;
+
+
 
     try {
         // Fetch all withdrawal records for the specified user from the database, sorted by the 'time' field in descending order
         const withdrawals = await prisma.withdrawal.findMany({
-            where: {
-                userId: userId,
-            },
             orderBy: {
                 time: 'desc', // Sorting by the 'time' field in descending order
             },

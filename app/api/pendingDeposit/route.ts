@@ -9,7 +9,7 @@ export async function POST(request: NextRequest) {
     const { depositorTransactionId, depositorWalletAddress, time, userId, depositorAmount, depositorName, depositorCoin } = body;
 
     try {
-        const deposit = await prisma.pendingDeposit.create({
+        const deposit = await prisma.deposit.create({
             data: {
                 depositorTransactionId,
                 depositorWalletAddress,
