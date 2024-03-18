@@ -1,7 +1,7 @@
 import React from "react";
 import { SelectValue, SelectTrigger, SelectItem, SelectContent, Select } from "../../component/ui/select"
 import { Button } from "../ui/button"
-import React from 'react'
+
 
 const WalletTransactions = () => {
   return (
