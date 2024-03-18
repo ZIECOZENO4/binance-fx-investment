@@ -4,7 +4,7 @@ import { TableHead, TableRow, TableHeader, TableCell, TableBody, Table } from ".
 import { Button } from "../../components/ui/button";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import DepositInfo from "../admin info/depositinfo";
 type Payment = {
  id: string;
  amount: string;
@@ -137,6 +137,7 @@ const AdminsPage: React.FC = () => {
           </Table>
         </CardContent>
       </Card>
+      <DepositInfo />
     </div>
  );
 };
