@@ -56,7 +56,13 @@ const ComfirmPayment: React.FC<ComfirmPaymentProps> = ({ amount, coin, plan, pla
          },
          body: JSON.stringify(data),
       });
-     
+      if (userBalance !== null && userBalance <= 0) {
+        setIsFailedPopupOpen(true); 
+      } else if (userBalance !== null && userBalance < amount) {
+        setIsFailedPopupOpen(true);
+      } else {
+        setIsPopupOpen(true);
+      }
       if (!response.ok) {
          throw new Error('Network response was not ok');
       }
@@ -112,13 +118,7 @@ const ComfirmPayment: React.FC<ComfirmPaymentProps> = ({ amount, coin, plan, pla
      if (!response.ok) {
        throw new Error('Network response was not ok');
      }
-     if (userBalance !== null && userBalance <= 0) {
-      setIsFailedPopupOpen(true); 
-    } else if (userBalance !== null && userBalance < amount) {
-      setIsFailedPopupOpen(true);
-    } else {
-      setIsPopupOpen(true);
-    }
+
      const responseData = await response.json();
      console.log(responseData);
      // Show a success toast notification

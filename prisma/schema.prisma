@@ -18,7 +18,7 @@ model User {
  updatedAt   DateTime       @updatedAt
  balance     Float?
  payments    Payment[]     
- pendingWithdraw    PendingWithdraw[]
+ pendingWithdraws    PendingWithdraw[]
  outinvest   OutInvest[]
  pendingdeposits    PendingDeposit[]
 

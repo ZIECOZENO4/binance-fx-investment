@@ -51,7 +51,7 @@ const ConfirmationPopup: React.FC<ConfirmationPopupProps> = ({ plan, planId, amo
             <ModalContent>
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1">Investment Receipt</ModalHeader>
+              <ModalHeader className="flex flex-col gap-1">Processing transaction</ModalHeader>
               <ModalBody className="h-auto w-auto">
               <Card className="w-full max-w-lg p-0  p-4 rounded bg-[#292f46]/50 backdrop-opacity-40 shadow-lg ">
       <CardHeader className="flex flex-col items-center gap-2 p-6">
@@ -69,14 +69,13 @@ const ConfirmationPopup: React.FC<ConfirmationPopupProps> = ({ plan, planId, amo
     >
       <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
     </svg>
-        <CardTitle>Processing transaction</CardTitle>
         <CardDescription>Your transaction is currently being processed by our team. Please wait.</CardDescription>
       </CardHeader>
       <CardContent className="flex items-center justify-center p-6">
         <div />
       </CardContent>
-      <CardContent className="p-6 flex-col justify-center align-middle  ">
-        <div className="flex flex-col justify-center align-middle mb-3 gap-4">
+      <CardContent className="p-1 flex-col justify-center align-middle  ">
+        <div className="flex flex-col justify-center align-middle  gap-4">
           <div>
             <div className="text-sm font-medium text-slate-700">Plan</div>
             <div className="text-lg font-semibold text-black">{plan}</div>
@@ -98,7 +97,7 @@ const ConfirmationPopup: React.FC<ConfirmationPopupProps> = ({ plan, planId, amo
         />
       </CardContent>
 
-    <div className="gap-2 mt-3 flex items-center justify-center">
+    <div className="gap-2 mt-1 flex items-center justify-center">
          <div className="flex justify-around my-4">
             <div
               className="border hover:bg-[#1877f2] w-12 h-12 fill-[#1877f2] hover:fill-white border-blue-200 rounded-full flex items-center justify-center shadow-xl hover:shadow-blue-500/50 cursor-pointer"
@@ -182,7 +181,7 @@ const ConfirmationPopup: React.FC<ConfirmationPopupProps> = ({ plan, planId, amo
       <Button color="primary" variant="shadow" onClick={onClose}>
       Save
       </Button>
-      <Link href="/dashboard/invest" className="rounded-sm bg-green-600 space-x ">
+      <Link href="/dashboard/invest" className="rounded-sm text-xl font-bold  bg-green-600 space-x-3 ">
   Done
     </Link>
     </div>
