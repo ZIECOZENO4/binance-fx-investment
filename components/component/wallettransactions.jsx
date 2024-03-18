@@ -1,8 +1,9 @@
 import React from "react";
 import { SelectValue, SelectTrigger, SelectItem, SelectContent, Select } from "../../component/ui/select"
 import { Button } from "../ui/button"
+import React from 'react'
 
-export  const  wallettransactions() {
+const WalletTransactions = () => {
   return (
     <div className="bg-black text-white">
             <div className="mx-auto max-w-md px-4 py-2">
@@ -66,6 +67,9 @@ export  const  wallettransactions() {
     </div>
   )
 }
+
+export default WalletTransactions
+
 
 
 function ClockIcon(props) {

@@ -1,71 +1,75 @@
 import React from "react";
 import { SelectValue, SelectTrigger, SelectItem, SelectContent, Select } from "../ui/select"
 import { Button } from "../ui/button"
+import React from 'react'
 
-export  const cointransaction() {
+const CoinTransaction = () => {
   return (
     <div className="bg-black text-white mt-4">
-      <div className="mx-auto max-w-md px-4 py-2">
-        <div className="mt-4 mb-2 flex justify-between">
-          <h1 className="text-blue-500 text-xl font-bold">Coins</h1>
-          <SettingsIcon className="text-gray-500" />
-        </div>
+    <div className="mx-auto max-w-md px-4 py-2">
+      <div className="mt-4 mb-2 flex justify-between">
+        <h1 className="text-blue-500 text-xl font-bold">Coins</h1>
+        <SettingsIcon className="text-gray-500" />
+      </div>
+      <div className="flex justify-between">
+        <Select>
+          <SelectTrigger id="category">
+            <SelectValue placeholder="All categories" />
+          </SelectTrigger>
+          <SelectContent position="popper">
+            <SelectItem value="all">All categories</SelectItem>
+          </SelectContent>
+        </Select>
+        <Select>
+          <SelectTrigger id="timeframe">
+            <SelectValue placeholder="All" />
+          </SelectTrigger>
+          <SelectContent position="popper">
+            <SelectItem value="all">All</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
+      <div className="mt-4">
         <div className="flex justify-between">
-          <Select>
-            <SelectTrigger id="category">
-              <SelectValue placeholder="All categories" />
-            </SelectTrigger>
-            <SelectContent position="popper">
-              <SelectItem value="all">All categories</SelectItem>
-            </SelectContent>
-          </Select>
-          <Select>
-            <SelectTrigger id="timeframe">
-              <SelectValue placeholder="All" />
-            </SelectTrigger>
-            <SelectContent position="popper">
-              <SelectItem value="all">All</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
-        <div className="mt-4">
-          <div className="flex justify-between">
-            <Button className="text-sm" variant="outline">
-              Mar
-            </Button>
-            <div>
-              <span className="text-sm font-semibold">In ₦49,610.18</span>
-              <span className="ml-4 text-sm font-semibold text-red-500">Out ₦62,208.06</span>
-            </div>
+          <Button className="text-sm" variant="outline">
+            Mar
+          </Button>
+          <div>
+            <span className="text-sm font-semibold">In ₦49,610.18</span>
+            <span className="ml-4 text-sm font-semibold text-red-500">Out ₦62,208.06</span>
           </div>
-          <div className="mt-4 space-y-3">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-2">
-                <PercentIcon className="text-red-500" />
-                <div>
-                  <p className="font-semibold">OWealth Interest</p>
-                  <p className="text-xs text-gray-500">Mar 18th, 2024 2:32:59 AM</p>
-                </div>
-              </div>
+        </div>
+        <div className="mt-4 space-y-3">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-2">
+              <PercentIcon className="text-red-500" />
               <div>
-                <p className="font-semibold text-green-500">+ ₦0.09</p>
-                <p className="mt-1 text-xs font-semibold text-gray-500">Successful</p>
+                <p className="font-semibold">OWealth Interest</p>
+                <p className="text-xs text-gray-500">Mar 18th, 2024 2:32:59 AM</p>
               </div>
             </div>
+            <div>
+              <p className="font-semibold text-green-500">+ ₦0.09</p>
+              <p className="mt-1 text-xs font-semibold text-gray-500">Successful</p>
+            </div>
           </div>
-        </div>
-        <div className="mt-6 flex justify-around border-t border-gray-200 pt-2">
-          <Button className="text-sm font-semibold" variant="ghost">
-            Transactions
-          </Button>
-          <Button className="text-sm font-semibold" variant="ghost">
-            Statistics
-          </Button>
         </div>
       </div>
+      <div className="mt-6 flex justify-around border-t border-gray-200 pt-2">
+        <Button className="text-sm font-semibold" variant="ghost">
+          Transactions
+        </Button>
+        <Button className="text-sm font-semibold" variant="ghost">
+          Statistics
+        </Button>
+      </div>
     </div>
+  </div>
   )
 }
+
+export default CoinTransaction
+
 
 
 function ClockIcon(props) {

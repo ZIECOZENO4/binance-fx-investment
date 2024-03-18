@@ -8,6 +8,7 @@ import { Suspense } from 'react';
 import Loading from "./loading";
 import { Providers } from "./providers";
 import { ToastContainer } from 'react-toastify';
+import { Analytics } from "@vercel/analytics/react"
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -24,6 +25,7 @@ export default function RootLayout({
     <html lang="en">
     
       <body className={`${inter.className} overflow-x-hidden`}>  
+      <Analytics/>
       <Providers>
             <div className=" w-[100vw] bg-black ">
               <div className='w-[100vw] z-30 sticky'>
