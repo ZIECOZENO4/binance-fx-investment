@@ -19,7 +19,8 @@ interface ConfirmationPopupProps {
 
 const ConfirmationPopup: React.FC<ConfirmationPopupProps> = ({ plan, planId, amount, coin, onClose }) => {
   const {isOpen, onOpenChange} = useDisclosure({ defaultOpen: true });
-  const componentRef = useRef(null); // Reference to the component's root element
+  const componentRef = useRef(null); 
+  
  const handleDownload = () => {
     if (componentRef.current !== null) {
       html2canvas(componentRef.current).then(canvas => {

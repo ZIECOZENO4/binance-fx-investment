@@ -29,7 +29,7 @@ const DepositInfo: React.FC = () => {
  // Define fetchData function
  const fetchData = async () => {
     try {
-      const response = await fetch('/api/fetchAndUpdateBalance', {
+      const response = await fetch('/api/getDeposit', {
         cache: 'no-store', // Disable caching
       });
       const data: DepositData = await response.json();
