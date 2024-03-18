@@ -120,14 +120,14 @@ const AdminsPage: React.FC = () => {
  </TableHeader>
  <TableBody>
     {data.map((item, index) => {
-      const balance = parseFloat(item.balance);
-      const amount = parseFloat(item.amount);
-      const backgroundColor = balance < amount ? "bg-red-200 dark:bg-red-700" : "bg-green-200 dark:bg-green-700";
+      // const balance = parseFloat(item.balance);
+      // const amount = parseFloat(item.amount);
+      // const backgroundColor = balance < amount ? "bg-red-200 dark:bg-red-700" : "bg-green-200 dark:bg-green-700";
 
       return (
         <TableRow
           key={index}
-          className={backgroundColor}
+          // className={backgroundColor}
         >
           <TableCell>{item.userId}</TableCell>
           <TableCell>{item.user}</TableCell>

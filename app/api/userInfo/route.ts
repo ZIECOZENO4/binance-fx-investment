@@ -7,9 +7,7 @@ import prisma from '@/prisma/db/db';
 import { getUserId } from '@/utils/auth';
 import { NextRequest, NextResponse } from 'next/server';
 
-// This function simulates the getUserId() function you mentioned.
-// You'll need to replace this with your actual getUserId() implementation.
-
+export const dynamic = 'force-dynamic';
 
 export async function GET(request: NextRequest) {
     // Obtain the user ID using the getUserId() function
