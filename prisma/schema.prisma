@@ -20,9 +20,8 @@ model User {
  payments    Payment[]     
  pendingwithdraw    PendingWithdraw[]
  outinvest   OutInvest[]
- pendingdeposit     PendingDeposit[]
-//  level       Level[]
-//  details     Details[]
+ pendingdeposits    PendingDeposit[]
+
 }
 
 model Payment {

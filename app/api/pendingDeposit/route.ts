@@ -30,7 +30,7 @@ export async function POST(request: NextRequest) {
                 depositorCoin
             },
         });
-
+        console.log('Request body:', body);
         console.log('Deposit saved:', pendingDeposit);
 
         // Return a 200 OK response with a success message
