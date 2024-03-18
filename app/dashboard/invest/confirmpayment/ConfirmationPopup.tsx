@@ -61,7 +61,7 @@ const ConfirmationPopup: React.FC<ConfirmationPopupProps> = ({ plan, planId, amo
       height="24"
       className="h-10 w-10"
       viewBox="0 0 24 24"
-      fill="none"
+      fill="green"
       stroke="currentColor"
       strokeWidth="2"
       strokeLinecap="round"
@@ -69,24 +69,24 @@ const ConfirmationPopup: React.FC<ConfirmationPopupProps> = ({ plan, planId, amo
     >
       <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
     </svg>
-        <CardDescription>Your transaction is currently being processed by our team. Please wait.</CardDescription>
+        <CardDescription className="text-white">Your transaction is currently being processed by our team. Please wait.</CardDescription>
       </CardHeader>
-      <CardContent className="flex items-center justify-center p-6">
+      <CardContent className="flex items-center justify-center">
         <div />
       </CardContent>
       <CardContent className="p-1 flex-col justify-center align-middle  ">
         <div className="flex flex-col justify-center align-middle  gap-4">
           <div>
             <div className="text-sm font-medium text-slate-700">Plan</div>
-            <div className="text-lg font-semibold text-black">{plan}</div>
+            <div className="text-lg font-semibold text-White">{plan}</div>
           </div>
           <div>
             <div className="text-sm font-medium text-slate-700">Plan ID</div>
-            <div className="text-lg font-semibold text-black">{planId}</div>
+            <div className="text-lg font-semibold text-white">{planId}</div>
           </div>
           <div>
             <div className="text-sm font-medium text-slate-700">Amount</div>
-            <div className="text-lg font-semibold text-black">{amount}</div>
+            <div className="text-lg font-semibold text-white">{amount}</div>
           </div>
         </div>
         <Progress
