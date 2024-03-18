@@ -206,7 +206,7 @@ const Wallet: React.FC = () => {
 
                     <div className="flex flex-row justify-between gap-4 items-center align-middle py-4 px-2 ">
                       <div className="flex flex-row justify-between gap-4 items-center align-middle w-[70%]">
-                        <p className="text-md text-white  ">COINS</p>
+                        <p className="text-md text-white  ">INVESTMENTK</p>
                         <div onClick={toggleBalanceVisibility}>
                           {isBalanceHidden ? <Eye /> : <Noeye />}
                         </div>
