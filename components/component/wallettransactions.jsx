@@ -1,5 +1,5 @@
 import React from "react";
-import { SelectValue, SelectTrigger, SelectItem, SelectContent, Select } from "../../component/ui/select"
+import { SelectValue, SelectTrigger, SelectItem, SelectContent, Select } from "../ui/select"
 import { Button } from "../ui/button"
 
 

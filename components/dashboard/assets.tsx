@@ -51,6 +51,7 @@ const Assets = () => {
   return (
     <div className='text-white'>
       {data1 && data1.map((item, index) => (
+        <div>
         <div key={index} className=' flex flex-row justify-between align-miggle items-center py-4'>
           <div className="  flex flex-row justify-start items-start align-middle p-2 w-[70%]">
           <img src={item.image} alt="coin name " className=" h-20 w-20 rounded-ful pl-3"/>
@@ -71,6 +72,8 @@ const Assets = () => {
          <div>
            
          </div>
+        </div>
+        <hr />
         </div>
       ))}
     </div>
