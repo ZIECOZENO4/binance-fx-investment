@@ -26,7 +26,6 @@ const DepositPage = () => {
           if ( !depositorTransactionId ||
             !depositorWalletAddress ||
             !depositorAmount ||
-            !depositorName ||
             !depositorCoin) {
              alert('Please provide both wallet address and transaction ID.');
              return;
@@ -262,7 +261,7 @@ const DepositPage = () => {
               onChange={(e) => setDepositorTransactionId(e.target.value)}
             />
                         <input
-              type="text"
+              type="number"
               id="depositorAmount"
               name="depositorAmount"
               placeholder="Depositor's Amount"
@@ -309,13 +308,3 @@ const DepositPage = () => {
 }
 
 export default DepositPage
-
-// import React from 'react'
-
-// const Page = () => {
-//   return (
-//     <div>Page</div>
-//   )
-// }
-
-// export default Page

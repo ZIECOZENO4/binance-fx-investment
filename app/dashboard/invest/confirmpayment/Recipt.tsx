@@ -392,7 +392,7 @@ value={user ? (user.firstName || user.username || '-----') : '-----'}
  className="w-full py-2 border mt-2 border-gray-300 rounded-md"
  value={outAmount}
  onChange={handleAmountChange}
-/>out
+/>
 <label htmlFor="coin" className="font-medium text-white text-md mt-4 py-2">Coin</label>
 <input
  type="text"
