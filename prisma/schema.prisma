@@ -34,8 +34,9 @@ model Payment {
  balance     String
  gasFee      String
  userId      String         @map("user_id")
- userName    String         // New field to store the user's name
+ userName    String        
  user        User           @relation(fields: [userId], references: [id])
+  confirmed    Boolean        @default(false) 
 }
 
 
@@ -50,6 +51,7 @@ model Withdrawal {
  userId      String         @map("user_id")
  userName    String         // New field to store the user's name
  user        User           @relation(fields: [userId], references: [id])
+  confirmed    Boolean        @default(false) 
 }
 
 
@@ -63,17 +65,18 @@ transactionId      String
 outCoin      String?
 outAmount    String?
  user        User           @relation(fields: [userId], references: [id])
+  confirmed    Boolean        @default(false) 
 }
 
 model Deposit {
  id          String         @id @default(cuid())
-depositorTransactionId     String
+ depositorTransactionId     String
  time        DateTime       @default(now())
-depositorWalletAddress String
+ depositorWalletAddress String
  userId      String         @map("user_id") 
  user        User           @relation(fields: [userId], references: [id])
-depositorAmount String
-depositorName   String
-depositorCoin  String
+ depositorAmount String
+ depositorName   String
+ depositorCoin String
+ confirmed    Boolean        @default(false) 
 }
-

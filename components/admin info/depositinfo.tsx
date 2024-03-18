@@ -18,6 +18,7 @@ type Deposit = {
  depositorAmount: string;
  depositorName: string;
  depositorCoin: string;
+ confirmed: boolean; 
 };
 
 // Define the type for the deposit data state

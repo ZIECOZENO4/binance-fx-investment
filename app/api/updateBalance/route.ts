@@ -22,6 +22,12 @@ export async function GET(request: NextRequest) {
             return NextResponse.json({ error: 'Deposit not found' }, { status: 404 });
         }
 
+        // Update the deposit to set confirmed to true
+        await prisma.deposit.update({
+            where: { id: depositId },
+            data: { confirmed: true },
+        });
+
         const updatedUser = await prisma.user.update({
             where: { id: deposit.user.id },
             data: { balance: { increment: parseFloat(deposit.depositorAmount) } },
