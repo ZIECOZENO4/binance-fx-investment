@@ -11,19 +11,19 @@ export async function GET(request: NextRequest) {
 
 
     try {
-        // Fetch all withdrawal records for the specified user from the database, sorted by the 'time' field in descending order
+
         const withdrawals = await prisma.withdrawal.findMany({
+            include: {
+                user: true,
+            },
             orderBy: {
-                time: 'desc', // Sorting by the 'time' field in descending order
+                time: 'desc', 
             },
         });
 
-        // Return a 200 OK response with the withdrawals data
         return NextResponse.json(withdrawals);
     } catch (error) {
         console.error('Error fetching withdrawals:', error);
-
-        // Return a 500 Internal Server Error response with an error message
         return NextResponse.json({ error: 'Error fetching withdrawals' }, { status: 500 });
     }
 }
