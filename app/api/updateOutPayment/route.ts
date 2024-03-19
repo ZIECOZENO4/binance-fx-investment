@@ -1,4 +1,3 @@
-// app/api/updateOutInvest.ts
 import { NextRequest, NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
 
@@ -22,16 +21,27 @@ export async function GET(request: NextRequest) {
             return NextResponse.json({ error: 'OutInvest not found' }, { status: 404 });
         }
 
-        // Update the outInvest to set confirmed to true
         await prisma.outInvest.update({
             where: { id: outInvestId },
             data: { confirmed: true },
         });
 
-        console.log(`Updated outInvest with ID ${outInvestId} to confirmed.`);
+        if (outInvest.outAmount) {
+            const outInvestAmount = parseFloat(outInvest.outAmount);
+            const updatedUser = await prisma.user.update({
+                where: { id: outInvest.user.id },
+                data: { balance: { decrement: outInvestAmount } },
+            });
+
+            console.log(`Updated balance for user ${updatedUser.id}: ${updatedUser.balance}`);
+        } else {
+            console.error(`OutInvest with ID ${outInvestId} has a null outAmount.`);
+            return NextResponse.json({ error: 'OutInvest has a null outAmount' }, { status: 400 });
+        }
+
         return NextResponse.json({ success: true });
     } catch (error) {
-        console.error('Error updating outInvest:', error);
-        return NextResponse.json({ error: 'Error updating outInvest' }, { status: 500 });
+        console.error('Error updating outInvest and user balance:', error);
+        return NextResponse.json({ error: 'Error updating outInvest and user balance' }, { status: 500 });
     }
 }

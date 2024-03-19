@@ -16,20 +16,9 @@ export async function GET(request: NextRequest) {
         });
 
 
-        for (const deposit of deposits) {
-            if (deposit.user) {
-                const updatedUser = await prisma.user.update({
-                    where: { id: deposit.user.id },
-                    data: { balance: { increment: parseFloat(deposit.depositorAmount) } },
-                });
-
-                console.log(`Updated balance for user ${updatedUser.id}: ${updatedUser.balance}`);
-            }
-        }
-
         return NextResponse.json(deposits);
     } catch (error) {
-        console.error('Error fetching and updating deposits:', error);
-        return NextResponse.json({ error: 'Error fetching and updating deposits' }, { status: 500 });
+        console.error('Error fetching and :', error);
+        return NextResponse.json({ error: 'Error fetching and' }, { status: 500 });
     }
 }

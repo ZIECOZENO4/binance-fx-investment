@@ -1,4 +1,3 @@
-
 import { NextRequest, NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
 
@@ -22,16 +21,23 @@ export async function GET(request: NextRequest) {
             return NextResponse.json({ error: 'Payment not found' }, { status: 404 });
         }
 
-        // Update the payment to set confirmed to true
+    
         await prisma.payment.update({
             where: { id: paymentId },
             data: { confirmed: true },
         });
 
-        console.log(`Updated payment with ID ${paymentId} to confirmed.`);
+      
+        const paymentAmount = parseFloat(payment.amount);
+        const updatedUser = await prisma.user.update({
+            where: { id: payment.user.id },
+            data: { balance: { decrement: paymentAmount } },
+        });
+
+        console.log(`Updated balance for user ${updatedUser.id}: ${updatedUser.balance}`);
         return NextResponse.json({ success: true });
     } catch (error) {
-        console.error('Error updating payment:', error);
-        return NextResponse.json({ error: 'Error updating payment' }, { status: 500 });
+        console.error('Error updating payment and user balance:', error);
+        return NextResponse.json({ error: 'Error updating payment and user balance' }, { status: 500 });
     }
 }
