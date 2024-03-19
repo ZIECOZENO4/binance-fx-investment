@@ -46,23 +46,6 @@ const MainTrade = () => {
         <span className="mb-4 inline-block rounded-full bg-gray-600/50 px-3 py-1.5 text-sm">
         Coin
         </span>
-
-        <motion.button
-          style={{
-            border,
-            boxShadow,
-          }}
-          whileHover={{
-            scale: 1.015,
-          }}
-          whileTap={{
-            scale: 0.985,
-          }}
-          className="group relative flex w-fit items-center gap-1.5 rounded-full bg-gray-950/10 px-4 py-2 text-gray-50 transition-colors hover:bg-gray-950/50"
-        >
-         Mine Fx
-          <FiArrowRight className="transition-transform group-hover:-rotate-45 group-active:-rotate-12" />
-        </motion.button>
       </div>
     <Card className="w-[100vw] bg-slate-900 space-y-5 p-4" radius="lg">
     <div className="w-full px-4 py-3 pb-4 flex flex-col gap-4">
@@ -151,7 +134,7 @@ const MainTrade = () => {
     <Button color="primary" variant="ghost" className=" h-24 px-3 py-4 font-bold w-full text-white ">
         Download App
       </Button>  
-      <Button color="danger" variant="bordered" startContent={<UserIcon />}>
+      <Button color="danger" variant="bordered" >
        I Don't have an Account
       </Button>
 
