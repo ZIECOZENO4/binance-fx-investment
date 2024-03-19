@@ -7,7 +7,7 @@ import { PrismaClient, Payment, OutInvest } from '@prisma/client';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useUser } from "@clerk/clerk-react"; 
-import Balance from "../balance";
+
 
 const prisma = new PrismaClient();
 
@@ -128,7 +128,7 @@ const combinedData = [...paymentsData, ...outInvestmentsData];
           </Select>
         </div>
         <div className="mt-4">
-              <span className="text-sm font-semibold">In <Balance />    </span>
+              <span className="text-sm font-semibold">In 0.00USDT </span>
               <span className="ml-4 text-sm font-semibold text-red-500">Out 0.00 USDT</span>
             </div>
           </div>
