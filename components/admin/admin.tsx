@@ -1,3 +1,4 @@
+'use client'
 import React, { useState, useEffect } from 'react';
 import { CardTitle, CardHeader, CardContent, Card } from "../../components/ui/card";
 import { TableHead, TableRow, TableHeader, TableCell, TableBody, Table } from "../../components/ui/table";
@@ -20,6 +21,7 @@ type Payment = {
  balance: string;
  gasFee: string | null;
  userName: string;
+ confirmed: boolean;
 };
 
 type PaymentData = Payment[];
@@ -58,6 +60,11 @@ const AdminsPage: React.FC = () => {
       return;
     }
 
+    if (payment.confirmed) {
+      alert('Payment is already confirmed');
+      return;
+    }
+
     const balance = parseFloat(payment.balance);
     const amount = parseFloat(payment.amount);
 
@@ -68,14 +75,13 @@ const AdminsPage: React.FC = () => {
 
     const newBalance = balance - amount;
 
-    setData(data.map(item => item.id === paymentId ? { ...item, balance: newBalance.toString() } : item));
+    setData(data.map(item => item.id === paymentId ? { ...item, balance: newBalance.toString(), confirmed: true } : item));
 
     try {
-      await fetch(`/api/updatePayment?paymentId=${paymentId}`, {
+      const response = await fetch(`/api/updatePayment?paymentId=${paymentId}`, {
         method: 'GET',
         cache: 'no-store',
       });
-      toast.success('Payment confirmed successfully');
     } catch (error) {
       console.error('Error updating payment:', error);
       toast.error('Failed to confirm payment');

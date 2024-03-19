@@ -49,6 +49,19 @@ const DepositInfo: React.FC = () => {
 
  const handleUpdateBalance = async (depositId: string) => {
     try {
+      const deposit = deposits.find(item => item.id === depositId);
+
+      if (!deposit) {
+        console.error('Deposit not found');
+        alert('Deposit not found');
+        return;
+      }
+
+      if (deposit.confirmed) {
+        alert('Deposit is already confirmed');
+        return;
+      }
+
       const response = await fetch(`/api/updateBalance?depositId=${depositId}`, {
         cache: 'no-store', // Disable caching
       });
