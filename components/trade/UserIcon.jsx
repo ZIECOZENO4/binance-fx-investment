@@ -10,8 +10,6 @@ export const UserIcon = () => {
       width={size || width || 24}
       height={size || height || 24}
       fill="#000000" // Example fill color
-      filled={true} // Example filled state
-      size={24} // Example size
       label="User Icon" // Example label
     >
       <g
