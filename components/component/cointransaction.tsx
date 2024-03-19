@@ -25,42 +25,66 @@ const InvestmentHistory = () => {
  const [historyData, setHistoryData] = useState<CommonHistoryItem[]>([]);
  const { user } = useUser(); 
  useEffect(() => {
-    const fetchHistoryData = async () => {
-      try {
-        if (!user) {
-          throw new Error('User not logged in');
-        }
-
-        const payments = await prisma.payment.findMany({
-          where: { userId: user.id },
-          orderBy: { time: 'desc' }, // Sort by time in descending order
-          include: { user: true },
-        });
-        const outInvestments = await prisma.outInvest.findMany({
-          where: { userId: user.id },
-          orderBy: { time: 'desc' }, // Sort by time in descending order
-          include: { user: true },
-        });
-
-        // Combine the data and map to the common interface
-        const combinedData = [...payments, ...outInvestments].map((item) => ({
-          id: item.id,
-          time: item.time,
-          confirmed: item.confirmed,
-          amount: item.amount,
-          coin: item.coin,
-        }));
-
-        setHistoryData(combinedData);
-        toast.success('History updated successfully!');
-      } catch (error) {
-        console.error('Error fetching history data:', error);
-        toast.error('Failed to update history. Please try again!');
+  const fetchHistoryData = async () => {
+    try {
+      if (!user) {
+        throw new Error('User not logged in');
       }
-    };
 
-    fetchHistoryData();
- }, [user]);
+      const payments = await prisma.payment.findMany({
+        where: { userId: user.id },
+        orderBy: { time: 'desc' }, // Sort by time in descending order
+        include: { user: true },
+      });
+      const outInvestments = await prisma.outInvest.findMany({
+        where: { userId: user.id },
+        orderBy: { time: 'desc' }, // Sort by time in descending order
+        include: { user: true },
+      });
+
+      const withdrawals = await prisma.withdrawal.findMany({
+        where: { userId: user.id },
+        orderBy: { time: 'desc' }, 
+        include: { user: true },
+      });
+
+      const deposits = await prisma.deposit.findMany({
+        where: { userId: user.id },
+        orderBy: { time: 'desc' }, 
+        include: { user: true },
+      });
+
+
+const paymentsData = payments.map((item) => ({
+id: item.id,
+time: item.time,
+confirmed: item.confirmed,
+amount: item.amount,
+coin: item.coin,
+}));
+
+
+const outInvestmentsData = outInvestments.map((item) => ({
+id: item.id,
+time: item.time,
+confirmed: item.confirmed,
+amount: item.outAmount,
+coin: item.outCoin,
+}));
+
+
+const combinedData = [...paymentsData, ...outInvestmentsData];
+
+      setHistoryData(combinedData);
+      toast.success('History updated successfully!');
+    } catch (error) {
+      console.error('Error fetching history data:', error);
+      toast.error('Failed to update history. Please try again!');
+    }
+  };
+
+  fetchHistoryData();
+}, [user]);
 
  return (
     <div>
