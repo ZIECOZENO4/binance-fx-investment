@@ -1,7 +1,4 @@
 
-// Assuming this file is located at /pages/api/user/[id].ts
-// Import the Prisma client instance
-// Import types from 'next'
 
 import prisma from '@/prisma/db/db';
 import { getUserId } from '@/utils/auth';
