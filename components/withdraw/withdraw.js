@@ -162,8 +162,8 @@ const WithdrawalPage = () => {
 
 </div>
 <div>
-<div className="p-4 mx-8 flex justify-center flex-col items-center align-middle ">
-      <div className="flex justify-center flex-col items-center mb-4">
+<div className="p-4 mx-8 flex justify-center flex-col items-center align-middle w-[100vw]">
+      <div className="flex justify-center flex-col items-center mb-4 w-[100vw]">
    
            <div className="mt-8 gap-3 flex flex-row   justify-between items-center align-middle">
   <h1 className="font-bold text-white text-xl md:text-2xl  justify-start items-start align-middle w-[40vw]  ">Amount :</h1>
