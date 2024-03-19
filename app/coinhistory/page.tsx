@@ -1,9 +1,9 @@
 import React from 'react'
-import CoinTransaction from "../../components/component/cointransaction"
-const CoinHistory = () => {
+import InvestmentHistory from "../../components/component/cointransaction"
+const InvestmentHistoryPage = () => {
   return (
     <div>
-      <CoinTransaction />
+      <InvestmentHistory />
     </div>
   )
 }

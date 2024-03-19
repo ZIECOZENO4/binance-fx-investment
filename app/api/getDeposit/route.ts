@@ -15,7 +15,7 @@ export async function GET(request: NextRequest) {
             },
         });
 
-        // Iterate over the deposits and update the user's balance
+
         for (const deposit of deposits) {
             if (deposit.user) {
                 const updatedUser = await prisma.user.update({

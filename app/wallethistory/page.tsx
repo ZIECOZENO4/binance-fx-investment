@@ -1,10 +1,10 @@
 import React from 'react'
 // page.tsx
-import  WalletTransactions  from '../../components/component/wallettransactions';
+import  WalletHistory  from '../../components/component/wallettransactions';
 const HistoryPage = () => {
   return (
     <div>
-      <WalletTransactions />
+      <WalletHistory />
     </div>
   )
 }
