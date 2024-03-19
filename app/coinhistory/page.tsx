@@ -8,4 +8,4 @@ const InvestmentHistoryPage = () => {
   )
 }
 
-export default CoinHistory
+export default InvestmentHistoryPage
