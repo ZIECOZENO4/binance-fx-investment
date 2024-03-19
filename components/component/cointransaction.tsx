@@ -17,8 +17,8 @@ type HistoryItem = Payment | OutInvest;
 interface CommonHistoryItem {
  id: string;
  time: Date;
- amount: string;
- coin: string;
+ amount: string  | null;
+ coin: string  | null;
  confirmed: boolean;
 }
 
@@ -44,14 +44,30 @@ const InvestmentHistory = () => {
           include: { user: true },
         });
 
-        // Combine the data and map to the common interface
-        const combinedData = [...payments, ...outInvestments].map((item) => ({
-          id: item.id,
-          time: item.time,
-          confirmed: item.confirmed,
-          amount: item.amount,
-          coin: item.coin,
-        }));
+
+
+const paymentsData = payments.map((item) => ({
+  id: item.id,
+  time: item.time,
+  confirmed: item.confirmed,
+  amount: item.amount,
+  coin: item.coin,
+ }));
+
+ 
+ const outInvestmentsData = outInvestments.map((item) => ({
+  id: item.id,
+  time: item.time,
+  confirmed: item.confirmed,
+  amount: item.outAmount,
+  coin: item.outCoin,
+ }));
+ 
+
+ 
+ const combinedData = [...paymentsData, ...outInvestmentsData];
+ 
+
 
         setHistoryData(combinedData);
         toast.success('History updated successfully!');

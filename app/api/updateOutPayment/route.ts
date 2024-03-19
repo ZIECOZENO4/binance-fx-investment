@@ -21,11 +21,13 @@ export async function GET(request: NextRequest) {
             return NextResponse.json({ error: 'OutInvest not found' }, { status: 404 });
         }
 
+        // Update the outInvest to set confirmed to true
         await prisma.outInvest.update({
             where: { id: outInvestId },
             data: { confirmed: true },
         });
 
+        // Check if outAmount is not null before parsing it
         if (outInvest.outAmount) {
             const outInvestAmount = parseFloat(outInvest.outAmount);
             const updatedUser = await prisma.user.update({

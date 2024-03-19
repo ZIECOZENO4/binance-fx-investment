@@ -17,8 +17,8 @@ type HistoryItem = Payment | OutInvest | Withdrawal | Deposit;
 interface CommonHistoryItem {
  id: string;
  time: Date;
- amount: string;
- coin: string;
+ amount: string  | null;
+ coin: string  | null;
  confirmed: boolean;
 }
 
@@ -55,13 +55,41 @@ const WalletHistory = () => {
           orderBy: { time: 'desc' }, 
           include: { user: true },
         });
-        const combinedData = [...payments, ...outInvestments].map((item) => ({
-          id: item.id,
-          time: item.time,
-          confirmed: item.confirmed,
-          amount: item.amount,
-          coin: item.coin,
-        }));
+
+
+const paymentsData = payments.map((item) => ({
+  id: item.id,
+  time: item.time,
+  confirmed: item.confirmed,
+  amount: item.amount,
+  coin: item.coin,
+ }));
+ 
+ const withdrawalsData = withdrawals.map((item) => ({
+  id: item.id,
+  time: item.time,
+  confirmed: item.confirmed,
+  amount: item.amount,
+  coin: item.coin,
+ }));
+ 
+ const outInvestmentsData = outInvestments.map((item) => ({
+  id: item.id,
+  time: item.time,
+  confirmed: item.confirmed,
+  amount: item.outAmount,
+  coin: item.outCoin,
+ }));
+ 
+ const depositsData = deposits.map((item) => ({
+  id: item.id,
+  time: item.time,
+  confirmed: item.confirmed,
+  amount: item.depositorAmount,
+  coin: item.depositorCoin,
+ }));
+ 
+ const combinedData = [...paymentsData, ...withdrawalsData, ...outInvestmentsData, ...depositsData];
 
         setHistoryData(combinedData);
         toast.success('History updated successfully!');
