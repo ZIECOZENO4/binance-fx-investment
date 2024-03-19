@@ -33,7 +33,6 @@ const WithdrawalPage = () => {
            userId: user.id,
            userName: user.firstName || user.username,
            gasFee: '0.00234123 Wei',
-           balance: userBalance !== null ? `$${userBalance.toFixed(2)}` : '0.00 USDT',
            time: new Date().toISOString(),
          };
          const response = await fetch('/api/pendingWithdraw', {
