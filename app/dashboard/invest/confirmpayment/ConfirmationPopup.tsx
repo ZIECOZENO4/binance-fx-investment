@@ -7,7 +7,8 @@ import Link from 'next/link';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import { saveAs } from 'file-saver';
-
+import { toast } from 'react-toastify'; // Import the toast function
+import 'react-toastify/dist/ReactToastify.css'; // Import the toast styles
 
 interface ConfirmationPopupProps {
  plan: string;
@@ -18,39 +19,45 @@ interface ConfirmationPopupProps {
 }
 
 const ConfirmationPopup: React.FC<ConfirmationPopupProps> = ({ plan, planId, amount, coin, onClose }) => {
-  const {isOpen, onOpenChange} = useDisclosure({ defaultOpen: true });
-  const componentRef = useRef(null); 
+ const {isOpen, onOpenChange} = useDisclosure({ defaultOpen: true });
+ const componentRef = useRef<HTMLDivElement>(null); // Make sure to specify the type of the ref
   
- const handleDownload = () => {
-    if (componentRef.current !== null) {
-      html2canvas(componentRef.current).then(canvas => {
-        const imgData = canvas.toDataURL('image/png');
-        const pdf = new jsPDF();
-        const imgProperties = pdf.getImageProperties(imgData);
-        const pdfWidth = pdf.internal.pageSize.getWidth();
-        const pdfHeight = (imgProperties.height * pdfWidth) / imgProperties.width;
-        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-      });
-    }
- };
 
-   
-  return (
+ const handleDownload = () => {
+  if (componentRef.current !== null) {
+     html2canvas(componentRef.current).then(canvas => {
+       const imgData = canvas.toDataURL('image/png');
+       const pdf = new jsPDF();
+       const imgProperties = pdf.getImageProperties(imgData);
+       const pdfWidth = pdf.internal.pageSize.getWidth();
+       const pdfHeight = (imgProperties.height * pdfWidth) / imgProperties.width;
+       pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+       pdf.save('Fx Investment Receipt.pdf'); // Save the PDF with a filename
+       toast.success('PDF generated and downloaded successfully!'); // Toast for success
+     }).catch(error => {
+       console.error('Error generating PDF:', error);
+       toast.error('Failed to generate PDF. Please try again.'); // Toast for failure
+     });
+  }
+ };
+ 
+ return (
     <Modal 
-    backdrop="opaque" 
-    isOpen={isOpen} 
-    onOpenChange={onOpenChange}
-    radius="lg"
-    classNames={{
-      body: "py-6",
-      backdrop: "bg-[#292f46]/50 backdrop-opacity-40",
-      base: "border-[#292f46] bg-[#19172c] dark:bg-[#19172c] text-[#a8b0d3]",
-      header: "border-b-[1px] border-[#292f46]",
-      footer: "border-t-[1px] border-[#292f46]",
-      closeButton: "hover:bg-white/5 active:bg-white/10",
-    }}
-  >
-            <ModalContent>
+      backdrop="opaque" 
+      isOpen={isOpen} 
+      onOpenChange={onOpenChange}
+      radius="lg"
+      classNames={{
+        body: "py-6",
+        backdrop: "bg-[#292f46]/50 backdrop-opacity-40",
+        base: "border-[#292f46] bg-[#19172c] dark:bg-[#19172c] text-[#a8b0d3]",
+        header: "border-b-[1px] border-[#292f46]",
+        footer: "border-t-[1px] border-[#292f46]",
+        closeButton: "hover:bg-white/5 active:bg-white/10",
+      }}
+    >
+      <div ref={componentRef}>
+      <ModalContent> 
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col gap-1">Processing transaction</ModalHeader>
@@ -183,19 +190,19 @@ const ConfirmationPopup: React.FC<ConfirmationPopupProps> = ({ plan, planId, amo
     </Card>
               </ModalBody>
               <ModalFooter>
-              <Button color="success" variant="ghost" onPress={handleDownload}>
+          <Button color="success" variant="ghost" onClick={handleDownload}> 
             Save
           </Button>
-                <Button className="bg-[#6f4ef2] shadow-lg shadow-indigo-500/20" onPress={onClose}>
-                Done
-                </Button>
-              </ModalFooter>
+          <Button className="bg-[#6f4ef2] shadow-lg shadow-indigo-500/20" onClick={onClose}> 
+            Done
+          </Button>
+        </ModalFooter>
             </>
           )}
         </ModalContent>
-        </Modal>
+        </div>
+    </Modal>
  );
 };
 
-
-export default ConfirmationPopup
+export default ConfirmationPopup;
