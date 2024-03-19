@@ -3,8 +3,10 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 export const dynamic = 'force-dynamic';
+
 export async function GET(request: NextRequest) {
     try {
+        // Fetch all Payment records, including related User data
         const payments = await prisma.payment.findMany({
             include: {
                 user: true,
@@ -13,6 +15,8 @@ export async function GET(request: NextRequest) {
                 time: 'desc',
             },
         });
+
+        // Iterate over each Payment record
         for (const payment of payments) {
             if (payment.user) {
                 const userId = payment.user.id;
@@ -20,10 +24,12 @@ export async function GET(request: NextRequest) {
                     where: { id: userId },
                 });
 
-                if (user && user.balance !== null && user.balance >= parseFloat(payment.amount)) {
+                // Assuming you want to update user balance based on payments
+                // This is just an example; adjust the logic as needed
+                if (user && user.balance !== null && user.balance >= parseFloat(payment.amount || '0')) {
                     const updatedUser = await prisma.user.update({
                         where: { id: userId },
-                        data: { balance: { decrement: parseFloat(payment.amount) } },
+                        data: { balance: { decrement: parseFloat(payment.amount || '0') } },
                     });
 
                     console.log(`Updated balance for user ${updatedUser.id}: ${updatedUser.balance}`);
@@ -34,6 +40,7 @@ export async function GET(request: NextRequest) {
             }
         }
 
+        // Return the fetched Payment records
         return NextResponse.json(payments);
     } catch (error) {
         console.error('Error fetching and updating payments:', error);

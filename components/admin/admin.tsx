@@ -6,6 +6,7 @@ import { Button } from "../../components/ui/button";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import DepositInfo from "../admin info/depositinfo";
+import OutInvestInfo from '../admin info/outinvest';
 type Payment = {
  id: string;
  amount: string;
@@ -32,7 +33,7 @@ const AdminsPage: React.FC = () => {
  useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('/api/getAdmin', {
+        const response = await fetch('/api/getAdmins', {
           cache: 'no-store',
         });
         if (!response.ok) {
@@ -144,6 +145,7 @@ const AdminsPage: React.FC = () => {
         </CardContent>
       </Card>
       <DepositInfo />
+      <OutInvestInfo />
     </div>
  );
 };
