@@ -83,6 +83,16 @@ const AdminsPage: React.FC = () => {
         method: 'GET',
         cache: 'no-store',
       });
+      const data = await response.json();
+      if (data.success) {
+        toast.success("Balance updated successfully!", {
+          position: "top-right",
+        });
+      } else {
+        toast.error("An error occurred while updating the balance. Please try again!", {
+          position: "top-right",
+        });
+      }
     } catch (error) {
       console.error('Error updating payment:', error);
       toast.error('Failed to confirm payment');

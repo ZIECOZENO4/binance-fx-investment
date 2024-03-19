@@ -21,14 +21,18 @@ export async function GET(request: NextRequest) {
             return NextResponse.json({ error: 'Payment not found' }, { status: 404 });
         }
 
-    
+        // Check if the user's balance is available and sufficient for the payment
+        const paymentAmount = parseFloat(payment.amount);
+        if (payment.user.balance === null || payment.user.balance < paymentAmount) {
+            return NextResponse.json({ error: 'Insufficient balance or balance not available' }, { status: 400 });
+        }
+
         await prisma.payment.update({
             where: { id: paymentId },
             data: { confirmed: true },
         });
 
-      
-        const paymentAmount = parseFloat(payment.amount);
+        // Only update the user's balance if it is sufficient and not null
         const updatedUser = await prisma.user.update({
             where: { id: payment.user.id },
             data: { balance: { decrement: paymentAmount } },
