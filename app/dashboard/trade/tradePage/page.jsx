@@ -1,8 +1,8 @@
-"use client"
+"use client";
 import { LinearProgress, makeStyles, Typography } from "@material-ui/core";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
+import { usePathname, useSearchParams } from 'next/navigation';
 import ReactHtmlParser from "react-html-parser";
 import CoinInfo from "../../../../components/trade/CoinInfo";
 import { SingleCoin } from "../../../../config/api";
