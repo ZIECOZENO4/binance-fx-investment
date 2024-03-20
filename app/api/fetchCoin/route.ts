@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
             imageUrl: coin.image.large,
             usdValue: coin.market_data.current_price.usd,
             rank: coin.market_cap_rank,
-            userId: request.user.id, // Assuming you have user authentication and request.user is available
+            userId: request.user.id, 
           },
         });
       })

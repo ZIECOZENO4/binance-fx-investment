@@ -81,12 +81,25 @@
 // }
 
 // export default Assets
+// components/Assets.tsx
 "use client"
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const  Assets = ({ userId }) => {
- const [coins, setCoins] = useState([]);
+// Define an interface for the coin data
+interface CoinData {
+ id: string;
+ name: string;
+ imageUrl: string;
+ usdValue: number;
+ rank: number;
+ userId: string;
+ balance: number;
+}
+
+const Assets = ({ userId }: { userId: string }) => {
+ // Use the interface to type the coins array
+ const [coins, setCoins] = useState<CoinData[]>([]);
 
  useEffect(() => {
     const fetchCoins = async () => {
@@ -110,6 +123,7 @@ const  Assets = ({ userId }) => {
           <p>Rank: {coin.rank}</p>
           <p>USD Value: {coin.usdValue}</p>
           <p>Balance: {coin.balance}</p>
+          {/* Add more fields as needed */}
         </div>
       ))}
     </div>
