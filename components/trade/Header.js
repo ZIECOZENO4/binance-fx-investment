@@ -1,16 +1,4 @@
-import {
-  AppBar,
-  Container,
-  MenuItem,
-  Select,
-  Toolbar,
-  Typography,
-} from "@material-ui/core";
-import {
-  createTheme,
-  makeStyles,
-  ThemeProvider,
-} from "@material-ui/core/styles";
+
 import { useHistory } from "next/navigation";
 import { CryptoState } from "../../CryptoContext";
 

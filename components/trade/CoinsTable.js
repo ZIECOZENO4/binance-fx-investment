@@ -1,21 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Pagination from "@material-ui/lab/Pagination";
-import {
-  Container,
-  createTheme,
-  TableCell,
-  LinearProgress,
-  ThemeProvider,
-  Typography,
-  TextField,
-  TableBody,
-  TableRow,
-  TableHead,
-  TableContainer,
-  Table,
-  Paper,
-} from "@material-ui/core";
 import axios from "axios";
 import { CoinList } from "../../config/api";
 import { useHistory } from "next/navigation";
@@ -84,23 +67,23 @@ export default function CoinsTable() {
   };
 
   return (
-    <ThemeProvider theme={darkTheme}>
-      <Container style={{ textAlign: "center" }}>
-        <Typography
+    <div theme={darkTheme}>
+      <div style={{ textAlign: "center" }}>
+        <div
           variant="h4"
           style={{ margin: 18, fontFamily: "Montserrat" }}
         >
           Cryptocurrency Prices by Market Cap
-        </Typography>
-        <TextField
+        </div>
+        <div
           label="Search For a Crypto Currency.."
           variant="outlined"
           style={{ marginBottom: 20, width: "100%" }}
           onChange={(e) => setSearch(e.target.value)}
         />
-        <TableContainer component={Paper}>
+        <div component={Paper}>
           {loading ? (
-            <LinearProgress style={{ backgroundColor: "gold" }} />
+            <div style={{ backgroundColor: "gold" }} />
           ) : (
             <Table aria-label="simple table">
               <TableHead style={{ backgroundColor: "#EEBC1D" }}>
@@ -189,10 +172,10 @@ export default function CoinsTable() {
               </TableBody>
             </Table>
           )}
-        </TableContainer>
+        </div>
 
         {/* Comes from @material-ui/lab */}
-        <Pagination
+        <div
           count={(handleSearch()?.length / 10).toFixed(0)}
           style={{
             padding: 20,
@@ -206,7 +189,7 @@ export default function CoinsTable() {
             window.scroll(0, 450);
           }}
         />
-      </Container>
-    </ThemeProvider>
+      </div>
+    </div>
   );
 }

@@ -1,5 +1,5 @@
 "use client";
-import { LinearProgress, makeStyles, Typography } from "@material-ui/core";
+
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { usePathname, useSearchParams } from 'next/navigation';
