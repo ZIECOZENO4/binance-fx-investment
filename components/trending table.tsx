@@ -9,7 +9,6 @@ import TrendingCard from "./trendingCard"
 const styles = {
     trendingWrapper: `mx-auto w-full`,
     h1: `text-3xl text-white font-bold `,
- 
 }
 const Trending = () => {
  
