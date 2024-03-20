@@ -85,78 +85,78 @@ const ComfirmPayment: React.FC<ComfirmPaymentProps> = ({ amount, coin, plan, pla
      
  };
 
- const outInvest = async () => {
-  if (!walletAddress || !transactionId || !outCoin ||
-    !outAmount) {
-    alert('Please provide both wallet address, amount, coin and transaction ID.');
-    return;
- }
+//  const outInvest = async () => {
+//   if (!walletAddress || !transactionId || !outCoin ||
+//     !outAmount) {
+//     alert('Please provide both wallet address, amount, coin and transaction ID.');
+//     return;
+//  }
 
- // Check if the user is signed in
- if (!isSignedIn) {
-    alert('You must be signed in to make a deposit.');
-    return;
- }
-  const data = {
-     transactionId,
-     walletAddress,
-     time: new Date().toISOString(),
-     userId,
-     userName: user !== null ? `${user.firstName || user.username}` : 'FX Investor',
-     outCoin,
-     outAmount,
-  };
-  try {
-     const response = await fetch('/api/outInvest', {
-       method: 'POST',
-       headers: {
-         'Content-Type': 'application/json',
-       },
-       body: JSON.stringify(data),
-     });
+//  // Check if the user is signed in
+//  if (!isSignedIn) {
+//     alert('You must be signed in to make a deposit.');
+//     return;
+//  }
+//   const data = {
+//      transactionId,
+//      walletAddress,
+//      time: new Date().toISOString(),
+//      userId,
+//      userName: user !== null ? `${user.firstName || user.username}` : 'FX Investor',
+//      outCoin,
+//      outAmount,
+//   };
+//   try {
+//      const response = await fetch('/api/outInvest', {
+//        method: 'POST',
+//        headers: {
+//          'Content-Type': 'application/json',
+//        },
+//        body: JSON.stringify(data),
+//      });
  
-     if (!response.ok) {
-       throw new Error('Network response was not ok');
-     }
+//      if (!response.ok) {
+//        throw new Error('Network response was not ok');
+//      }
 
-     const responseData = await response.json();
-     console.log(responseData);
-     // Show a success toast notification
-     toast.success("Payment sent successfully to the Admins!, Please await confirmation.", {
-       position: "top-center",
-       theme: "colored",
-     });
-  } catch (error) {
-     console.error('Error sending data to admin:', error);
-     // Show an error toast notification
-     toast.error("Error sending payment to admin: Please check your balance ", {
-       position: "top-right",
-     });
-  }
- };
+//      const responseData = await response.json();
+//      console.log(responseData);
+//      // Show a success toast notification
+//      toast.success("Payment sent successfully to the Admins!, Please await confirmation.", {
+//        position: "top-center",
+//        theme: "colored",
+//      });
+//   } catch (error) {
+//      console.error('Error sending data to admin:', error);
+//      // Show an error toast notification
+//      toast.error("Error sending payment to admin: Please check your balance ", {
+//        position: "top-right",
+//      });
+//   }
+//  };
  
-if (!isLoaded) {
-  return null;
-}
+// if (!isLoaded) {
+//   return null;
+// }
 
-const [outCoin, setOutCoin] = useState('');
-const [outAmount, setOutAmount] = useState('');
+// const [outCoin, setOutCoin] = useState('');
+// const [outAmount, setOutAmount] = useState('');
 
 
-const handleCoinChange = (event: React.ChangeEvent<HTMLInputElement>) => {
- setOutCoin(event.target.value);
-};
+// const handleCoinChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+//  setOutCoin(event.target.value);
+// };
 
-const handleAmountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
- setOutAmount(event.target.value);
-};
-const handleWalletAddressChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  setWalletAddress(event.target.value);
-};
+// const handleAmountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+//  setOutAmount(event.target.value);
+// };
+// const handleWalletAddressChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+//   setWalletAddress(event.target.value);
+// };
 
-const handleTransactionIdChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  setTransactionId(event.target.value);
-};
+// const handleTransactionIdChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+//   setTransactionId(event.target.value);
+// };
 
 const handleButtonClick = async () => {
   try {
@@ -356,79 +356,6 @@ user && user.id
           onClose={handleOkClick}
         />
       )}
-
-              <Note />
-              <div className="mb-5 flex flex-col min-w-full">
-              <div className="p-8 gap-6">
-                <p className=" items-center align-middle justify-center font-green-600 text-xl font-bold py-4 uppercase text-indigo-600 flex fleex-row">Provide Prove of Payment</p>
-                <label htmlFor="username" className="font-medium text-white text-md mt-4 py-2">Username</label>
-      <input
- type="text"
- id="username"
- className="w-full py-2 border mt-2 border-gray-300 rounded-md"
-value={user ? (user.firstName || user.username || '-----') : '-----'}
- readOnly 
-/>
-      <label htmlFor="walletAddress" className="font-medium text-white text-md">Your Wallet Address</label>
-      <input
-        type="text"
-        id="walletAddress"
-        className="w-full py-2 border mt-3 border-gray-300 rounded-md"
-        value={walletAddress}
-        onChange={handleWalletAddressChange}
-      />
-      <label htmlFor="transactionId" className="font-medium text-white text-md mt-4 py-2">Transaction ID</label>
-      <input
-        type="text"
-        id="transactionId"
-        className="w-full py-2 border mt-2 border-gray-300 rounded-md"
-        value={transactionId}
-        onChange={handleTransactionIdChange}
-      />
-
-<label htmlFor="amount" className="font-medium text-white text-md mt-4 py-2">Amount</label>
-<input
- type="text"
- id="amount"
- className="w-full py-2 border mt-2 border-gray-300 rounded-md"
- value={outAmount}
- onChange={handleAmountChange}
-/>
-<label htmlFor="coin" className="font-medium text-white text-md mt-4 py-2">Coin</label>
-<input
- type="text"
- id="coin"
- className="w-full py-2 border mt-2 border-gray-300 rounded-md"
- value={outCoin}
- onChange={handleCoinChange}
-/>
-
-
-    </div>
-              </div>
-              <button
-      className="w-full bg-green-600 text-white px-2 py-2 rounded-md"
-      onClick={outInvest}
-    >
-      Accept
-    </button>
-            </div>
-            <div className="px-3 py-5 border-b-2  border-gray-200">
-              <Link
-              href="/dashboard/invest"
-                className="
-                  min-w-full
-                  bg-red-700
-                  font-semibold
-                  text-white
-                  px-2
-                  py-2
-                  rounded-md
-                "
-              >
-                Reject
-              </Link>
-            </div>
           </div>
         
         </div>
@@ -436,6 +363,7 @@ value={user ? (user.firstName || user.username || '-----') : '-----'}
       <div className=' bg-white py-5 flex flex-wrap overflow-x-auto justify-start items-start align-middle leading-8 font-bold text-md gap-2 px-2'>
         <p className=" mx-1 flex flex-wrap "><span className="text-blue-500 text-sm mr-1">NOTE:<p className='leading-6 text-black'>If you click on accept the transaction will automatically procced and it will be withdrawn from your Binance FX wallet,<br /> but if you don&apos;t have money in your wallet simply copy the company&apos;s wallet address and make payment, after you provide your wallet address and transaction ID for comfirmation </p> <br /> </span>ALL DEPOSIT SHOULD BE MADE TO COMPANY&apos;S WALLET ADDRESS [0x1b9E45C744c0E2728e5D2418f58d4B924ADb875F],<br /> WHEN DONE CLICK ACCEPT FOR THE TRANSACTION TO TAKE PLACE. THANKS FOR INVESTI NG ON BINANCE FX</p>
       </div>
+    </div> 
     </div> 
 
 

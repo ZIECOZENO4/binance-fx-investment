@@ -22,6 +22,10 @@ model User {
  outinvest   OutInvest[]
 deposits    Deposit[]
 customcoins CustomCoin[]
+  referrerId      String?  @map("referrer_id")
+  referralBalance Float    @default(0)
+  referrals       User[]   @relation("UserReferrals", fields: [referrerId], references: [id])
+  referrer        User?    @relation("UserReferrals", fields: [referrerId], references: [id])
 }
 
 model Payment {
@@ -57,10 +61,10 @@ model Withdrawal {
 
 model OutInvest {
  id          String         @id @default(cuid())
-transactionId      String
  time        DateTime       @default(now())
  walletAddress String
  userId      String         @map("user_id")
+  gasFee      String
  userName    String    
 outCoin      String?
 outAmount    String?

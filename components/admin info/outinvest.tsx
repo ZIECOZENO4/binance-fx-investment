@@ -19,6 +19,7 @@ type OutInvest = {
  outCoin: string;
  outAmount: string;
  confirmed: boolean; 
+ gasFee: string;
 };
 
 // Define the type for the outinvest data state
@@ -87,7 +88,7 @@ const OutInvestInfo: React.FC = () => {
 
  return (
     <div className="bg-black flex flex-col justify-center align-middle">
-      <h1 className="text-2xl font-bold text-sky-700">OutInvest Information</h1>
+      <h1 className="text-2xl font-bold text-sky-700">Withdrawal Information</h1>
       <Card>
         <CardHeader>
           <CardTitle className="text-2xl text-gray-800 dark:text-gray-300 flex justify-center align-middle items-center py-3 font-extrabold">OutInvestments</CardTitle>
@@ -100,6 +101,7 @@ const OutInvestInfo: React.FC = () => {
                 <TableHead>Username</TableHead>
                 <TableHead>Amount</TableHead>
                 <TableHead>Coin</TableHead>
+                <TableHead>GasFee</TableHead>
                 <TableHead>Time</TableHead>
                 <TableHead>Update Balance</TableHead>
               </TableRow>
@@ -111,6 +113,7 @@ const OutInvestInfo: React.FC = () => {
                  <TableCell>{outInvest.user.name}</TableCell>
                  <TableCell>{outInvest.outAmount}</TableCell>
                  <TableCell>{outInvest.outCoin}</TableCell>
+                 <TableCell>{outInvest.gasFee}</TableCell>
                  <TableCell>{new Date(outInvest.time).toLocaleString()}</TableCell>
                  <TableCell>
                     <Button

@@ -10,32 +10,42 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const WithdrawalPage = () => {
   const { data: userInfo } = useUserInfo();
-  const [selectedCoin, setSelectedCoin] = useState(null);
+  const [outCoin, setOutCoin] = useState(null);
   const [walletAddress, setWalletAddress] = useState('');
-  const [amount, setAmount] = useState('');
+  const [outAmount, setOutAmount] = useState('');
   const [showPending, setShowPending] = useState(false);
   const [showNoFunds, setShowNoFunds] = useState(false);
   const { isLoaded, isSignedIn, user } = useUser();
   if (!isLoaded) {
     return null;
   }
+
   const handleWithdraw = async () => {
-    // Check if the user's balance is 0, null, or if the withdrawal amount is greater than the balance
-    if (userInfo.balance === 0 || userInfo.balance === null || parseFloat(amount) > parseFloat(userInfo.balance)) {
+  if (!walletAddress  || !outCoin ||
+    !outAmount) {
+    alert('Please provide both wallet address, outamount, coin and transaction ID.');
+    return;
+ }
+ if (!isSignedIn) {
+  alert('You must be signed in to make a deposit.');
+  return;
+}
+    if (userInfo.balance === 0 || userInfo.balance === null || parseFloat(outAmount) > parseFloat(userInfo.balance)) {
        setShowNoFunds(true);
     } else {
        setShowPending(true);
        try {
          const data = {
-           amount,
-           coin: selectedCoin,
-           walletAddress,
-           userId: user.id,
-           userName: user.firstName || user.username,
            gasFee: '0.00234123 Wei',
            time: new Date().toISOString(),
+           walletAddress,
+           time: new Date().toISOString(),
+           userId,
+           userName: user !== null ? `${user.firstName || user.username}` : 'FX Investor',
+           outCoin: outCoin,
+           outAmount,
          };
-         const response = await fetch('/api/pendingWithdraw', {
+         const response = await fetch('/api/outInvest', {
            method: 'POST',
            headers: {
              'Content-Type': 'application/json',
@@ -166,21 +176,21 @@ const WithdrawalPage = () => {
       <div className="flex justify-start flex-col items-start mb-4 w-[100vw]">
    
            <div className="mt-8 gap-3 flex flex-row   justify-between items-center align-middle">
-  <h1 className="font-bold text-white text-xl md:text-2xl  justify-start items-start align-middle w-[40vw]  ">Amount :</h1>
+  <h1 className="font-bold text-white text-xl md:text-2xl  justify-start items-start align-middle w-[40vw]  "></h1>Amount :</h1>
  
     <div className="font-bold text-white text-xl md:text-2xl flex flex-row justify-center items-center align-middle w-[60vw]  ">
     <input
           type="number"
       
           className=" p-2 border border-gray-300 w-[30vw] rounded text-black"
-          value={amount}
-          onChange={(e) => setAmount(e.target.value)}
+          value={outAmount}
+          onChange={(e) => setOutAmount(e.target.value)}
         />
 
         <select
           id="coinSelect"
           className=" p-2 border border-gray-300 w-[30vw] text-black rounded"
-          onChange={(e) => setSelectedCoin(coins.find(coin => coin.symbol === e.target.value))}
+          onChange={(e) => setOutCoin(coins.find(coin => coin.symbol === e.target.value))}
         >
           <option value="">Select </option>
           {coins.map((coin) => (
@@ -231,7 +241,7 @@ const WithdrawalPage = () => {
           </div>
         </div>
       </div>
-    </div>
+
   );
 };
 
