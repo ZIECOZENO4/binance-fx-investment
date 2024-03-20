@@ -11,8 +11,8 @@ import {
   makeStyles,
   ThemeProvider,
 } from "@material-ui/core/styles";
-import { useHistory } from "react-router-dom";
-import { CryptoState } from "../CryptoContext";
+import { useHistory } from "next/navigation";
+import { CryptoState } from "../../CryptoContext";
 
 const useStyles = makeStyles((theme) => ({
   title: {

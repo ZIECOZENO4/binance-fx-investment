@@ -18,8 +18,8 @@ import {
 } from "@material-ui/core";
 import axios from "axios";
 import { CoinList } from "../config/api";
-import { useHistory } from "react-router-dom";
-import { CryptoState } from "../CryptoContext";
+import { useHistory } from "next/navigation";
+import { CryptoState } from "../../CryptoContext";
 
 export function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");

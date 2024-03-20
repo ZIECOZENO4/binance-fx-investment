@@ -2,9 +2,9 @@ import { makeStyles } from "@material-ui/core";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import AliceCarousel from "react-alice-carousel";
-import { Link } from "react-router-dom";
-import { TrendingCoins } from "../../config/api";
-import { CryptoState } from "../../CryptoContext";
+import { Link } from "next/link";
+import { TrendingCoins } from "../../../config/api";
+import { CryptoState } from "../../../CryptoContext";
 import { numberWithCommas } from "../CoinsTable";
 
 const Carousel = () => {
@@ -45,7 +45,7 @@ const Carousel = () => {
     let profit = coin?.price_change_percentage_24h >= 0;
 
     return (
-      <Link className={classes.carouselItem} to={`/coins/${coin.id}`}>
+      <Link className={classes.carouselItem} href={`/dashboard/trade/tradePage/${coin.id}`}>
         <img
           src={coin?.image}
           alt={coin.name}

@@ -41,7 +41,7 @@ function Banner() {
               fontFamily: "Montserrat",
             }}
           >
-            Crypto Hunter
+           Binance FX Trading
           </Typography>
           <Typography
             variant="subtitle2"
