@@ -89,5 +89,6 @@ model CustomCoin {
  rank      Int
  user      User     @relation(fields: [userId], references: [id])
  userId    String   @map("user_id")
+balance    Float    @default(0.00)
 confirmed    Boolean        @default(false) 
 }
