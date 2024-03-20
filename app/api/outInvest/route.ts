@@ -22,7 +22,7 @@ export async function POST(request: NextRequest) {
                 time: new Date(time), // Ensure time is a Date object
                 userId,
                 userName,
-                gasFee
+                gasFee,
                 outCoin,
                 outAmount,
             },
