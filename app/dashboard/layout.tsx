@@ -35,10 +35,10 @@ export default function RootLayout({
 <main className='flex flex-row'>
   <LeftSidebar />
   <section className='main-container'>
-    <div className='w-[100vw] max-w-4xl'>{children}</div>
+    <div className='w-[100vw] md:w-[50vw]'>{children}</div>
   
   </section>
-   <Promos />
+  
 </main>
 <div className="h-[100px] w-full bg-black md:hidden"/>
 <Bottombar />
