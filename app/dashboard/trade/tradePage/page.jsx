@@ -26,7 +26,7 @@ const CoinPage = () => {
 
   }, []);
 
-  const useStyles = makeStyles((theme) => ({
+  const useStyles = (() => ({
     container: {
       display: "flex",
       [theme.breakpoints.down("md")]: {
