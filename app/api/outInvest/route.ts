@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
         const outInvest = await prisma.outInvest.create({
             data: {
       walletAddress,
-                time: new Date(time), // Ensure time is a Date object
+                time: new Date(time), 
                 userId,
                 userName,
                 gasFee,

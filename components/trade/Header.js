@@ -1,4 +1,4 @@
-
+"use client"
 import { useHistory } from "next/navigation";
 import { CryptoState } from "../../CryptoContext";
 
