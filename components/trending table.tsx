@@ -49,7 +49,7 @@ const Trending = () => {
             </div>
             <br />
             <div className="flex md:flex-row align-middle items-center flex-col justify-center ">
-                <p>The global crypto market cap is $1.74T, a &nbsp; </p>
+                <p>The global crypto market cap is $ 1.74T, a &nbsp; </p>
                 <span> <Rate isIncrement={true} rate='0.53%' /> </span>
                 <p> &nbsp; decrease over the last day. <span className="underline text-blue-700">Read More</span> </p>
             </div>
