@@ -16,7 +16,7 @@ const Basic2 = () => {
   const pathname = usePathname();
   const router = useRouter();
  
-  const handleInvestNowClick = () => {
+  const handleInvestNowClick =  async  () => {
      calculateProfit(amount);
      const url = `/dashboard/invest/confirmpayment?amount=${parseFloat(amount)}&coin=${selectedCoin}&plan=Basic&planId=BFXITB00001`;
      router.push(url);
@@ -51,7 +51,7 @@ const handleInvestNowClick4 = () => {
     const [profit, setProfit] = useState<number | null>(null);
     const [selectedCoin, setSelectedCoin] = useState('USDT');
     const [error, setError] = useState('');
-    const calculateProfit = (input: string) => {
+    const calculateProfit =  async  (input: string) => {
       const value = parseInt(input,  10);
       if (value <  200 || value >  2000) {
         setError('The amount must be between  200 and  2000.');
@@ -59,9 +59,10 @@ const handleInvestNowClick4 = () => {
         return;
       }
   
-      const profitValue = value *  0.4;
-      setProfit(profitValue);
-      setError('');
+       const profitValue = value * 0.4;
+  await new Promise(resolve => setTimeout(resolve, 1000)); // Example async operation
+  setProfit(profitValue);
+  setError('');
     };
     const calculateProfit2 = (input: string) => {
       const value = parseInt(input,  10);
@@ -284,13 +285,8 @@ const handleInvestNowClick4 = () => {
  value={selectedCoin}
  onChange={(e) => setSelectedCoin(e.target.value)}
 >
- <option value="USDT">USDT</option>
- <option value="BTC">BTC</option>
- <option value="ETH">ETH</option>
- <option value="BNB">BNB</option>
- <option value="TRON">TRON</option>
- <option value="DOGE">DOGE</option>
- <option value="DOGE">XRP</option>
+ <option value="USDT">USD</option>
+
 </select>
             </div>
           }

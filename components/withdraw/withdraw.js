@@ -30,21 +30,25 @@ const WithdrawalPage = () => {
   alert('You must be signed in to make a deposit.');
   return;
 }
+if (selectedCoin === 'USD' && parseFloat(amount) < 300) {
+  alert('The minimum withdrawal amount for USD is 300 USD.');
+  return;
+}
     if (userInfo.balance === 0 || userInfo.balance === null || parseFloat(outAmount) > parseFloat(userInfo.balance)) {
        setShowNoFunds(true);
     } else {
        setShowPending(true);
        try {
-         const data = {
-           gasFee: '0.00234123 Wei',
-           time: new Date().toISOString(),
-           walletAddress,
-           time: new Date().toISOString(),
-           userId,
-           userName: user !== null ? `${user.firstName || user.username}` : 'FX Investor',
-           outCoin: outCoin,
-           outAmount,
-         };
+        const data = {
+          gasFee: '0.00234123 Wei',
+          time: new Date().toISOString(),
+          walletAddress,
+          userId, // Note: userId is used but not defined anywhere in your code snippet.
+          userName: user !== null ? `${user.firstName || user.username}` : 'FX Investor',
+          outCoin: outCoin,
+          outAmount,
+        };
+        
          const response = await fetch('/api/outInvest', {
            method: 'POST',
            headers: {
@@ -75,14 +79,20 @@ const WithdrawalPage = () => {
     }
    };
    
-
   const coins = [
+    { fullName: 'Us-Dollar', symbol: 'USD' },
     { fullName: 'Bitcoin', symbol: 'BTC' },
     { fullName: 'Ethereum', symbol: 'ETH' },
     { fullName: 'Binance', symbol: 'BNB' },
     { fullName: 'Tron', symbol: 'TRON' },   
     { fullName: 'Doge', symbol: 'DOGE' },
     { fullName: 'XRP', symbol: 'XRP' },
+    { fullName: 'Tether', symbol: 'USDT' },
+    { fullName: 'Solana', symbol: 'SOL' },
+    { fullName: 'Ripple', symbol: '' },
+    { fullName: 'Lido', symbol: 'STETH' },   
+    { fullName: 'Doge', symbol: 'DOGE' },
+    { fullName: 'Avalanche-2', symbol: 'AVAX' },
   ];
 
   const userBalance = userInfo.balance;
@@ -176,7 +186,7 @@ const WithdrawalPage = () => {
       <div className="flex justify-start flex-col items-start mb-4 w-[100vw]">
    
            <div className="mt-8 gap-3 flex flex-row   justify-between items-center align-middle">
-  <h1 className="font-bold text-white text-xl md:text-2xl  justify-start items-start align-middle w-[40vw]  "></h1>Amount :</h1>
+  <h1 className="font-bold text-white text-xl md:text-2xl  justify-start items-start align-middle w-[40vw]  ">Amount :</h1>
  
     <div className="font-bold text-white text-xl md:text-2xl flex flex-row justify-center items-center align-middle w-[60vw]  ">
     <input
@@ -192,7 +202,7 @@ const WithdrawalPage = () => {
           className=" p-2 border border-gray-300 w-[30vw] text-black rounded"
           onChange={(e) => setOutCoin(coins.find(coin => coin.symbol === e.target.value))}
         >
-          <option value="">Select </option>
+          <option value="USDT">Select </option>
           {coins.map((coin) => (
             <option key={coin.symbol} value={coin.symbol}>{coin.symbol}</option>
           ))}
@@ -241,7 +251,7 @@ const WithdrawalPage = () => {
           </div>
         </div>
       </div>
-
+</div>
   );
 };
 

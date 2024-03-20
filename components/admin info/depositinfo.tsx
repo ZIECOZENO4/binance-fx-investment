@@ -63,14 +63,14 @@ const DepositInfo: React.FC = () => {
       }
 
       const response = await fetch(`/api/updateBalance?depositId=${depositId}`, {
-        cache: 'no-store', // Disable caching
+        cache: 'no-store', 
       });
       const data = await response.json();
       if (data.success) {
         toast.success("Balance updated successfully!", {
           position: "top-right",
         });
-        // Re-fetch the data to update the UI
+     
         fetchData();
       } else {
         toast.error("An error occurred while updating the balance. Please try again!", {

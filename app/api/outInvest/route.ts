@@ -10,7 +10,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
 
     // Destructure the expected fields from the request body
-    const {  transactionId, gasFee,
+    const {   gasFee,
         walletAddress, time, userName, userId,     outCoin,
         outAmount } = body;
 
@@ -18,7 +18,6 @@ export async function POST(request: NextRequest) {
     try {
         const outInvest = await prisma.outInvest.create({
             data: {
-                transactionId,
       walletAddress,
                 time: new Date(time), // Ensure time is a Date object
                 userId,
