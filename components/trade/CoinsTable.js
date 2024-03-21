@@ -140,7 +140,7 @@
 "use client"
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { CoinList } from "../../config/api";
 import { CryptoState } from "../../CryptoContext";
 
@@ -170,6 +170,7 @@ function Pagination({ itemsPerPage, totalItems, paginate, currentPage }) {
 }
 
 export default function CoinsTable() {
+  const router = useRouter();
   const [coins, setCoins] = useState([]);
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
@@ -177,7 +178,7 @@ export default function CoinsTable() {
   const [coinsPerPage] = useState(10);
 
   const { currency, symbol } = CryptoState();
-  const router = useRouter();
+ 
 
   const fetchCoins = async () => {
     setLoading(true);

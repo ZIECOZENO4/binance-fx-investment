@@ -19,8 +19,7 @@ model User {
  withdrawals Withdrawal[]  
  outinvest   OutInvest[]
  deposits    Deposit[]
- customcoins CustomCoin[]
- coinAmounts CoinAmount[]
+  userCoinAmounts UserCoinAmount[]
 }
 
 model Payment {
@@ -77,22 +76,19 @@ model Deposit {
  confirmed    Boolean        @default(false) 
 }
 
-model CustomCoin {
- id        String   @id @default(cuid())
- name      String
- imageUrl String
- usdValue Float
- rank      Int
- user      User     @relation(fields: [userId], references: [id])
- userId    String   @map("user_id")
- balance    Float    @default(0.00)
- confirmed    Boolean        @default(false) 
+model Coin {
+  id        String   @id @default(cuid())
+  symbol    String   @unique
+  name      String
+  usdValue  Float?   @default(0)
+  userCoinAmounts UserCoinAmount[]
 }
 
-model CoinAmount {
- id        String   @id @default(cuid())
- coinId    String
- amount    Float
- user      User     @relation(fields: [userId], references: [id])
- userId    String   @map("user_id")
+model UserCoinAmount {
+  id        String   @id @default(cuid())
+  coin      Coin     @relation(fields: [coinId], references: [id])
+  coinId    String
+  amount    Float
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
 }
