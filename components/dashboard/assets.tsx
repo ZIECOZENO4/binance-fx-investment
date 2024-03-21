@@ -50,7 +50,7 @@ const Assets = () => {
   return (
     <div className='text-white'>
       <NewAssets />
-      {data1 && data1.map((item, index) => (
+      {/* {data1 && data1.map((item, index) => (
         <div>
         <div key={index} className=' flex flex-row justify-between align-miggle items-center py-4'>
           <div className="  flex flex-row justify-start items-start align-middle p-2 w-[70%]">
@@ -75,7 +75,7 @@ const Assets = () => {
         </div>
         <hr />
         </div>
-      ))}
+      ))} */}
     </div>
   )
 }

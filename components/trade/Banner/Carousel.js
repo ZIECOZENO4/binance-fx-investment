@@ -2,13 +2,17 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectCards } from "swiper";
-import "swiper/css";
-import "swiper/css/effect-cards";
 import { TrendingCoins } from "../../../config/api";
 import { CryptoState } from "../../../CryptoContext";
 import { numberWithCommas } from "../CoinsTable";
+
+import React, { useRef } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/effect-cards';
+
+import './styles.css';
+import { EffectCards } from 'swiper/modules';
 
 const Carousel = () => {
   const [trending, setTrending] = useState([]);
