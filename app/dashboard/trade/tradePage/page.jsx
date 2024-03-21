@@ -9,8 +9,8 @@ import { numberWithCommas } from "../../../../components/trade/CoinsTable";
 import { CryptoState } from "../../../../CryptoContext";
 
 const CoinPage = () => {
- const router = useRouter(); // Use useRouter to access route parameters
- const { id } = router.query; // Access the 'id' parameter from the route
+  const router = useRouter();
+  const id = router.query ? router.query.id : null;
  const [coin, setCoin] = useState();
 
  const { currency, symbol } = CryptoState();

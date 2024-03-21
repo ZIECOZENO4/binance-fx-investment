@@ -269,20 +269,15 @@ const DepositPage = () => {
               value={depositorAmount}
               onChange={(e) => setDepositorAmount(e.target.value)}
             />
-            <label htmlFor="depositorCoin" className="sr-only">Select Coin</label>
-<select
-  id="depositorCoin"
-  name="depositorCoin"
-  className="w-80 appearance-none rounded-full border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
-  value={depositorCoin}
-  onChange={(e) => setDepositorCoin(e.target.value)}
->
-  <option value="">Select a coin</option>
-  <option value="btc">Bitcoin</option>
-  <option value="eth">Ethereum</option>
-  <option value="ltc">Litecoin</option>
-  {/* Add more options as needed */}
-</select>
+                        <input
+              type="coin"
+              id="depositorCoin"
+              name="depositorCoin"
+              placeholder="Depositor's Coin"
+              className="w-80 appearance-none rounded-full border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
+              value={depositorCoin}
+              onChange={(e) => setDepositorCoin(e.target.value)}
+            />
 
           </>
         )}

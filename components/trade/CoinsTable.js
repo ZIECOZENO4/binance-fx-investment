@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { CoinList } from "../../config/api";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation"; 
 import { CryptoState } from "../../CryptoContext";
 
 export function numberWithCommas(x) {
@@ -43,7 +43,7 @@ export default function CoinsTable() {
  const [coinsPerPage] = useState(10); // Adjust number of items per page as needed
 
  const { currency, symbol } = CryptoState();
- const router = useRouter();
+ const router = useRouter(); // Use the standard Next.js router
 
  const fetchCoins = async () => {
     setLoading(true);
