@@ -409,13 +409,7 @@ const handleInvestNowClick4 = () => {
  value={selectedCoin}
  onChange={(e) => setSelectedCoin(e.target.value)}
 >
- <option value="USDT">USDT</option>
- <option value="BTC">BTC</option>
- <option value="ETH">ETH</option>
- <option value="BNB">BNB</option>
- <option value="TRON">TRON</option>
- <option value="DOGE">DOGE</option>
- <option value="DOGE">XRP</option>
+ <option value="USDT">USD</option>
 </select>
             </div>
           }
@@ -543,13 +537,7 @@ const handleInvestNowClick4 = () => {
  value={selectedCoin}
  onChange={(e) => setSelectedCoin(e.target.value)}
 >
- <option value="USDT">USDT</option>
- <option value="BTC">BTC</option>
- <option value="ETH">ETH</option>
- <option value="BNB">BNB</option>
- <option value="TRON">TRON</option>
- <option value="DOGE">DOGE</option>
- <option value="DOGE">XRP</option>
+ <option value="USDT">USD</option>
 </select>
             </div>
           }
@@ -674,13 +662,8 @@ const handleInvestNowClick4 = () => {
  value={selectedCoin}
  onChange={(e) => setSelectedCoin(e.target.value)}
 >
- <option value="USDT">USDT</option>
- <option value="BTC">BTC</option>
- <option value="ETH">ETH</option>
- <option value="BNB">BNB</option>
- <option value="TRON">TRON</option>
- <option value="DOGE">DOGE</option>
- <option value="DOGE">XRP</option>
+ <option value="USDT">USD</option>
+
 </select>
             </div>
           }

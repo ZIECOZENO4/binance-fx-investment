@@ -70,7 +70,7 @@ const BalanceShow: React.FC = () => {
 
 
  return (
-    <div className="relative overflow-hidden bg-gradient-to-r from-blue-600 to-sky-400 rounded-2xl flex flex-col justify-start align-middle items-start gap-5 p-4 h-40 md:px-3 px-10">
+    <div className="relative overflow-hidden bg-gradient-to-b from-[#3b82f6] to-[#2563eb] rounded-2xl flex flex-col justify-start align-middle items-start gap-5 p-4 h-40 md:px-3 px-10">
       {currentView === 'account' && (
         <div className="w-full transition-transform duration-500 ease-in-out transform">
           <div className="flex flex-row justify-between ">

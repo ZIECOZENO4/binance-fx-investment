@@ -6,7 +6,7 @@ export function Terms() {
         <div className="flex flex-col gap-2">
           <div className="relative bg-gray-900 text-white py-4 px-6 rounded-lg">
             <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg" />
-            <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl/none relative z-10 text-blue-500">
+            <h1 className="text-xl font-bold tracking-tighter sm:text-4xl md:text-5xl/none relative z-10 text-blue-500">
               Terms and Conditions
             </h1>
             <p className="text-gray-300 ">Last updated: March 21, 2024</p>

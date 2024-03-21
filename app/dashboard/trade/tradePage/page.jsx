@@ -10,7 +10,7 @@ import { CryptoState } from "../../../../CryptoContext";
 
 const CoinPage = () => {
   const router = useRouter();
-  const id = router.query ? router.query.id : null;
+  const {id} = router.query ? router.query.id : null;
  const [coin, setCoin] = useState();
 
  const { currency, symbol } = CryptoState();
