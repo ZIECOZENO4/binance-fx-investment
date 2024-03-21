@@ -1,7 +1,11 @@
 import React from "react";
 import { Button } from "@/components/ui/button"
+import { useUser } from '@clerk/nextjs';
+import { prisma } from '../lib/prisma';
+
 
 export function Ass() {
+  
   return (
     <div className="bg-[#0f172a] min-h-screen p-4 text-white">
       <section className="bg-gradient-to-b from-[#3b82f6] to-[#2563eb] rounded-lg p-4 shadow-lg">

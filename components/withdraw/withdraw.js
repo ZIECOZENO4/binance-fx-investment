@@ -16,6 +16,10 @@ const WithdrawalPage = () => {
   const [showPending, setShowPending] = useState(false);
   const [showNoFunds, setShowNoFunds] = useState(false);
   const { isLoaded, isSignedIn, user } = useUser();
+  const userId =
+  user && user.id
+    ? user.id
+    : "ID: ---";
   if (!isLoaded) {
     return null;
   }
