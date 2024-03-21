@@ -125,12 +125,14 @@ export default function CoinsTable() {
           </table>
         </div>
       )}
+      <div   className=" mt-2 overflow-x-auto">
       <Pagination
         itemsPerPage={coinsPerPage}
         totalItems={handleSearch().length}
         paginate={paginate}
         currentPage={currentPage}
       />
+      </div>
     </div>
  );
 }

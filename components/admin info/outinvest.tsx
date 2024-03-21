@@ -8,7 +8,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 type OutInvest = {
  id: string;
- transactionId: string;
  time: string;
  walletAddress: string;
  userId: string;
@@ -22,7 +21,7 @@ type OutInvest = {
  gasFee: string;
 };
 
-// Define the type for the outinvest data state
+
 type OutInvestData = OutInvest[];
 
 const OutInvestInfo: React.FC = () => {
@@ -113,6 +112,7 @@ const OutInvestInfo: React.FC = () => {
                  <TableCell>{outInvest.user.name}</TableCell>
                  <TableCell>{outInvest.outAmount}</TableCell>
                  <TableCell>{outInvest.outCoin}</TableCell>
+                 <TableCell>{outInvest.walletAddress}</TableCell>
                  <TableCell>{outInvest.gasFee}</TableCell>
                  <TableCell>{new Date(outInvest.time).toLocaleString()}</TableCell>
                  <TableCell>

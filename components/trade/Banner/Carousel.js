@@ -2,7 +2,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import AliceCarousel from "react-alice-carousel";
-import Link from "next/link"; // Corrected import
+import Link from "next/link"; 
 import { TrendingCoins } from "../../../config/api";
 import { CryptoState } from "../../../CryptoContext";
 import { numberWithCommas } from "../CoinsTable";
