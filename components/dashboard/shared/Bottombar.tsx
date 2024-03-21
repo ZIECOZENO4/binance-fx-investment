@@ -17,7 +17,7 @@ function Bottombar() {
             bottomLinks.map((link) => {
               const isActive = pathname === link.route;
               return (
-                <Link href={link.route} key={link.label} className={`relative flex px-2 flex-col items-center rounded-lg ${isActive ? 'bg-blue-700 text-white border-spacing-[2px]' : 'text-blue-600'} text-xs`}>
+                <Link href={link.route} key={link.label} className={`relative flex px-5 flex-col items-center rounded-lg ${isActive ? 'bg-blue-700 text-white border-spacing-[2px]' : 'text-blue-600'} text-xs`}>
                   <Image src={link.imgURL} alt={link.label} width={30} height={30} className={`${isActive ? '' : 'filter-blue-600'}`} />
                   <p>{link.label.split(/\s+/)[0]}</p>
                 </Link>
