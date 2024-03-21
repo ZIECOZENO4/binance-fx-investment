@@ -106,11 +106,11 @@ const BalanceChart = () => {
       <Assets />
       <NewMembers />
       <div>
-      <section className="mt-4">
-        <h3 className="text-lg font-semibold">Transaction History</h3>
+      <section className="mt-4 mb-8">
+        <h3 className="text-lg font-semibold text-blue-500 ">Transaction History</h3>
         <div className="mt-2 space-y-2">
           <div className="flex items-center justify-between bg-[#1e293b] rounded-lg p-4 shadow-lg">
-            <div className="flex items-center">
+            <div className="flex items-center text-white">
             <svg
 className="text-[#3b82f6] mr-3" 
       xmlns="http://www.w3.org/2000/svg"
@@ -146,7 +146,7 @@ className="text-[#3b82f6] mr-3"
       <path d="m9 18 6-6-6-6" />
     </svg>
           </div>
-          <div className="flex items-center justify-between bg-[#1e293b] rounded-lg p-4 shadow-lg">
+          <div className="flex items-center justify-between text-white bg-[#1e293b] rounded-lg p-4 shadow-lg">
             <div className="flex items-center">
             <svg
 className="text-[#3b82f6] mr-3"
@@ -183,7 +183,7 @@ className="text-white"
       <path d="m9 18 6-6-6-6" />
     </svg>
           </div>
-          <div className="flex items-center justify-between bg-[#1e293b] rounded-lg p-4 shadow-lg">
+          <div className="flex items-center justify-between bg-[#1e293b] text-white rounded-lg p-4 shadow-lg">
             <div className="flex items-center">
             <svg
 className="text-[#3b82f6] mr-3"
