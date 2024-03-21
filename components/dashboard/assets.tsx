@@ -1,9 +1,8 @@
 
-
-
 'use client'
 import { useEffect, useState } from 'react';
 import React from 'react'
+import { NewAssets } from '../component/secondaseet';
 
 // Define the shape of the data item
 interface CoinDataItem {
@@ -50,6 +49,7 @@ const Assets = () => {
 
   return (
     <div className='text-white'>
+      <NewAssets />
       {data1 && data1.map((item, index) => (
         <div>
         <div key={index} className=' flex flex-row justify-between align-miggle items-center py-4'>

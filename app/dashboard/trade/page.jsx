@@ -1,7 +1,7 @@
 import React from "react";
 import  Banner from "../../../components/trade/Banner/Banner"
 import CoinsTable from "../../../components/trade/CoinsTable";
-const Homepage = () => {
+const HomePage = () => {
   return (
     <>
       <Banner />
@@ -10,4 +10,4 @@ const Homepage = () => {
   );
 };
 
-export default Homepage;
+export default HomePage;

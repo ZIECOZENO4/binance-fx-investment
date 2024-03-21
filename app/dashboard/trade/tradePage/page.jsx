@@ -1,7 +1,7 @@
-"use client";
+"use client"
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { usePathname, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import parse from 'html-react-parser';
 import CoinInfo from "../../../../components/trade/CoinInfo";
 import { SingleCoin } from "../../../../config/api";
@@ -9,21 +9,20 @@ import { numberWithCommas } from "../../../../components/trade/CoinsTable";
 import { CryptoState } from "../../../../CryptoContext";
 
 const CoinPage = () => {
- const { id } = useParams();
+ const router = useRouter(); // Use useRouter to access route parameters
+ const { id } = router.query; // Access the 'id' parameter from the route
  const [coin, setCoin] = useState();
 
  const { currency, symbol } = CryptoState();
 
  const fetchCoin = async () => {
     const { data } = await axios.get(SingleCoin(id));
-
     setCoin(data);
  };
 
  useEffect(() => {
     fetchCoin();
-
- }, []);
+ }, [id]); // Add id as a dependency to re-fetch when id changes
 
  if (!coin) return <div className="bg-yellow-500 h-2 w-full"></div>;
 

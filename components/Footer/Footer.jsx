@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import ItemsContainer from "./ItemsContainer";
 import Image from 'next/image'
@@ -32,7 +33,7 @@ const Footer = () => {
       text-center pt-2 text-gray-400 text-sm pb-8 sm:pb-[20px]"
       >
         <span>© 2017 Binance FX. All rights reserved.</span>
-        <span>Terms · Privacy Policy</span>
+        <Link href="/dashboard/terms">Terms · Privacy Policy</Link>
         <div className='sm:pb-[20px]' >
         <div className=" mt-2 md:mt-0 justify-center align-middle items-center mx-3 md:mx-0 flex md:gap-10 gap-8 ">
         <Image src="/images/fb.png" alt="" width={26} height={26}  className='hover:text-gray-100 hover:bg-teal-500"'/>

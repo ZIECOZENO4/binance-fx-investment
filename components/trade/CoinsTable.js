@@ -6,18 +6,17 @@ import { useRouter } from "next/navigation";
 import { CryptoState } from "../../CryptoContext";
 
 export function numberWithCommas(x) {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+ return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-// Pagination Component
 function Pagination({ itemsPerPage, totalItems, paginate, currentPage }) {
-  const pageNumbers = [];
+ const pageNumbers = [];
 
-  for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
+ for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
     pageNumbers.push(i);
-  }
+ }
 
-  return (
+ return (
     <nav>
       <ul className="inline-flex -space-x-px">
         {pageNumbers.map(number => (
@@ -33,47 +32,47 @@ function Pagination({ itemsPerPage, totalItems, paginate, currentPage }) {
         ))}
       </ul>
     </nav>
-  );
+ );
 }
 
 export default function CoinsTable() {
-  const [coins, setCoins] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [search, setSearch] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
-  const [coinsPerPage] = useState(10); // Adjust number of items per page as needed
+ const [coins, setCoins] = useState([]);
+ const [loading, setLoading] = useState(false);
+ const [search, setSearch] = useState("");
+ const [currentPage, setCurrentPage] = useState(1);
+ const [coinsPerPage] = useState(10); // Adjust number of items per page as needed
 
-  const { currency, symbol } = CryptoState();
-  const router = useRouter();
+ const { currency, symbol } = CryptoState();
+ const router = useRouter();
 
-  const fetchCoins = async () => {
+ const fetchCoins = async () => {
     setLoading(true);
     const { data } = await axios.get(CoinList(currency));
     setCoins(data);
     setLoading(false);
-  };
+ };
 
-  useEffect(() => {
+ useEffect(() => {
     fetchCoins();
-  }, [currency]);
+ }, [currency]);
 
-  const handleSearch = () => {
+ const handleSearch = () => {
     return coins.filter(
       (coin) =>
         coin.name.toLowerCase().includes(search.toLowerCase()) ||
         coin.symbol.toLowerCase().includes(search.toLowerCase())
     );
-  };
+ };
 
-  // Get current coins
-  const indexOfLastCoin = currentPage * coinsPerPage;
-  const indexOfFirstCoin = indexOfLastCoin - coinsPerPage;
-  const currentCoins = handleSearch().slice(indexOfFirstCoin, indexOfLastCoin);
+ // Get current coins
+ const indexOfLastCoin = currentPage * coinsPerPage;
+ const indexOfFirstCoin = indexOfLastCoin - coinsPerPage;
+ const currentCoins = handleSearch().slice(indexOfFirstCoin, indexOfLastCoin);
 
-  // Change page
-  const paginate = pageNumber => setCurrentPage(pageNumber);
+ // Change page
+ const paginate = pageNumber => setCurrentPage(pageNumber);
 
-  return (
+ return (
     <div className="text-center dark:bg-gray-800">
      <h4 className="text-2xl font-bold my-4 text-gray-200">Cryptocurrency Prices by Market Cap</h4>
       <input
@@ -89,41 +88,39 @@ export default function CoinsTable() {
             <thead className="bg-yellow-500 text-black">
               <tr>
                 {["Coin", "Price", "24h Change", "Market Cap"].map((head) => (
-                  <th key={head} className="px-4 py-2">{head}</th>
+                 <th key={head} className="px-4 py-2">{head}</th>
                 ))}
               </tr>
             </thead>
             <tbody>
-              {handleSearch()
-                .slice((page - 1) * 10, (page - 1) * 10 + 10)
-                .map((row) => {
-                  const profit = row.price_change_percentage_24h > 0;
-                  return (
-                    <tr
-                      key={row.name}
-                      className="bg-gray-700 text-gray-200 cursor-pointer hover:bg-gray-600"
-                      onClick={() => router.push(`/dashboard/trade/tradePage/${row.id}`)}
-                    >
-                      <td className="px-4 py-2 flex items-center gap-4">
-                        <img src={row?.image} alt={row.name} height="50" className="w-12 h-12" />
-                        <div>
-                          <p className="uppercase font-bold">{row.symbol}</p>
-                          <p className="text-sm text-gray-400">{row.name}</p>
-                        </div>
-                      </td>
-                      <td className="px-4 py-2 text-right">
-                        {symbol} {numberWithCommas(row.current_price.toFixed(2))}
-                      </td>
-                      <td className={`px-4 py-2 text-right ${profit ? 'text-green-500' : 'text-red-500'}`}>
-                        {profit && "+"}
-                        {row.price_change_percentage_24h.toFixed(2)}%
-                      </td>
-                      <td className="px-4 py-2 text-right">
-                        {symbol} {numberWithCommas(row.market_cap.toString().slice(0, -6))}M
-                      </td>
-                    </tr>
-                  );
-                })}
+              {currentCoins.map((row) => { // Corrected to use currentCoins
+                const profit = row.price_change_percentage_24h > 0;
+                return (
+                 <tr
+                    key={row.name}
+                    className="bg-gray-700 text-gray-200 cursor-pointer hover:bg-gray-600"
+                    onClick={() => router.push(`/dashboard/trade/tradePage/${row.id}`)}
+                 >
+                    <td className="px-4 py-2 flex items-center gap-4">
+                      <img src={row?.image} alt={row.name} height="50" className="w-12 h-12" />
+                      <div>
+                        <p className="uppercase font-bold">{row.symbol}</p>
+                        <p className="text-sm text-gray-400">{row.name}</p>
+                      </div>
+                    </td>
+                    <td className="px-4 py-2 text-right">
+                      {symbol} {numberWithCommas(row.current_price.toFixed(2))}
+                    </td>
+                    <td className={`px-4 py-2 text-right ${profit ? 'text-green-500' : 'text-red-500'}`}>
+                      {profit && "+"}
+                      {row.price_change_percentage_24h.toFixed(2)}%
+                    </td>
+                    <td className="px-4 py-2 text-right">
+                      {symbol} {numberWithCommas(row.market_cap.toString().slice(0, -6))}M
+                    </td>
+                 </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
@@ -135,5 +132,5 @@ export default function CoinsTable() {
         currentPage={currentPage}
       />
     </div>
-  );
+ );
 }

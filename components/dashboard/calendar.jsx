@@ -36,6 +36,7 @@ const Calendar = () => {
 
   return (
     <div className="tradingview-widget-container4">
+      <p className=" text-xl font-bold text-blue-500 p-2">Market Calendar</p>
       <div className="tradingview-widget-container__widget4"></div>
       <div className="tradingview-widget-copyright4">
   
