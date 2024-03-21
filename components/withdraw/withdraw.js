@@ -30,7 +30,7 @@ const WithdrawalPage = () => {
   alert('You must be signed in to make a deposit.');
   return;
 }
-if (selectedCoin === 'USD' && parseFloat(amount) < 300) {
+if (outCoin === 'USD' && parseFloat(outAmount) < 300) {
   alert('The minimum withdrawal amount for USD is 300 USD.');
   return;
 }

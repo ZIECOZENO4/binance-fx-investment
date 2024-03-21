@@ -31,18 +31,18 @@ const Contact = () => {
     setLoading(true);
 
     emailjs
-      .send(
-        import.meta.env.NEXT_JS_EMAILJS_SERVICE_ID,
-        import.meta.env.NEXT_JS_EMAILJS_TEMPLATE_ID,
-        {
-          from_name: form.name,
-          to_name: "Binance FX Team",
-          from_email: form.email,
-          to_email: "binancefx000@gmail.com",
-          message: form.message,
-        },
-        import.meta.env.NEXT_JS_EMAILJS_PUBLIC_KEY
-      )
+    .send(
+      process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+      process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+      {
+        from_name: form.name,
+        to_name: "Binance FX Team",
+        from_email: form.email,
+        to_email: "binancefx000@gmail.com",
+        message: form.message,
+      },
+      process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+    )
       .then(
         () => {
           setLoading(false);
