@@ -1,61 +1,34 @@
-"use client"
+"use client";
 import { useHistory } from "next/navigation";
 import { CryptoState } from "../../CryptoContext";
 
-const useStyles = makeStyles((theme) => ({
-  title: {
-    flex: 1,
-    color: "gold",
-    fontFamily: "Montserrat",
-    fontWeight: "bold",
-    cursor: "pointer",
-  },
-}));
-
-const darkTheme = createTheme({
-  palette: {
-    primary: {
-      main: "#fff",
-    },
-    type: "dark",
-  },
-});
-
 function Header() {
-  const classes = useStyles();
-  const { currency, setCurrency } = CryptoState();
+ const { currency, setCurrency } = CryptoState();
+ const history = useHistory();
 
-  const history = useHistory();
-
-  return (
-    <ThemeProvider theme={darkTheme}>
-      <AppBar color="transparent" position="static">
-        <Container>
-          <Toolbar>
-            <Typography
-              onClick={() => history.push(`/`)}
-              variant="h6"
-              className={classes.title}
-            >
-              Crypto Hunter
-            </Typography>
-            {/* <Button color="inherit">Login</Button> */}
-            <Select
-              variant="outlined"
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              value={currency}
-              style={{ width: 100, height: 40, marginLeft: 15 }}
-              onChange={(e) => setCurrency(e.target.value)}
-            >
-              <MenuItem value={"USD"}>USD</MenuItem>
-              <MenuItem value={"INR"}>INR</MenuItem>
-            </Select>
-          </Toolbar>
-        </Container>
-      </AppBar>
-    </ThemeProvider>
-  );
+ return (
+    <div className="bg-black text-white">
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between py-6">
+          <h1
+            onClick={() => history.push(`/`)}
+            className="flex-1 text-gold-500 font-bold cursor-pointer"
+          >
+            Crypto Hunter
+          </h1>
+          {/* <Button color="inherit">Login</Button> */}
+          <select
+            className="outline-none bg-transparent border border-gray-500 rounded-md px-4 py-2 ml-15"
+            value={currency}
+            onChange={(e) => setCurrency(e.target.value)}
+          >
+            <option value="USD">USD</option>
+            <option value="INR">INR</option>
+          </select>
+        </div>
+      </div>
+    </div>
+ );
 }
 
 export default Header;
