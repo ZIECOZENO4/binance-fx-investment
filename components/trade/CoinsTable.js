@@ -99,7 +99,7 @@ export default function CoinsTable() {
                  <tr
                     key={row.name}
                     className="bg-gray-700 text-gray-200 cursor-pointer hover:bg-gray-600"
-                    onClick={() => router.push(`/dashboard/trade/tradePage/${row.id}`)}
+                    onClick={() => router.push(`/dashboard/trade/tradePage/${coin.id}`)}
                  >
                     <td className="px-4 py-2 flex items-center gap-4">
                       <img src={row?.image} alt={row.name} height="50" className="w-12 h-12" />

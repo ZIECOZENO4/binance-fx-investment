@@ -6,6 +6,7 @@ import usdt from "../public/assets/svg/usdt.png"
 import gainers from "../public/assets/svg/gainers.png"
 import recent from "../public/assets/svg/recent.png"
 import TrendingCard from "./trendingCard"
+import Link from "next/link"
 const styles = {
     trendingWrapper: `mx-auto w-full`,
     h1: `text-3xl text-white font-bold `,
@@ -47,13 +48,16 @@ const Trending = () => {
             <div className="flex md:flex-row align-middle items-center flex-col justify-center ">
                 <p>The global crypto market cap is $ 1.74T, a &nbsp; </p>
                 <span> <Rate isIncrement={true} rate='0.53%' /> </span>
-                <p> &nbsp; decrease over the last day. <span className="underline text-blue-700">Read More</span> </p>
+                <p> &nbsp; decrease over the last day. </p>
             </div>
             <br />
 
             <div className='flex md:items-center md:align-middle flex-col md:flex-row gap-8 md:gap-0'>
+            <Link href="/dashboard" className="underline text-blue-700">Read More</Link> 
                 <TrendingCard title='Trending' icon={fire} trendingData={trendingData} />
+                <Link href="/dashboard/allinvestors"  className="underline text-blue-700">Read More</Link> 
                 <TrendingCard title='Latest Investors' icon={gainers} trendingData={trendingData} />
+                <Link href="/dashboard/allwithdrawal"  className="underline text-blue-700">Read More</Link> 
                 <TrendingCard title='Latest Withdrawal' icon={recent} trendingData={trendingData} />
             </div>
         </div>

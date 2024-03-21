@@ -47,9 +47,9 @@ if (outCoin === 'USD' && parseFloat(outAmount) < 300) {
           gasFee: '0.00234123 Wei',
           time: new Date().toISOString(),
           walletAddress,
-          userId, // Note: userId is used but not defined anywhere in your code snippet.
+          userId, 
           userName: user !== null ? `${user.firstName || user.username}` : 'FX Investor',
-          outCoin: outCoin,
+          outCoin,
           outAmount,
         };
         
@@ -201,16 +201,18 @@ if (outCoin === 'USD' && parseFloat(outAmount) < 300) {
           onChange={(e) => setOutAmount(e.target.value)}
         />
 
-        <select
-          id="coinSelect"
-          className=" p-2 border border-gray-300 w-[30vw] text-black rounded"
-          onChange={(e) => setOutCoin(coins.find(coin => coin.symbol === e.target.value))}
-        >
-          <option value="USDT">Select </option>
-          {coins.map((coin) => (
-            <option key={coin.symbol} value={coin.symbol}>{coin.symbol}</option>
-          ))}
-        </select>
+<select
+  id="coinSelect"
+  className="p-2 border border-gray-300 w-[30vw] text-black rounded"
+  value={outCoin}
+  onChange={(e) => setOutCoin(e.target.value)} // Directly store the selected coin's symbol
+>
+  <option value="">Select</option>
+  {coins.map((coin) => (
+    <option key={coin.symbol} value={coin.symbol}>{coin.symbol}</option>
+  ))}
+</select>
+
     </div>
    
 </div>
