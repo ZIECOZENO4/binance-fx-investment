@@ -9,7 +9,7 @@ function Banner() {
           <h2 className="font-bold mb-4 text-2xl">
             Binance FX Trading
           </h2>
-          <p className="text-gray-500 capitalize">
+          <p className="text-gray-200 capitalize">
             Get all the Info regarding your favorite Crypto Currency
           </p>
         </div>

@@ -74,7 +74,7 @@ export default function CoinsTable() {
 
  return (
     <div className="text-center dark:bg-gray-800">
-     <h4 className="text-2xl font-bold my-4 text-gray-200">Cryptocurrency Prices by Market Cap</h4>
+     <h4 className="text-2xl font-bold my-4 text-gray-200">Binance FX Trading</h4>
       <input
         className="mb-5 p-2 w-full border rounded border-gray-300"
         placeholder="Search For a Crypto Currency.."
@@ -99,7 +99,7 @@ export default function CoinsTable() {
                  <tr
                     key={row.name}
                     className="bg-gray-700 text-gray-200 cursor-pointer hover:bg-gray-600"
-                    onClick={() => router.push(`/dashboard/trade/tradePage/${coin.id}`)}
+                    onClick={() => router.push(`/dashboard/trade/tradePage/${row.id}`)}
                  >
                     <td className="px-4 py-2 flex items-center gap-4">
                       <img src={row?.image} alt={row.name} height="50" className="w-12 h-12" />
