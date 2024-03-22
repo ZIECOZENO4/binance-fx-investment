@@ -1,7 +1,7 @@
 "use client"
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/router'; // Corrected from 'next/navigation' to 'next/router'
 import parse from 'html-react-parser';
 import CoinInfo from "../../../../../components/trade/CoinInfo";
 import { SingleCoin } from "../../../../../config/api";
@@ -10,22 +10,33 @@ import { CryptoState } from "../../../../../CryptoContext";
 
 const CoinPage = () => {
   const router = useRouter();
-  const id = router.query;
+  const { id } = router.query; // Correctly retrieve the dynamic id
 
- const [coin, setCoin] = useState();
+  const [coin, setCoin] = useState();
+  const [loading, setLoading] = useState(true); // Handle loading state
 
- const { currency, symbol } = CryptoState();
+  const { currency, symbol } = CryptoState();
 
- const fetchCoin = async () => {
-    const { data } = await axios.get(`https://api.coingecko.com/api/v3/coins/${id}`);
-    setCoin(data);
- };
+  const fetchCoin = async () => {
+    if (!id) return; // Ensure id is not undefined
+    setLoading(true); // Set loading to true before fetching data
+    try {
+      const { data } = await axios.get(SingleCoin(id)); // Use SingleCoin function from your API config if it's designed to handle dynamic ids
+      setCoin(data);
+    } catch (error) {
+      console.error("Error fetching coin data:", error);
+    } finally {
+      setLoading(false); // Set loading to false after fetching data
+    }
+  };
 
- useEffect(() => {
+  useEffect(() => {
     fetchCoin();
- }, [id]);
+  }, [id]); // Add id as a dependency
 
- if (!coin) return <div className="bg-yellow-500 h-2 w-full"></div>;
+  if (loading) return <div className="bg-yellow-500 h-2 w-full"></div>; // Show loading indicator
+
+  if (!coin) return <div>No coin data available.</div>; // Handle case where no coin data is available
 
  return (
     <div className="flex flex-col md:flex-row items-center justify-center">

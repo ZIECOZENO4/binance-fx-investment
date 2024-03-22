@@ -7,9 +7,10 @@ import { CryptoState } from "../../../CryptoContext";
 import { numberWithCommas } from "../CoinsTable";
 
 const Carousel = () => {
+  const carouselRef = useRef<HTMLDivElement>(null);
   const [trending, setTrending] = useState([]);
   const { currency, symbol } = CryptoState();
-  const carouselRef = useRef<HTMLDivElement>(null);
+ 
 
   const fetchTrendingCoins = async () => {
     const { data } = await axios.get(TrendingCoins(currency));
@@ -47,7 +48,7 @@ const Carousel = () => {
 
     return (
       <div key={coin.id} className="flex-shrink-0 w-full">
-        <Link href={`/dashboard/trade/${coin.id}`}>
+        <Link href={`/dashboard/trade/tradePage/${coin.id}`}>
           <div className="flex flex-col items-center justify-center">
             <img
               src={coin?.image}
