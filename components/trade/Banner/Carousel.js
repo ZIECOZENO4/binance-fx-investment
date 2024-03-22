@@ -22,25 +22,24 @@ const Carousel = () => {
   }, [currency]);
 
   useEffect(() => {
-    const carousel = carouselRef.current;
-    if (carousel && carousel.lastElementChild) {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              carousel.appendChild(carousel.firstElementChild!);
-            }
-          });
-        },
-        { threshold: 0.5 }
-      );
+    const scrollContainer = carouselRef.current;
+    if (!scrollContainer) return;
 
-      observer.observe(carousel.lastElementChild);
+    const scrollAmount = 5; // Reduced scroll speed by half
+    const itemWidth = 100; 
+    const containerWidth = scrollContainer.offsetWidth;
+    const totalWidth = trending.length * itemWidth;
 
-      return () => {
-        observer.unobserve(carousel.lastElementChild);
-      };
-    }
+    const interval = setInterval(() => {
+      const currentScrollLeft = scrollContainer.scrollLeft;
+      if (currentScrollLeft < totalWidth - containerWidth) {
+        scrollContainer.scrollLeft += scrollAmount;
+      } else {
+        scrollContainer.scrollLeft = 0; 
+      }
+    }, 50); 
+
+    return () => clearInterval(interval); 
   }, [trending]);
 
   const items = trending.map((coin) => {
@@ -48,37 +47,36 @@ const Carousel = () => {
 
     return (
       <div key={coin.id} className="flex-shrink-0 w-full">
-        <Link href={`/dashboard/trade/tradePage/${coin.id}`} passHref>
-          <a className="flex flex-col items-center cursor-pointer uppercase text-white">
+        <Link href={`/dashboard/trade/${coin.id}`}>
+          <div className="flex flex-col items-center justify-center">
             <img
               src={coin?.image}
               alt={coin.name}
-              className="mb-2.5 h-20"
+              className="h-20 w-20 rounded-full mb-2"
             />
-            <span>
+            <span className="text-lg font-bold">
               {coin?.symbol}
               &nbsp;
               <span
-                className={`font-medium ${profit > 0 ? 'text-green-500' : 'text-red-500'}`}
+                className={
+                  profit ? "text-green-500" : "text-red-500"
+                }
               >
-                {profit && "+"}
-                {coin?.price_change_percentage_24h?.toFixed(2)}%
+                {profit && "+"} {coin?.price_change_percentage_24h?.toFixed(2)}%
               </span>
             </span>
-            <span className="text-2xl font-medium">
+            <span className="text-sm">
               {symbol} {numberWithCommas(coin?.current_price.toFixed(2))}
             </span>
-          </a>
+          </div>
         </Link>
       </div>
     );
   });
 
   return (
-    <div className="flex h-1/2 items-center overflow-x-hidden">
-      <div ref={carouselRef} className="flex transition-transform duration-1000 ease-linear">
-        {items}
-      </div>
+    <div ref={carouselRef} className="flex overflow-x-auto w-full py-4 px-2 scrollbar-hide">
+      {items}
     </div>
   );
 };
