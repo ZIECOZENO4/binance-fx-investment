@@ -100,7 +100,7 @@ const WithdrawalPage = () => {
           userName: user !== null ? `${user.firstName || user.username}` : 'FX Investor',
           outCoin,
           outAmount,
-          totalValueInUSDT, 
+          totalValueInUSDT: usdtValue, 
         };
 
         const response = await fetch('/api/outInvest', {
