@@ -33,7 +33,7 @@ const Carousel = () => {
 
     return (
       <SwiperSlide key={coin.id}>
-        <Link href={`/dashboard/trade/tradePage/${coin.id}`} passHref>
+        <Link href={`/dashboard/trade/tradeSingle/${coin.id}`} passHref>
           <a className="flex flex-col items-center cursor-pointer uppercase text-white">
             <img
               src={coin?.image}
