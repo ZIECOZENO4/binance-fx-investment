@@ -117,7 +117,6 @@ const OutInvestInfo: React.FC = () => {
                 <TableHead>Wallet Address</TableHead> 
                 <TableHead>GasFee</TableHead>
                 <TableHead>Total Value In USDT</TableHead>
-                <TableHead>Total Value In USDT Input</TableHead>
                 <TableHead>Time</TableHead>
                 <TableHead>Update Balance</TableHead>
               </TableRow>
