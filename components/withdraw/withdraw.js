@@ -15,56 +15,8 @@ const WithdrawalPage = () => {
   const [outAmount, setOutAmount] = useState('');
   const [showPending, setShowPending] = useState(false);
   const [showNoFunds, setShowNoFunds] = useState(false);
-  const [usdtValue, setUsdtValue] = useState('');
   const { isLoaded, isSignedIn, user } = useUser();
   const userId = user && user.id ? user.id : "ID: ---";
-
-  const fetchCoinPrice = async (coinId) => {
-    try {
-      // Convert the user input to the format expected by CoinGecko, if necessary.
-      // This is a placeholder for any conversion logic you might need.
-      // For example, if CoinGecko expects lowercase, ensure the coinId is in lowercase.
-      const formattedCoinId = coinId.toLowerCase();
-  
-      const response = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${formattedCoinId}&vs_currencies=usdt`);
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      const data = await response.json();
-      // Check if the coinId is valid and data is returned
-      if (data[formattedCoinId] && data[formattedCoinId].usdt) {
-        return data[formattedCoinId].usdt;
-      } else {
-        // If the coinId is invalid or no data is returned, set the USDT value to "0.00"
-        return "0.00";
-      }
-    } catch (error) {
-      console.error('Error fetching coin price:', error);
-      // In case of any error, set the USDT value to "0.00"
-      return "0.00 USDT";
-    }
-  };
-
-  useEffect(() => {
-    const calculateUsdtValue = async () => {
-      if (outCoin && outAmount) {
-        try {
-          const coinPrice = await fetchCoinPrice(outCoin.toLowerCase());
-          if (coinPrice) {
-            const totalValueInUSDT = parseFloat(outAmount) * coinPrice;
-            setUsdtValue(totalValueInUSDT.toFixed(2)); // Keep two decimal places
-          } else {
-            setUsdtValue('');
-          }
-        } catch (error) {
-          console.error('Error calculating USDT value:', error);
-          setUsdtValue('');
-        }
-      }
-    };
-
-    calculateUsdtValue();
-  }, [outCoin, outAmount]);
 
   const handleWithdraw = async () => {
     if (!walletAddress || !outCoin || !outAmount) {
@@ -100,7 +52,6 @@ const WithdrawalPage = () => {
           userName: user !== null ? `${user.firstName || user.username}` : 'FX Investor',
           outCoin,
           outAmount,
-          totalValueInUSDT: usdtValue, 
         };
 
         const response = await fetch('/api/outInvest', {
@@ -263,12 +214,6 @@ const WithdrawalPage = () => {
 </select>
 
     </div>
-    <div className="mt-8 gap-3 flex flex-row justify-between items-center align-middle">
-        <h1 className="font-bold text-white text-xl md:text-2xl justify-start items-start align-middle w-[40vw]">Amount in USDT:</h1>
-        <div className="font-bold text-white text-xl md:text-2xl flex flex-row justify-center items-center align-middle w-[60vw]">
-          {usdtValue ? `$${usdtValue} USDT` : 'Select a coin and enter an amount'}
-        </div>
-      </div>
 </div>
       <div className="mb-4 flex flex-row mt-8  w-[100vw] justify-between">
         <label htmlFor="walletAddress" className="block mb-2 font-bold  w-[40vw]  text-xl md:text-2xl  justify-start items-start align-middle">Wallet Address :</label>

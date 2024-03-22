@@ -11,14 +11,13 @@ export async function POST(request: NextRequest) {
     // Destructure the expected fields from the request body
     const {   gasFee,
         walletAddress, time, userName, userId,     outCoin,
-        outAmount,  totalValueInUSDT } = body;
+        outAmount} = body;
 
     // Process the data as needed, e.g., save it to a database
     try {
         const outInvest = await prisma.outInvest.create({
             data: {
       walletAddress,
-      totalValueInUSDT,
                 time: new Date(time), 
                 userId,
                 userName,

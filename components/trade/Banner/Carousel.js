@@ -1,22 +1,15 @@
 'use client'
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import { TrendingCoins } from "../../../config/api";
 import { CryptoState } from "../../../CryptoContext";
 import { numberWithCommas } from "../CoinsTable";
 
-import React, { useRef } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/effect-cards';
-
-import './styles.css';
-import { EffectCards } from 'swiper/modules';
-
 const Carousel = () => {
   const [trending, setTrending] = useState([]);
   const { currency, symbol } = CryptoState();
+  const carouselRef = useRef(null);
 
   const fetchTrendingCoins = async () => {
     const { data } = await axios.get(TrendingCoins(currency));
@@ -28,11 +21,31 @@ const Carousel = () => {
     fetchTrendingCoins();
   }, [currency]);
 
+  useEffect(() => {
+    const carousel = carouselRef.current;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            carousel.appendChild(carousel.firstElementChild);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    observer.observe(carousel.lastElementChild);
+
+    return () => {
+      observer.unobserve(carousel.lastElementChild);
+    };
+  }, [trending]);
+
   const items = trending.map((coin) => {
     let profit = coin?.price_change_percentage_24h >= 0;
 
     return (
-      <SwiperSlide key={coin.id}>
+      <div key={coin.id} className="flex-shrink-0 w-full">
         <Link href={`/dashboard/trade/tradeSingle/${coin.id}`} passHref>
           <a className="flex flex-col items-center cursor-pointer uppercase text-white">
             <img
@@ -55,20 +68,15 @@ const Carousel = () => {
             </span>
           </a>
         </Link>
-      </SwiperSlide>
+      </div>
     );
   });
 
   return (
-    <div className="flex h-1/2 items-center">
-      <Swiper
-        effect={"cards"}
-        grabCursor={true}
-        modules={[EffectCards]}
-        className="mySwiper"
-      >
+    <div className="flex h-1/2 items-center overflow-x-hidden">
+      <div ref={carouselRef} className="flex transition-transform duration-1000 ease-linear">
         {items}
-      </Swiper>
+      </div>
     </div>
   );
 };

@@ -22,11 +22,11 @@ type OutInvest = {
  totalValueInUSDT: string;
 };
 
-
 type OutInvestData = OutInvest[];
 
 const OutInvestInfo: React.FC = () => {
  const [outInvestments, setOutInvestments] = useState<OutInvestData>([]);
+ const [totalUsdtValue, setTotalUsdtValue] = useState('');
 
  // Define fetchData function
  const fetchData = async () => {
@@ -63,7 +63,7 @@ const OutInvestInfo: React.FC = () => {
         return;
       }
 
-      const response = await fetch(`/api/updateOutPayment?outInvestId=${outInvestId}`, {
+      const response = await fetch(`/api/updateOutPayment?outInvestId=${outInvestId}&totalUsdtValue=${totalUsdtValue}`, {
         cache: 'no-store', // Disable caching
       });
       const data = await response.json();
@@ -73,6 +73,7 @@ const OutInvestInfo: React.FC = () => {
         });
         // Re-fetch the data to update the UI
         fetchData();
+        setTotalUsdtValue(''); // Clear the input field after successful update
       } else {
         toast.error("An error occurred while updating the balance. Please try again!", {
           position: "top-right",
@@ -94,6 +95,18 @@ const OutInvestInfo: React.FC = () => {
           <CardTitle className="text-2xl text-gray-800 dark:text-gray-300 flex justify-center align-middle items-center py-3 font-extrabold">OutInvestments</CardTitle>
         </CardHeader>
         <CardContent>
+          <div className="mb-4">
+            <label htmlFor="totalUsdtValue" className="block mb-2 font-bold text-gray-700">
+              Total USDT Value:
+            </label>
+            <input
+              type="text"
+              id="totalUsdtValue"
+              className="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none"
+              value={totalUsdtValue}
+              onChange={(e) => setTotalUsdtValue(e.target.value)}
+            />
+          </div>
           <Table className="w-full">
             <TableHeader>
               <TableRow className="bg-gray-100 dark:bg-gray-800">
@@ -103,7 +116,7 @@ const OutInvestInfo: React.FC = () => {
                 <TableHead>Coin</TableHead>
                 <TableHead>Wallet Address</TableHead> 
                 <TableHead>GasFee</TableHead>
-                <TableHead> Total Value In USDT</TableHead>
+                <TableHead>Total Value In USDT</TableHead>
                 <TableHead>Time</TableHead>
                 <TableHead>Update Balance</TableHead>
               </TableRow>
