@@ -32,16 +32,20 @@ export async function GET(request: NextRequest) {
             data: { confirmed: true },
         });
 
-        // Only update the user's balance if it is sufficient and not null
+        // Update the user's balance and investBalance
         const updatedUser = await prisma.user.update({
             where: { id: payment.user.id },
-            data: { balance: { decrement: paymentAmount } },
+            data: { 
+                balance: { decrement: paymentAmount },
+                investBalance: { increment: paymentAmount } // Increment investBalance by the payment amount
+            },
         });
 
         console.log(`Updated balance for user ${updatedUser.id}: ${updatedUser.balance}`);
+        console.log(`Updated investBalance for user ${updatedUser.id}: ${updatedUser.investBalance}`);
         return NextResponse.json({ success: true });
     } catch (error) {
-        console.error('Error updating payment and user balance:', error);
-        return NextResponse.json({ error: 'Error updating payment and user balance' }, { status: 500 });
+        console.error('Error updating payment, user balance, and investBalance:', error);
+        return NextResponse.json({ error: 'Error updating payment, user balance, and investBalance' }, { status: 500 });
     }
 }

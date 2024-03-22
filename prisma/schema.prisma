@@ -15,6 +15,7 @@ model User {
   createdAt       DateTime         @default(now())
   updatedAt       DateTime         @updatedAt
   balance         Float?
+  investBalance   Float?
   payments        Payment[]
   withdrawals     Withdrawal[]
   outinvest       OutInvest[]
@@ -32,6 +33,7 @@ model Payment {
   balance   String
   gasFee    String
   userId    String   @map("user_id")
+  totalValueInUSDT String?
   userName  String
   user      User     @relation(fields: [userId], references: [id])
   confirmed Boolean  @default(false)
@@ -46,6 +48,7 @@ model Withdrawal {
   gasFee        String
   userId        String   @map("user_id")
   userName      String
+    totalValueInUSDT String?
   user          User     @relation(fields: [userId], references: [id])
   confirmed     Boolean  @default(false)
 }
@@ -73,6 +76,7 @@ model Deposit {
   user                    User     @relation(fields: [userId], references: [id])
   depositorAmount         String
   depositorName           String
+    totalValueInUSDT String?
   depositorCoin           String
   confirmed               Boolean  @default(false)
 }

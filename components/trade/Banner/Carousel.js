@@ -25,7 +25,7 @@ const Carousel = () => {
     const scrollContainer = carouselRef.current;
     if (!scrollContainer) return;
 
-    const scrollAmount = 5; // Reduced scroll speed by half
+    const scrollAmount = 5; 
     const itemWidth = 100; 
     const containerWidth = scrollContainer.offsetWidth;
     const totalWidth = trending.length * itemWidth;

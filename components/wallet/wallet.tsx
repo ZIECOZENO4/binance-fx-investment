@@ -18,6 +18,7 @@ import {
 import MultiStepForm from "./process";
 
 import Loading from "../../app/loading";
+import InvestmentBalance from "../investbalance";
 
 interface UserBalanceProps {
   userId: string;
@@ -206,7 +207,7 @@ const Wallet: React.FC = () => {
 
                     <div className="flex flex-row justify-between gap-4 items-center align-middle py-4 px-2 ">
                       <div className="flex flex-row justify-between gap-4 items-center align-middle w-[70%]">
-                        <p className="text-md text-white  ">INVESTMENTK</p>
+                        <p className="text-md text-white  ">INVESTMENT</p>
                         <div onClick={toggleBalanceVisibility}>
                           {isBalanceHidden ? <Eye /> : <Noeye />}
                         </div>
@@ -218,9 +219,10 @@ const Wallet: React.FC = () => {
                       </Link>
                     </div>
                     <div className="text-2xl text-white font-bold ml-2">
-                      {isBalanceHidden
+                      {/* {isBalanceHidden
                         ? "*****"
-                        : `${investments[investmentIndex].balance} ${investments[investmentIndex].symbol}`}
+                        : `${investments[investmentIndex].balance} ${investments[investmentIndex].symbol}`} */}
+                        <InvestmentBalance />
                     </div>
                   </div>
                   <div className="flex-auto sm:ml-5 justify-evenly mt-4 ">

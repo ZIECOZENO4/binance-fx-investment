@@ -214,7 +214,7 @@ const handleInvestNowClick4 = () => {
       <input
       id="amount"
         type="number"
-        className="border-2 border-gray-300 p-2 rounded"
+        className="border-2 border-gray-300 bg-slate-200 p-2 rounded"
         value={amount}
         onChange={handleInputChange}
         min="200"
@@ -340,7 +340,7 @@ const handleInvestNowClick4 = () => {
       <input
       id="amount"
         type="number"
-        className="border-2 border-gray-300 p-2 rounded"
+        className="border-2 border-gray-300 bg-slate-200  p-2 rounded"
         value={amount}
         onChange={handleInputChange}
         min="2,100"
@@ -466,7 +466,7 @@ const handleInvestNowClick4 = () => {
       <input
       id="amount"
         type="number"
-        className="border-2 border-gray-300 p-2 rounded"
+        className="border-2 border-gray-300 bg-slate-200  p-2 rounded"
         value={amount}
         onChange={handleInputChange}
         min="10,100"
@@ -593,7 +593,7 @@ const handleInvestNowClick4 = () => {
       <input
       id="amount"
         type="number"
-        className="border-2 border-gray-300 p-2 rounded"
+        className="border-2 border-gray-300 bg-slate-200  p-2 rounded"
         value={amount}
         onChange={handleInputChange}
         min="2,100"

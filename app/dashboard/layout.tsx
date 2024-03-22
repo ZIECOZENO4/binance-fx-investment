@@ -27,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <TenstackProviders>
+
 
       <div className={inter.className}>
       <Topbar />
@@ -43,6 +43,5 @@ export default function RootLayout({
 <div className="h-[100px] w-full bg-black md:hidden"/>
 <Bottombar />
         </div>
-            </TenstackProviders>
   );
 }

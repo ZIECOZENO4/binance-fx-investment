@@ -20,7 +20,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <TenstackProviders>
  <CryptoContext>
       <div className={inter.className}>
       <Topbar />
@@ -37,6 +36,5 @@ export default function RootLayout({
 <Bottombar />
         </div>
         </CryptoContext>
-            </TenstackProviders>
   );
 }
