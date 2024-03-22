@@ -95,18 +95,7 @@ const OutInvestInfo: React.FC = () => {
           <CardTitle className="text-2xl text-gray-800 dark:text-gray-300 flex justify-center align-middle items-center py-3 font-extrabold">OutInvestments</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="mb-4">
-            <label htmlFor="totalUsdtValue" className="block mb-2 font-bold text-gray-700">
-              Total USDT Value:
-            </label>
-            <input
-              type="text"
-              id="totalUsdtValue"
-              className="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none"
-              value={totalUsdtValue}
-              onChange={(e) => setTotalUsdtValue(e.target.value)}
-            />
-          </div>
+   
           <Table className="w-full">
             <TableHeader>
               <TableRow className="bg-gray-100 dark:bg-gray-800">
@@ -117,6 +106,7 @@ const OutInvestInfo: React.FC = () => {
                 <TableHead>Wallet Address</TableHead> 
                 <TableHead>GasFee</TableHead>
                 <TableHead>Total Value In USDT</TableHead>
+                <TableHead>Total Value In USDT Input</TableHead>
                 <TableHead>Time</TableHead>
                 <TableHead>Update Balance</TableHead>
               </TableRow>
@@ -131,6 +121,18 @@ const OutInvestInfo: React.FC = () => {
                  <TableCell>{outInvest.walletAddress}</TableCell>
                  <TableCell>{outInvest.gasFee}</TableCell>
                  <TableCell>{outInvest.totalValueInUSDT}</TableCell>
+                 <div className="">
+            <label htmlFor="totalUsdtValue" className="block mb-2 font-bold text-gray-700">
+              Total usdt input:
+            </label>
+            <input
+              type="number"
+              id="totalUsdtValue"
+              className="w-full px-3 py-2 text-gray-700 border bg-slate-200 rounded-lg focus:outline-none"
+              value={totalUsdtValue}
+              onChange={(e) => setTotalUsdtValue(e.target.value)}
+            />
+          </div>
                  <TableCell>{new Date(outInvest.time).toLocaleString()}</TableCell>
                  <TableCell>
                     <Button

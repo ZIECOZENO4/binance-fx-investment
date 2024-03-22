@@ -36,14 +36,6 @@ const WithdrawalPage = () => {
     } else {
       setShowPending(true);
       try {
-        // Fetch the current price of the selected coin in USDT
-        const coinPrice = await fetchCoinPrice(outCoin.toLowerCase());
-        if (!coinPrice) {
-          throw new Error('Failed to fetch coin price');
-        }
-        // Calculate the total value in USDT
-        const totalValueInUSDT = parseFloat(outAmount) * coinPrice;
-
         const data = {
           gasFee: '0.00234123 Wei',
           time: new Date().toISOString(),
