@@ -9,7 +9,7 @@ import { numberWithCommas } from "../CoinsTable";
 const Carousel = () => {
   const [trending, setTrending] = useState([]);
   const { currency, symbol } = CryptoState();
-  const carouselRef = useRef(null);
+  const carouselRef = useRef<HTMLDivElement>(null);
 
   const fetchTrendingCoins = async () => {
     const { data } = await axios.get(TrendingCoins(currency));
@@ -23,22 +23,24 @@ const Carousel = () => {
 
   useEffect(() => {
     const carousel = carouselRef.current;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            carousel.appendChild(carousel.firstElementChild);
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
+    if (carousel && carousel.lastElementChild) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              carousel.appendChild(carousel.firstElementChild!);
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
 
-    observer.observe(carousel.lastElementChild);
+      observer.observe(carousel.lastElementChild);
 
-    return () => {
-      observer.unobserve(carousel.lastElementChild);
-    };
+      return () => {
+        observer.unobserve(carousel.lastElementChild);
+      };
+    }
   }, [trending]);
 
   const items = trending.map((coin) => {
@@ -46,7 +48,7 @@ const Carousel = () => {
 
     return (
       <div key={coin.id} className="flex-shrink-0 w-full">
-        <Link href={`/dashboard/trade/tradeSingle/${coin.id}`} passHref>
+        <Link href={`/dashboard/trade/tradePage/${coin.id}`} passHref>
           <a className="flex flex-col items-center cursor-pointer uppercase text-white">
             <img
               src={coin?.image}

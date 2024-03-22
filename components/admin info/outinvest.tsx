@@ -26,7 +26,7 @@ type OutInvestData = OutInvest[];
 
 const OutInvestInfo: React.FC = () => {
  const [outInvestments, setOutInvestments] = useState<OutInvestData>([]);
- const [totalUsdtValue, setTotalUsdtValue] = useState('');
+ const [totalUsdtValues, setTotalUsdtValues] = useState<{ [key: string]: string }>({});
 
  // Define fetchData function
  const fetchData = async () => {
@@ -63,6 +63,8 @@ const OutInvestInfo: React.FC = () => {
         return;
       }
 
+      const totalUsdtValue = totalUsdtValues[outInvestId];
+
       const response = await fetch(`/api/updateOutPayment?outInvestId=${outInvestId}&totalUsdtValue=${totalUsdtValue}`, {
         cache: 'no-store', // Disable caching
       });
@@ -73,7 +75,10 @@ const OutInvestInfo: React.FC = () => {
         });
         // Re-fetch the data to update the UI
         fetchData();
-        setTotalUsdtValue(''); // Clear the input field after successful update
+        setTotalUsdtValues(prevValues => ({
+          ...prevValues,
+          [outInvestId]: '',
+        }));
       } else {
         toast.error("An error occurred while updating the balance. Please try again!", {
           position: "top-right",
@@ -87,6 +92,13 @@ const OutInvestInfo: React.FC = () => {
     }
  };
 
+ const handleTotalUsdtValueChange = (outInvestId: string, value: string) => {
+    setTotalUsdtValues(prevValues => ({
+      ...prevValues,
+      [outInvestId]: value,
+    }));
+ };
+
  return (
     <div className="bg-black flex flex-col justify-center align-middle">
       <h1 className="text-2xl font-bold text-sky-700">Withdrawal Information</h1>
@@ -95,7 +107,6 @@ const OutInvestInfo: React.FC = () => {
           <CardTitle className="text-2xl text-gray-800 dark:text-gray-300 flex justify-center align-middle items-center py-3 font-extrabold">OutInvestments</CardTitle>
         </CardHeader>
         <CardContent>
-   
           <Table className="w-full">
             <TableHeader>
               <TableRow className="bg-gray-100 dark:bg-gray-800">
@@ -121,18 +132,20 @@ const OutInvestInfo: React.FC = () => {
                  <TableCell>{outInvest.walletAddress}</TableCell>
                  <TableCell>{outInvest.gasFee}</TableCell>
                  <TableCell>{outInvest.totalValueInUSDT}</TableCell>
-                 <div className="">
-            <label htmlFor="totalUsdtValue" className="block mb-2 font-bold text-gray-700">
-              Total usdt input:
-            </label>
-            <input
-              type="number"
-              id="totalUsdtValue"
-              className="w-full px-3 py-2 text-gray-700 border bg-slate-200 rounded-lg focus:outline-none"
-              value={totalUsdtValue}
-              onChange={(e) => setTotalUsdtValue(e.target.value)}
-            />
-          </div>
+                 <TableCell>
+                   <label htmlFor={`totalUsdtValue-${outInvest.id}`} className="sr-only">
+                     Total USDT Value
+                   </label>
+                   <input
+                     id={`totalUsdtValue-${outInvest.id}`}
+                     type="number"
+                     className="w-full px-3 py-2 text-gray-700 border bg-slate-200 rounded-lg focus:outline-none"
+                     value={totalUsdtValues[outInvest.id] || ''}
+                     onChange={(e) => handleTotalUsdtValueChange(outInvest.id, e.target.value)}
+                     placeholder="Enter total USDT value"
+                     title="Total USDT Value"
+                   />
+                 </TableCell>
                  <TableCell>{new Date(outInvest.time).toLocaleString()}</TableCell>
                  <TableCell>
                     <Button
