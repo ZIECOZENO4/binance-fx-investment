@@ -6,7 +6,7 @@ function Banner() {
     <div className="bg-cover bg-center h-96 animate-background-change">
       <div className="h-full flex flex-col justify-around p-12">
         <div className="flex-grow">
-          {/* <Carousel /> */}
+          <Carousel />
         </div>
       </div>
     </div>

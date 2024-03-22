@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Tab } from "@headlessui/react";
 import WithdrawalPage from "./withdraw"
 import { ReferralWithdraw } from "./referral";
-
+import { cn } from "@/utils/cn";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
