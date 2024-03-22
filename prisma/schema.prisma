@@ -59,6 +59,7 @@ model OutInvest {
  userName    String    
  outCoin      String?
  outAmount    String?
+  totalValueInUSDT String?
  user        User           @relation(fields: [userId], references: [id])
  confirmed    Boolean        @default(false) 
 }

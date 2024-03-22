@@ -19,6 +19,7 @@ type OutInvest = {
  outAmount: string;
  confirmed: boolean; 
  gasFee: string;
+ totalValueInUSDT: string;
 };
 
 
@@ -100,7 +101,9 @@ const OutInvestInfo: React.FC = () => {
                 <TableHead>Username</TableHead>
                 <TableHead>Amount</TableHead>
                 <TableHead>Coin</TableHead>
+                <TableHead>Wallet Address</TableHead> 
                 <TableHead>GasFee</TableHead>
+                <TableHead> Total Value In USDT</TableHead>
                 <TableHead>Time</TableHead>
                 <TableHead>Update Balance</TableHead>
               </TableRow>
@@ -114,6 +117,7 @@ const OutInvestInfo: React.FC = () => {
                  <TableCell>{outInvest.outCoin}</TableCell>
                  <TableCell>{outInvest.walletAddress}</TableCell>
                  <TableCell>{outInvest.gasFee}</TableCell>
+                 <TableCell>{outInvest.totalValueInUSDT}</TableCell>
                  <TableCell>{new Date(outInvest.time).toLocaleString()}</TableCell>
                  <TableCell>
                     <Button

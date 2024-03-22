@@ -48,16 +48,13 @@ const Trending = () => {
             <div className="flex md:flex-row align-middle items-center flex-col justify-center ">
                 <p>The global crypto market cap is $ 1.74T, a &nbsp; </p>
                 <span> <Rate isIncrement={true} rate='0.53%' /> </span>
-                <p> &nbsp; decrease over the last day. </p>
+                <p> &nbsp; decrease over the last day. <Link href="/dashboard" className="underline text-blue-700">Read More</Link>  </p>
             </div>
             <br />
 
             <div className='flex md:items-center md:align-middle flex-col md:flex-row gap-8 md:gap-0'>
-            <Link href="/dashboard" className="underline text-blue-700">Read More</Link> 
-                <TrendingCard title='Trending' icon={fire} trendingData={trendingData} />
-                <Link href="/dashboard/allinvestors"  className="underline text-blue-700">Read More</Link> 
+                <TrendingCard title='Trending' icon={fire} trendingData={trendingData} /> 
                 <TrendingCard title='Latest Investors' icon={gainers} trendingData={trendingData} />
-                <Link href="/dashboard/allwithdrawal"  className="underline text-blue-700">Read More</Link> 
                 <TrendingCard title='Latest Withdrawal' icon={recent} trendingData={trendingData} />
             </div>
         </div>

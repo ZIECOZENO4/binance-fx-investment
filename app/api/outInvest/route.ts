@@ -2,7 +2,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
 import { cookies } from 'next/headers'
-// Initialize Prisma Client
 const prisma = new PrismaClient();
 export const dynamic = 'force-dynamic';
 export async function POST(request: NextRequest) {
@@ -12,13 +11,14 @@ export async function POST(request: NextRequest) {
     // Destructure the expected fields from the request body
     const {   gasFee,
         walletAddress, time, userName, userId,     outCoin,
-        outAmount } = body;
+        outAmount,  totalValueInUSDT } = body;
 
     // Process the data as needed, e.g., save it to a database
     try {
         const outInvest = await prisma.outInvest.create({
             data: {
       walletAddress,
+      totalValueInUSDT,
                 time: new Date(time), 
                 userId,
                 userName,

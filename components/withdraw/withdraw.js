@@ -1,13 +1,13 @@
 "use client"
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useUser } from "@clerk/clerk-react";
-import { SignedIn, SignedOut, UserButton,  } from "@clerk/nextjs";
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import Link from 'next/link';
-import  { useState } from 'react';
-import {Button} from "@nextui-org/react";
+import { Button } from "@nextui-org/react";
 import { useUserInfo } from '@/tenstack-hooks/user-info';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 const WithdrawalPage = () => {
   const { data: userInfo } = useUserInfo();
   const [outCoin, setOutCoin] = useState(null);
@@ -15,74 +15,111 @@ const WithdrawalPage = () => {
   const [outAmount, setOutAmount] = useState('');
   const [showPending, setShowPending] = useState(false);
   const [showNoFunds, setShowNoFunds] = useState(false);
+  const [usdtValue, setUsdtValue] = useState('');
   const { isLoaded, isSignedIn, user } = useUser();
-  const userId =
-  user && user.id
-    ? user.id
-    : "ID: ---";
-  if (!isLoaded) {
-    return null;
-  }
+  const userId = user && user.id ? user.id : "ID: ---";
+
+  const fetchCoinPrice = async (coinId) => {
+    try {
+      const response = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${coinId}&vs_currencies=usdt`);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      return data[coinId].usdt;
+    } catch (error) {
+      console.error('Error fetching coin price:', error);
+      return null;
+    }
+  };
+
+  useEffect(() => {
+    const calculateUsdtValue = async () => {
+      if (outCoin && outAmount) {
+        try {
+          const coinPrice = await fetchCoinPrice(outCoin.toLowerCase());
+          if (coinPrice) {
+            const totalValueInUSDT = parseFloat(outAmount) * coinPrice;
+            setUsdtValue(totalValueInUSDT.toFixed(2)); // Keep two decimal places
+          } else {
+            setUsdtValue('');
+          }
+        } catch (error) {
+          console.error('Error calculating USDT value:', error);
+          setUsdtValue('');
+        }
+      }
+    };
+
+    calculateUsdtValue();
+  }, [outCoin, outAmount]);
 
   const handleWithdraw = async () => {
-  if (!walletAddress  || !outCoin ||
-    !outAmount) {
-    alert('Please provide both wallet address, outamount, coin and transaction ID.');
-    return;
- }
- if (!isSignedIn) {
-  alert('You must be signed in to make a deposit.');
-  return;
-}
-if (outCoin === 'USD' && parseFloat(outAmount) < 300) {
-  alert('The minimum withdrawal amount for USD is 300 USD.');
-  return;
-}
+    if (!walletAddress || !outCoin || !outAmount) {
+      alert('Please provide both wallet address, outamount, coin and transaction ID.');
+      return;
+    }
+    if (!isSignedIn) {
+      alert('You must be signed in to make a deposit.');
+      return;
+    }
+    if (outCoin === 'USD' && parseFloat(outAmount) < 300) {
+      alert('The minimum withdrawal amount for USD is 300 USD.');
+      return;
+    }
     if (userInfo.balance === 0 || userInfo.balance === null || parseFloat(outAmount) > parseFloat(userInfo.balance)) {
-       setShowNoFunds(true);
+      setShowNoFunds(true);
     } else {
-       setShowPending(true);
-       try {
+      setShowPending(true);
+      try {
+        // Fetch the current price of the selected coin in USDT
+        const coinPrice = await fetchCoinPrice(outCoin.toLowerCase());
+        if (!coinPrice) {
+          throw new Error('Failed to fetch coin price');
+        }
+        // Calculate the total value in USDT
+        const totalValueInUSDT = parseFloat(outAmount) * coinPrice;
+
         const data = {
           gasFee: '0.00234123 Wei',
           time: new Date().toISOString(),
           walletAddress,
-          userId, 
+          userId,
           userName: user !== null ? `${user.firstName || user.username}` : 'FX Investor',
           outCoin,
           outAmount,
+          totalValueInUSDT, 
         };
-        
-         const response = await fetch('/api/outInvest', {
-           method: 'POST',
-           headers: {
-             'Content-Type': 'application/json',
-           },
-           body: JSON.stringify(data),
-         });
-   
-         if (!response.ok) {
-           throw new Error('Network response was not ok');
-         }
-   
-         const responseData = await response.json();
-         console.log(responseData);
-         toast.success("Withdrawal request sent successfully!, Plase await confirmation.", {
+
+        const response = await fetch('/api/outInvest', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        });
+
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+
+        const responseData = await response.json();
+        console.log(responseData);
+        toast.success("Withdrawal request sent successfully!, Please await confirmation.", {
           position: "top-center",
           theme: "colored",
-       });
-         setShowPending(false);
-       } catch (error) {
-         console.error('Error sending withdrawal request:', error);
-         toast.error("Error sending withdrawal request to admin: Please check your balance ", {
+        });
+        setShowPending(false);
+      } catch (error) {
+        console.error('Error sending withdrawal request:', error);
+        toast.error("Error sending withdrawal request to admin: Please check your balance ", {
           position: "top-right",
- 
-       });
-         setShowPending(false);
-       }
+        });
+        setShowPending(false);
+      }
     }
-   };
-   
+  };
+  
   const coins = [
     { fullName: 'Us-Dollar', symbol: 'USD' },
     { fullName: 'Bitcoin', symbol: 'BTC' },
@@ -214,7 +251,12 @@ if (outCoin === 'USD' && parseFloat(outAmount) < 300) {
 </select>
 
     </div>
-   
+    <div className="mt-8 gap-3 flex flex-row justify-between items-center align-middle">
+        <h1 className="font-bold text-white text-xl md:text-2xl justify-start items-start align-middle w-[40vw]">Amount in USDT:</h1>
+        <div className="font-bold text-white text-xl md:text-2xl flex flex-row justify-center items-center align-middle w-[60vw]">
+          {usdtValue ? `$${usdtValue} USDT` : 'Select a coin and enter an amount'}
+        </div>
+      </div>
 </div>
       <div className="mb-4 flex flex-row mt-8  w-[100vw] justify-between">
         <label htmlFor="walletAddress" className="block mb-2 font-bold  w-[40vw]  text-xl md:text-2xl  justify-start items-start align-middle">Wallet Address :</label>
