@@ -14,7 +14,6 @@ const Page = () => {
   return (
     <Suspense fallback={<div><Loading /> </div>}>
       <div className="container mx-auto">
-      <h1 className="text-2xl font-bold mb-4">Tabs Example</h1>
       <Tabs />
     </div>
     </Suspense>

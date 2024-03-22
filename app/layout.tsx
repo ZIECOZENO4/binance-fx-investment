@@ -23,13 +23,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-    
+      <Analytics/>
       <body className={`${inter.className} overflow-x-hidden md:hidden`}>  
      
       <Providers>
             <div className=" w-[100vw] bg-black ">
               <div className='w-[100vw] z-30 sticky'>
-              <Analytics/>
+            
                 <NavBar />
                 <SmNavbar />
               </div>
