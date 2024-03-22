@@ -39,6 +39,55 @@ const Trending = () => {
         },
     ]
 
+    const trendingData2 = [
+        {
+            number: 1,
+            symbol: "BTC",
+            name: "Bitcoin",
+            icon: btc,
+            isIncrement: true,
+            rate: "2.34%"
+        }, {
+            number: 2,
+            symbol: "USDT",
+            name: "Tether",
+            icon: usdt,
+            isIncrement: false,
+            rate: "9.32%"
+        }, {
+            number: 1,
+            symbol: "BTC",
+            name: "Bitcoin",
+            icon: btc,
+            isIncrement: true,
+            rate: "2.34%"
+        },
+    ]
+
+    const trendingData3 = [
+        {
+            number: 1,
+            symbol: "BTC",
+            name: "Bitcoin",
+            icon: btc,
+            isIncrement: true,
+            rate: "2.34%"
+        }, {
+            number: 2,
+            symbol: "USDT",
+            name: "Tether",
+            icon: usdt,
+            isIncrement: false,
+            rate: "9.32%"
+        }, {
+            number: 1,
+            symbol: "BTC",
+            name: "Bitcoin",
+            icon: btc,
+            isIncrement: true,
+            rate: "2.34%"
+        },
+    ]
     return <div className="text-white p-6 mt-4 flex justify-center align-middle items-center w-full">
         <div className={styles.trendingWrapper}>
             <div className="flex  align-middle items-center  justify-center">
@@ -54,8 +103,8 @@ const Trending = () => {
 
             <div className='flex md:items-center md:align-middle flex-col md:flex-row gap-8 md:gap-0'>
                 <TrendingCard title='Trending' icon={fire} trendingData={trendingData} /> 
-                <TrendingCard title='Latest Investors' icon={gainers} trendingData={trendingData} />
-                <TrendingCard title='Latest Withdrawal' icon={recent} trendingData={trendingData} />
+                <TrendingCard title='Latest Investors' icon={gainers} trendingData={trendingData2} />
+                <TrendingCard title='Latest Withdrawal' icon={recent} trendingData={trendingData3} />
             </div>
         </div>
     </div>
