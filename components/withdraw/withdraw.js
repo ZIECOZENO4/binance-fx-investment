@@ -21,15 +21,27 @@ const WithdrawalPage = () => {
 
   const fetchCoinPrice = async (coinId) => {
     try {
-      const response = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${coinId}&vs_currencies=usdt`);
+      // Convert the user input to the format expected by CoinGecko, if necessary.
+      // This is a placeholder for any conversion logic you might need.
+      // For example, if CoinGecko expects lowercase, ensure the coinId is in lowercase.
+      const formattedCoinId = coinId.toLowerCase();
+  
+      const response = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${formattedCoinId}&vs_currencies=usdt`);
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
       const data = await response.json();
-      return data[coinId].usdt;
+      // Check if the coinId is valid and data is returned
+      if (data[formattedCoinId] && data[formattedCoinId].usdt) {
+        return data[formattedCoinId].usdt;
+      } else {
+        // If the coinId is invalid or no data is returned, set the USDT value to "0.00"
+        return "0.00";
+      }
     } catch (error) {
       console.error('Error fetching coin price:', error);
-      return null;
+      // In case of any error, set the USDT value to "0.00"
+      return "0.00 USDT";
     }
   };
 
@@ -63,8 +75,8 @@ const WithdrawalPage = () => {
       alert('You must be signed in to make a deposit.');
       return;
     }
-    if (outCoin === 'USD' && parseFloat(outAmount) < 300) {
-      alert('The minimum withdrawal amount for USD is 300 USD.');
+    if (outCoin === 'USDT' && parseFloat(outAmount) < 300) {
+      alert('The minimum withdrawal amount for USDT is 300 USD.');
       return;
     }
     if (userInfo.balance === 0 || userInfo.balance === null || parseFloat(outAmount) > parseFloat(userInfo.balance)) {
@@ -121,7 +133,7 @@ const WithdrawalPage = () => {
   };
   
   const coins = [
-    { fullName: 'Us-Dollar', symbol: 'USD' },
+    { fullName: 'Us-Dollar', symbol: 'USDT' },
     { fullName: 'Bitcoin', symbol: 'BTC' },
     { fullName: 'Ethereum', symbol: 'ETH' },
     { fullName: 'Binance', symbol: 'BNB' },
