@@ -3,6 +3,7 @@ import Loading from '@/app/loading';
 import React from 'react'
 import { Suspense, useEffect } from 'react';
 import { useUser } from "@clerk/clerk-react";
+import {Tabs } from "../../../../components/withdraw/tabs";
 
 
 const Page = () => {
