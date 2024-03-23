@@ -58,7 +58,7 @@ function AccoutDropdown() {
               <path d="M15 4l-3.5 3.5"></path>
               <path d="M20 9l-3.5 3.5"></path>
             </svg>
-            <span>Deposits</span>
+            <span>Deposits here</span>
           </a>
           <a
             href="/"
