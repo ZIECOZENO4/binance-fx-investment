@@ -3,7 +3,7 @@ import Loading from '@/app/loading';
 import React from 'react'
 import { Suspense, useEffect } from 'react';
 import { useUser } from "@clerk/clerk-react";
-import {Tabs } from "../../../../components/withdraw/tabs";
+import WithdrawalPage from "../../../../components/withdraw/withdraw"
 
 
 const Page = () => {
@@ -15,7 +15,7 @@ const Page = () => {
   return (
     <Suspense fallback={<div><Loading /> </div>}>
       <div className="container mx-auto m-0">
-      <Tabs />
+      <WithdrawalPage />
     </div>
     </Suspense>
   )
