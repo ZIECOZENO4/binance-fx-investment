@@ -23,18 +23,18 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: 'OutInvest not found' }, { status: 404 });
     }
 
-    // Update the outInvest to set confirmed to true and store the total USDT value
+   
     await prisma.outInvest.update({
       where: { id: outInvestId },
       data: { confirmed: true, totalValueInUSDT: totalUsdtValue },
     });
 
-    // Check if outAmount is not null before parsing it
+
     if (outInvest.outAmount) {
       const outInvestAmount = parseFloat(outInvest.outAmount);
       const totalUsdtValueFloat = parseFloat(totalUsdtValue);
 
-      // Update the user's balance by decrementing the totalUsdtValue
+      
       const updatedUser = await prisma.user.update({
         where: { id: outInvest.user.id },
         data: { balance: { decrement: totalUsdtValueFloat } },
