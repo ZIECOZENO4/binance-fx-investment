@@ -1,4 +1,5 @@
-
+"use client";
+import React, { useRef, useState } from 'react';
 import { Button } from "@/components/ui/button"
 interface ConfirmationPrintProps {
   plan: string;
@@ -39,7 +40,7 @@ interface ConfirmationPrintProps {
       <div className="space-y-4">
         <div className="flex justify-between">
           <span className="font-medium">From</span>
-          <span>My Bitcoin Wallet</span>
+          <span>My FX Wallet</span>
         </div>
         <div className="flex justify-between">
           <span className="font-medium">To</span>

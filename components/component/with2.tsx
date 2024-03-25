@@ -3,7 +3,7 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 
-export function Withdrawal() {
+export function Withdrawal2() {
   return (
     <div className="max-w-4xl mx-auto my-8 p-4 bg-white shadow-lg rounded-lg">
       <div className="flex flex-col lg:flex-row">

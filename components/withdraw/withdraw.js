@@ -7,6 +7,7 @@ import { Button } from "@nextui-org/react";
 import { useUserInfo } from '@/tenstack-hooks/user-info';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Withdrawal2 } from '../component/with2';
 
 const WithdrawalPage = () => {
   const { data: userInfo } = useUserInfo();
@@ -249,6 +250,7 @@ const WithdrawalPage = () => {
           </div>
         </div>
       </div>
+      <Withdrawal2 />
 </div>
   );
 };

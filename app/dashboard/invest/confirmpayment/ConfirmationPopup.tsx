@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from "@nextui-org/react";
 import { Progress } from "@nextui-org/react";
 import { CardTitle, CardDescription, CardHeader, CardContent, Card } from "@/components/ui/card";
@@ -21,21 +21,24 @@ interface ConfirmationPopupProps {
 const ConfirmationPopup: React.FC<ConfirmationPopupProps> = ({ plan, planId, amount, coin, onClose }) => {
  const {isOpen, onOpenChange} = useDisclosure({ defaultOpen: true });
  const componentRef = useRef<HTMLDivElement>(null);
-  
- const downloadPDF = () =>{
-  const capture = document.querySelector('.actual-receipt');
-  setLoader(true);
-  html2canvas(capture).then((canvas)=>{
-    const imgData = canvas.toDataURL('img/png');
-    const doc = new jsPDF('p', 'mm', 'a4');
-    const componentWidth = doc.internal.pageSize.getWidth();
-    const componentHeight = doc.internal.pageSize.getHeight();
-    doc.addImage(imgData, 'PNG', 0, 0, componentWidth, componentHeight);
-    setLoader(false);
-    doc.save('investment receipt.pdf');
-  })
-}
-
+  const [loader,  setLoader] = useState(false)
+  const downloadPDF = () => {
+    const capture = document.querySelector('.actual-receipt');
+    if (!capture) {
+       console.error('Element with class "actual-receipt" not found');
+       return; // Exit the function if the element is not found
+    }
+    setLoader(true);
+    html2canvas(capture as HTMLElement).then((canvas) => {
+       const imgData = canvas.toDataURL('img/png');
+       const doc = new jsPDF('p', 'mm', 'a4');
+       const componentWidth = doc.internal.pageSize.getWidth();
+       const componentHeight = doc.internal.pageSize.getHeight();
+       doc.addImage(imgData, 'PNG', 0, 0, componentWidth, componentHeight);
+       setLoader(false);
+       doc.save('investment receipt.pdf');
+    });
+   };
  
  return (
     <Modal 
@@ -101,10 +104,9 @@ const ConfirmationPopup: React.FC<ConfirmationPopupProps> = ({ plan, planId, amo
           className="max-w-md"
         />
       </CardContent>
-     
-      <div  className="actual-receipt hidden">
-        <ComponentPrint />
-      </div>
+<div className="actual-receipt hidden">
+ <ComponentPrint plan={plan} planId={planId} amount={amount} coin={coin} />
+</div>
     <div className="gap-2 mt-1 flex items-center justify-center">
          <div className="flex justify-around my-4">
             <div
@@ -189,7 +191,7 @@ const ConfirmationPopup: React.FC<ConfirmationPopupProps> = ({ plan, planId, amo
     </Card>
               </ModalBody>
               <ModalFooter>
-          <Button color="success" variant="ghost" onClick={downloadPDF}> 
+          <Button color="success" variant="ghost"disabled={!(loader===false)} onClick={downloadPDF}> 
             Save
           </Button>
           <Button className="bg-[#6f4ef2] shadow-lg shadow-indigo-500/20" onClick={onClose}> 
