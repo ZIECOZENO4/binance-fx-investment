@@ -1,3 +1,4 @@
+"use client"
 import { useEffect, useState } from 'react';
 import fetchTrendingCoins from '../lib/trendingcoins';
 import Rate from "./rate"
