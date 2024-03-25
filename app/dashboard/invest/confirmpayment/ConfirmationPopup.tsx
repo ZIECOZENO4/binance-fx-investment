@@ -7,9 +7,9 @@ import Link from 'next/link';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import { saveAs } from 'file-saver';
-import { toast } from 'react-toastify'; // Import the toast function
-import 'react-toastify/dist/ReactToastify.css'; // Import the toast styles
-
+import { toast } from 'react-toastify'; 
+import 'react-toastify/dist/ReactToastify.css'; 
+import ComponentPrint from "./componentprint"
 interface ConfirmationPopupProps {
  plan: string;
  planId: string;
@@ -20,26 +20,22 @@ interface ConfirmationPopupProps {
 
 const ConfirmationPopup: React.FC<ConfirmationPopupProps> = ({ plan, planId, amount, coin, onClose }) => {
  const {isOpen, onOpenChange} = useDisclosure({ defaultOpen: true });
- const componentRef = useRef<HTMLDivElement>(null); // Make sure to specify the type of the ref
+ const componentRef = useRef<HTMLDivElement>(null);
   
+ const downloadPDF = () =>{
+  const capture = document.querySelector('.actual-receipt');
+  setLoader(true);
+  html2canvas(capture).then((canvas)=>{
+    const imgData = canvas.toDataURL('img/png');
+    const doc = new jsPDF('p', 'mm', 'a4');
+    const componentWidth = doc.internal.pageSize.getWidth();
+    const componentHeight = doc.internal.pageSize.getHeight();
+    doc.addImage(imgData, 'PNG', 0, 0, componentWidth, componentHeight);
+    setLoader(false);
+    doc.save('investment receipt.pdf');
+  })
+}
 
- const handleDownload = () => {
-  if (componentRef.current !== null) {
-     html2canvas(componentRef.current).then(canvas => {
-       const imgData = canvas.toDataURL('image/png');
-       const pdf = new jsPDF();
-       const imgProperties = pdf.getImageProperties(imgData);
-       const pdfWidth = pdf.internal.pageSize.getWidth();
-       const pdfHeight = (imgProperties.height * pdfWidth) / imgProperties.width;
-       pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-       pdf.save('Fx Investment Receipt.pdf'); // Save the PDF with a filename
-       toast.success('PDF generated and downloaded successfully!'); // Toast for success
-     }).catch(error => {
-       console.error('Error generating PDF:', error);
-       toast.error('Failed to generate PDF. Please try again.'); // Toast for failure
-     });
-  }
- };
  
  return (
     <Modal 
@@ -105,7 +101,10 @@ const ConfirmationPopup: React.FC<ConfirmationPopupProps> = ({ plan, planId, amo
           className="max-w-md"
         />
       </CardContent>
-
+     
+      <div  className="actual-receipt hidden">
+        <ComponentPrint />
+      </div>
     <div className="gap-2 mt-1 flex items-center justify-center">
          <div className="flex justify-around my-4">
             <div
@@ -190,7 +189,7 @@ const ConfirmationPopup: React.FC<ConfirmationPopupProps> = ({ plan, planId, amo
     </Card>
               </ModalBody>
               <ModalFooter>
-          <Button color="success" variant="ghost" onClick={handleDownload}> 
+          <Button color="success" variant="ghost" onClick={downloadPDF}> 
             Save
           </Button>
           <Button className="bg-[#6f4ef2] shadow-lg shadow-indigo-500/20" onClick={onClose}> 

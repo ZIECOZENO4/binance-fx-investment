@@ -99,10 +99,10 @@ const BalanceShow: React.FC = () => {
             <div className="flex flex-col justify-start gap-8">
               <p className="font-bold md:text-2xl sm:text-md text-xl font-sono gap-3">INVESTMENT BALANCE</p>
               <p className="font-bold md:text-4xl text-3xl font-serif gap-3">
-              {/* {isBalanceHidden
+            {isBalanceHidden
                         ? "*****"
-                        : `${investments[investmentIndex].balance} ${investments[investmentIndex].symbol}`} */}
-                        <InvestmentBalance />
+                        :  <InvestmentBalance />} 
+                       
               </p>
             </div>
             <div onClick={toggleBalanceVisibility}>

@@ -44,7 +44,7 @@ const ComfirmPayment: React.FC<ComfirmPaymentProps> = ({ amount, coin, plan, pla
       planId,
       time: new Date().toISOString(), // Use ISO string format for consistency
       balance: userBalance !== null ? `$${userBalance.toFixed(2)}` : '0.00 USDT',
-      gasFee: '2.665556 Wei',
+      gasFee: '0.665556 USDT',
       userId,
       userName: user !== null ? `${user.firstName || user.username}` : 'FX Investor',
     };

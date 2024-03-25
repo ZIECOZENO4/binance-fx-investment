@@ -219,10 +219,10 @@ const Wallet: React.FC = () => {
                       </Link>
                     </div>
                     <div className="text-2xl text-white font-bold ml-2">
-                      {/* {isBalanceHidden
+                   {isBalanceHidden
                         ? "*****"
-                        : `${investments[investmentIndex].balance} ${investments[investmentIndex].symbol}`} */}
-                        <InvestmentBalance />
+                        :  <InvestmentBalance /> }
+                       
                     </div>
                   </div>
                   <div className="flex-auto sm:ml-5 justify-evenly mt-4 ">
