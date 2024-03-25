@@ -4,7 +4,6 @@ import { useUser } from "@clerk/clerk-react";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import Link from 'next/link';
 import {Input} from "@nextui-org/react";
-import { Button } from "@nextui-org/react";
 import { useUserInfo } from '@/tenstack-hooks/user-info';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

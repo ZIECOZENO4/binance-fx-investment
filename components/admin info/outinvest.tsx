@@ -130,7 +130,7 @@ const OutInvestInfo: React.FC = () => {
                  <TableCell>{outInvest.outCoin}</TableCell>
                  <TableCell>{outInvest.walletAddress}</TableCell>
                  <TableCell>{outInvest.gasFee}</TableCell>
-                 <TableCell>{outInvest.totalValueInUSDT}</TableCell>
+                 <TableCell>c</TableCell>
                  <TableCell>
                    <label htmlFor={`totalUsdtValue-${outInvest.id}`} className="sr-only">
                      Total USDT Value
