@@ -1,4 +1,5 @@
-
+import { useEffect, useState } from 'react';
+import fetchTrendingCoins from '../lib/trendingcoins';
 import Rate from "./rate"
 import fire from "../public/assets/svg/fire.png"
 import btc from "../public/assets/svg/btc.png"
@@ -12,32 +13,17 @@ const styles = {
     h1: `text-3xl text-white font-bold `,
 }
 const Trending = () => {
- 
 
-    const trendingData = [
-        {
-            number: 1,
-            symbol: "BTC",
-            name: "Bitcoin",
-            icon: btc,
-            isIncrement: true,
-            rate: "2.34%"
-        }, {
-            number: 2,
-            symbol: "USDT",
-            name: "Tether",
-            icon: usdt,
-            isIncrement: false,
-            rate: "9.32%"
-        }, {
-            number: 1,
-            symbol: "BTC",
-            name: "Bitcoin",
-            icon: btc,
-            isIncrement: true,
-            rate: "2.34%"
-        },
-    ]
+    const [trendingData, setTrendingData] = useState([]);
+   
+    useEffect(() => {
+       const fetchData = async () => {
+         const data = await fetchTrendingCoins();
+         setTrendingData(data);
+       };
+   
+       fetchData();
+    }, []);
 
     const trendingData2 = [
         {

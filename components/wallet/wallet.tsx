@@ -39,12 +39,7 @@ const Wallet: React.FC = () => {
     const initialValue = saved ? JSON.parse(saved) : false;
     return initialValue;
   });
-  
-  const investments = [
-    { balance: "0.000", symbol: "ETH" },
-    { balance: "0.000", symbol: "BTC" },
-    { balance: "0.000", symbol: "LTC" },
-  ];
+
 
   const { isLoaded, isSignedIn, user } = useUser();
 

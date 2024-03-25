@@ -3,12 +3,14 @@ import React, { useState, useEffect } from 'react';
 import { useUser } from "@clerk/clerk-react";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import Link from 'next/link';
+import {Input} from "@nextui-org/react";
 import { Button } from "@nextui-org/react";
 import { useUserInfo } from '@/tenstack-hooks/user-info';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Withdrawal2 } from '../component/with2';
-
+import {Card, CardHeader, CardBody, CardFooter, Image, Button} from "@nextui-org/react";
+import {Select, SelectItem} from "@nextui-org/react";
 const WithdrawalPage = () => {
   const { data: userInfo } = useUserInfo();
   const [outCoin, setOutCoin] = useState(null);
@@ -87,7 +89,7 @@ const WithdrawalPage = () => {
     { fullName: 'XRP', symbol: 'XRP' },
     { fullName: 'Tether', symbol: 'USDT' },
     { fullName: 'Solana', symbol: 'SOL' },
-    { fullName: 'Ripple', symbol: '' },
+    { fullName: 'Ripple', symbol: 'RPP' },
     { fullName: 'Lido', symbol: 'STETH' },   
     { fullName: 'Doge', symbol: 'DOGE' },
     { fullName: 'Avalanche-2', symbol: 'AVAX' },
@@ -99,10 +101,8 @@ const WithdrawalPage = () => {
     <div className="relative overflow-hidden">
    
 
-      <div className="relative z-10">
-        <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16 bg-black">
-          <div className="max-w-2xl text-center mx-auto">
-            <p className="inline-block text-md font-medium bg-clip-text text-sky-700 ">
+      <div className="flex flex-col items-center justify-center align-middle mx-3 overflow-hidden bg-black">
+      <p className="inline-block text-md font-medium bg-clip-text text-sky-700 ">
             Fast Withdrawal
             </p>
 
@@ -115,25 +115,71 @@ const WithdrawalPage = () => {
             <div className="mt-5 max-w-3xl">
               <p className="text-md text-gray-200 ">Always verify the wallet address you&apos;re sending to. A single typo can result in your funds being sent to an unintended address, making them irretrievable</p>
             </div>
+            <div>
 
-            <div className="mt-14 gap-3 flex flex-col  text-white font-bold justify-start items-start align-middle">
-          <p className="block font-bold text-white text-2xl md:text-2xl justify-center items-center align-middle mr-4"> Withdrawal Process</p>
-          <div className="mt-8 gap-6 flex flex-row  justify-start items-start align-middle w-[100vw]">
-  <h1 className="font-bold text-white  justify-start items-start align-middle text-xl md:text-2xl w-[40vw] ">Withdraw From :</h1>
+    <div className="w-full gap-2 my-4 grid grid-cols-12 grid-rows-2 px-8">
 
-
-  <div class="flex  items-center border-l-8 border-emerald-500 bg-emerald-50 p-4 text-emerald-900 shadow-lg  w-[60vw] ">
-    <div class="min-w-0">
-      <h2 class="overflow-hidden text-ellipsis whitespace-nowrap">Binance FX</h2>
-    </div>
+    <Card isFooterBlurred className="w-full mx-2 h-[100px] col-span-12 sm:col-span-5">
+      <CardHeader className="absolute z-10 top-1 flex-col items-start">
+        <p className="text-tiny text-white/60 uppercase font-bold">Wallet Balance</p>
+        <h4 className="text-black font-medium text-2xl">{ userBalance !== null ? `$${userBalance.toFixed(2)}` : '0.00 USDT'}</h4>
+      </CardHeader>
+      <Image
+        removeWrapper
+        alt="Card example background"
+        className="z-0 w-full h-full scale-125 -translate-y-6 object-cover"
+        src="/images/R.jpg"
+      />
+      <CardFooter className="absolute bg-white/30 bottom-0 border-t-1 border-zinc-100/50 z-10 justify-between">
+        <div>
+          <p className="text-black text-tiny">Withdrawal History.</p>
+          <p className="text-black text-tiny">Get notified.</p>
+        </div>
+        <Button className="text-tiny" color="primary" radius="full" size="sm">
+          Notify Me
+        </Button>
+      </CardFooter>
+    </Card>
+ 
   </div>
 
-</div>
-<div className="mt-8 gap-2 flex flex-row  justify-start items-start align-middle  w-[100vw] ">
-  <h1 className="font-bold text-white text-md md:text-2xl justify-start items-start align-middle   w-[40vw] ">Withdrawer&apos;s Name :</h1>
-
-
-  <div class="flex max-w-md items-center border-l-8 border-emerald-500 bg-emerald-50 p-2  w-[60vw] text-emerald-900 shadow-lg">
+  <div className="max-w-4xl mx-auto my-8 p-4 bg-white shadow-lg rounded-lg">
+      <div className="flex flex-col lg:flex-row">
+        <div className="lg:w-1/2 lg:pr-4">
+          <h2 className="text-xl font-semibold mb-4">Withdrawal Details</h2>
+          <div className="mb-4">
+            <label className="block text-sm font-medium mb-1" htmlFor="type">
+            Withdrawal  Type
+            </label>
+            <div class="flex max-w-md items-center border-l-8 border-emerald-500 bg-emerald-50 p-2  w-[60vw] text-emerald-900 shadow-lg">
+    <div class="min-w-0">
+<h4  className="overflow-hidden text-ellipsis whitespace-nowrap">Wallet Balance</h4>
+    </div>
+  </div>
+          </div>
+          <div className="mb-4">
+            <label className="block text-sm font-medium mb-1">Duration</label>
+            <div className="flex gap-2">
+              <Button className="flex-1">24 Hours</Button>
+              <Button className="flex-1">1 Hour</Button>
+              <Button className="flex-1 bg-[#f2f2f2] text-black">10 sec</Button>
+            </div>
+          </div>
+          <div className="mb-4">
+            <label className="block text-sm font-medium mb-1" htmlFor="type">
+            Withdrawal From
+            </label>
+            <div class="flex  items-center border-l-8 border-emerald-500 bg-emerald-50 px-4 text-emerald-900 shadow-lg  w-full ">
+    <div className="min-w-0">
+      <h2 className="overflow-hidden text-ellipsis whitespace-nowrap">Binance FX Wallet</h2>
+    </div>
+  </div>
+          </div>
+          <div className="mb-4">
+            <label className="block text-sm font-medium mb-1" htmlFor="type">
+            Withdrawer&apos;s Name :
+            </label>
+            <div class="flex max-w-md items-center border-l-8 border-emerald-500 bg-emerald-50 px-2  w-full text-emerald-900 shadow-lg">
     <div class="min-w-0">
       
       <SignedIn>
@@ -142,113 +188,143 @@ const WithdrawalPage = () => {
               </SignedIn>
     </div>
   </div>
-
-</div>
-<div className="mt-8 gap-6 flex flex-row  justify-start items-start align-middle  w-[100vw] ">
-  <h1 className="font-bold text-white text-md md:text-2xl  justify-start items-start align-middle  w-[40vw]   ">Available Balance :</h1>
-
-
-  <div class="flex max-w-md items-center border-l-8 border-emerald-500 bg-emerald-50 p-2  w-[60vw] text-emerald-900 shadow-lg">
+          </div>
+          <div className="mb-4">
+            <label className="block text-sm font-medium mb-1" htmlFor="type">
+            Available Balance 
+            </label>
+            <div class="flex max-w-md items-center border-l-8 border-emerald-500 bg-emerald-50 px-2  w-full text-emerald-900 shadow-lg">
     <div class="min-w-0">
  <h2 class="overflow-hidden text-ellipsis  whitespace-nowrap">   { userBalance !== null ? `$${userBalance.toFixed(2)}` : '0.00 USDT'}</h2>
     </div>
   </div>
+          </div>
+          <div className="mb-4">
+            <label className="block text-sm font-medium mb-1" htmlFor="type">
+            Withdrawal  Time
+            </label>
+            {new Date().toLocaleTimeString()}
+          </div>
+          <div className="mb-4">
+        <div className="flex w-full flex-wrap md:flex-nowrap mb-6 md:mb-0 gap-4">
+          <Input type="number" variant="underlined" value={outAmount} 
+              onChange={(e) => setOutAmount(e.target.value)}
+          label="Amount" placeholder="Enter Amount" />
+        </div>
+          </div>
+          <div className="mb-4">
+    <div className="w-full flex flex-col gap-4">
+        <div  className="flex w-full flex-wrap md:flex-nowrap mb-6 md:mb-0 gap-4">
+          <Select 
+            variant="underlined"
+            label="Select Currency" 
+            className="w-full px-2" 
+            id="coinSelect"
+            value={outCoin}
+            onChange={(e) => setOutCoin(e.target.value)}
+          >
+            {coins.map((coin) => (
+              <SelectItem  key={coin.symbol} value={coin.symbol}>
+              {coin.symbol}
+              </SelectItem>
+            ))}
+          </Select>
+          <Select
+            variant={variant}
+            label="Favorite Animal"
+            placeholder="Select an animal"
+            className="max-w-xs"
+          >
+            {animals.map((animal) => (
+              <SelectItem key={animal.value} value={animal.value}>
+                {animal.label}
+              </SelectItem>
+            ))}
+          </Select>
+        </div> 
+    </div>  
 
-</div>
-<div className="mt-8 gap-6 flex flex-row  justify-start items-start align-middle  w-[100vw] ">
-  <h1 className="font-bold text-white text-md md:text-2xl  justify-start items-start align-middle w-[40vw]  ">Transaction Time :</h1>
 
-
-  <div class="flex max-w-md items-center border-l-8 border-emerald-500 bg-emerald-50 p-2 text-emerald-900 shadow-lg  w-[60vw] ">
-    <div class="min-w-0">
-  <h2 class="overflow-hidden text-ellipsis font-bold  whitespace-nowrap">{new Date().toLocaleTimeString()}</h2>
-
-    </div>
-  </div>
-
-</div>
-<div className="mt-8 gap-6 flex flex-row  justify-start items-start align-middle  w-[100vw] ">
-  <h1 className="font-bold text-white text-md md:text-2xl  w-[40vw]  justify-start items-start align-middle ">Gass Fee :</h1>
-
-
-  <div class="flex max-w-md items-center border-l-8 border-emerald-500 bg-emerald-50 p-2 text-emerald-900 shadow-lg  w-[60vw] ">
-    <div class="min-w-0">
-  <h2 class="overflow-hidden text-ellipsis font-bold  whitespace-nowrap">0.00234123 wei</h2>
-
-    </div>
-  </div>
-
-</div>
-<div>
-<div className="p-4 mx-8 flex justify-center flex-col items-center align-middle w-[100vw]">
-      <div className="flex justify-start flex-col items-start mb-4 w-[100vw]">
-   
-           <div className="mt-8 gap-3 flex flex-row   justify-between items-center align-middle">
-  <h1 className="font-bold text-white text-xl md:text-2xl  justify-start items-start align-middle w-[40vw]  ">Amount :</h1>
- 
-    <div className="font-bold text-white text-xl md:text-2xl flex flex-row justify-center items-center align-middle w-[60vw]  ">
-    <input
-          type="number"
-      
-          className=" p-2 border border-gray-300 w-[30vw] rounded text-black"
-          value={outAmount}
-          onChange={(e) => setOutAmount(e.target.value)}
-        />
-
-<select
-  id="coinSelect"
-  className="p-2 border border-gray-300 w-[30vw] text-black rounded"
-  value={outCoin}
-  onChange={(e) => setOutCoin(e.target.value)} // Directly store the selected coin's symbol
->
-  <option value="">Select</option>
-  {coins.map((coin) => (
-    <option key={coin.symbol} value={coin.symbol}>{coin.symbol}</option>
-  ))}
-</select>
-
-    </div>
-</div>
-      <div className="mb-4 flex flex-row mt-8  w-[100vw] justify-between">
-        <label htmlFor="walletAddress" className="block mb-2 font-bold  w-[40vw]  text-xl md:text-2xl  justify-start items-start align-middle">Wallet Address :</label>
-        <input
-          type="text"
-          id="walletAddress"
-          className=" p-2 border border-gray-300 rounded  w-[60vw] text-black "
-          value={walletAddress}
+          </div>
+          <div className="mb-4">
+        <div className="flex w-full flex-wrap md:flex-nowrap mb-6 md:mb-0 gap-4">
+          <Input   type="text"
+          id="walletAddress" variant="underlined"          value={walletAddress}
           onChange={(e) => setWalletAddress(e.target.value)}
-        />
-      </div>
-   
-      </div>
-  
-      <div className=' flex flex-row justify-between items-start align-middle items-center gap-4 mx-8  p-5  w-[100vw] '>
-       <button
-        className="bg-green-500 text-white px-4 py-2 rounded  w-[50vw] "
-       
-      >
-        Share
-      </button>
-    <Button
+          label="Wallet Address" placeholder="Wallet Address" />
+        </div>
+          </div>
+        </div>
+        <div className="lg:w-1/2 lg:pl-4">
+          <div className="bg-gray-100 p-4 rounded-lg">
+            <h2 className="text-xl font-semibold mb-4">Summary</h2>
+            <div className="mb-4">
+              <div className="flex justify-between">
+                <span className="text-sm">withdrawal Date</span>
+                <span className="text-sm font-medium">  {new Date().toLocaleTimeString()}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-sm">Prefered Currency</span>
+                <span className="text-sm font-medium">USDT</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-sm">Max Time</span>
+                <span className="text-sm font-medium">30 Sec</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-sm">Max Days</span>
+                <span className="text-sm font-medium">2 Days</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-sm">Gas Fee</span>
+                <span className="text-sm font-medium">0.00234123 wei</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-sm">Min Currency Value</span>
+                <span className="text-sm font-medium">200 USDT</span>
+              </div>
+            </div>
+            <div className="mb-4">
+              <div className="flex justify-between">
+                <span className="text-sm">Est. APY</span>
+                <span className="text-sm font-medium">21.54%</span>
+              </div>
+            </div>
+            <div className="mb-4">
+              <p className="text-sm">Estimated Interests</p>
+              <p className="text-sm text-yellow-600 bg-yellow-100 p-2 rounded">
+                The APY is adjusted daily based on the on-chain staking rewards, and the specific APY is subject to the
+                page display on the day.
+              </p>
+            </div>
+            <div className="flex items-center mb-4">
+              <Checkbox id="terms" />
+              <label className="text-sm ml-2" htmlFor="terms">
+                I have read and I agree to{""}
+                <a className="text-blue-600" href="#">
+                  Binance FX Investment Service Agreement
+                </a>
+              </label>
+            </div>
+            <div className=' flex flex-col justify-center gap-4 px-2 mt-3'>
+            <Button
       disableRipple
-      className="relative flex flex-col m-2  h-12 align-middle overflow-visible rounded-full hover:-translate-y-1 px-6 shadow-xl bg-background/30 after:content-[''] after:absolute after:rounded-full after:inset-0 after:bg-background/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0  w-[50vw] "
+      className="relative flex flex-col  h-12 align-middle overflow-visible rounded-full hover:-translate-y-1 px-6 shadow-xl bg-background/30 after:content-[''] after:absolute after:rounded-full after:inset-0 after:bg-background/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0  w-full "
       size="lg"
       onClick={handleWithdraw}
     >
 
       <p className="font-bold text-white">Withdraw</p>  
     </Button>
-   
-      </div>
-  
-
-      {showPending && <div>Pending request...</div>}
+    {showPending && <div>Pending request...</div>}
       {showNoFunds && <div>No available funds. Deposit and invest first.</div>}
-    </div>
-</div>
+            <Button className="w-full bg-green-500 text-white rounded-lg font-bold">Share</Button>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+            </div>
       </div>
       <Withdrawal2 />
 </div>
