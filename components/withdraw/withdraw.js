@@ -228,18 +228,6 @@ const WithdrawalPage = () => {
               </SelectItem>
             ))}
           </Select>
-          <Select
-            variant={variant}
-            label="Favorite Animal"
-            placeholder="Select an animal"
-            className="max-w-xs"
-          >
-            {animals.map((animal) => (
-              <SelectItem key={animal.value} value={animal.value}>
-                {animal.label}
-              </SelectItem>
-            ))}
-          </Select>
         </div> 
     </div>  
 
