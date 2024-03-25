@@ -8,7 +8,7 @@ import { useUserInfo } from '@/tenstack-hooks/user-info';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Withdrawal2 } from '../component/with2';
-import {Card, CardHeader, CardBody, CardFooter, Image, Button} from "@nextui-org/react";
+import {Card,Checkbox, CardHeader, CardBody, CardFooter, Image, Button} from "@nextui-org/react";
 import {Select, SelectItem} from "@nextui-org/react";
 const WithdrawalPage = () => {
   const { data: userInfo } = useUserInfo();

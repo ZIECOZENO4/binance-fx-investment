@@ -20,7 +20,7 @@ import Register from "@/components/register";
 import TradingViewWidget from "../components/Chart";
 import Statistic from "@/components/statistics";
 import Rate3 from "@/components/rate3";
-import { Testimonial } from "@/components/component/testimonial";
+import  Feedbacks from "@/components/component/testimonial";
 import Teams from "@/components/teams";
 export default function Home() {
   return (
@@ -38,7 +38,7 @@ export default function Home() {
 <GettingStarted />
 <WhatIsBinance />
 <Certification />
-<Testimonial />
+<Feedbacks />
 <Teams />
 <FAQ />
 <Newsletter />

@@ -32,8 +32,7 @@ const Countdown: React.FC<CountdownProps> = ({ duration }) => {
     }, 1000);
 
     return () => clearInterval(timer);
- }, [duration]); // Add duration as a dependency to recalculate on duration change
-
+ }, [duration]);
  return (
     <div>
       <div className="flex items-center justify-between">
