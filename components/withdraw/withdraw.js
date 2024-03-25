@@ -325,7 +325,7 @@ const WithdrawalPage = () => {
     </div>
             </div>
       </div>
-      <Withdrawal2 />
+  
 </div>
   );
 };
