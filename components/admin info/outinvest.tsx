@@ -32,7 +32,7 @@ const OutInvestInfo: React.FC = () => {
  const fetchData = async () => {
     try {
       const response = await fetch('/api/getOutInvest', {
-        cache: 'no-store', // Disable caching
+        cache: 'no-store', 
       });
       const data: OutInvestData = await response.json();
       setOutInvestments(data);

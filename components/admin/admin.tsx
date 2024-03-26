@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import DepositInfo from "../admin info/depositinfo";
 import OutInvestInfo from '../admin info/outinvest';
+import { useCountdown } from '@/contexts/CountdownContext';
 type Payment = {
  id: string;
  amount: string;
@@ -29,7 +30,7 @@ type PaymentData = Payment[];
 
 const AdminsPage: React.FC = () => {
  const [data, setData] = useState<PaymentData>([]);
-
+ const { startBasic, startAdvance, startPro, startPremium } = useCountdown();
  useEffect(() => {
     const fetchData = async () => {
       try {
@@ -53,49 +54,72 @@ const AdminsPage: React.FC = () => {
  }, []);
 
  const handleConfirmation = async (paymentId: string) => {
-    const payment = data.find(item => item.id === paymentId);
-
-    if (!payment) {
-      console.error('Payment not found');
-      alert('Payment not found');
-      return;
-    }
-
-    if (payment.confirmed) {
-      alert('Payment is already confirmed');
-      return;
-    }
-
-    const balance = parseFloat(payment.balance);
-    const amount = parseFloat(payment.amount);
-
-    if (balance < amount) {
-      alert('Insufficient funds');
-      return;
-    }
-
-    const newBalance = balance - amount;
-
-    setData(data.map(item => item.id === paymentId ? { ...item, balance: newBalance.toString(), confirmed: true } : item));
-
     try {
-      const response = await fetch(`/api/updatePayment?paymentId=${paymentId}`, {
-        method: 'GET',
-        cache: 'no-store',
-      });
-      const data = await response.json();
-      if (data.success) {
-        toast.success("Balance updated successfully!", {
-          position: "top-right",
+      const payment = data.find(item => item.id === paymentId);
+
+      if (!payment) {
+        console.error('Payment not found');
+        alert('Payment not found');
+        return;
+    }
+
+      if (payment.confirmed) {
+        alert('Payment is already confirmed');
+        return;
+      }
+
+      const balance = parseFloat(payment.balance);
+      const amount = parseFloat(payment.amount);
+
+      if (balance < amount) {
+        alert('Insufficient funds');
+        return;
+      }
+
+      const newBalance = balance - amount;
+
+      setData(data.map(item => item.id === paymentId ? { ...item, balance: newBalance.toString(), confirmed: true } : item));
+
+      try {
+        const response = await fetch(`/api/updatePayment?paymentId=${paymentId}`, {
+          method: 'GET',
+          cache: 'no-store',
         });
-      } else {
-        toast.error("An error occurred while updating the balance. Please try again!", {
-          position: "top-right",
-        });
+        const data = await response.json();
+        if (data.success) {
+          toast.success("Balance updated successfully, Countdown begun!", {
+            position: "top-right",
+          });
+          if (payment) {
+            const plan = payment.plan;
+            switch (plan) {
+              case 'Basic':
+                startBasic();
+                break;
+              case 'Advance PLan':
+                startAdvance();
+                break;
+              case 'Pro PLan':
+                startPro();
+                break;
+              case 'Premium PLan':
+                startPremium();
+                break;
+              default:
+                break;
+            }
+          }
+        } else {
+          toast.error("An error occurred while updating the balance. Please try again!", {
+            position: "top-right",
+          });
+        }
+      } catch (error) {
+        console.error('Error updating payment:', error);
+        toast.error('Failed to confirm payment');
       }
     } catch (error) {
-      console.error('Error updating payment:', error);
-      toast.error('Failed to confirm payment');
+      console.error('Error in handleConfirmation:', error);
     }
  };
 

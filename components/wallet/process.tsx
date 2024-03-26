@@ -21,7 +21,8 @@ const MultiStepForm = () => {
  ];
 
  return (
-    <div className="w-full h-[60vh] flex flex-col justify-center align-middle items-c  mx-0 overflow-y-auto">
+  <div className="w-full h-[60vh] flex flex-col">
+    <div className="  justify-center align-middle items-c  mx-0 overflow-y-auto">
       <div className="text-center mb-8">
         <h2 className="text-2xl font-bold flex flex-col justify-center align-middle ">Upgrade Process</h2>
       </div>
@@ -32,7 +33,8 @@ const MultiStepForm = () => {
     </div>
   ))}
 </div>
-      <div className="mt-4 flex justify-center my-4 align-middle items-center ">
+    </div>
+    <div className="mt-4 flex justify-center my-4 align-middle items-center ">
         {steps[activeStep].component}
         {activeStep < steps.length - 1 && (
           <button
@@ -43,7 +45,8 @@ const MultiStepForm = () => {
           </button>
         )}
       </div>
-    </div>
+  </div>
+
  );
 };
 
