@@ -9,6 +9,7 @@ export const client = createClient({
 apiVersion: `2022-03-07`,
 token,
   useCdn: false, 
+  withCredentials: true
 })
 
 const builder = imageUrlBuilder(client)

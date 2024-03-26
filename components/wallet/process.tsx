@@ -27,12 +27,12 @@ const MultiStepForm = () => {
       </div>
       <div className="overflow-x-auto flex flex-row justify-start align-middle  leading-8 gap-6 mx-1 font-bold">
  {steps.map((step, index) => (
-    <div key={index} className={`py-2 flex flex-row justify-start align-middle leading-6 gap-3 mx-2 items-start${index === activeStep ? ' font-bold border-b-2 border-green-500 text-md mx-1' : ' border-b-2 border-red-500 '}`}>
+    <div key={index} className={`py-2 flex flex-row justify-start align-middle leading-6 gap-3 mx-2 w-[200px] fixed z-20 items-start${index === activeStep ? ' font-bold border-b-2 border-green-500 text-md mx-1' : ' border-b-2 border-red-500 '}`}>
       {step.name}
     </div>
   ))}
 </div>
-      <div className="mt-4 flex justify-end my-4 align-middle items-end">
+      <div className="mt-4 flex justify-center my-4 align-middle items-center ">
         {steps[activeStep].component}
         {activeStep < steps.length - 1 && (
           <button
