@@ -1,4 +1,4 @@
-
+import Help from "../components/help"
 import Hero1  from "../components/Hero1"
 import { HowToTrade } from "@/components/Trade1";
 import { HowToInvest } from "@/components/invest1";
@@ -30,6 +30,7 @@ export default function Home() {
 <Properties />
 <Register />
 <Trending />
+<Help />
 <Plan  />
 <HowToTrade />
 <HowToInvest />
