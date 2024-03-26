@@ -68,13 +68,11 @@ const OutInvestInfo: React.FC = () => {
       });
       const data = await response.json();
       if (data.success) {
-   
         toast.success("Balance updated successfully, Countdown begun!", {
           position: "top-right",
-          start();
         });
-   
         fetchData();
+        start();
         setTotalUsdtValues(prevValues => ({
           ...prevValues,
           [outInvestId]: '',
