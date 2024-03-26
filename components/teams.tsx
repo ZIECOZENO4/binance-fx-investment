@@ -1,3 +1,4 @@
+"use client"
 import React, { useState, useEffect } from 'react';
 import { client, urlFor } from '../utils/sanity/client';
 
@@ -5,7 +6,7 @@ const Teams = () => {
   const [teamMembers, setTeamMembers] = useState<any[]>([]);
 
   useEffect(() => {
-    const fetchTeamMembers = async () => {
+    const fetchTeamMembers = async (): Promise<void> => {
       const query = `*[_type == "team"]`;
       const data = await client.fetch(query);
       setTeamMembers(data);
