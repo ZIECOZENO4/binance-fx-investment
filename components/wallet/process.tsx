@@ -21,13 +21,13 @@ const MultiStepForm = () => {
  ];
 
  return (
-    <div className="w-full h-[60vh] flex flex-col   mx-0 overflow-y-auto">
+    <div className="w-full h-[60vh] flex flex-col justify-center align-middle items-c  mx-0 overflow-y-auto">
       <div className="text-center mb-8">
         <h2 className="text-2xl font-bold flex flex-col justify-center align-middle ">Upgrade Process</h2>
       </div>
       <div className="overflow-x-auto flex flex-row justify-start align-middle  leading-8 gap-6 mx-1 font-bold">
  {steps.map((step, index) => (
-    <div key={index} className={`py-2 flex flex-row justify-start align-middle leading-6 gap-3 mx-2  items-start${index === activeStep ? ' font-bold border-b-2 border-green-500 text-md mx-1' : ' border-b-2 border-red-500 '}`}>
+    <div key={index} className={`py-2 flex flex-row  justify-start align-middle leading-6 gap-3 mx-2 items-start${index === activeStep ? 'w-auto font-bold border-b-2 border-green-500 text-md mx-1' : ' border-b-2 border-red-500 w-auto'}`}>
       {step.name}
     </div>
   ))}
