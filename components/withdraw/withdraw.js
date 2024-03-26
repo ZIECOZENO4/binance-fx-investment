@@ -119,9 +119,9 @@ const WithdrawalPage = () => {
     <div className="w-full gap-2 my-4 grid grid-cols-12 grid-rows-2 px-8">
 
     <Card isFooterBlurred className="w-full h-[200px] col-span-12 sm:col-span-5">
-      <CardHeader className="absolute z-10 top-1 flex-col items-start">
-        <p className="text-tiny text-white/60 uppercase font-bold">Wallet Balance</p>
-        <h4 className="text-black font-medium text-2xl">{ userBalance !== null ? `$${userBalance.toFixed(2)}` : '0.00 USDT'}</h4>
+      <CardHeader className="absolute z-10 top-4 flex-col items-start">
+        <p className="text-xl text-white uppercase font-bold">Wallet Balance</p>
+        <h4 className="text-black font-bold text-3xl mt-1">{ userBalance !== null ? `$${userBalance.toFixed(2)}` : '0.00 USDT'}</h4>
       </CardHeader>
       <Image
         removeWrapper
@@ -142,7 +142,7 @@ const WithdrawalPage = () => {
  
   </div>
 
-  <div className="max-w-4xl mx-auto my-8 p-4 bg-white shadow-lg rounded-lg">
+  <div className="max-w-4xl mx-auto p-4 bg-white shadow-lg rounded-lg">
       <div className="flex flex-col lg:flex-row">
         <div className="lg:w-1/2 lg:pr-4">
           <h2 className="text-xl font-semibold mb-4">Withdrawal Details</h2>

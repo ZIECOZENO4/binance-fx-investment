@@ -9,6 +9,7 @@ import Loading from "./loading";
 import { Providers } from "./providers";
 import { ToastContainer } from 'react-toastify';
 import { Analytics } from "@vercel/analytics/react"
+import { CountdownProvider } from '@/contexts/CountdownContext';
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -35,7 +36,9 @@ export default function RootLayout({
               </div>
               <ToastContainer autoClose={10000} />
               <Suspense fallback={<Loading />}>
+              <CountdownProvider>
                 {children}
+                </CountdownProvider>
               </Suspense>
              
             </div>

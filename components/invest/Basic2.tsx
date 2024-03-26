@@ -9,13 +9,13 @@ import Countdown5 from './5days';
 import Countdown12 from './12days';
 import Countdown14 from './14days';
 import { usePathname } from 'next/navigation'
-
+import { useCountdown } from '@/contexts/CountdownContext';
 
 
 const Basic2 = () => {
   const pathname = usePathname();
   const router = useRouter();
- 
+  const { isActive } = useCountdown();
   const handleInvestNowClick =  async  () => {
      calculateProfit(amount);
      const url = `/dashboard/invest/confirmpayment?amount=${parseFloat(amount)}&coin=${selectedCoin}&plan=Basic&planId=BFXITB00001`;
@@ -173,7 +173,7 @@ const handleInvestNowClick4 = () => {
    <div>
     
     <div className="flex flex-col items-center justify-center bg-[#0000000] text-white rounded-lg p-4">
-  <Countdown duration={duration} />
+    <Countdown duration={duration} isActive={isActive} />
     </div>
    </div>
    <div className="text-gray-900  mt-[20px]  bg-no-repeat bg-bottom sm:bg-bottom   mb-auto">

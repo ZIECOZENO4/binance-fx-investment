@@ -5,7 +5,7 @@ import { TableHead, TableRow, TableHeader, TableCell, TableBody, Table } from ".
 import { Button } from "../../components/ui/button";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import { useCountdown } from '@/contexts/CountdownContext';
 type OutInvest = {
  id: string;
  time: string;
@@ -27,8 +27,7 @@ type OutInvestData = OutInvest[];
 const OutInvestInfo: React.FC = () => {
  const [outInvestments, setOutInvestments] = useState<OutInvestData>([]);
  const [totalUsdtValues, setTotalUsdtValues] = useState<{ [key: string]: string }>({});
-
- // Define fetchData function
+ const { start } = useCountdown();
  const fetchData = async () => {
     try {
       const response = await fetch('/api/getOutInvest', {
@@ -70,7 +69,8 @@ const OutInvestInfo: React.FC = () => {
       });
       const data = await response.json();
       if (data.success) {
-        toast.success("Balance updated successfully!", {
+        start();
+        toast.success("Balance updated successfully, Countdown begun!", {
           position: "top-right",
         });
         // Re-fetch the data to update the UI
