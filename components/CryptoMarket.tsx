@@ -1,47 +1,74 @@
 "use client"
-import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 
-// Define TypeScript interfaces for the API response and market data
 interface MarketInfo {
   name: string;
   price: string;
   change: number;
   volume: string;
   decimal: number;
+  image?: string;
 }
 
-interface MarketApiResponse {
-  data: {
-    ticker: {
-      [key: string]: {
-        last: string;
-        change: string;
-        vol: string;
-        decimal_place: number;
-      };
-    };
-  };
+interface TickerValue {
+  last: string;
+  change: string;
+  vol: string;
+  decimal_place: number;
 }
 
 const CryptoMarket: React.FC = () => {
   const [marketData, setMarketData] = useState<MarketInfo[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        // Fetch market data from CoinEx
         const response = await fetch('https://api.coinex.com/v1/market/info');
-        const data: MarketApiResponse = await response.json();
-        const markets = Object.entries(data.data.ticker).map(([key, value]) => ({
-          name: key,
-          price: value.last,
-          change: parseFloat(value.change),
-          volume: value.vol,
-          decimal: value.decimal_place,
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch market data from CoinEx');
+        }
+
+        const data = await response.json();
+        console.log('CoinEx API response:', data);
+
+        const markets = Object.entries(data.data).map(([key, value]) => ({
+          name: key.toUpperCase(),
+          price: (value as TickerValue).last,
+          change: parseFloat((value as TickerValue).change),
+          volume: (value as TickerValue).vol,
+          decimal: (value as TickerValue).decimal_place,
         }));
-        setMarketData(markets);
-      } catch (error) {
-        console.error('Error fetching market data:', error);
+
+        // Fetch images from CoinGecko
+        const ids = markets.map((market) => market.name.toLowerCase()).join(',');
+        const coingeckoResponse = await fetch(
+          `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${ids}`
+        );
+
+        if (!coingeckoResponse.ok) {
+          throw new Error('Failed to fetch coin images from CoinGecko');
+        }
+
+        const coingeckoData = await coingeckoResponse.json();
+        console.log('CoinGecko API response:', coingeckoData);
+
+        // Combine market data with images
+        const combinedData = markets.map((market) => {
+          const coinData = coingeckoData.find((coin: any) => coin.symbol.toUpperCase() === market.name);
+          return { ...market, image: coinData?.image };
+        });
+
+        setMarketData(combinedData);
+        setError(null);
+      } catch (error: any) {
+        setError(error.message);
+        setMarketData([]);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -49,25 +76,30 @@ const CryptoMarket: React.FC = () => {
   }, []);
 
   return (
-    <div className="bg-gray-900 text-white p-6 rounded-lg shadow-lg max-w-sm mx-auto">
-      <h2 className="text-2xl font-bold mb-2 text-center">Markets</h2>
-      <ul className="divide-y divide-gray-700">
-        {marketData.map((marketItem) => (
-          <li key={marketItem.name} className="py-3 flex justify-between items-center">
-            <div className="flex items-center">
-              {/* Replace with your own logic to determine the icon path */}
-              <Image src={`/icons/${marketItem.name.toLowerCase()}.svg`} alt={marketItem.name} width={24} height={24} />
-              <span className="ml-2">{marketItem.name}</span>
-            </div>
-            <div>
-              <span className="font-bold">{parseFloat(marketItem.price).toFixed(marketItem.decimal)}</span>
-              <span className={`ml-2 ${marketItem.change < 0 ? 'text-red-500' : 'text-green-500'}`}>
+    <div className="flex flex-col items-center bg-gray-900 p-6 rounded-lg shadow-lg mx-auto">
+      <p className="text-2xl font-bold text-blue-500 p-2">Market Calendar</p>
+      {isLoading && <p className="text-white">Loading...</p>}
+      {error && <p className="text-red-500">{error}</p>}
+      {!isLoading && !error && (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {marketData.map((marketItem) => (
+            <div key={marketItem.name} className="flex flex-col items-center p-4 bg-gray-800 rounded-lg">
+              {marketItem.image ? (
+                <img src={marketItem.image} alt={marketItem.name} className="w-12 h-12" />
+              ) : (
+                <div className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center">
+                  <span className="text-white text-sm">{marketItem.name}</span>
+                </div>
+              )}
+              <span className="text-white mt-2">{marketItem.name}</span>
+              <span className="text-white">${parseFloat(marketItem.price).toFixed(marketItem.decimal)}</span>
+              <span className={`mt-1 ${marketItem.change < 0 ? 'text-red-500' : 'text-green-500'}`}>
                 {marketItem.change.toFixed(2)}%
               </span>
             </div>
-          </li>
-        ))}
-      </ul>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
