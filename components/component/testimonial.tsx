@@ -31,7 +31,7 @@ const FeedbackCard = ({ testimonial, index }: FeedbackCardProps) => (
       <div className='mt-7 flex justify-between items-center gap-1'>
         <div className='flex-1 flex flex-col'>
           <p className='text-white font-medium text-[16px]'>
-            <span className='blue-text-gradient'>@</span> {testimonial.name}
+            <span className='blue-text-gradient font-bold'>@</span> {testimonial.name}
           </p>
           <p className='mt-1 text-secondary text-[12px]'>
             {testimonial.designation} of {testimonial.company}
