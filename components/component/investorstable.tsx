@@ -30,7 +30,7 @@ const AllInvestorsTalble : React.FC = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch('/api/getInvestors', {
+      const response = await fetch('/api/historyWithdraw', {
         cache: 'no-store', // Disable caching
       });
       const data: OutInvestData = await response.json();
@@ -42,6 +42,9 @@ const AllInvestorsTalble : React.FC = () => {
       });
     }
  };
+ useEffect(() => {
+  fetchData(); 
+}, []);
   return (
     <div className="bg-black text-white py-12">
       <div className="container px-4 md:px-6">
@@ -125,7 +128,7 @@ className="w-4 h-4 fill-current"
               <TableHeader>
                 <TableRow>
                   <TableHead className="w-[150px]">Investor</TableHead>
-                  <TableHead className="w-[150px]">Date of Investment</TableHead>
+                  <TableHead className="w-[150px]">Date of Withdrawal</TableHead>
                   <TableHead className="w-[150px]">Level</TableHead>
                   <TableHead className="w-[150px]">Amount</TableHead>
                   <TableHead className="w-[150px]">Coin</TableHead>

@@ -1,11 +1,55 @@
-
+'use client'
+import React, { useState, useEffect } from 'react';
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { Slider } from "@/components/ui/slider"
 import { TableHead, TableRow, TableHeader, TableCell, TableBody, Table } from "@/components/ui/table"
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+type Payment = {
+  id: string;
+  amount: string;
+  coin: string;
+  plan: string;
+  planId: string;
+  time: string;
+  user: {
+     id: string;
+     name: string;
+  };
+  userId: string;
+  balance: string;
+  gasFee: string | null;
+  userName: string;
+  confirmed: boolean;
+ };
+ 
+ type PaymentData = Payment[];
+const AllWithdrawalTalble: React.FC = () => {
+  const [data, setData] = useState<PaymentData>([]);
 
-export function AllWithdrawalTalble() {
+  useEffect(() => {
+     const fetchData = async () => {
+       try {
+         const response = await fetch('/api/getAdmins', {
+           cache: 'no-store',
+         });
+         if (!response.ok) {
+           throw new Error('Network response was not ok');
+         }
+         const data: PaymentData = await response.json();
+         setData(data);
+       } catch (error) {
+         console.error('Error fetching data:', error);
+         toast.error('Failed to fetch data');
+       }
+     };
+ 
+     fetchData();
+     const intervalId = setInterval(fetchData, 200000);
+     return () => clearInterval(intervalId);
+  }, []);
   return (
     <div className="bg-black text-white py-12">
       <div className="container px-4 md:px-6">
@@ -89,100 +133,35 @@ className="w-4 h-4 fill-current"
               <TableHeader>
                 <TableRow>
                   <TableHead className="w-[150px]">Investor</TableHead>
-                  <TableHead className="w-[150px]">Total Investment</TableHead>
                   <TableHead className="w-[150px]">Date of Investment</TableHead>
                   <TableHead className="w-[150px]">Level</TableHead>
-                  <TableHead className="w-[150px]">Tier</TableHead>
+                  <TableHead className="w-[150px]">Amount</TableHead>
                   <TableHead className="w-[150px]">Coin</TableHead>
-                  <TableHead className="w-[150px]">Image</TableHead>
+                  <TableHead className="w-[150px]">Fee</TableHead>
+                  <TableHead className="w-[150px]">Confirmed</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
-                <TableRow>
-                  <TableCell className="font-medium">John Doe</TableCell>
-                  <TableCell>$10,000</TableCell>
-                  <TableCell>2023-05-16</TableCell>
+              {data.map((item, index) => (
+                <TableRow key={index}>
+                  <TableCell className="font-medium">{item.user.name}</TableCell>
+                  <TableCell>{new Date(item.time).toLocaleString()}</TableCell>
                   <TableCell>1</TableCell>
-                  <TableCell>Gold</TableCell>
-                  <TableCell>Bitcoin</TableCell>
+                  <TableCell>{item.amount}</TableCell>
+                  <TableCell>{item.coin}</TableCell>
+                  <TableCell>{item.gasFee}</TableCell>
+                  <TableCell>{item.confirmed}</TableCell>
                   <TableCell>
-                    <img
+                    {/* <img
                       alt="Investor Image"
                       className="aspect-square rounded-md object-cover"
                       height="64"
                       src="/placeholder.svg"
                       width="64"
-                    />
+                    /> */}
                   </TableCell>
                 </TableRow>
-                <TableRow>
-                  <TableCell className="font-medium">Alice Johnson</TableCell>
-                  <TableCell>$25,000</TableCell>
-                  <TableCell>2023-03-29</TableCell>
-                  <TableCell>2</TableCell>
-                  <TableCell>Silver</TableCell>
-                  <TableCell>Ethereum</TableCell>
-                  <TableCell>
-                    <img
-                      alt="Investor Image"
-                      className="aspect-square rounded-md object-cover"
-                      height="64"
-                      src="/placeholder.svg"
-                      width="64"
-                    />
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell className="font-medium">Bob Smith</TableCell>
-                  <TableCell>$50,000</TableCell>
-                  <TableCell>2023-06-10</TableCell>
-                  <TableCell>3</TableCell>
-                  <TableCell>Platinum</TableCell>
-                  <TableCell>Litecoin</TableCell>
-                  <TableCell>
-                    <img
-                      alt="Investor Image"
-                      className="aspect-square rounded-md object-cover"
-                      height="64"
-                      src="/placeholder.svg"
-                      width="64"
-                    />
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell className="font-medium">Emma Brown</TableCell>
-                  <TableCell>$15,000</TableCell>
-                  <TableCell>2023-04-22</TableCell>
-                  <TableCell>1</TableCell>
-                  <TableCell>Gold</TableCell>
-                  <TableCell>Ripple</TableCell>
-                  <TableCell>
-                    <img
-                      alt="Investor Image"
-                      className="aspect-square rounded-md object-cover"
-                      height="64"
-                      src="/placeholder.svg"
-                      width="64"
-                    />
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell className="font-medium">William Lee</TableCell>
-                  <TableCell>$35,000</TableCell>
-                  <TableCell>2023-07-01</TableCell>
-                  <TableCell>2</TableCell>
-                  <TableCell>Silver</TableCell>
-                  <TableCell>Cardano</TableCell>
-                  <TableCell>
-                    <img
-                      alt="Investor Image"
-                      className="aspect-square rounded-md object-cover"
-                      height="64"
-                      src="/placeholder.svg"
-                      width="64"
-                    />
-                  </TableCell>
-                </TableRow>
+                   ))}
               </TableBody>
             </Table>
           </div>
@@ -191,3 +170,4 @@ className="w-4 h-4 fill-current"
     </div>
   )
 }
+export default  AllWithdrawalTalble;

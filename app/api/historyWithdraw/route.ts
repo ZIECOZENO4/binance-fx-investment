@@ -1,4 +1,3 @@
-// app/api/fetchPayments.ts
 import { NextRequest, NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
 
@@ -7,7 +6,8 @@ export const dynamic = 'force-dynamic';
 
 export async function GET(request: NextRequest) {
     try {
-        const payments = await prisma.payment.findMany({
+
+        const outInvestments = await prisma.outInvest.findMany({
             where: {
                 confirmed: true, 
             },
@@ -19,10 +19,9 @@ export async function GET(request: NextRequest) {
             },
         });
 
-
-        return NextResponse.json(payments);
+        return NextResponse.json(outInvestments);
     } catch (error) {
-        console.error('Error fetching payments:', error);
-        return NextResponse.json({ error: 'Error fetching payments' }, { status: 500 });
+        console.error('Error fetching ', error);
+        return NextResponse.json({ error: 'Error fetching' }, { status: 500 });
     }
 }

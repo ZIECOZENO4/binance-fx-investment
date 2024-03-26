@@ -1,4 +1,4 @@
-import { AllWithdrawalTalble } from '@/components/component/withdrawaltable'
+import  AllWithdrawalTalble  from '@/components/component/withdrawaltable'
 import React from 'react'
 
 const PageTerms = () => {
