@@ -4,8 +4,14 @@
 import { createContext, useContext, useState } from 'react';
 
 type CountdownContextType = {
-  isActive: boolean;
-  start: () => void;
+  isBasicActive: boolean;
+  isAdvanceActive: boolean;
+  isProActive: boolean;
+  isPremiumActive: boolean;
+  startBasic: () => void;
+  startAdvance: () => void;
+  startPro: () => void;
+  startPremium: () => void;
   stop: () => void;
 };
 
@@ -14,13 +20,24 @@ const CountdownContext = createContext<CountdownContextType | undefined>(
 );
 
 export function CountdownProvider({ children }: { children: React.ReactNode }) {
-  const [isActive, setIsActive] = useState(false);
+  const [isBasicActive, setIsBasicActive] = useState(false);
+  const [isAdvanceActive, setIsAdvanceActive] = useState(false);
+  const [isProActive, setIsProActive] = useState(false);
+  const [isPremiumActive, setIsPremiumActive] = useState(false);
 
-  const start = () => setIsActive(true);
-  const stop = () => setIsActive(false);
+  const startBasic = () => setIsBasicActive(true);
+  const startAdvance = () => setIsAdvanceActive(true);
+  const startPro = () => setIsProActive(true);
+  const startPremium = () => setIsPremiumActive(true);
+  const stop = () => {
+    setIsBasicActive(false);
+    setIsAdvanceActive(false);
+    setIsProActive(false);
+    setIsPremiumActive(false);
+  };
 
   return (
-    <CountdownContext.Provider value={{ isActive, start, stop }}>
+    <CountdownContext.Provider value={{ isBasicActive, isAdvanceActive, isProActive, isPremiumActive, startBasic, startAdvance, startPro, startPremium, stop }}>
       {children}
     </CountdownContext.Provider>
   );

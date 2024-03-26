@@ -15,7 +15,7 @@ import { useCountdown } from '@/contexts/CountdownContext';
 const Basic2 = () => {
   const pathname = usePathname();
   const router = useRouter();
-  const { isActive } = useCountdown();
+  const { isBasicActive, isAdvanceActive, isProActive, isPremiumActive } = useCountdown();
   const handleInvestNowClick =  async  () => {
      calculateProfit(amount);
      const url = `/dashboard/invest/confirmpayment?amount=${parseFloat(amount)}&coin=${selectedCoin}&plan=Basic&planId=BFXITB00001`;
@@ -173,7 +173,7 @@ const handleInvestNowClick4 = () => {
    <div>
     
     <div className="flex flex-col items-center justify-center bg-[#0000000] text-white rounded-lg p-4">
-    <Countdown duration={duration} isActive={isActive} />
+    <Countdown duration={duration} isActive={isBasicActive} />
     </div>
    </div>
    <div className="text-gray-900  mt-[20px]  bg-no-repeat bg-bottom sm:bg-bottom   mb-auto">
@@ -306,7 +306,7 @@ const handleInvestNowClick4 = () => {
        <div>
     
     <div className="flex flex-col items-center justify-center bg-[#0000000] text-white rounded-lg p-4">
-  <Countdown12 duration={duration12} />
+    <Countdown12 duration={duration12} isActive={isAdvanceActive} />
     </div>
    </div>
    <div className="border rounded-lg text-center p-5 mx-auto md:mx-0 my-2 md:my-6 bg-sky-700 text-[#FFD700] font-bold  tracking-widest transition-transform-colors text-[30px] md:text-[40px] z-10 shadow-lg">
@@ -430,7 +430,7 @@ const handleInvestNowClick4 = () => {
        <div>
     
     <div className="flex flex-col items-center justify-center bg-[#0000000] text-white rounded-lg p-4">
-  <Countdown14 duration={duration14} />
+    <Countdown14 duration={duration14} isActive={isProActive} />
     </div>
    </div>
  <div className="text-gray-900 border rounded-lg text-center p-5 mx-auto my-2 md:my-6 bg-slate-600  text-[25px] md:text-[40px] z-10 shadow-lg mt-[20px]  bg-no-repeat bg-bottom sm:bg-bottom md:mx-[3vw] mb-auto">
@@ -559,7 +559,7 @@ const handleInvestNowClick4 = () => {
        <div>
     
     <div className="flex flex-col items-center justify-center bg-[#0000000] text-white rounded-lg p-4">
-  <Countdown5 duration={duration5} />
+    <Countdown5 duration={duration5} isActive={isPremiumActive} />
     </div>
    </div>
    <div className="border rounded-lg text-center p-5 mx-auto md:mx-0 my-2 md:my-6 bg-sky-700 text-[#FFD700] font-bold  tracking-widest transition-transform-colors text-[30px] md:text-[40px] z-10 shadow-lg">

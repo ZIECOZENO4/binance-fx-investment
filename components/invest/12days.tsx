@@ -3,10 +3,11 @@
 import React, { useState, useEffect } from 'react';
 
 interface CountdownProps {
- duration: number; // Duration in seconds
+ duration: number; 
+ isActive: boolean;
 }
 
-const Countdown12: React.FC<CountdownProps> = ({ duration }) => {
+const Countdown12: React.FC<CountdownProps> = ({ duration, isActive }) => {
  const calculateTimeLeft = () => {
     let timeLeft = duration;
     const days = Math.floor(timeLeft / 86400);
@@ -27,13 +28,14 @@ const Countdown12: React.FC<CountdownProps> = ({ duration }) => {
  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
  useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft(calculateTimeLeft());
-    }, 1000);
+  if (!isActive) return;
 
-    return () => clearInterval(timer);
- }, [duration]); // Add duration as a dependency to recalculate on duration change
+  const timer = setInterval(() => {
+    setTimeLeft(calculateTimeLeft());
+  }, 1000);
 
+  return () => clearInterval(timer);
+}, [duration, isActive]);
  return (
     <div>
       <div className="flex items-center justify-between">

@@ -15,6 +15,7 @@ type OutInvest = {
     id: string;
     name: string;
  };
+ plan: string;
  outCoin: string;
  outAmount: string;
  confirmed: boolean; 
@@ -27,7 +28,7 @@ type OutInvestData = OutInvest[];
 const OutInvestInfo: React.FC = () => {
  const [outInvestments, setOutInvestments] = useState<OutInvestData>([]);
  const [totalUsdtValues, setTotalUsdtValues] = useState<{ [key: string]: string }>({});
- const { start } = useCountdown();
+ const { startBasic, startAdvance, startPro, startPremium } = useCountdown();
  const fetchData = async () => {
     try {
       const response = await fetch('/api/getOutInvest', {
@@ -60,7 +61,6 @@ const OutInvestInfo: React.FC = () => {
         alert('OutInvest is already confirmed');
         return;
       }
-
       const totalUsdtValue = totalUsdtValues[outInvestId];
 
       const response = await fetch(`/api/updateOutPayment?outInvestId=${outInvestId}&totalUsdtValue=${totalUsdtValue}`, {
@@ -72,11 +72,29 @@ const OutInvestInfo: React.FC = () => {
           position: "top-right",
         });
         fetchData();
-        start();
         setTotalUsdtValues(prevValues => ({
           ...prevValues,
           [outInvestId]: '',
         }));
+        if (outInvest) {
+          const plan = outInvest.plan;
+          switch (plan) {
+            case 'Basic':
+              startBasic();
+              break;
+            case 'Advance PLan':
+              startAdvance();
+              break;
+            case 'Pro PLan':
+              startPro();
+              break;
+            case 'Premium PLan':
+              startPremium();
+              break;
+            default:
+              break;
+          }
+        }
       } else {
         toast.error("An error occurred while updating the balance. Please try again!", {
           position: "top-right",
