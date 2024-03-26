@@ -44,7 +44,7 @@ const OutInvestInfo: React.FC = () => {
  };
 
  useEffect(() => {
-    fetchData(); // Call fetchData on component mount
+    fetchData(); 
  }, []);
 
  const handleUpdateBalance = async (outInvestId: string) => {
@@ -56,7 +56,6 @@ const OutInvestInfo: React.FC = () => {
         alert('OutInvest not found');
         return;
       }
-
       if (outInvest.confirmed) {
         alert('OutInvest is already confirmed');
         return;
@@ -65,15 +64,16 @@ const OutInvestInfo: React.FC = () => {
       const totalUsdtValue = totalUsdtValues[outInvestId];
 
       const response = await fetch(`/api/updateOutPayment?outInvestId=${outInvestId}&totalUsdtValue=${totalUsdtValue}`, {
-        cache: 'no-store', // Disable caching
+        cache: 'no-store', 
       });
       const data = await response.json();
       if (data.success) {
-        start();
+   
         toast.success("Balance updated successfully, Countdown begun!", {
           position: "top-right",
+          start();
         });
-        // Re-fetch the data to update the UI
+   
         fetchData();
         setTotalUsdtValues(prevValues => ({
           ...prevValues,

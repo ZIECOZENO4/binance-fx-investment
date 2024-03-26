@@ -36,7 +36,7 @@ const Countdown: React.FC<CountdownProps> = ({ duration, isActive }) => {
 
     return () => clearInterval(timer);
   }, [duration, isActive]);
- return isActive ? (
+ return (
     <div>
       <div className="flex items-center justify-between">
         <div className="flex space-x-2 mt-4">
@@ -62,7 +62,7 @@ const Countdown: React.FC<CountdownProps> = ({ duration, isActive }) => {
         </div>
       </div>
     </div>
-  ) : null;
+ );
 };
 
 export default Countdown;
