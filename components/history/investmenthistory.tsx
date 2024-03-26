@@ -57,8 +57,8 @@ const HistoryComponent2 = () => {
             <tr key={index}>
               <td>{item.id}</td>
               <td>{item.constructor.name}</td>
-              {/* <td>{item.amount}</td>
-              <td>{item.coin}</td> */}
+              <td>{item.amount}</td>
+              <td>{item.coin}</td>
               <td>{new Date(item.time).toLocaleString()}</td>
               <td>{item.confirmed ? 'Successful' : 'Pending'}</td>
             </tr>

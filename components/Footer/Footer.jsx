@@ -16,7 +16,7 @@ const Footer = () => {
           <input
             type="text"
             placeholder="Enter Your Username or Register to get."
-            className="text-gray-800
+            className="text-gray-800 bg-slate-200
            sm:w-72 w-full sm:mr-5 mr-1 lg:mb-0 mb-4 py-2.5 rounded px-2 focus:outline-none"
           />
           <button

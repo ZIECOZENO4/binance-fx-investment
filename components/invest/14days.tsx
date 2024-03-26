@@ -1,5 +1,4 @@
 "use client"
-// Countdown14.tsx
 import React, { useState, useEffect } from 'react';
 
 interface CountdownProps {
