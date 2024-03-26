@@ -116,7 +116,7 @@ const WithdrawalPage = () => {
             </div>
             <div>
 
-    <div className="w-full gap-2 my-4 grid grid-cols-12 grid-rows-2 px-8">
+    <div className="w-full gap-2 my-4 grid grid-cols-12 grid-rows-2 px-4">
 
     <Card isFooterBlurred className="w-full h-[200px] col-span-12 sm:col-span-5">
       <CardHeader className="absolute z-10 top-4 flex-col items-start">
@@ -264,7 +264,7 @@ const WithdrawalPage = () => {
               </div>
               <div className="flex justify-between">
                 <span className="text-sm">Gas Fee</span>
-                <span className="text-sm font-medium">0.00234123 wei</span>
+                <span className="text-sm font-medium">0.00234123 FX</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-sm">Min Currency Value</span>
@@ -273,14 +273,14 @@ const WithdrawalPage = () => {
             </div>
             <div className="mb-4">
               <div className="flex justify-between">
-                <span className="text-sm">Est. APY</span>
+                <span className="text-sm">Est. FX</span>
                 <span className="text-sm font-medium">21.54%</span>
               </div>
             </div>
             <div className="mb-4">
               <p className="text-sm">Estimated Interests</p>
               <p className="text-sm text-yellow-600 bg-yellow-100 p-2 rounded">
-                The APY is adjusted daily based on the on-chain staking rewards, and the specific APY is subject to the
+                The APY is adjusted daily based on the on-chain FX Investment, and the specific FX is subject to the
                 page display on the day.
               </p>
             </div>

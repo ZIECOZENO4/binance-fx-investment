@@ -8,23 +8,27 @@ const prisma = new PrismaClient();
 
 type HistoryItem = Payment | Withdrawal | OutInvest | Deposit;
 
-const HistoryComponent = () => {
- const [historyData, setHistoryData] = useState<HistoryItem[]>([]);
+const HistoryComponent = ({ userId }: { userId: string }) => {
+  const [historyData, setHistoryData] = useState<HistoryItem[]>([]);
 
- useEffect(() => {
+  useEffect(() => {
     const fetchHistoryData = async () => {
       try {
         const payments = await prisma.payment.findMany({
-          include: { user: true },
+          where: { userId },
+          orderBy: { time: 'desc' },
         });
         const withdrawals = await prisma.withdrawal.findMany({
-          include: { user: true },
+          where: { userId },
+          orderBy: { time: 'desc' },
         });
         const outInvestments = await prisma.outInvest.findMany({
-          include: { user: true },
+          where: { userId },
+          orderBy: { time: 'desc' },
         });
         const deposits = await prisma.deposit.findMany({
-          include: { user: true },
+          where: { userId },
+          orderBy: { time: 'desc' },
         });
 
         setHistoryData([...payments, ...withdrawals, ...outInvestments, ...deposits]);
@@ -36,9 +40,9 @@ const HistoryComponent = () => {
     };
 
     fetchHistoryData();
- }, []);
+  }, [userId]);
 
- return (
+  return (
     <div>
       <h1>Transaction History</h1>
       <table>
@@ -53,12 +57,17 @@ const HistoryComponent = () => {
           </tr>
         </thead>
         <tbody>
-          {historyData.map((item, index) => (
-            <tr key={index}>
+          {historyData.map((item) => (
+            <tr key={item.id}>
               <td>{item.id}</td>
               <td>{item.constructor.name}</td>
-              {/* <td>{item.amount}</td>
-              <td>{item.coin}</td> */}
+              <td>{item.totalValueInUSDT}</td>
+              <td>
+                {item.constructor.name === 'Payment' && (item as Payment).coin}
+                {item.constructor.name === 'Withdrawal' && (item as Withdrawal).coin}
+                {item.constructor.name === 'OutInvest' && (item as OutInvest).outCoin}
+                {item.constructor.name === 'Deposit' && (item as Deposit).depositorCoin}
+              </td>
               <td>{new Date(item.time).toLocaleString()}</td>
               <td>{item.confirmed ? 'Successful' : 'Pending'}</td>
             </tr>
@@ -66,7 +75,7 @@ const HistoryComponent = () => {
         </tbody>
       </table>
     </div>
- );
+  );
 };
 
 export default HistoryComponent;
