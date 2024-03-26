@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import TawkMessengerReact from "@tawk.to/tawk-messenger-react";
 
