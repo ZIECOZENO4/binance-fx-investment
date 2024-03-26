@@ -21,7 +21,7 @@ const MultiStepForm = () => {
  ];
 
  return (
-    <div className="w-full max-w-3xl mx-auto overflow-y-auto">
+    <div className="w-full h-[60vh]  mx-0 overflow-y-auto">
       <div className="text-center mb-8">
         <h2 className="text-2xl font-bold flex flex-col justify-center align-middle ">Upgrade Process</h2>
       </div>
