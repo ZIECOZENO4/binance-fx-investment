@@ -101,7 +101,7 @@ const WithdrawalPage = () => {
    
 
       <div className="flex flex-col items-center justify-center align-middle mx-3 overflow-hidden bg-black">
-      <p className="inline-block text-md font-medium bg-clip-text text-sky-700 ">
+      <p className="inline-block text-md flex flex-row font-medium bg-clip-text text-sky-700 ">
             Fast Withdrawal
             </p>
 
@@ -112,13 +112,13 @@ const WithdrawalPage = () => {
             </div>
 
             <div className="mt-5 max-w-3xl">
-              <p className="text-md text-gray-200 ">Always verify the wallet address you&apos;re sending to. A single typo can result in your funds being sent to an unintended address, making them irretrievable</p>
+              <p className="text-sm text-gray-200 flex justify-center align-middle ">Always verify the wallet address you&apos;re sending to. A single typo can result in your funds being sent to an unintended address, making them irretrievable</p>
             </div>
             <div>
 
     <div className="w-full gap-2 my-4 grid grid-cols-12 grid-rows-2 px-8">
 
-    <Card isFooterBlurred className="w-full mx-2 h-[100px] col-span-12 sm:col-span-5">
+    <Card isFooterBlurred className="w-full h-[200px] col-span-12 sm:col-span-5">
       <CardHeader className="absolute z-10 top-1 flex-col items-start">
         <p className="text-tiny text-white/60 uppercase font-bold">Wallet Balance</p>
         <h4 className="text-black font-medium text-2xl">{ userBalance !== null ? `$${userBalance.toFixed(2)}` : '0.00 USDT'}</h4>
@@ -159,9 +159,9 @@ const WithdrawalPage = () => {
           <div className="mb-4">
             <label className="block text-sm font-medium mb-1">Duration</label>
             <div className="flex gap-2">
-              <Button className="flex-1">24 Hours</Button>
-              <Button className="flex-1">1 Hour</Button>
-              <Button className="flex-1 bg-[#f2f2f2] text-black">10 sec</Button>
+              <Button className="flex-1 bg-red-300">24 Hours</Button>
+              <Button className="flex-1 bg-slate-500">1 Hour</Button>
+              <Button className="flex-1 hover:bg-green-200 bg-green-500 text-black ">10 sec</Button>
             </div>
           </div>
           <div className="mb-4">
@@ -296,7 +296,7 @@ const WithdrawalPage = () => {
             <div className=' flex flex-col justify-center gap-4 px-2 mt-3'>
             <Button
       disableRipple
-      className="relative flex flex-col  h-12 align-middle overflow-visible rounded-full hover:-translate-y-1 px-6 shadow-xl bg-background/30 after:content-[''] after:absolute after:rounded-full after:inset-0 after:bg-background/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0  w-full "
+      className="relative flex flex-col  h-12 align-middle overflow-visible rounded-full hover:-translate-y-1 px-6 shadow-xl bg-background/30 after:content-[''] after:absolute after:rounded-full after:inset-0 after:bg-background/40 after:z-[-1] after:transition after:!duration-500 hover:after:scale-150 hover:after:opacity-0  w-full bg-green-500 "
       size="lg"
       onClick={handleWithdraw}
     >
@@ -305,7 +305,7 @@ const WithdrawalPage = () => {
     </Button>
     {showPending && <div>Pending request...</div>}
       {showNoFunds && <div>No available funds. Deposit and invest first.</div>}
-            <Button className="w-full bg-green-500 text-white rounded-lg font-bold">Share</Button>
+            <Button className="w-full bg-sky-500 text-white rounded-lg font-bold">Share</Button>
             </div>
           </div>
         </div>
