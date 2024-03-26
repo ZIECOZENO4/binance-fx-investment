@@ -147,7 +147,7 @@ className="w-4 h-4 fill-current"
                   <TableCell>{outInvest.outCoin}</TableCell>
                   <TableCell>{outInvest.totalValueInUSDT}</TableCell>
                   <TableCell>{outInvest.gasFee}</TableCell>
-                  <TableCell>{outInvest.confirmed}</TableCell>
+                  <TableCell className=' text-green-600'>Successful</TableCell>
                   <TableCell>
                     {/* <img
                       alt="Investor Image"

@@ -150,7 +150,7 @@ className="w-4 h-4 fill-current"
                   <TableCell>{item.amount}</TableCell>
                   <TableCell>{item.coin}</TableCell>
                   <TableCell>{item.gasFee}</TableCell>
-                  <TableCell>{item.confirmed}</TableCell>
+                  <TableCell className=' text-green-600'>Successful</TableCell>
                   <TableCell>
                     {/* <img
                       alt="Investor Image"

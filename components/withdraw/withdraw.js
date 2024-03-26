@@ -78,6 +78,15 @@ const WithdrawalPage = () => {
     }
   };
   
+  function formatWithCommas(value) {
+    let strValue = value.toString().replace(/,/g, '');
+    let parts = strValue.split('.');
+    let wholePart = parts[0];
+    let decimalPart = parts.length > 1 ? '.' + parts[1] : '';
+    wholePart = wholePart.split('').reverse().join('').replace(/(\d{3})(?=\d)/g, '$1,').split('').reverse().join('');
+    return wholePart + decimalPart;
+}
+
   const coins = [
     { fullName: 'Us-Dollar', symbol: 'USDT' },
     { fullName: 'Bitcoin', symbol: 'BTC' },
@@ -121,7 +130,7 @@ const WithdrawalPage = () => {
     <Card isFooterBlurred className="w-full h-[200px] col-span-12 sm:col-span-5">
       <CardHeader className="absolute z-10 top-4 flex-col items-start">
         <p className="text-xl text-white uppercase font-bold">Wallet Balance</p>
-        <h4 className="text-black font-bold text-3xl mt-1">{ userBalance !== null ? `$${userBalance.toFixed(2)}` : '0.00 USDT'}</h4>
+        <h4 className="text-black font-bold text-3xl mt-1">{ userBalance !== null ? `$${formatWithCommas(userBalance.toFixed(2))}` : '0.00 USDT'}</h4>
       </CardHeader>
       <Image
         removeWrapper
@@ -194,7 +203,7 @@ const WithdrawalPage = () => {
             </label>
             <div class="flex max-w-md items-center border-l-8 border-emerald-500 bg-emerald-50 px-2  w-full text-emerald-900 shadow-lg">
     <div class="min-w-0">
- <h2 class="overflow-hidden text-ellipsis  whitespace-nowrap">   { userBalance !== null ? `$${userBalance.toFixed(2)}` : '0.00 USDT'}</h2>
+ <h2 class="overflow-hidden text-ellipsis  whitespace-nowrap">   { userBalance !== null ? `$${formatWithCommas(userBalance.toFixed(2))}` : '0.00 USDT'}</h2>
     </div>
   </div>
           </div>
