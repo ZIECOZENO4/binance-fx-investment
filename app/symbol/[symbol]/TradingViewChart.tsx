@@ -9,7 +9,6 @@ type Props = {
 
 declare const TradingView: any;
 
-
 export function TradingViewChart({ symbol }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
 
