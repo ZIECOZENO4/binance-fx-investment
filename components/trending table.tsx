@@ -89,7 +89,7 @@ const Trending = () => {
             <br />
 
             <div className='flex md:items-center md:align-middle flex-col md:flex-row gap-8 md:gap-0'>
-                <TrendingCard title='Trending' icon={fire} trendingData={trendingData} /> 
+            <Link href="/dashboard/allcoins"> <TrendingCard title='Trending' icon={fire} trendingData={trendingData} />  </Link>  
               <Link href="/dashboard/allinvestors"> <TrendingCard title='Latest Investors' icon={gainers} trendingData={trendingData2} /></Link> 
               <Link href="/dashboard/allwithdrawal"><TrendingCard title='Latest Withdrawal' icon={recent} trendingData={trendingData3} /></Link>  
             </div>

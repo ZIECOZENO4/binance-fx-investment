@@ -23,9 +23,9 @@ type OutInvest = {
   gasFee: string;
   totalValueInUSDT: string;
  };
- 
+
  type OutInvestData = OutInvest[];
-const AllInvestorsTalble : React.FC = () => {
+const AllWithdrawalTable: React.FC = () => {
  const [outInvestments, setOutInvestments] = useState<OutInvestData>([]);
  const [search, setSearch] = useState("");
  const [currentPage, setCurrentPage] = useState(1);
@@ -179,7 +179,7 @@ className="w-4 h-4 fill-current"
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default  AllInvestorsTalble;
+export default AllWithdrawalTable;
