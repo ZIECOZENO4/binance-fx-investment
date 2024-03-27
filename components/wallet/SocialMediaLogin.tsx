@@ -5,10 +5,10 @@ import { Button } from "../../components/ui/button"
 
 export default function SocialMediaLogin() {
   return (
-    <div className="w-full h-auto overflow-y-auto space-y-4">
+    <div className="w-full h-auto overflow-y-auto space-y-4 text-white">
       <div className="space-y-2 text-center">
         <h1 className="text-3xl font-bold">Sign In</h1>
-        <p className="text-gray-500 dark:text-gray-400">To verify your identity</p>
+        <p className="text-gray-300 dark:text-gray-400">To verify your identity</p>
       </div>
       <div className="space-y-4">
         <div className="space-y-2">

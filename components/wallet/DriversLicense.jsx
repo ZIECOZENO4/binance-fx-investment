@@ -6,7 +6,7 @@ import { Button } from "../../components/ui/button"
 
 export default function Component() {
   return (
-    <div className="space-y-8 py-4 mt-4">
+    <div className="space-y-8 py-4 mt-4 text-white">
       <div className="space-y-2">
         <div className="flex items-center just-fy-center align-middle space-x-4">
           <div className="space-y-1.5">
