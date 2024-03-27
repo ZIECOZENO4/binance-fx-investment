@@ -19,6 +19,7 @@ import MultiStepForm from "./process";
 
 import Loading from "../../app/loading";
 import InvestmentBalance from "../investbalance";
+import { Link2 } from "lucide-react";
 
 interface UserBalanceProps {
   userId: string;
@@ -280,7 +281,7 @@ const Wallet: React.FC = () => {
                                 <ModalHeader className="flex flex-col gap-1  justify-center align-middle items-center">
                                   UPGRADE TO TIRE TWO
                                 </ModalHeader>
-                                <ModalBody>
+                                <ModalBody className="mx-0 px-0">
                                   <MultiStepForm />
                                 </ModalBody>
                               </>
@@ -815,6 +816,54 @@ const Wallet: React.FC = () => {
                         ></path>
                       </svg>
                     </a>
+                  </div>
+                </Link>
+
+                <Link href="/dashboard/wallet/notification" className="flex flex-col p-4 bg-gray-800 border-gray-800 shadow-md hover:shodow-lg rounded-2xl cursor-pointer transition ease-in duration-500  transform hover:scale-105">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center mr-auto">
+                      <div className="inline-flex w-12 h-12">
+                        <img
+                          src="/images/t51.png"
+                          alt="aji"
+                          className=" relative p-1 w-12 h-12 object-cover rounded-2xl"
+                        />
+                        <span className="absolute w-12 h-12 inline-flex border-2 rounded-2xl border-green-400 opacity-75"></span>
+                        <span></span>
+                      </div>
+
+                      <div className="flex flex-col ml-3 min-w-0">
+                        <div className="font-medium leading-none text-gray-100">
+                        Notification
+                        </div>
+                        <p className="text-sm text-gray-500 leading-none mt-1 truncate">
+                          View available
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex flex-col ml-3 min-w-0">
+                      <div className="flex">
+                        <a className="flex-no-shrink text-xs  font-medium tracking-wider  text-gray-400 hover:text-green-400 transition ease-in duration-300 mr-2">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-6 w-6 ml-2"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M9 5l7 7-7 7"
+                            ></path>
+                          </svg>
+                        </a>
+                        <span className="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-green-100 bg-green-400 rounded-full ml-2">
+                          1
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </Link>
 

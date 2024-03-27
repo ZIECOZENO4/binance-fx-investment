@@ -21,7 +21,7 @@ const MultiStepForm = () => {
  ];
 
  return (
-    <Card className="w-full h-[60vh] bg-slate-800">
+    <Card className="w-full h-[70vh] bg-slate-800 text-whit">
       <CardHeader className="flex gap-3">
       <div className="overflow-x-auto flex flex-row justify-start align-middle  leading-8 gap-6 mx-1 font-bold">
  {steps.map((step, index) => (
@@ -33,7 +33,7 @@ const MultiStepForm = () => {
       </CardHeader>
       <Divider/>
       <CardBody>
-        <div className=" w-full overflow-y-auto h-[40vh] flex flex-col justify-center align-middle items-center">
+        <div className=" w-full overflow-y-auto h-[60vh] flex flex-col justify-center align-middle items-center">
         {steps[activeStep].component}
         </div>
    
