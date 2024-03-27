@@ -1,64 +1,92 @@
 'use client'
 import React, { useState, useEffect } from 'react';
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { Label } from "@/components/ui/label"
-import { Slider } from "@/components/ui/slider"
-import { TableHead, TableRow, TableHeader, TableCell, TableBody, Table } from "@/components/ui/table"
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { TableHead, TableRow, TableHeader, TableCell, TableBody, Table } from "@/components/ui/table";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Label } from "@/components/ui/label"
+import { Slider } from "@/components/ui/slider"
 type Payment = {
   id: string;
-  amount: string;
-  coin: string;
-  plan: string;
-  planId: string;
   time: string;
+  walletAddress: string;
+  userId: string;
   user: {
      id: string;
      name: string;
   };
-  userId: string;
-  balance: string;
-  gasFee: string | null;
-  userName: string;
-  confirmed: boolean;
+  outCoin: string;
+  outAmount: string;
+  confirmed: boolean; 
+  gasFee: string;
+  totalValueInUSDT: string;
  };
- 
- type PaymentData = Payment[];
-const AllWithdrawalTalble: React.FC = () => {
+
+type PaymentData = Payment[];
+
+const AllWithdrawalTable: React.FC = () => {
   const [data, setData] = useState<PaymentData>([]);
+  const [search, setSearch] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(20);
+  const [filteredData, setFilteredData] = useState<PaymentData>([]);
 
   useEffect(() => {
-     const fetchData = async () => {
-       try {
-         const response = await fetch('/api/getAdmins', {
-           cache: 'no-store',
-         });
-         if (!response.ok) {
-           throw new Error('Network response was not ok');
-         }
-         const data: PaymentData = await response.json();
-         setData(data);
-       } catch (error) {
-         console.error('Error fetching data:', error);
-         toast.error('Failed to fetch data');
-       }
-     };
- 
-     fetchData();
-     const intervalId = setInterval(fetchData, 200000);
-     return () => clearInterval(intervalId);
+    const fetchData = async () => {
+      try {
+        const response = await fetch('/api/getAdmins', {
+          cache: 'no-store',
+        });
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data: PaymentData = await response.json();
+        setData(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        toast.error("An error occurred while fetching the data. Please try again!", {
+          position: "top-right",
+        });
+      }
+    };
+
+    fetchData();
+    const intervalId = setInterval(fetchData, 20000); // Fetch data every 200 seconds
+    return () => clearInterval(intervalId);
   }, []);
+
+  const handleSearch = () => {
+    // Filter data based on search
+    const results = data.filter(item =>
+      item.user.name.toLowerCase().includes(search.toLowerCase())
+    );
+    setFilteredData(results); // Update the state with the filtered results
+
+  const handleSearch = () => {
+    // Filter data based on searchTerm
+    const results = data.filter(item =>
+      item.user.name.toLowerCase().includes(search.toLowerCase())
+    );
+    setFilteredData(results);
+  };
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
+
+const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+
+
   return (
     <div className="bg-black text-white py-12">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col gap-4 max-w-3xl mx-auto items-center justify-center">
-          <img
+        <img
             alt="BinanceFX Investors"
             className="aspect-[3/1] overflow-hidden rounded-lg object-cover"
             height="400"
-            src="/placeholder.svg"
+            src="/images/a12.jpeg"
             width="1200"
           />
           <div className="grid gap-1">
@@ -69,28 +97,15 @@ const AllWithdrawalTalble: React.FC = () => {
           </div>
           <div className="rounded-xl overflow-hidden border">
             <div className="flex gap-2 items-center bg-[#0d1117] p-4">
-            <svg
-            className="h-4 w-4 fill-gray-500 dark:fill-gray-400 shrink-0"
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <circle cx="11" cy="11" r="8" />
-      <path d="m21 21-4.3-4.3" />
-    </svg>
-              <Input
-                className="flex-1 min-w-[200px] text-gray-500 dark:text-gray-400"
-                placeholder="Search Investors"
-                type="search"
-              />
-              <Button size="sm">Search</Button>
-            </div>
+          <Input
+            className="flex-1 min-w-[200px] text-gray-500 dark:text-gray-400"
+            placeholder="Search Investors"
+            type="search"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+         <Button size="sm" onClick={handleSearch}>Search</Button>
+         </div>
             <div className="grid gap-2 p-4">
               <div className="grid md:grid-cols-2 gap-2">
                 <div className="flex items-center gap-2">
@@ -109,10 +124,6 @@ className="w-4 h-4 fill-current"
       <line x1="12" x2="12" y1="2" y2="22" />
       <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
     </svg>
-                  <Label className="unstyled" htmlFor="investment">
-                    Total Investment
-                  </Label>
-                </div>
                 <div className="flex items-center gap-2 md:justify-end">
                   <div className="w-full max-w-[200px] text-center" />
                   <span className="mx-2">to</span>
@@ -142,32 +153,38 @@ className="w-4 h-4 fill-current"
                 </TableRow>
               </TableHeader>
               <TableBody>
-              {data.map((item, index) => (
-                <TableRow key={index}>
-                  <TableCell className="font-medium">{item.user.name}</TableCell>
-                  <TableCell>{new Date(item.time).toLocaleString()}</TableCell>
-                  <TableCell>1</TableCell>
-                  <TableCell>{item.amount}</TableCell>
-                  <TableCell>{item.coin}</TableCell>
-                  <TableCell>{item.gasFee}</TableCell>
-                  <TableCell className=' text-green-600'>Successful</TableCell>
-                  <TableCell>
-                    {/* <img
-                      alt="Investor Image"
-                      className="aspect-square rounded-md object-cover"
-                      height="64"
-                      src="/placeholder.svg"
-                      width="64"
-                    /> */}
-                  </TableCell>
-                </TableRow>
-                   ))}
+                {currentItems.map((item, index) => (
+                  <TableRow key={index}>
+                    <TableCell className="font-medium">{item.user.name}</TableCell>
+                    <TableCell>{new Date(item.time).toLocaleString()}</TableCell>
+                    <TableCell>1</TableCell>
+                    <TableCell>{item.amount}</TableCell>
+                    <TableCell>{item.coin}</TableCell>
+                    <TableCell>{item.gasFee}</TableCell>
+                    <TableCell className='text-green-600 font-bold'>Successful</TableCell>
+                  </TableRow>
+                ))}
               </TableBody>
             </Table>
+          </div>
+          <div>
+            <nav>
+              <ul className='pagination justify-content-center'>
+                {[...Array(Math.ceil(filteredData.length / itemsPerPage)).keys()].map(number => (
+                  <li key={number + 1} className='page-item'>
+                    <a onClick={() => paginate(number + 1)} className='page-link' href='#'>
+                      {number + 1}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
           </div>
         </div>
       </div>
     </div>
+    </div>
   )
 }
-export default  AllWithdrawalTalble;
+}
+export default AllWithdrawalTable;

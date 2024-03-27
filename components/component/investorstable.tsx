@@ -26,15 +26,20 @@ type OutInvest = {
  
  type OutInvestData = OutInvest[];
 const AllInvestorsTalble : React.FC = () => {
-  const [outInvestments, setOutInvestments] = useState<OutInvestData>([]);
+ const [outInvestments, setOutInvestments] = useState<OutInvestData>([]);
+ const [search, setSearch] = useState("");
+ const [currentPage, setCurrentPage] = useState(1);
+ const [itemsPerPage] = useState(20);
+ const [filteredData, setFilteredData] = useState<OutInvestData>([]);
 
-  const fetchData = async () => {
+ const fetchData = async () => {
     try {
       const response = await fetch('/api/historyWithdraw', {
         cache: 'no-store', // Disable caching
       });
       const data: OutInvestData = await response.json();
       setOutInvestments(data);
+      setFilteredData(data); // Initialize filtered data with all data
     } catch (error) {
       console.error('Error fetching data:', error);
       toast.error("An error occurred while fetching the data. Please try again!", {
@@ -42,9 +47,25 @@ const AllInvestorsTalble : React.FC = () => {
       });
     }
  };
+
  useEffect(() => {
-  fetchData(); 
-}, []);
+    fetchData(); 
+ }, []);
+
+ const handleSearch = () => {
+    // Filter data based on search
+    const results = outInvestments.filter(item =>
+      item.user.name.toLowerCase().includes(search.toLowerCase())
+    );
+    setFilteredData(results); // Update the state with the filtered results
+ };
+
+ const indexOfLastItem = currentPage * itemsPerPage;
+ const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+ const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
+
+ const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+
   return (
     <div className="bg-black text-white py-12">
       <div className="container px-4 md:px-6">
@@ -53,7 +74,7 @@ const AllInvestorsTalble : React.FC = () => {
             alt="BinanceFX Investors"
             className="aspect-[3/1] overflow-hidden rounded-lg object-cover"
             height="400"
-            src="/placeholder.svg"
+            src="/images/a13.jpeg"
             width="1200"
           />
           <div className="grid gap-1">
@@ -63,29 +84,16 @@ const AllInvestorsTalble : React.FC = () => {
             </p>
           </div>
           <div className="rounded-xl overflow-hidden border">
-            <div className="flex gap-2 items-center bg-[#0d1117] p-4">
-            <svg
-            className="h-4 w-4 fill-gray-500 dark:fill-gray-400 shrink-0"
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <circle cx="11" cy="11" r="8" />
-      <path d="m21 21-4.3-4.3" />
-    </svg>
-              <Input
-                className="flex-1 min-w-[200px] text-gray-500 dark:text-gray-400"
-                placeholder="Search Investors"
-                type="search"
-              />
-              <Button size="sm">Search</Button>
-            </div>
+          <div className="flex gap-2 items-center bg-[#0d1117] p-4">
+      <Input
+        className="flex-1 min-w-[200px] text-gray-500 dark:text-gray-400"
+        placeholder="Search Investors"
+        type="search"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      />
+      <Button size="sm" onClick={handleSearch}>Search</Button>
+    </div>
             <div className="grid gap-2 p-4">
               <div className="grid md:grid-cols-2 gap-2">
                 <div className="flex items-center gap-2">
@@ -138,7 +146,7 @@ className="w-4 h-4 fill-current"
                 </TableRow>
               </TableHeader>
               <TableBody>
-              {outInvestments.map((outInvest, index) => (
+              {currentItems.map((outInvest, index) => (
                 <TableRow key={index}>
                   <TableCell className="font-medium">{outInvest.user.name}</TableCell>
                   <TableCell>{new Date(outInvest.time).toLocaleString()}</TableCell>
@@ -149,19 +157,25 @@ className="w-4 h-4 fill-current"
                   <TableCell>{outInvest.gasFee}</TableCell>
                   <TableCell className=' text-green-600'>Successful</TableCell>
                   <TableCell>
-                    {/* <img
-                      alt="Investor Image"
-                      className="aspect-square rounded-md object-cover"
-                      height="64"
-                      src="/placeholder.svg"
-                      width="64"
-                    /> */}
                   </TableCell>
                 </TableRow>
                    ))}
               </TableBody>
             </Table>
           </div>
+          <div>
+      <nav>
+        <ul className='pagination justify-content-center'>
+          {[...Array(Math.ceil(filteredData.length / itemsPerPage)).keys()].map(number => (
+            <li key={number + 1} className='page-item'>
+              <a onClick={() => paginate(number + 1)} className='page-link' href='#'>
+                {number + 1}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
         </div>
       </div>
     </div>

@@ -824,7 +824,7 @@ const Wallet: React.FC = () => {
                     <div className="flex items-center mr-auto">
                       <div className="inline-flex w-12 h-12">
                         <img
-                          src="/images/t51.png"
+                          src="/images/t5.png"
                           alt="aji"
                           className=" relative p-1 w-12 h-12 object-cover rounded-2xl"
                         />
@@ -834,7 +834,7 @@ const Wallet: React.FC = () => {
 
                       <div className="flex flex-col ml-3 min-w-0">
                         <div className="font-medium leading-none text-gray-100">
-                        Notification
+                          Notification
                         </div>
                         <p className="text-sm text-gray-500 leading-none mt-1 truncate">
                           View available
@@ -860,13 +860,12 @@ const Wallet: React.FC = () => {
                           </svg>
                         </a>
                         <span className="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-green-100 bg-green-400 rounded-full ml-2">
-                          1
+                          0
                         </span>
                       </div>
                     </div>
                   </div>
                 </Link>
-
                 <div className="flex flex-col p-4 bg-gray-800 border-gray-800 shadow-md hover:shodow-lg rounded-2xl cursor-pointer transition ease-in duration-500  transform hover:scale-105">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center mr-auto">

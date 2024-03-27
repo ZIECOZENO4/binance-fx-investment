@@ -1,7 +1,9 @@
 
 'use client';
+import CircleAnimation from '@/components/component/rotate';
 import React from 'react'
 import { useEffect, useRef } from 'react';
+import BottomBar from './tradebutton';
 
 type Props = {
   symbol: string;
@@ -40,5 +42,14 @@ export function TradingViewChart({ symbol }: Props) {
     };
   }, [symbol]);
 
-  return <div ref={containerRef} id={`tradingview_${symbol}`} />;
+  return (
+    <div>
+ <div ref={containerRef} id={`tradingview_${symbol}`} />
+ <div className="  flex items-end justify-end align-top absolute top-[10vh] md:top-[20vh] ">  
+      <CircleAnimation />
+      </div>
+      <BottomBar />
+    </div>
+ 
+  );
 }
