@@ -7,7 +7,7 @@ export default function Fast() {
 
   return (
     <>
-      <Button onPress={onOpen} color="primary">Deposit</Button>
+      <Button onPress={onOpen} color="secondary">Deposit</Button>
       <Modal 
         backdrop="opaque" 
         isOpen={isOpen} 
