@@ -9,7 +9,10 @@ export async function GET(request: NextRequest) {
         // Extract the user ID from the request query parameters
         const userId = request.nextUrl.searchParams.get("userId");
 
-        // Fetch both confirmed and unconfirmed payments for the user
+        if (!userId) {
+            return NextResponse.json({ error: 'User ID is required' }, { status: 400 });
+        }
+        
         const payments = await prisma.payment.findMany({
             where: {
                 userId: userId,
