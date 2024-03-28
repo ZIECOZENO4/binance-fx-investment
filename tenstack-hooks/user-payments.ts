@@ -16,7 +16,7 @@ async function fetchUserPayments() {
 
 export function useUserPayments() {
     return useSuspenseQuery({
-        queryKey: ['userPayment'],
+        queryKey: ['userPayments'],
         queryFn: fetchUserPayments,
         staleTime: 1000 * 60 * 60 * 24, 
     });
