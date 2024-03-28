@@ -1,10 +1,12 @@
-import  AllWithdrawalTalble  from '@/components/component/withdrawaltable'
+
 import React from 'react'
 
+import  AllInvestorsTalble  from '@/components/component/investorstable'
 const PageTerms = () => {
   return (
     <div>
-       <AllWithdrawalTalble />
+    
+       <AllInvestorsTalble />
     </div>
   )
 }

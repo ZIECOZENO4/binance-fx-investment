@@ -819,12 +819,12 @@ const Wallet: React.FC = () => {
                   </div>
                 </Link>
 
-                <Link href="/dashboard/wallet/notification" className="flex flex-col p-4 bg-gray-800 border-gray-800 shadow-md hover:shodow-lg rounded-2xl cursor-pointer transition ease-in duration-500  transform hover:scale-105">
-                  <div className="flex items-center justify-between">
+                <div className="flex flex-col p-4 bg-gray-800 border-gray-800 shadow-md hover:shodow-lg rounded-2xl cursor-pointer transition ease-in duration-500  transform hover:scale-105">
+                  <Link href="/dashboard/wallet/notification" className="flex items-center justify-between">
                     <div className="flex items-center mr-auto">
                       <div className="inline-flex w-12 h-12">
                         <img
-                          src="/images/t5.png"
+                          src="/images/t51.png"
                           alt="aji"
                           className=" relative p-1 w-12 h-12 object-cover rounded-2xl"
                         />
@@ -864,8 +864,8 @@ const Wallet: React.FC = () => {
                         </span>
                       </div>
                     </div>
-                  </div>
-                </Link>
+                  </Link>
+                </div>
                 <div className="flex flex-col p-4 bg-gray-800 border-gray-800 shadow-md hover:shodow-lg rounded-2xl cursor-pointer transition ease-in duration-500  transform hover:scale-105">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center mr-auto">

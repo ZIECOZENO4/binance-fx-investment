@@ -54,7 +54,7 @@ const Options = () => {
 <div className=' rounded-3xl w-full bg-gradient-to-r from-blue-600 to-sky-200 gap-1 flex justify-center align-middle"'>
 <svg fill="#000000" width="60px" height="60px" className='flex justify-center align-middle md:p-2' viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>mining-diamonds</title> <path d="M21.022 7.57l-1.085 0.672-0.638 4.16-0.001 0.002 2.392-3.692zM17.176 13.044l-4.91-1.623-1.362 0.841 0.897 1.080zM12.916 4.884c0.199-0.111 0.367-0.269 0.483-0.471 0.404-0.701 0.048-1.664-0.796-2.151s-1.856-0.314-2.26 0.386c-0.117 0.202-0.17 0.426-0.166 0.655-2.892-1.297-6.034-1.598-8.557-0.37 6.565 1.888 12.005 5.305 16.746 9.674-0.665-3.046-2.783-5.805-5.451-7.723zM8.636 6.416l-7.023 12.172c0.521 0.857 1.287 1.552 2.592 1.498l7.023-12.172c-0.798-0.574-1.666-1.068-2.592-1.498zM25.291 12.093l-11.3 3.489-2.641 5.171 13.511 9.812 5.526-15.689z"></path> </g></svg>
 </div>
-<p className=" flex flex-col justify-center akign-middle ml-2">FX MINING </p>
+<p className=" flex flex-col justify-center akign-middle ml-1">FX MINING </p>
 </Link>
 <Link href="/dashboard/wallet" className=" font-bold  md:text-xl text-md text-white flex-col gap-1 flex justify-center align-middle flex-grow"> 
 <div className=' rounded-3xl w-full bg-gradient-to-r from-blue-600 to-sky-200 gap-1 flex justify-center align-middle"'>
@@ -122,7 +122,7 @@ const Options = () => {
 <div className=' rounded-3xl w-full bg-gradient-to-r from-blue-600 to-sky-200 gap-1 flex justify-center align-middle"'>
 <svg fill="#000000" width="50px" height="50px" className='flex justify-center align-middle p-2' viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>mining-diamonds</title> <path d="M21.022 7.57l-1.085 0.672-0.638 4.16-0.001 0.002 2.392-3.692zM17.176 13.044l-4.91-1.623-1.362 0.841 0.897 1.080zM12.916 4.884c0.199-0.111 0.367-0.269 0.483-0.471 0.404-0.701 0.048-1.664-0.796-2.151s-1.856-0.314-2.26 0.386c-0.117 0.202-0.17 0.426-0.166 0.655-2.892-1.297-6.034-1.598-8.557-0.37 6.565 1.888 12.005 5.305 16.746 9.674-0.665-3.046-2.783-5.805-5.451-7.723zM8.636 6.416l-7.023 12.172c0.521 0.857 1.287 1.552 2.592 1.498l7.023-12.172c-0.798-0.574-1.666-1.068-2.592-1.498zM25.291 12.093l-11.3 3.489-2.641 5.171 13.511 9.812 5.526-15.689z"></path> </g></svg>
 </div>
-<p className=" flex flex-col justify-center akign-middle ml-2">FX MINING </p>
+<p className=" flex flex-col justify-center akign-middle ml-1">FX MINING </p>
 </Link >
 <Link href="/dashboard/wallet" className="cursor-pointer font-bold  md:text-xl text-md text-white flex-col gap-1 flex justify-center align-middle flex-grow"> 
 <div className=' rounded-3xl w-full bg-gradient-to-r from-blue-600 to-sky-200 gap-1 flex justify-center align-middle"'>

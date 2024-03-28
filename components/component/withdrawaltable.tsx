@@ -25,11 +25,11 @@ type Payment = {
 
 type PaymentData = Payment[];
 
-const AllWithdrawalTable: React.FC<{}> = () => {
+const AlInvestmentTable: React.FC<{}> = () => {
   const [data, setData] = useState<PaymentData>([]);
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(20);
+  const [itemsPerPage] = useState(50);
   const [filteredData, setFilteredData] = useState<PaymentData>([]);
 
   useEffect(() => {
@@ -178,4 +178,4 @@ className="w-4 h-4 fill-current"
     </div>
   )
 }
-export default AllWithdrawalTable;
+export default AlInvestmentTable;

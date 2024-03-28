@@ -25,21 +25,25 @@ type OutInvest = {
  };
 
  type OutInvestData = OutInvest[];
-const AllWithdrawalTable: React.FC = () => {
+const AllWithdrawalTable: React.FC<{}>  = () => {
  const [outInvestments, setOutInvestments] = useState<OutInvestData>([]);
  const [search, setSearch] = useState("");
  const [currentPage, setCurrentPage] = useState(1);
- const [itemsPerPage] = useState(20);
+ const [itemsPerPage] = useState(50);
  const [filteredData, setFilteredData] = useState<OutInvestData>([]);
-
+ 
+ useEffect(() => {
  const fetchData = async () => {
     try {
       const response = await fetch('/api/historyWithdraw', {
         cache: 'no-store', // Disable caching
       });
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
       const data: OutInvestData = await response.json();
-      setOutInvestments(data);
-      setFilteredData(data); // Initialize filtered data with all data
+      setOutInvestments(outInvestments);
+     
     } catch (error) {
       console.error('Error fetching data:', error);
       toast.error("An error occurred while fetching the data. Please try again!", {
@@ -47,10 +51,10 @@ const AllWithdrawalTable: React.FC = () => {
       });
     }
  };
-
- useEffect(() => {
     fetchData(); 
- }, []);
+    const intervalId = setInterval(fetchData, 20000); // Fetch data every 200 seconds
+    return () => clearInterval(intervalId);
+  }, []);
 
  const handleSearch = () => {
     // Filter data based on search
@@ -70,7 +74,7 @@ const AllWithdrawalTable: React.FC = () => {
     <div className="bg-black text-white py-12">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col gap-4 max-w-3xl mx-auto items-center justify-center">
-          <img
+        <img
             alt="BinanceFX Investors"
             className="aspect-[3/1] overflow-hidden rounded-lg object-cover"
             height="400"
@@ -78,22 +82,22 @@ const AllWithdrawalTable: React.FC = () => {
             width="1200"
           />
           <div className="grid gap-1">
-            <h1 className="text-blue-500 font-bold tracking-tight">BinanceFX Investors</h1>
+            <h1 className="text-blue-500 font-bold tracking-tight">BinanceFX Withdrawals</h1>
             <p className="text-gray-500 dark:text-gray-400">
-              List of Investors in BinanceFX: Manage your Investments with Ease
+              List of Withdrawals in BinanceFX: Manage your Investments with Ease
             </p>
           </div>
           <div className="rounded-xl overflow-hidden border">
-          <div className="flex gap-2 items-center bg-[#0d1117] p-4">
-      <Input
-        className="flex-1 min-w-[200px] text-gray-500 dark:text-gray-400"
-        placeholder="Search Investors"
-        type="search"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
-      <Button size="sm" onClick={handleSearch}>Search</Button>
-    </div>
+            <div className="flex gap-2 items-center bg-[#0d1117] p-4">
+          <Input
+            className="flex-1 min-w-[200px] text-gray-500 dark:text-gray-400"
+            placeholder="Search Withdrawals"
+            type="search"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+         <Button size="sm" onClick={handleSearch}>Search</Button>
+         </div>
             <div className="grid gap-2 p-4">
               <div className="grid md:grid-cols-2 gap-2">
                 <div className="flex items-center gap-2">
@@ -112,10 +116,6 @@ className="w-4 h-4 fill-current"
       <line x1="12" x2="12" y1="2" y2="22" />
       <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
     </svg>
-                  <Label className="unstyled" htmlFor="investment">
-                    Total Investment
-                  </Label>
-                </div>
                 <div className="flex items-center gap-2 md:justify-end">
                   <div className="w-full max-w-[200px] text-center" />
                   <span className="mx-2">to</span>
@@ -164,22 +164,23 @@ className="w-4 h-4 fill-current"
             </Table>
           </div>
           <div>
-      <nav>
-        <ul className='pagination justify-content-center'>
-          {[...Array(Math.ceil(filteredData.length / itemsPerPage)).keys()].map(number => (
-            <li key={number + 1} className='page-item'>
-              <a onClick={() => paginate(number + 1)} className='page-link' href='#'>
-                {number + 1}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
-    </div>
+            <nav>
+              <ul className='pagination justify-content-center'>
+                {[...Array(Math.ceil(filteredData.length / itemsPerPage)).keys()].map(number => (
+                  <li key={number + 1} className='page-item'>
+                    <a onClick={() => paginate(number + 1)} className='page-link' href='#'>
+                      {number + 1}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
         </div>
       </div>
     </div>
-  );
-};
+    </div>
+  )
+}
 
 export default AllWithdrawalTable;
