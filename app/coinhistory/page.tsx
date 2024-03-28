@@ -1,13 +1,22 @@
+"use client"
+import Loading from '../loading';
 import React from 'react'
-import InvestmentHistory from "../../components/component/cointransaction"
-import UserPayments from '@/components/userdetails/paymenthistory'
-const InvestmentHistoryPage = () => {
-  return (
+import { Suspense, useEffect } from 'react';
+import { useUser } from "@clerk/clerk-react";
+import PaymentDetails from './paymentdetails';
+const InvdestPage = () => {
+  const { isLoaded, isSignedIn, user } = useUser();
+
+  if (!isLoaded) {
+    return null;
+  }
+  return (   
+  <Suspense fallback={<div><Loading /> </div>}>
     <div>
-      <InvestmentHistory />
-      <UserPayments />
+      <PaymentDetails />
     </div>
+    </Suspense>
   )
 }
 
-export default InvestmentHistoryPage
+export default InvdestPage
