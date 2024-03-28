@@ -23,18 +23,15 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: 'OutInvest not found' }, { status: 404 });
     }
 
-   
     await prisma.outInvest.update({
       where: { id: outInvestId },
       data: { confirmed: true, totalValueInUSDT: totalUsdtValue },
     });
 
-
-    if (outInvest.outAmount) {
+    if (outInvest.outAmount && outInvest.outCoin) {
       const outInvestAmount = parseFloat(outInvest.outAmount);
       const totalUsdtValueFloat = parseFloat(totalUsdtValue);
 
-      
       const updatedUser = await prisma.user.update({
         where: { id: outInvest.user.id },
         data: { balance: { decrement: totalUsdtValueFloat } },
@@ -42,24 +39,30 @@ export async function GET(request: NextRequest) {
 
       console.log(`Updated balance for user ${updatedUser.id}: ${updatedUser.balance}`);
 
-      // Check if the user has the outCoin in their userCoinAmounts
-      const userCoinAmount = await prisma.userCoinAmount.findFirst({
+      // Check if the user has the outCoin in their UserCoin
+      const userCoin = await prisma.userCoin.findUnique({
         where: {
-          userId: outInvest.user.id,
-          coin: { symbol: outInvest.outCoin ?? undefined },
+          userId_coinId: {
+            userId: outInvest.user.id,
+            coinId: outInvest.outCoin,
+          },
         },
       });
 
-      if (userCoinAmount) {
-        // If the user has the outCoin, subtract the outAmount from the user's coin amount
-        await prisma.userCoinAmount.update({
-          where: { id: userCoinAmount.id },
+      if (userCoin) {
+        await prisma.userCoin.update({
+          where: {
+            userId_coinId: {
+              userId: outInvest.user.id,
+              coinId: outInvest.outCoin,
+            },
+          },
           data: { amount: { decrement: outInvestAmount } },
         });
       }
     } else {
-      console.error(`OutInvest with ID ${outInvestId} has a null outAmount.`);
-      return NextResponse.json({ error: 'OutInvest has a null outAmount' }, { status: 400 });
+      console.error(`OutInvest with ID ${outInvestId} has a null outAmount or outCoin.`);
+      return NextResponse.json({ error: 'OutInvest has a null outAmount or outCoin' }, { status: 400 });
     }
 
     return NextResponse.json({ success: true });
