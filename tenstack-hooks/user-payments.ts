@@ -3,7 +3,7 @@ import { Payment } from '@prisma/client';
 import { addBaseURL } from '@/utils/addBaseUrl';
 
 async function fetchUserPayments() {
-    const url = addBaseURL('api/userPayments');
+    const url = addBaseURL('api/user-payments');
     const res = await fetch(url);
     if (!res.ok) {
         const errorData = await res.json();
