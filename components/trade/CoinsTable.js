@@ -81,11 +81,11 @@ export default function CoinsTable() {
         onChange={(e) => setSearch(e.target.value)}
       />
       {loading ? (
-        <div className="bg-yellow-400 p-4">Loading...</div>
+        <div className="bg-sky-600 p-4">Loading...</div>
       ) : (
         <div className="overflow-x-auto">
           <table className="table-auto w-full">
-            <thead className="bg-yellow-500 text-black">
+            <thead className="bg-sky-600 text-black">
               <tr>
                 {["Coin", "Price", "24h Change", "Market Cap"].map((head) => (
                  <th key={head} className="px-4 py-2">{head}</th>
@@ -99,7 +99,7 @@ export default function CoinsTable() {
                  <tr
                     key={row.name}
                     className="bg-gray-700 text-gray-200 cursor-pointer hover:bg-gray-600"
-                    onClick={() => router.push(`/dashboard/trade/tradePage/${row.id}`)}
+            
                  >
                     <td className="px-4 py-2 flex items-center gap-4">
                       <img src={row?.image} alt={row.name} height="50" className="w-12 h-12" />

@@ -1,9 +1,10 @@
 import React from 'react';
+import CoinsTable from '../../../components/trade/CoinsTable';
 
 const Greeting: React.FC = () => {
  return (
     <div>
-      <h1>Hello, welcome to our application!</h1>
+  <CoinsTable />
     </div>
  );
 };

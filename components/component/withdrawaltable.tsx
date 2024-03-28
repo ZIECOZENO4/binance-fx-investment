@@ -16,8 +16,8 @@ type Payment = {
      id: string;
      name: string;
   };
-  outCoin: string;
-  outAmount: string;
+  coin: string;
+  amount: string;
   confirmed: boolean; 
   gasFee: string;
   totalValueInUSDT: string;
@@ -25,7 +25,7 @@ type Payment = {
 
 type PaymentData = Payment[];
 
-const AllWithdrawalTable: React.FC = () => {
+const AllWithdrawalTable: React.FC<{}> = () => {
   const [data, setData] = useState<PaymentData>([]);
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
@@ -55,14 +55,6 @@ const AllWithdrawalTable: React.FC = () => {
     const intervalId = setInterval(fetchData, 20000); // Fetch data every 200 seconds
     return () => clearInterval(intervalId);
   }, []);
-
-  const handleSearch = () => {
-    // Filter data based on search
-    const results = data.filter(item =>
-      item.user.name.toLowerCase().includes(search.toLowerCase())
-    );
-    setFilteredData(results); // Update the state with the filtered results
-
   const handleSearch = () => {
     // Filter data based on searchTerm
     const results = data.filter(item =>
@@ -185,6 +177,5 @@ className="w-4 h-4 fill-current"
     </div>
     </div>
   )
-}
 }
 export default AllWithdrawalTable;
