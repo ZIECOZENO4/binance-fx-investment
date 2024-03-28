@@ -20,7 +20,27 @@ model User {
   withdrawals     Withdrawal[]
   outinvest       OutInvest[]
   deposits        Deposit[]
-  userCoinAmounts UserCoinAmount[]
+  coins           UserCoin[]
+}
+
+model Coin {
+  id        String     @id @default(cuid())
+  name      String
+  symbol    String     @unique
+  image     String
+  marketCap Float
+  users     UserCoin[]
+}
+
+model UserCoin {
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  coin      Coin     @relation(fields: [coinId], references: [id])
+  coinId    String
+  amount    Float
+  usdtValue Float
+
+  @@id([userId, coinId])
 }
 
 model Payment {
@@ -48,7 +68,7 @@ model Withdrawal {
   gasFee        String
   userId        String   @map("user_id")
   userName      String
-    totalValueInUSDT String?
+  totalValueInUSDT String?
   user          User     @relation(fields: [userId], references: [id])
   confirmed     Boolean  @default(false)
 }
@@ -76,25 +96,7 @@ model Deposit {
   user                    User     @relation(fields: [userId], references: [id])
   depositorAmount         String
   depositorName           String
-    totalValueInUSDT String?
+  totalValueInUSDT String?
   depositorCoin           String
   confirmed               Boolean  @default(false)
-}
-
-model Coin {
-  id              String           @id @default(cuid())
-  symbol          String           @unique
-  name            String
-  image           String
-  usdValue        Float            @default(0)
-  userCoinAmounts UserCoinAmount[]
-}
-
-model UserCoinAmount {
-  id        String   @id @default(cuid())
-  coin      Coin     @relation(fields: [coinId], references: [id])
-  coinId    String
-  amount    Float    @unique
-  user      User     @relation(fields: [userId], references: [id])
-  userId    String
 }
