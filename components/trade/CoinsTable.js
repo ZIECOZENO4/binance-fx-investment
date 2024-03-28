@@ -7,7 +7,7 @@ import { CryptoState } from "../../CryptoContext";
 
 export function numberWithCommas(x) {
  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}car
+}
 
 function Pagination({ itemsPerPage, totalItems, paginate, currentPage }) {
  const pageNumbers = [];

@@ -9,6 +9,8 @@ import gainers from "../public/assets/svg/gainers.png"
 import recent from "../public/assets/svg/recent.png"
 import TrendingCard from "./trendingCard"
 import Link from "next/link"
+import fetchWithdrawalData from '@/lib/trendinginvestors';
+import fetchWithdrawalData2 from '@/lib/trendingwithdraw';
 const styles = {
     trendingWrapper: `mx-auto w-full`,
     h1: `text-3xl text-white font-bold `,
@@ -16,7 +18,8 @@ const styles = {
 const Trending = () => {
 
     const [trendingData, setTrendingData] = useState([]);
-   
+    const [trendingInvestors, setTrendingInvestors] = useState([]);
+    const [trendingWithdrawal, setTrendingWithdrawal] = useState([]);
     useEffect(() => {
        const fetchData = async () => {
          const data = await fetchTrendingCoins();
@@ -25,56 +28,23 @@ const Trending = () => {
    
        fetchData();
     }, []);
-
-    const trendingData2 = [
-        {
-            number: 1,
-            symbol: "BTC",
-            name: "Bitcoin",
-            icon: btc,
-            isIncrement: true,
-            rate: "2.34%"
-        }, {
-            number: 2,
-            symbol: "USDT",
-            name: "Tether",
-            icon: usdt,
-            isIncrement: false,
-            rate: "9.32%"
-        }, {
-            number: 1,
-            symbol: "BTC",
-            name: "Bitcoin",
-            icon: btc,
-            isIncrement: true,
-            rate: "2.34%"
-        },
-    ]
-
-    const trendingData3 = [
-        {
-            number: 1,
-            symbol: "BTC",
-            name: "Bitcoin",
-            icon: btc,
-            isIncrement: true,
-            rate: "2.34%"
-        }, {
-            number: 2,
-            symbol: "USDT",
-            name: "Tether",
-            icon: usdt,
-            isIncrement: false,
-            rate: "9.32%"
-        }, {
-            number: 1,
-            symbol: "BTC",
-            name: "Bitcoin",
-            icon: btc,
-            isIncrement: true,
-            rate: "2.34%"
-        },
-    ]
+        useEffect(() => {
+           const fetchData = async () => {
+             const data = await fetchWithdrawalData();
+             setTrendingInvestors(data);
+           };
+       
+           fetchData();
+        }, []);
+        useEffect(() => {
+            const fetchData = async () => {
+              const data = await   fetchWithdrawalData2();
+              setTrendingWithdrawal(data);
+            };
+        
+            fetchData();
+         }, []);
+      
     return <div className="text-white p-6 mt-4 flex justify-center align-middle items-center w-full">
         <div className={styles.trendingWrapper}>
             <div className="flex  align-middle items-center  justify-center">
@@ -90,8 +60,8 @@ const Trending = () => {
 
             <div className='flex md:items-center md:align-middle flex-col md:flex-row gap-8 md:gap-0'>
             <Link href="/dashboard/allcoins"> <TrendingCard title='Trending' icon={fire} trendingData={trendingData} />  </Link>  
-              <Link href="/dashboard/allinvestors"> <TrendingCard title='Latest Investors' icon={gainers} trendingData={trendingData2} /></Link> 
-              <Link href="/dashboard/allwithdrawal"><TrendingCard title='Latest Withdrawal' icon={recent} trendingData={trendingData3} /></Link>  
+              <Link href="/dashboard/allinvestors"> <TrendingCard title='Latest Investors' icon={gainers} trendingData={trendingInvestors} /></Link> 
+              <Link href="/dashboard/allwithdrawal"><TrendingCard title='Latest Withdrawal' icon={recent} trendingData={trendingWithdrawal} /></Link>  
             </div>
         </div>
     </div>
