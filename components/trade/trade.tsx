@@ -14,10 +14,6 @@ declare global {
   }
 }
 
-window.onTradingViewRowClick = (symbol: string) => {
-  console.log(`Clicked on symbol: ${symbol}`);
-};
-
 const Trade = () => {
   const router = useRouter();
 

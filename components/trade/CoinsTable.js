@@ -46,10 +46,10 @@ export default function CoinsTable() {
  const fetchCoins = async () => {
     setLoading(true);
     const { data } = await axios.get(CoinList(currency));
-    // Directly accessing `currency` with optional chaining
-    const currencyValue = data?.currency;
+    // Assuming `data` is the object you're trying to destructure
+    const { currency } = data ?? {}; // Provide an empty object as a fallback
 
-    // `currencyValue` will be `undefined` if `data` is `undefined`, preventing the TypeError
+    // Now, `currency` will be `undefined` if `data` is `undefined`, and you can safely use it
     setCoins(data);
     setLoading(false);
  };
