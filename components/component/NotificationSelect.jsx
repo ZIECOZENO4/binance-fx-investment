@@ -1,7 +1,7 @@
 
 export function NotificationSelect() {
   return (
-    <div className="bg-[#121212] h-[100vh] w-[100vw] overflow-hidden m-0 p-0">
+    <div className="bg-[#121212] h-full w-[100vw] overflow-hidden m-0 p-0">
       <div className="flex items-center p-4">
         <ArrowLeftIcon className="text-white" />
         <h1 className="flex-1 text-center text-lg font-bold text-white">Messages</h1>
