@@ -44,12 +44,12 @@ export function TradingViewChart({ symbol }: Props) {
 
   return (
     <div>
- <div ref={containerRef} id={`tradingview_${symbol}`} />
+ <div ref={containerRef} id={`tradingview_${symbol}`} >
  <div className="  flex items-end justify-end align-top absolute top-[10vh] md:top-[20vh] ">  
       <CircleAnimation />
       </div>
       <BottomBar />
     </div>
- 
+    </div>
   );
 }

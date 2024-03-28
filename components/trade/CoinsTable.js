@@ -46,6 +46,10 @@ export default function CoinsTable() {
  const fetchCoins = async () => {
     setLoading(true);
     const { data } = await axios.get(CoinList(currency));
+    // Directly accessing `currency` with optional chaining
+    const currencyValue = data?.currency;
+
+    // `currencyValue` will be `undefined` if `data` is `undefined`, preventing the TypeError
     setCoins(data);
     setLoading(false);
  };
@@ -97,7 +101,7 @@ export default function CoinsTable() {
                  <tr
                     key={row.name}
                     className="bg-gray-700 text-gray-200 cursor-pointer hover:bg-gray-600"
-            
+
                  >
                     <td className="px-4 py-2 flex items-center gap-4">
                       <img src={row?.image} alt={row.name} height="50" className="w-12 h-12" />

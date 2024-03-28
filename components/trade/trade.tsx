@@ -5,11 +5,25 @@ import React, { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
 type ScreenerRow = {
-  SYMBOL: string;
+ SYMBOL: string;
+};
+
+declare global {
+  interface Window {
+    onTradingViewRowClick: (symbol: string) => void;
+  }
+}
+
+window.onTradingViewRowClick = (symbol: string) => {
+  console.log(`Clicked on symbol: ${symbol}`);
 };
 
 const Trade = () => {
   const router = useRouter();
+
+  const onTradingViewRowClick = (symbol: string) => {
+    router.push(`/dashboard/symbol/${symbol}`);
+ };
 
   useEffect(() => {
     const script = document.createElement('script');
@@ -26,7 +40,7 @@ const Trade = () => {
       "colorTheme": "dark",
       "locale": "en",
       "onRowClick": (row: ScreenerRow) => {
-        router.push(`/dashboard/symbol/${row.SYMBOL}`);
+        window.onTradingViewRowClick(row.SYMBOL);
       }
     });
 
