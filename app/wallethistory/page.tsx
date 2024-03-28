@@ -1,35 +1,22 @@
-"use client";
-import React from "react";
-import { useUserPayments } from "../../tenstack-hooks/user-payments";
+"use client"
+import Loading from '../loading';
+import React from 'react'
+import { Suspense, useEffect } from 'react';
+import { useUser } from "@clerk/clerk-react";
+import PaymentDetails from './paymentdetails';
+const InvdestPage = () => {
+  const { isLoaded, isSignedIn, user } = useUser();
 
-const PaymentDetails = () => {
-  const { data: payments, isLoading, isError, error } = useUserPayments();
-
-  if (isLoading) {
-    return <div>Loading payment details...</div>;
+  if (!isLoaded) {
+    return null;
   }
-
-  if (isError) {
-    return <div>Error: {error?.message || "Unknown error"}</div>;
-  }
-
-  return (
+  return (   
+  <Suspense fallback={<div><Loading /> </div>}>
     <div>
-      <h2>Payment Details</h2>
-      {payments && payments.length > 0 ? (
-        payments.map((payment) => (
-          <div key={payment.id}>
-            <p>Amount: {payment.amount}</p>
-            <p>Coin: {payment.coin}</p>
-            <p>Plan: {payment.plan}</p>
-            {/* Display other payment details */}
-          </div>
-        ))
-      ) : (
-        <div>No payment details available.</div>
-      )}
+      <PaymentDetails />
     </div>
-  );
-};
+    </Suspense>
+  )
+}
 
-export default PaymentDetails;
+export default InvdestPage
