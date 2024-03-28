@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { useUserPayments } from "@/tenstack-hooks/user-payment";
+import { useUserPayments } from "../../tenstack-hooks/user-payment";
 
 const PaymentDetails = () => {
   const { data: payments, isLoading, isError, error } = useUserPayments();
