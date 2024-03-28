@@ -19,6 +19,9 @@ export async function GET(request: NextRequest) {
         include: {
             user: true,
         },
+        orderBy: {
+            time: 'desc',
+        },
     });
 
     // Return the payment details in the response
