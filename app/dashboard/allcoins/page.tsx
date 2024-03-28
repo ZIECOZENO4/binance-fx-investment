@@ -4,7 +4,7 @@ import CoinsTable from '../../../components/trade/CoinsTable';
 const Greeting: React.FC = () => {
  return (
     <div>
-  <CoinsTable />
+ hello vg
     </div>
  );
 };
