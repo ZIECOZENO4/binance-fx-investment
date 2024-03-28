@@ -10,8 +10,8 @@ async function fetchUserPayments() {
         console.log("error:", errorData);
         throw new Error(errorData);
     }
-    const payments: Payment[] = await res.json();
-    return payments;
+    const payments: Payment[] | null = await res.json();
+    return payments || []; // Return an empty array if payments is null
 }
 
 export function useUserPayments() {
