@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import { useUserPayments } from '@/tenstack-hooks/user-payment';
 
@@ -12,7 +13,6 @@ const PaymentDetails = () => {
                     <p>Amount: {payment.amount}</p>
                     <p>Coin: {payment.coin}</p>
                     <p>Plan: {payment.plan}</p>
-                    {/* Display other payment details */}
                 </div>
             ))}
         </div>
